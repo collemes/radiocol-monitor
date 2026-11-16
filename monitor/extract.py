@@ -305,3 +305,22 @@ def extract_player_links(content: str, base: str, limit=3):
         for u in JS_URL_RE.findall(onclick):
             add(u)
     return out[:limit]
+
+
+# ---------- posts que não são de rádio / rádios encerradas ----------
+NAO_RADIO_RE = re.compile(
+    r"^(especial\b|playlist\b|clipes?\b|anuncie\b|consultar\b|curta a p[aá]gina|colocando r[aá]dio|"
+    r"rela[cç][aã]o das r[aá]dios|cadastrar\b|radiocol\s*-|ou[cç]a a sele[cç][aã]o|ou[cç]a as melhores)"
+    r"|melhores m[uú]sicas|m[uú]sicas mais tocadas",
+    re.I)
+ENCERRADA_RE = re.compile(r"(foi extint|encerrou suas atividades|saiu do ar|deixou de existir)", re.I)
+
+
+def classify_post(title: str):
+    """'nao_radio' (playlist, especial, página institucional), 'encerrada' ou None (post de rádio)."""
+    t = (title or "").strip()
+    if ENCERRADA_RE.search(t):
+        return "encerrada"
+    if NAO_RADIO_RE.search(t) and not re.search(r"\b(fm|am)\s*\d", t, re.I):
+        return "nao_radio"
+    return None

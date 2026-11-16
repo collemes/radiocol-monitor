@@ -10,9 +10,9 @@ import re
 from urllib.parse import unquote, urljoin, urlparse
 
 from . import config
-from .blogger import fetch_post_body, fetch_post_body_raw, fetch_posts
+from .blogger import BODY_RE, fetch_post_body, fetch_post_body_raw, fetch_posts
 from .checker import Checker
-from .extract import (extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
+from .extract import (classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
                       extract_streams, stream_score)
 from .extras import check_old_urls, contact_pairs, register_old_url, scan_site_whatsapp
 from .finder import Finder, variants
@@ -181,6 +181,11 @@ async def main():
                         found += [u for u in extract_streams(unquote(link.split("?", 1)[1])) if u not in found]
                     async with sem_p:
                         page = await fetch_post_body_raw(session, link)
+                    # página de player feita no Blogger (ex.: radiosaovivo.radiocol.com.br):
+                    # usa só o corpo do post, para não pegar rádios da barra lateral
+                    m_body = BODY_RE.search(page or "")
+                    if m_body:
+                        page = m_body.group(1)
                     found += [u for u in extract_streams(page) if u not in found]
                     if not found:   # player montado dentro de um iframe da página do popup
                         for ifr in re.findall(r"""<iframe\b[^>]*?\bsrc\s*=\s*["']([^"']+)["']""", page, re.I)[:2]:
@@ -236,6 +241,14 @@ async def main():
                 rec.pop("contact_overrides", None)
             if ov.get("ignore"):
                 rec["status"], rec["reason"] = "ignorado", ov.get("note", "ignorado manualmente")
+                continue
+            # playlists, especiais, páginas institucionais e rádios encerradas saem do monitoramento
+            tipo_post = classify_post(rec.get("title", ""))
+            if tipo_post and not ov.get("stream"):
+                rec["status"] = "ignorado"
+                rec["reason"] = ("não é post de rádio (automático)" if tipo_post == "nao_radio"
+                                 else "rádio encerrada, segundo o título (automático)")
+                rec.pop("alerted", None)
                 continue
             if ov.get("stream"):
                 rec["stream"], rec["source"] = ov["stream"], "manual"
@@ -299,11 +312,11 @@ async def main():
         # 3c) posts com iframe que ainda só têm http: procura uma versão https em
         #     outras fontes (site oficial, Radio Browser) para poder trocar pelo player
         finder = Finder(session, checker)
-        need_https = [r for r in to_check if r.get("iframe") and r.get("status") == "ok"
+        need_https = [r for r in to_check if (r.get("iframe") or r.get("popup")) and r.get("status") == "ok"
                       and r.get("http_only") and r.get("source") != "manual"
                       and (r.get("https_search") or "") < week_ago]
         if need_https:
-            log(f"{len(need_https)} iframes só com http; procurando versão https…")
+            log(f"{len(need_https)} iframes/popups só com http; procurando versão https…")
             sem_h = asyncio.Semaphore(15)
 
             async def find_https(rec):
@@ -316,7 +329,7 @@ async def main():
                     return
                 if found["confidence"] == "high":
                     events["fixed"].append({"url": rec["url"], "title": rec["title"], "from": rec["stream"],
-                                            "to": found["url"], "source": found["source"] + " (https p/ iframe)"})
+                                            "to": found["url"], "source": found["source"] + " (https p/ player)"})
                     change(rec, found["url"], found["source"])
                     rec["http_only"] = False
                 else:

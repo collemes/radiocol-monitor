@@ -28,8 +28,8 @@ def public_entry(rec):
         e["h"] = 1
     if rec.get("contact_overrides"):
         e["c"] = rec["contact_overrides"]  # [[antigo, novo, "w"|"t"], ...]
-    if rec.get("iframe"):
-        e["f"] = 1  # post tem iframe "Ao vivo": o script do tema troca por player
+    if rec.get("iframe") or rec.get("popup"):
+        e["f"] = 1  # post tem iframe "Ao vivo" ou botão de popup: o script do tema troca por player
     return e
 
 
@@ -137,6 +137,9 @@ def build_report(posts, events, today, old_urls=None):
     iframes = [r for r in recs if r.get("iframe")]
     iframe_ok = [r for r in iframes if r.get("status") == "ok" and not r.get("http_only")]
     iframe_http = [r for r in iframes if r.get("status") == "ok" and r.get("http_only")]
+    popups = [r for r in recs if r.get("popup")]
+    popup_ok = [r for r in popups if r.get("status") == "ok" and not r.get("http_only")]
+    popup_http = [r for r in popups if r.get("status") == "ok" and r.get("http_only")]
     need = confirmed + nolink
     new = [r for r in need if not r.get("alerted")]
     for r in new:
@@ -156,9 +159,13 @@ def build_report(posts, events, today, old_urls=None):
         "iframes": len(iframes),
         "iframes_trocados_por_player": len(iframe_ok),
         "iframes_so_http": len(iframe_http),
+        "popups": len(popups),
+        "popups_trocados_por_player": len(popup_ok),
+        "popups_so_http": len(popup_http),
         "alertas_novos": len(new),
         "urls_sem_301": len(no_redirect),
         "whatsapp_divergente": len(contact_sugs),
+        "ignorados": sum(1 for r in recs if r.get("status") == "ignorado"),
     }
 
     fixed_rows = [
@@ -175,8 +182,11 @@ def build_report(posts, events, today, old_urls=None):
                 f"<b style=color:#c00>{summary['fora_do_ar']} fora do ar</b> "
                 f"({summary['fora_confirmado']} confirmados) · {summary['sem_link']} sem link · "
                 f"{summary['so_http']} só em http · {summary['corrigidos_hoje']} corrigidos hoje · "
-                f"{summary['voltaram_hoje']} voltaram sozinhos · iframes 'Ao vivo': "
-                f"{summary['iframes_trocados_por_player']} viram player, {summary['iframes_so_http']} só http</p>{''.join(sections)}"
+                f"{summary['voltaram_hoje']} voltaram sozinhos · {summary['ignorados']} ignorados "
+                f"(não são rádio, encerradas ou marcados por você) · iframes 'Ao vivo': "
+                f"{summary['iframes_trocados_por_player']} viram player, {summary['iframes_so_http']} só http · "
+                f"botões de popup: {summary['popups']} ({summary['popups_trocados_por_player']} viram player, "
+                f"{summary['popups_so_http']} só http)</p>{''.join(sections)}"
                 f"<p style='color:#888;font-size:12px'>Gerado pelo radiocol-monitor em {today}.</p>"
                 f"</body></html>")
 
@@ -213,8 +223,12 @@ def build_report(posts, events, today, old_urls=None):
                [_row(r, _sugg(r)) for r in http_only]),
         _table("🔁 Iframes 'Ao vivo' ainda sem stream https (continuam com o iframe)",
                [_row(r, _sugg(r)) for r in iframe_http]),
+        _table("🔁 Botões de popup ainda sem stream https (continuam abrindo o popup)",
+               [_row(r, _sugg(r)) for r in popup_http]),
         _table("✅ Corrigidos automaticamente hoje", fixed_rows,
                ("Post", "Endereço antigo", "Endereço novo", "Origem")),
+        _table("⏸️ Ignorados (não são post de rádio, rádios encerradas ou marcados no overrides.json)",
+               [_row(r) for r in sorted(recs, key=lambda r: r.get("title", "")) if r.get("status") == "ignorado"]),
         _table("↪️ URLs antigas sem redirecionamento 301", _url_rows(no_redirect), url_cols),
         _table("📱 WhatsApp diferente no site oficial", _contact_rows(contact_sugs), ct_cols),
     ]
