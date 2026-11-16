@@ -1,18 +1,18 @@
 {
- "alertas_novos": 0,
- "corrigidos_hoje": 0,
+ "alertas_novos": 596,
+ "corrigidos_hoje": 102,
  "data": "2026-11-16",
- "fora_confirmado": 0,
- "fora_do_ar": 4,
+ "fora_confirmado": 4,
+ "fora_do_ar": 1593,
  "iframes": 0,
  "iframes_so_http": 0,
  "iframes_trocados_por_player": 0,
- "ok": 46,
- "posts": 50,
- "posts_novos": 50,
- "sem_link": 0,
- "so_http": 1,
+ "ok": 972,
+ "posts": 3157,
+ "posts_novos": 3107,
+ "sem_link": 592,
+ "so_http": 56,
  "urls_sem_301": 0,
  "voltaram_hoje": 0,
- "whatsapp_divergente": 2
+ "whatsapp_divergente": 18
 }
