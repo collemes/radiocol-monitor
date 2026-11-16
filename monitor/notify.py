@@ -8,6 +8,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from . import config
+from .extract import UF_NOMES, cidade_chave, nome_curto
 
 
 def shard_of(path: str, n: int) -> int:
@@ -46,10 +47,14 @@ def write_public(posts):
             continue
         e = public_entry(r) if r.get("stream") else {"c": r["contact_overrides"]}
         full[pid] = e
-    _dump(os.path.join(config.PUBLIC_DIR, "radios.json"), full)
+    _dump(os.path.join(config.PUBLIC_DIR, "radios.json"), {k: v for k, v in full.items() if "u" in v or "c" in v})
     # caminho do post -> ID (usado pela planilha de aprovação para achar o post)
     _dump(os.path.join(config.PUBLIC_DIR, "paths.json"),
           {r["path"]: pid for pid, r in posts.items() if r.get("path")})
+    # rádios da mesma cidade / UF ("Ouça também"): um arquivo por estado em docs/v/<uf>.json
+    locs = write_vizinhas(posts)
+    for pid, l in locs.items():
+        full.setdefault(pid, {})["l"] = l
     shards = [{} for _ in range(config.SHARDS)]
     for p, e in full.items():
         shards[shard_of(p, config.SHARDS)][p] = e
@@ -58,6 +63,44 @@ def write_public(posts):
     nojekyll = os.path.join(config.PUBLIC_DIR, ".nojekyll")
     if not os.path.exists(nojekyll):
         open(nojekyll, "w").close()
+
+
+def _vizinha_ok(r):
+    """Entra na lista "Ouça também": post de rádio, com áudio e sem falha confirmada."""
+    if r.get("status") in ("ignorado", "sem_link") or not r.get("path") or not r.get("loc"):
+        return False
+    return not (r.get("status") == "off" and r.get("fail_count", 0) >= 3)
+
+
+def write_vizinhas(posts):
+    """Gera docs/v/<uf>.json = {"n": nome do estado, "c": {chave: [nome, [[rádio, caminho], ...]]}}.
+    Devolve {post_id: "uf|chave"} para o script do tema saber qual arquivo e cidade usar."""
+    # cidade sem UF no post: usa a UF que os outros posts da mesma cidade têm
+    uf_da_cidade = {}
+    for r in posts.values():
+        loc = r.get("loc")
+        if loc and loc[1]:
+            uf_da_cidade.setdefault(cidade_chave(loc[0]), {}).setdefault(loc[1], 0)
+            uf_da_cidade[cidade_chave(loc[0])][loc[1]] += 1
+    estados, locs = {}, {}
+    for pid, r in sorted(posts.items(), key=lambda kv: (kv[1].get("title") or "").lower()):
+        if r.get("status") == "ignorado" or not r.get("loc") or not r.get("path"):
+            continue
+        cidade, uf = r["loc"][0], r["loc"][1]
+        chave = cidade_chave(cidade)
+        if not uf:
+            votos = uf_da_cidade.get(chave)
+            if not votos:
+                continue
+            uf = max(votos, key=votos.get)
+        locs[pid] = f"{uf}|{chave}"   # o bloco aparece também em rádio fora do ar (o ouvinte acha outra)
+        grupo = estados.setdefault(uf, {}).setdefault(chave, [cidade, []])
+        if _vizinha_ok(r):            # mas só rádio com áudio entra na lista
+            grupo[1].append([nome_curto(r.get("title") or ""), r["path"]])
+    pasta = os.path.join(config.PUBLIC_DIR, "v")
+    for uf, cidades in estados.items():
+        _dump(os.path.join(pasta, f"{uf}.json"), {"n": UF_NOMES.get(uf, uf.upper()), "c": cidades})
+    return locs
 
 
 # ---------------------------------------------------------------- relatório

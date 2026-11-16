@@ -324,3 +324,110 @@ def classify_post(title: str):
     if NAO_RADIO_RE.search(t) and not re.search(r"\b(fm|am)\s*\d", t, re.I):
         return "nao_radio"
     return None
+
+
+# ---------------------------------------------------------------- cidade / UF
+UF_NOMES = {
+    "ac": "do Acre", "al": "de Alagoas", "ap": "do Amapá", "am": "do Amazonas", "ba": "da Bahia",
+    "ce": "do Ceará", "df": "do Distrito Federal", "es": "do Espírito Santo", "go": "de Goiás",
+    "ma": "do Maranhão", "mt": "de Mato Grosso", "ms": "de Mato Grosso do Sul", "mg": "de Minas Gerais",
+    "pa": "do Pará", "pb": "da Paraíba", "pr": "do Paraná", "pe": "de Pernambuco", "pi": "do Piauí",
+    "rj": "do Rio de Janeiro", "rn": "do Rio Grande do Norte", "rs": "do Rio Grande do Sul",
+    "ro": "de Rondônia", "rr": "de Roraima", "sc": "de Santa Catarina", "sp": "de São Paulo",
+    "se": "de Sergipe", "to": "do Tocantins",
+}
+_CIDADE_RE = re.compile(r"(?:Cidade|Munic[íi]pio|Localiza[çc][ãa]o|Local)\s*:\s*([^\n]{2,80})", re.I)
+_UF_FIM_RE = re.compile(r"^(.*?)[\s/\-–—,(|]+([A-Za-z]{2})\)?\.?$")
+_TITULO_RE = re.compile(r"\b(?:de|em)\s+([A-ZÀ-Ý][^\d,;()]{1,40}?)\s*[-/–]?\s*\b([A-Z]{2})\b(?!\s*\d)")
+_SLUG_UF_RE = re.compile(r"-([a-z]{2})-(?:ao-vivo|online|ouvir|radio)")
+
+
+def _texto(content: str) -> str:
+    t = re.sub(r"<\s*(br|/p|/div|/li|/h\d|/span|/b|/strong)\b[^>]*>", "\n", content or "", flags=re.I)
+    t = html.unescape(re.sub(r"<[^>]+>", " ", t)).replace("\xa0", " ")
+    return re.sub(r"[ \t]+", " ", t)
+
+
+def _limpa_cidade(c: str) -> str:
+    c = re.split(r"\s+(?:Site|Telefone|Fone|WhatsApp|G[êe]nero|E-?mail)\s*:", c, flags=re.I)[0]
+    return c.strip(" -–—/,.:|()")
+
+
+def extract_location(content: str, title: str = "", path: str = ""):
+    """(cidade, uf) do post: linha "Cidade:" > título > endereço do post. None quando não acha."""
+    cidade = uf = None
+    m = _CIDADE_RE.search(_texto(content))
+    if m:
+        val = _limpa_cidade(m.group(1))
+        mu = _UF_FIM_RE.match(val)
+        if mu and mu.group(2).lower() in UF and mu.group(1).strip():
+            cidade, uf = _limpa_cidade(_primeira_cidade(mu.group(1))), mu.group(2).lower()
+        elif val:
+            cidade = _primeira_cidade(val)
+    if not uf:
+        cid_t, uf_t = local_do_titulo(title)
+        if uf_t:
+            uf, cidade = uf_t, cidade or cid_t
+    if not uf:
+        ms = _SLUG_UF_RE.search((path or "").lower())
+        if ms and ms.group(1) in UF and (ms.group(1) != "am" or re.search(r"-de-[a-z-]+-am-(?:ao-vivo|online)", path.lower())):
+            uf = ms.group(1)
+    if not cidade or len(cidade) > 40:
+        return None
+    if cidade.lower() in ("brasilia", "brasília"):
+        uf = "df"
+    return cidade, uf  # uf pode ser None: write_public tenta descobrir pelos outros posts da cidade
+
+
+_FIM_TITULO = r"\s*(?:[-–|]\s*)?(?:(?i:ao\s+vivo|online|on-line)\b|$)"
+_TIT_UF_RE = re.compile(r"^(.*?\S)\s*[-/–]?\s*\b([A-Z]{2})" + _FIM_TITULO)
+_PREP_RE = re.compile(r"\s(?:de|do|da|dos|das|em)\s", re.I)
+_COMPOSTA = {"rio", "juiz", "barra", "feira", "campos", "ponta", "ribeirao", "vitoria", "lagoa", "cruz",
+             "serra", "ilha", "morro", "porto", "lauro", "ouro", "pedra", "boa", "santo", "sao", "santa",
+             "aguas", "foz", "governador", "presidente", "conselheiro", "embu", "mogi", "taboao", "jaboatao",
+             "cabo", "angra", "nova", "novo", "senhor", "bom", "monte", "alto", "jardim", "palmeira"}
+
+
+def _primeira_cidade(c: str) -> str:
+    """'Ourinhos e Ribeirão do Sul' / 'Juiz de Fora / Santos Dumont' / 'Viana - Vitória' -> a primeira."""
+    return re.split(r"\s+e\s+|\s*/\s*|\s+[-–]\s+|,\s*", c.strip())[0].strip()
+
+
+def local_do_titulo(title: str):
+    """'... FM 103,5 de Manaus AM Ao Vivo' -> ('Manaus', 'am'). A UF vem logo antes de 'Ao Vivo' ou no fim."""
+    t = re.sub(r"\s+", " ", title or "").strip()
+    m = _TIT_UF_RE.match(t)
+    if not m or m.group(2).lower() not in UF:
+        return None, None
+    antes, uf = m.group(1), m.group(2).lower()
+    nums = list(re.finditer(r"\d", antes))
+    if nums:                                   # 'Rádio Tupi AM 1280 do Rio de Janeiro' -> depois do número
+        resto = antes[nums[-1].end():]
+        p = _PREP_RE.search(resto)
+        cid = resto[p.end():] if p else re.sub(r"^\s*(?:mhz|khz)?\s*", "", resto, flags=re.I)
+    else:                                      # sem frequência: depois da última preposição
+        ps = list(_PREP_RE.finditer(antes))
+        if not ps:
+            return None, None
+        i = len(ps) - 1
+        while i > 0 and norm(antes[:ps[i].start()].split()[-1]) in _COMPOSTA:
+            i -= 1
+        cid = antes[ps[i].end():]
+    cid = _limpa_cidade(_primeira_cidade(cid))
+    if not cid or len(cid) > 40 or not re.match(r"[A-ZÀ-Ý]", cid):
+        return None, None
+    return cid, uf
+
+
+def cidade_chave(cidade: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", norm(cidade)).strip()
+
+
+def nome_curto(title: str) -> str:
+    """'Ouvir Rádio Band FM 96,1 de São Paulo SP ao vivo' -> 'Rádio Band FM 96,1 de São Paulo'."""
+    t = re.sub(r"^\s*(?:ouvir|ouça|ouca|escute)\s+(?:a\s+)?", "", title or "", flags=re.I)
+    t = re.sub(r"\s*[-–|:]?\s*\bao\s+vivo\b.*$", "", t, flags=re.I)
+    t = re.sub(r"\s*[-–|]?\s*\b(?:e\s+)?(?:online|on-line|agora)\s*$", "", t, flags=re.I)
+    t = re.sub(r"\s*[-/–(]?\s*\b([A-Z]{2})\)?\s*$",
+               lambda m: "" if m.group(1).lower() in UF else m.group(0), t)
+    return t.strip(" -–|") or (title or "").strip()

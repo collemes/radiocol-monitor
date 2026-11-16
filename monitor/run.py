@@ -13,7 +13,7 @@ from . import config
 from .blogger import BODY_RE, fetch_post_body, fetch_post_body_raw, fetch_posts, load_blogger_backup
 from .checker import Checker
 from .extract import (classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
-                      extract_streams, stream_score)
+                      extract_location, extract_streams, stream_score)
 from .extras import check_old_urls, contact_pairs, register_old_url, scan_site_whatsapp
 from .finder import Finder, variants
 from .notify import build_report, send_email, write_public
@@ -94,6 +94,8 @@ async def main():
                 events.setdefault("url_changed", []).append((rec["path"], p.path))
             rec.update(id=p.id, path=p.path, title=p.title, url=p.url, labels=p.labels, post_updated=p.updated)
             rec["contacts"] = extract_contacts(p.content)
+            loc = extract_location(p.content, p.title, p.path)
+            rec["loc"] = list(loc) if loc else None
             cands = extract_streams(p.content)
             if not cands:
                 need_page.append(p)

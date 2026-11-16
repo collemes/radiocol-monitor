@@ -2,17 +2,20 @@
      RADIOCOL — endereço de áudio dinâmico (lido do GitHub)
      Cole este bloco no Tema > Editar HTML, logo ANTES de </body>
      (depois do script do MediaElement.js).
-     Troque SEU-USUARIO pelo seu usuário do GitHub.
+     Já configurado para o repositório github.com/collemes/radiocol-monitor.
      =================================================================== -->
 <b:if cond='data:view.isPost'>
 <script>var RC_POST_ID = '<data:view.postId/>';</script>
 <script>
 //<![CDATA[
 (function () {
-  var BASE   = 'https://SEU-USUARIO.github.io/radiocol-monitor/r/';
-  // Alternativa via jsDelivr (CDN): 'https://cdn.jsdelivr.net/gh/SEU-USUARIO/radiocol-monitor@main/docs/r/'
+  var BASE   = 'https://collemes.github.io/radiocol-monitor/r/';
+  // Alternativa via jsDelivr (CDN): 'https://cdn.jsdelivr.net/gh/collemes/radiocol-monitor@main/docs/r/'
   var SHARDS = 32;                 // igual ao SHARDS do robô
   var AVISO_OFFLINE = true;        // aviso discreto quando a rádio está confirmada fora do ar
+  var POPUP_DESATIVADO = /radiosaovivo\.radiocol\.com\.br/i;   // sites de popup que saíram do ar
+  // O MediaElement não monta um player sem endereço: usa este áudio mudo até chegar o stream da base
+  var RESERVA = 'data:audio/mpeg;base64,//uQxAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA//////////////////////////////////////////////////////////////////8AAAA5TEFNRTMuOThyAc0AAAAAAAAAABSAJAJAQgAAgAAAAnEsGmPQAAAAAAAAAAAAAAAAAAAA';
   var FEATURES = ['prevtrack', 'playpause', 'nexttrack', 'current', 'progress', 'duration',
                   'volume', 'playlist', 'shuffle', 'loop', 'fullscreen'];   // iguais aos dos posts
 
@@ -24,6 +27,12 @@
   // .m3u8 -> application/x-mpegURL ; o resto -> audio/mpeg (igual ao padrão dos posts)
   function tipo(u) { return /\.m3u8(\?|#|$)/i.test(u) ? 'application/x-mpegURL' : 'audio/mpeg'; }
 
+  // Post com botão de popup e sem player: coloca o player já (o card do tema fica completo).
+  // Enquanto não houver stream https, o play abre o popup, como o botão fazia.
+  try { prepararPopup(); } catch (err) {}
+  // Post de rádio sem nenhum player: coloca o player abaixo da linha "Gênero" (corrige o card repetido)
+  try { prepararSemPlayer(); } catch (err) {}
+
   // A base usa o ID do post: continua valendo mesmo se a URL do post mudar
   var meta = document.querySelector('meta[itemprop="postId"]');
   var pid = (window.RC_POST_ID || (meta && meta.content) || '').replace(/\D/g, '');
@@ -33,6 +42,7 @@
     .then(function (map) {
       var e = map[pid];
       if (!e) return;
+      if (e.l) { try { ouvirTambem(e.l, pid); } catch (x) {} }
       window.RADIOCOL_STREAM = e;
       if (e.c) trocarContatos(e.c);
       if (!e.u) return;
@@ -40,6 +50,100 @@
       document.dispatchEvent(new CustomEvent('radiocol:stream', { detail: e }));
     })
     .catch(function () { /* sem rede/CDN: o post continua com o link original */ });
+
+  // ---------- "Ouça também": rádios da mesma cidade (ou do estado) ----------
+  var VBASE = BASE.replace(/r\/$/, 'v/');   // docs/v/<uf>.json, gerado pelo robô
+  var MAX_TAMBEM = 10;                      // até 10 rádios
+  var MIN_CIDADE = 3;                       // cidade com 3 ou menos: completa com rádios do estado
+  function ouvirTambem(l, pid) {
+    var corpo = document.querySelector('.post-body');
+    if (!corpo || document.querySelector('.rc-tambem')) return;
+    if (/ou[çc]a tamb[ée]m/i.test(corpo.textContent || '')) return;   // post já tem lista feita à mão
+    var p = l.split('|'), uf = p[0], chave = p[1];
+    fetch(VBASE + uf + '.json', { cache: 'default' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { if (d) montarTambem(corpo, d, chave, pid); })
+      .catch(function () {});
+  }
+  function girar(lista, n) {               // cada post começa num ponto diferente da lista
+    if (!lista.length) return lista;
+    var k = n % lista.length;
+    return lista.slice(k).concat(lista.slice(0, k));
+  }
+  function montarTambem(corpo, d, chave, pid) {
+    var aqui = location.pathname, h = parseInt(String(pid).slice(-6), 10) || 0;
+    var grupo = d.c[chave] || ['', []], cidade = grupo[0];
+    var fora = function (it) { return it[1] !== aqui; };
+    var lista = girar(grupo[1].filter(fora), h).slice(0, MAX_TAMBEM);
+    var daCidade = lista.length;
+    if (daCidade <= MIN_CIDADE) {
+      var outras = [];
+      Object.keys(d.c).sort().forEach(function (k) { if (k !== chave) outras = outras.concat(d.c[k][1]); });
+      lista = lista.concat(girar(outras.filter(fora), h).slice(0, MAX_TAMBEM - daCidade));
+    }
+    if (!lista.length) return;
+    var estado = d.n || '';                          // "do Rio Grande do Sul"
+    var titulo = daCidade === lista.length ? 'Ouça também estas rádios de ' + cidade
+      : daCidade ? 'Ouça também rádios de ' + cidade + ' e ' + (('de ' + cidade) === estado ? 'do estado' : estado)
+      : 'Ouça também rádios ' + estado;
+    estiloTambem();
+    var sec = document.createElement('section');
+    sec.className = 'rc-tambem';
+    sec.setAttribute('aria-labelledby', 'rc-tambem-t');
+    var h2 = document.createElement('h2');
+    h2.id = 'rc-tambem-t';
+    h2.appendChild(barras(4));
+    h2.appendChild(document.createTextNode(titulo));
+    var ul = document.createElement('ul');
+    lista.forEach(function (it) {
+      var li = document.createElement('li'), a = document.createElement('a'), s = document.createElement('span');
+      a.href = it[1];
+      a.appendChild(barras(3));
+      s.textContent = it[0];
+      a.appendChild(s);
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    sec.appendChild(h2);
+    sec.appendChild(ul);
+    corpo.appendChild(sec);
+  }
+  function barras(n) {
+    var e = document.createElement('span');
+    e.className = 'rc-eq';
+    e.setAttribute('aria-hidden', 'true');
+    for (var i = 0; i < n; i++) e.appendChild(document.createElement('i'));
+    return e;
+  }
+  function estiloTambem() {
+    if (document.getElementById('rc-tambem-css')) return;
+    var st = document.createElement('style');
+    st.id = 'rc-tambem-css';
+    st.textContent =
+      '.rc-tambem{--rc-acc:#1e74f4;margin:28px 0 8px;padding:18px 18px 10px;border:1px solid rgba(30,116,244,.22);' +
+      'border-radius:14px;background:linear-gradient(180deg,rgba(30,116,244,.07),rgba(30,116,244,.015))}' +
+      '.rc-tambem h2{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:17px;line-height:1.35;font-weight:600}' +
+      '.rc-tambem h2 .rc-eq{height:20px}.rc-tambem h2 .rc-eq i{width:4px}' +
+      '.rc-tambem ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px 14px}' +
+      '.rc-tambem li{margin:0;padding:0}.rc-tambem li:before{display:none!important;content:none!important}' +
+      '.rc-tambem a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;text-decoration:none;' +
+      'color:inherit;transition:background .2s,transform .2s}' +
+      '.rc-tambem a:hover,.rc-tambem a:focus-visible{background:rgba(30,116,244,.12);transform:translateX(3px)}' +
+      '.rc-tambem a span:last-child{font-size:14.5px;line-height:1.35}' +
+      '.rc-tambem a:hover span:last-child{color:var(--rc-acc)}' +
+      '.rc-eq{display:inline-flex;align-items:flex-end;gap:2px;height:16px;flex:0 0 auto}' +
+      '.rc-eq i{display:block;width:3px;height:100%;border-radius:2px;background:var(--rc-acc,#1e74f4);' +
+      'transform-origin:bottom;animation:rcEq 1s ease-in-out infinite}' +
+      '.rc-eq i:nth-child(2){animation-duration:.8s;animation-delay:-.35s}' +
+      '.rc-eq i:nth-child(3){animation-duration:1.15s;animation-delay:-.6s}' +
+      '.rc-eq i:nth-child(4){animation-duration:.9s;animation-delay:-.2s}' +
+      '.rc-tambem li:nth-child(odd) .rc-eq i{animation-delay:-.5s}' +
+      '.rc-tambem a:hover .rc-eq i{animation-duration:.45s}' +
+      '@keyframes rcEq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}' +
+      '@media (prefers-reduced-motion:reduce){.rc-eq i{animation:none;transform:scaleY(.6)}' +
+      '.rc-eq i:nth-child(2){transform:scaleY(1)}.rc-eq i:nth-child(3){transform:scaleY(.45)}}';
+    document.head.appendChild(st);
+  }
 
   // ---------- WhatsApp / telefone ----------
   function dig(s) { return (s || '').replace(/\D/g, ''); }
@@ -84,6 +188,7 @@
 
   // ---------- localizar a instância do MediaElement de um <audio> ----------
   function instancia(a) {
+    if (a._rcPlayer && a._rcPlayer.setSrc) return a._rcPlayer;
     if (a.player && a.player.setSrc) return a.player;
     if (window.mejs && mejs.players) {
       for (var k in mejs.players) {
@@ -99,6 +204,14 @@
     var audios = document.querySelectorAll('.post-body audio');
     for (var i = 0; i < audios.length; i++) {
       var a = audios[i], fontes = a.querySelectorAll('source');
+      if (a.hasAttribute('data-radiocol-sem-stream')) {             // player criado por este script
+        if (!/^https:\/\//i.test(e.u) || e.s === 0) continue;       // http/fora do ar: clique abre janelinha/aviso
+        for (var f = 0; f < fontes.length; f++) { fontes[f].setAttribute('src', e.u); fontes[f].setAttribute('type', tipo(e.u)); }
+        a.removeAttribute('data-radiocol-sem-stream');
+        var pr = instancia(a);
+        try { if (pr) { pr.setSrc([{ src: e.u, type: tipo(e.u) }]); pr.load(); } else { a.src = e.u; a.load(); } } catch (x) {}
+        continue;
+      }
       var atual = fontes.length ? fontes[0].getAttribute('src') : a.getAttribute('src');
       if (atual === e.u) continue;                             // já está certo
       if (e.o && atual && atual !== e.o) continue;             // não é o player da rádio
@@ -120,12 +233,190 @@
     return (h ? h.textContent : document.title).replace(/\s+/g, ' ').trim();
   }
 
+  // Endereço do popup: lido do script do post (window.open("...") ) ou da função abrir_player_popup
+  function urlPopup(btn) {
+    var bloco = (btn.closest('center') || btn.parentNode || document.body).innerHTML;
+    var m = bloco.match(/window\.open\(\s*["']([^"']+)["']/) ||
+            ((document.querySelector('.post-body') || document.body).innerHTML.match(/window\.open\(\s*["']([^"']+)["']/));
+    return m ? m[1] : null;
+  }
+
+  function prepararPopup() {
+    if (document.querySelector('.post-body audio')) return;       // já tem player
+    var btn = botaoPopup();
+    if (!btn) return;
+    criarPlayerNoLugar(btn, urlPopup(btn));
+  }
+
+  // Player MediaElement no lugar de um elemento antigo (botão de popup, embed/Flash, link…).
+  // Sem stream https, o clique abre o stream em janelinha, o popup (se ainda existir) ou o aviso do card.
+  function criarPlayerNoLugar(btn, pop) {
+    var abrir = function () {
+      var e = window.RADIOCOL_STREAM;
+      // 1) stream conhecido só em http: abre numa janelinha (como o antigo "Tocar Player Externo")
+      if (e && e.u && e.s !== 0) {
+        window.open(e.u, '', 'width=390,height=99,toolbar=no,location=no,menubar=no,scrollbars=no,resizable=no');
+        return;
+      }
+      // 2) popup ainda no ar: abre como o botão fazia
+      if (pop && !POPUP_DESATIVADO.test(pop)) {
+        if (typeof window.abrir_player_popup === 'function') window.abrir_player_popup();
+        else window.open(pop);
+        return;
+      }
+      // 3) sem stream e popup desativado: abre o aviso "O áudio não está tocando?" do card
+      var rep = document.querySelector('.srd-report-button');
+      if (rep) { rep.click(); return; }
+      var corpo = document.querySelector('.post-body');
+      if (corpo && !document.getElementById('rc-off')) {
+        var d = document.createElement('div');
+        d.id = 'rc-off';
+        d.style.cssText = 'margin:10px 0;padding:10px 14px;border-radius:8px;background:#fff4e5;color:#8a4b00;font-size:14px';
+        d.textContent = 'O \u00e1udio desta emissora est\u00e1 temporariamente indispon\u00edvel. J\u00e1 estamos verificando.';
+        center.parentNode.insertBefore(d, center.nextSibling);
+      }
+    };
+    var nome = tituloRadio();
+    var center = document.createElement('center');
+    var wrap = document.createElement('div');
+    wrap.className = 'media-wrapper';
+    var audio = document.createElement('audio');
+    audio.id = 'player-radiocol';
+    audio.setAttribute('controls', '');
+    audio.setAttribute('preload', 'none');
+    audio.setAttribute('width', 'auto');
+    audio.setAttribute('data-radiocol-popup', pop || '1');
+    audio.setAttribute('data-cast-title', nome);
+    audio.setAttribute('data-cast-description', 'Transmiss\u00e3o ao vivo da ' + nome);
+    audio.setAttribute('data-radiocol-sem-stream', '1');
+    var src = document.createElement('source');
+    src.setAttribute('type', 'audio/mpeg');
+    src.setAttribute('src', RESERVA);
+    src.setAttribute('title', nome);
+    audio.appendChild(src);
+    wrap.appendChild(audio);
+    center.appendChild(wrap);
+    btn.parentNode.replaceChild(center, btn);
+    ocultarAntesDoPlayer(center);           // primeiro esconde as linhas repetidas (nada impede isso)
+    // sem stream no player: o clique em qualquer parte do player abre o popup
+    wrap.addEventListener('click', function (ev) {
+      if (!audio.hasAttribute('data-radiocol-sem-stream')) return;   // já tem stream: toca no post
+      ev.preventDefault(); ev.stopPropagation();
+      abrir();
+    }, true);
+    try {
+      if (window.MediaElementPlayer) audio._rcPlayer = new MediaElementPlayer(audio, { features: FEATURES });
+    } catch (err) { /* sem MediaElement: fica o player nativo do navegador */ }
+    return audio;
+  }
+
+  // Última linha de dados da rádio (Gênero, Cidade, Telefone…) no corpo do post
+  function ultimaLinhaDeDados(corpo) {
+    var ROTULO = /^\s*(G\u00eanero|Genero|Estilo|Programa\u00e7\u00e3o|Cidade|Telefone|Fone|WhatsApp|Site|Frequ\u00eancia)\s*:/i;
+    var els = corpo.querySelectorAll('div, p, center, span, b, strong');
+    var ultimo = null;
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (el.closest('.srd-wrap, .media-wrapper, #rcForm')) continue;
+      if (ROTULO.test(el.textContent || '') && (el.textContent || '').length < 200) ultimo = el;
+    }
+    if (!ultimo) return null;
+    // sobe até o bloco da linha (o <div> que contém "Gênero: Popular")
+    while (ultimo.parentNode && ultimo.parentNode !== corpo && /^(B|STRONG|SPAN)$/.test(ultimo.tagName)) ultimo = ultimo.parentNode;
+    return ultimo;
+  }
+
+  function prepararSemPlayer() {
+    var corpo = document.querySelector('.post-body');
+    if (!corpo || corpo.querySelector('audio, video, #rcForm')) return;
+    if (botaoPopup()) return;                                   // tratado por prepararPopup
+    var ifrs = corpo.querySelectorAll('iframe[title]');
+    for (var i = 0; i < ifrs.length; i++) if (/ao vivo/i.test(ifrs[i].getAttribute('title'))) return;
+    var marca = document.createElement('span');
+    // Player antigo montado por script (MRP.insert, jwplayer…): o novo entra exatamente no lugar dele
+    var scripts = corpo.querySelectorAll('script');
+    for (var k = 0; k < scripts.length; k++) {
+      var txt = scripts[k].textContent || '';
+      if (/MRP\.insert|jwplayer|\.setup\(|['"]url['"]\s*:|\.(mp3|aac|m3u8)\b|:\d{4,5}\//i.test(txt)) {
+        var velho = scripts[k].closest('center') || scripts[k];
+        velho.parentNode.insertBefore(marca, velho.nextSibling);
+        velho.style.display = 'none';
+        criarPlayerNoLugar(marca, null);
+        return;
+      }
+    }
+    var linha = ultimaLinhaDeDados(corpo);
+    if (!linha) return;                                         // não parece post de rádio
+    linha.parentNode.insertBefore(marca, linha.nextSibling);
+    criarPlayerNoLugar(marca, null);
+  }
+
+  // Player antigo que não é <audio>: <embed>/<object> (Flash), <iframe>, link… com o endereço antigo
+  function playerAntigo(antigo) {
+    var corpo = document.querySelector('.post-body');
+    if (!corpo || !antigo) return null;
+    var sem = antigo.replace(/^https?:\/\//i, '');
+    var els = corpo.querySelectorAll('object, embed, iframe, param, a, button, div, span, video');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i], at = el.attributes, achou = false;
+      if (el.closest('.srd-wrap, .media-wrapper')) continue;
+      for (var j = 0; j < at.length && !achou; j++) {
+        var v = at[j].value || '';
+        try { v = decodeURIComponent(v); } catch (x) {}
+        if (v.indexOf(sem) !== -1) achou = true;
+      }
+      if (!achou) continue;
+      return el.closest('object') || el.closest('embed') || el;
+    }
+    return null;
+  }
+
+  // Igual ao hideBeforePlayer do card do tema: se o card já foi montado antes deste script,
+  // esconde o bloco original (logo, Cidade, Site, Telefone…) que fica antes do player.
+  function ocultarAntesDoPlayer(alvo) {
+    var corpo = alvo.closest('.post-body');
+    var card = corpo && corpo.querySelector('.srd-wrap[data-srd-auto="true"]');
+    if (!corpo || !card) return;          // card ainda não montado: ele mesmo fará isso
+    var atual = alvo;
+    while (atual && atual !== corpo) {
+      var irmao = atual.previousSibling;
+      while (irmao) {
+        var anterior = irmao.previousSibling;
+        if (irmao !== card) {
+          if (irmao.nodeType === 1) {
+            if (!(irmao.matches && irmao.matches('.srd-wrap[data-srd-auto="true"]')) && irmao.tagName !== 'SCRIPT') {
+              irmao.style.display = 'none';
+              irmao.setAttribute('data-srd-legacy-hidden', 'true');
+            }
+          } else if (irmao.nodeType === 3 && irmao.nodeValue.trim()) {
+            irmao.nodeValue = '';
+          }
+        }
+        irmao = anterior;
+      }
+      atual = atual.parentNode;
+    }
+  }
+
+  // Botão "Clique para ouvir ao vivo" que abre o player em popup (abrir_player_popup)
+  function botaoPopup() {
+    var corpo = document.querySelector('.post-body') || document.body;
+    var a = corpo.querySelector('a[href*="abrir_player_popup"], a[onclick*="window.open"], a[href^="javascript:"]');
+    if (a && /ouvir|ao vivo|play/i.test(a.textContent)) return a;
+    var cands = corpo.querySelectorAll('a, button');
+    for (var i = 0; i < cands.length; i++) {
+      if (/clique para ouvir/i.test(cands[i].textContent)) return cands[i].closest('a') || cands[i];
+    }
+    return null;
+  }
+
   function trocarIframe(url) {
     var ifr = null, todos = document.querySelectorAll('.post-body iframe[title]');
     for (var i = 0; i < todos.length; i++) {
       var t = todos[i].getAttribute('title').normalize('NFD').replace(/[̀-ͯ]/g, '');
       if (/ao vivo/i.test(t)) { ifr = todos[i]; break; }
     }
+    if (!ifr) ifr = botaoPopup();   // sem iframe: troca o botão do popup pelo player
     if (!ifr) return;
 
     if (typeof window.RADIOCOL_PLAYER === 'function') {       // gancho opcional do tema
@@ -165,6 +456,11 @@
   function aplicar(e) {
     atualizarAudios(e);
     if (e.f && /^https:\/\//i.test(e.u) && e.s !== 0) trocarIframe(e.u);
+    if (e.o) {
+      var antigo = playerAntigo(e.o);
+      if (antigo && !document.querySelector('.post-body audio')) { criarPlayerNoLugar(antigo, null); atualizarAudios(e); }
+      else if (antigo) antigo.style.display = 'none';          // já há player novo: esconde o antigo
+    }
 
     if (AVISO_OFFLINE && e.s === 0) {
       var alvo = document.querySelector('#radiocol-aviso') || document.querySelector('.post-body');

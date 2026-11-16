@@ -59,6 +59,13 @@
 #rcForm .rcf-type input:focus-visible+span{outline:2px solid var(--rcf-blue);outline-offset:2px}
 #rcForm .rcf-check{display:flex;gap:10px;align-items:flex-start;margin:0;font-weight:400;font-size:14px}
 #rcForm .rcf-check input{flex:0 0 20px;width:20px;height:20px;margin:2px 0 0;accent-color:var(--rcf-blue)}
+/* o tema do site esconde checkboxes: força a caixa da declaração a aparecer */
+#rcForm .rcf-check{cursor:pointer;pointer-events:auto!important;user-select:none}
+#rcForm .rcf-check input[type=checkbox]{display:inline-block!important;visibility:visible!important;opacity:1!important;position:static!important;
+  -webkit-appearance:checkbox!important;appearance:auto!important;width:20px!important;height:20px!important;min-width:20px!important;
+  margin:2px 0 0!important;padding:0!important;clip:auto!important;clip-path:none!important;transform:none!important;pointer-events:auto!important;
+  border:0!important;box-shadow:none!important;background:none!important;cursor:pointer}
+#rcForm .rcf-check input[aria-invalid=true]{outline:2px solid #c0262d!important;outline-offset:2px}
 #rcForm .rcf-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
 #rcForm .rcf-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:4px 0 0}
 #rcForm button{min-height:48px;padding:0 26px;border:0;border-radius:12px;font:inherit;font-size:16px;font-weight:700;cursor:pointer}
@@ -346,7 +353,7 @@ body.dark #rcForm .rcf-copy{background:#2563eb}
 <script>
 (function(){
   var RCF_TO='redecolbrazil@gmail.com';
-  var RCF_FILA='https://script.google.com/macros/s/COLE-AQUI-O-ID/exec'; /* fila de aprovação (planilha) */
+  var RCF_FILA='https://script.google.com/macros/s/AKfycbw_rfLs89RKAVD_TgY8UnC1efOAYNThCJsRMFP1s7p7zdrIl9nac6WB51nXOGdQYA9P/exec'; /* fila de aprova\u00e7\u00e3o (planilha) */
   var RCF_WEB_PAUSED=true; /* true = novos cadastros de webradio suspensos */
   var form=document.getElementById('rcf-form'),msg=document.getElementById('rcf-msg'),
       box=document.getElementById('rcForm'),okbox=document.getElementById('rcf-okbox'),
@@ -360,7 +367,7 @@ body.dark #rcForm .rcf-copy{background:#2563eb}
   function blockedWeb(){return RCF_WEB_PAUSED&&tipo()==='Novo cadastro'&&emis.value==='Webradio';}
   function sync(){
     var web=emis.value==='Webradio';
-    if(web){freq.removeAttribute('required');freqopt.textContent='(não se aplica a webradio)';}
+    if(web){freq.removeAttribute('required');freqopt.textContent='(n\u00e3o se aplica a webradio)';}
     else{freq.setAttribute('required','');freqopt.innerHTML='<span class="rcf-req">*</span>';}
     webwarn.style.display=blockedWeb()?'block':'none';
   }
@@ -386,11 +393,21 @@ body.dark #rcForm .rcf-copy{background:#2563eb}
   }
   form.addEventListener('input',function(e){mark(e.target,false);});
 
+  /* clicar no texto da declara\u00e7\u00e3o marca/desmarca a caixa, mesmo que o tema atrapalhe */
+  var aceite=document.getElementById('rcf-ok'),lblAceite=aceite.closest('label');
+  lblAceite.addEventListener('click',function(e){
+    if(e.target===aceite||e.target.closest('a'))return; /* clique na pr\u00f3pria caixa ou no link do Termo */
+    e.preventDefault();
+    aceite.checked=!aceite.checked;
+    mark(aceite,false);
+  });
+  aceite.addEventListener('change',function(){mark(aceite,false);});
+
   form.addEventListener('submit',function(ev){
     ev.preventDefault();
     if(document.getElementById('rcf-hp').value)return;
     if(blockedWeb()){
-      say('O cadastro de novas webradios está suspenso no momento. Escolha "Atualizar dados" ou "Remover / corrigir" para uma webradio já listada.','err');
+      say('O cadastro de novas webradios est\u00e1 suspenso no momento. Escolha "Atualizar dados" ou "Remover / corrigir" para uma webradio j\u00e1 listada.','err');
       emis.focus();
       return;
     }
@@ -419,15 +436,15 @@ body.dark #rcForm .rcf-copy{background:#2563eb}
     if(Date.now()-t0<4000){say('Aguarde alguns segundos e envie novamente.','err');return;}
     try{
       var last=+localStorage.getItem('rcf:last')||0;
-      if(Date.now()-last<60000){say('Aguarde um minuto para enviar outra solicitação.','err');return;}
+      if(Date.now()-last<60000){say('Aguarde um minuto para enviar outra solicita\u00e7\u00e3o.','err');return;}
     }catch(e){}
 
     var fd=new FormData(form),data={},k,labels={
-      tipo:'Tipo de solicitação',pagina_atual:'Página atual',nome:'Nome da rádio',emissora:'Tipo de emissora',frequencia:'Frequência',genero:'Gênero',
-      cidade:'Cidade',uf:'UF',link_audio:'Link de áudio',link_video:'Link de vídeo (m3u8)',link_logo:'Link do logotipo',
-      descricao:'Sobre a rádio',site:'Site',redes_sociais:'Redes sociais',telefone:'Telefone',whatsapp:'WhatsApp',
-      comercial:'Comercial',endereco:'Endereço',responsavel:'Solicitante',vinculo:'Relação com a rádio',
-      telefone_solicitante:'Telefone do solicitante',observacoes:'Observações'
+      tipo:'Tipo de solicita\u00e7\u00e3o',pagina_atual:'P\u00e1gina atual',nome:'Nome da r\u00e1dio',emissora:'Tipo de emissora',frequencia:'Frequ\u00eancia',genero:'G\u00eanero',
+      cidade:'Cidade',uf:'UF',link_audio:'Link de \u00e1udio',link_video:'Link de v\u00eddeo (m3u8)',link_logo:'Link do logotipo',
+      descricao:'Sobre a r\u00e1dio',site:'Site',redes_sociais:'Redes sociais',telefone:'Telefone',whatsapp:'WhatsApp',
+      comercial:'Comercial',endereco:'Endere\u00e7o',responsavel:'Solicitante',vinculo:'Rela\u00e7\u00e3o com a r\u00e1dio',
+      telefone_solicitante:'Telefone do solicitante',observacoes:'Observa\u00e7\u00f5es'
     };
     var name=(fd.get('nome')||'').trim(),city=(fd.get('cidade')||'').trim(),uf=fd.get('uf')||'';
     data._subject=fd.get('tipo')+': '+name+' ('+city+'/'+uf+')';
@@ -440,17 +457,17 @@ body.dark #rcForm .rcf-copy{background:#2563eb}
     }
     data['E-mail do solicitante']=(fd.get('email')||'').trim();
     data.email=(fd.get('email')||'').trim();
-    data['Aceite do Termo de Uso e autorização de publicação']='Sim';
+    data['Aceite do Termo de Uso e autoriza\u00e7\u00e3o de publica\u00e7\u00e3o']='Sim';
     data['Enviado de']=location.href;
 
-    /* campos com os nomes originais, para a fila de aprovação */
+    /* campos com os nomes originais, para a fila de aprova\u00e7\u00e3o */
     var bruto={};
     fd.forEach(function(v,key){v=String(v).trim();if(v)bruto[key]=v;});
     bruto.origem=location.href;
 
     function viaFila(){
       if(!RCF_FILA||RCF_FILA.indexOf('COLE-AQUI')>=0)return Promise.reject(new Error('sem fila'));
-      /* text/plain evita a verificação CORS e permite ler a resposta do Apps Script */
+      /* text/plain evita a verifica\u00e7\u00e3o CORS e permite ler a resposta do Apps Script */
       return fetch(RCF_FILA,{method:'POST',body:JSON.stringify(bruto)})
         .then(function(r){return r.json();})
         .then(function(j){
@@ -480,17 +497,18 @@ body.dark #rcForm .rcf-copy{background:#2563eb}
     }
 
     btn.disabled=true;
-    say('Enviando…','');
+    say('Enviando\u2026','');
     viaFila().catch(function(err){
       if(err&&err.recusado){btn.disabled=false;say(err.message,'err');return null;} /* ex.: limite de envios */
-      return viaEmail(); /* fila indisponível: envia por e-mail como antes */
+      try{console.warn('Radiocol: fila de aprovacao nao respondeu ('+((err&&err.message)||err)+'). Enviando por e-mail (FormSubmit).',RCF_FILA);}catch(x){}
+      return viaEmail(); /* fila indispon\u00edvel: envia por e-mail como antes */
     }).then(function(j){if(j)sucesso(j);}).catch(function(){
       btn.disabled=false;
       var body='';
       for(var key in data){
         if(data.hasOwnProperty(key)&&key.charAt(0)!=='_')body+=key+': '+data[key]+'\n';
       }
-      say('Não foi possível enviar agora. <a href="mailto:'+RCF_TO+'?subject='+encodeURIComponent(data._subject)+'&body='+encodeURIComponent(body.slice(0,1500))+'">Enviar pelo seu aplicativo de e-mail</a>','err',true);
+      say('N\u00e3o foi poss\u00edvel enviar agora. <a href="mailto:'+RCF_TO+'?subject='+encodeURIComponent(data._subject)+'&body='+encodeURIComponent(body.slice(0,1500))+'">Enviar pelo seu aplicativo de e-mail</a>','err',true);
     });
   });
 
@@ -503,10 +521,10 @@ body.dark #rcForm .rcf-copy{background:#2563eb}
     form.querySelector('input').focus();
   });
 
-  /* copiar código do banner */
+  /* copiar c\u00f3digo do banner */
   var code=document.getElementById('rcf-code'),copy=document.getElementById('rcf-copy');
   copy.addEventListener('click',function(){
-    function ok(){copy.textContent='Código copiado!';setTimeout(function(){copy.textContent='Copiar código';},2200);}
+    function ok(){copy.textContent='C\u00f3digo copiado!';setTimeout(function(){copy.textContent='Copiar c\u00f3digo';},2200);}
     function fallback(){
       code.focus();code.select();
       try{if(document.execCommand('copy'))ok();}catch(e){}
