@@ -1,0 +1,520 @@
+<!--===== Página "Cadastre sua rádio" - Radiocol Brasil =====
+     Cole em Páginas > (página de cadastro existente) > modo HTML, substituindo todo o conteúdo anterior.
+     Não depende de arquivos externos (o w3.css foi removido).
+     Ajustes rápidos no script: RCF_TO (e-mail de destino), RCF_WEB_PAUSED (true = novas webradios suspensas)
+     e RCF_FILA (URL do Apps Script da fila de aprovação; vazio = só e-mail, como antes).-->
+<div class="rcf" id="rcForm">
+<style>
+#rcForm{--rcf-blue:#2563eb;--rcf-navy:#0b1b3f;--rcf-bd:#d7e0ee;--rcf-tx:#1b2d49;--rcf-mut:#5b6b82;--rcf-bg:#fff;--rcf-soft:#f4f7fc;font-family:inherit;color:var(--rcf-tx);line-height:1.6;max-width:900px;margin:0 auto}
+#rcForm *{box-sizing:border-box}
+#rcForm h2,#rcForm h3{font-family:inherit;color:inherit}
+#rcForm a{color:#1d4ed8}
+/* topo */
+#rcForm .rcf-hero{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:22px;align-items:center;padding:26px 24px;border-radius:20px;background:linear-gradient(160deg,#0b1b3f,#1d4ed8);color:#fff;margin:0 0 16px}
+#rcForm .rcf-hero h2{margin:0 0 8px;font-size:25px;line-height:1.25;color:#fff}
+#rcForm .rcf-hero p{margin:0 0 16px;font-size:16px;color:#dbe7ff}
+#rcForm .rcf-pills{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;padding:0;list-style:none}
+#rcForm .rcf-pills li{margin:0;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);font-size:13.5px;font-weight:600;color:#fff}
+#rcForm .rcf-cta{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:12px;background:#fff;color:#1d4ed8!important;font-weight:800;text-decoration:none}
+#rcForm .rcf-hero>div{grid-column:1;grid-row:1;min-width:0}
+#rcForm .rcf-logo{grid-column:2;grid-row:1;margin:0;padding:14px;border-radius:16px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+#rcForm .rcf-logo img{display:block;width:100%;height:auto;border-radius:0;border:0;padding:0;background:none}
+/* aviso */
+#rcForm .rcf-warn{display:flex;gap:12px;align-items:flex-start;margin:0 0 18px;padding:14px 16px;border:1px solid #f2c9a0;border-left:5px solid #e8590c;border-radius:12px;background:#fff6ec;color:#6b3410}
+#rcForm .rcf-warn b{color:#9a3d06}#rcForm .rcf-warn>div>b{display:block;margin:0 0 2px}
+#rcForm .rcf-warn p{margin:0;font-size:14.5px}
+#rcForm .rcf-warn i{font-style:normal;font-size:20px;line-height:1.3}
+/* passos */
+#rcForm .rcf-sec{margin:0 0 22px}
+#rcForm .rcf-sec>h2{margin:0 0 12px;font-size:21px;line-height:1.3}
+#rcForm .rcf-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0;padding:0;list-style:none}
+#rcForm .rcf-steps li{position:relative;margin:0;padding:16px 16px 16px 58px;border:1px solid var(--rcf-bd);border-radius:14px;background:var(--rcf-bg)}
+#rcForm .rcf-steps li:before{content:attr(data-n);position:absolute;left:14px;top:14px;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#e7efff;color:#1d4ed8;font-weight:800}
+#rcForm .rcf-steps b{display:block;margin:0 0 2px}
+#rcForm .rcf-steps span{font-size:14px;color:var(--rcf-mut)}
+#rcForm .rcf-need{margin:14px 0 0;padding:16px 18px;border:1px dashed var(--rcf-bd);border-radius:14px;background:var(--rcf-bg)}
+#rcForm .rcf-need b{display:block;margin:0 0 6px}
+#rcForm .rcf-need ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;font-size:14.5px}
+#rcForm .rcf-need li{margin:0;padding-left:24px;position:relative}
+#rcForm .rcf-need li:before{content:"\2713";position:absolute;left:0;color:#059669;font-weight:800}
+/* formulario */
+#rcForm form{scroll-margin-top:80px}
+#rcForm fieldset{margin:0 0 16px;padding:18px;border:1px solid var(--rcf-bd);border-radius:16px;background:var(--rcf-bg);min-width:0}
+#rcForm legend{padding:0 8px;font-size:15px;font-weight:700;color:var(--rcf-navy)}
+#rcForm .rcf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#rcForm .rcf-full{grid-column:1/-1}
+#rcForm label{display:block;margin:0 0 5px;font-size:13.5px;font-weight:600}
+#rcForm label .rcf-req{color:#c0262d}
+#rcForm label .rcf-opt{font-weight:400;color:var(--rcf-mut)}
+#rcForm input[type=text],#rcForm input[type=email],#rcForm input[type=tel],#rcForm select,#rcForm textarea{display:block;width:100%;min-height:44px;margin:0;padding:10px 12px;border:1px solid var(--rcf-bd);border-radius:10px;background:var(--rcf-soft);color:#0f172a;font:inherit;font-size:15px;box-shadow:none}
+#rcForm textarea{min-height:110px;resize:vertical}
+#rcForm input:focus,#rcForm select:focus,#rcForm textarea:focus{outline:2px solid var(--rcf-blue);outline-offset:1px;background:#fff}
+#rcForm input[aria-invalid=true],#rcForm select[aria-invalid=true],#rcForm textarea[aria-invalid=true]{border-color:#c0262d;background:#fff5f5}
+#rcForm .rcf-hint{margin:5px 0 0;font-size:12.5px;color:var(--rcf-mut)}
+#rcForm .rcf-types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+#rcForm .rcf-type{position:relative;margin:0}
+#rcForm .rcf-type input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer;margin:0}
+#rcForm .rcf-type span{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 12px;border:1.5px solid var(--rcf-bd);border-radius:12px;background:var(--rcf-soft);font-size:14px;font-weight:600;text-align:center}
+#rcForm .rcf-type input:checked+span{border-color:var(--rcf-blue);background:#e7efff;color:#1d4ed8}
+#rcForm .rcf-type input:focus-visible+span{outline:2px solid var(--rcf-blue);outline-offset:2px}
+#rcForm .rcf-check{display:flex;gap:10px;align-items:flex-start;margin:0;font-weight:400;font-size:14px}
+#rcForm .rcf-check input{flex:0 0 20px;width:20px;height:20px;margin:2px 0 0;accent-color:var(--rcf-blue)}
+#rcForm .rcf-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+#rcForm .rcf-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:4px 0 0}
+#rcForm button{min-height:48px;padding:0 26px;border:0;border-radius:12px;font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+#rcForm .rcf-send{background:var(--rcf-blue);color:#fff}
+#rcForm .rcf-send:hover{background:#1d4ed8}
+#rcForm .rcf-send:disabled{opacity:.6;cursor:default}
+#rcForm .rcf-msg{min-height:22px;margin:12px 0 0;font-size:14px}
+#rcForm .rcf-msg.err{color:#b91c1c}
+#rcForm .rcf-msg a{text-decoration:underline}
+#rcForm .rcf-ok{display:none;padding:30px 22px;text-align:center;border:1px solid #bfe8d1;border-radius:18px;background:#effaf4;margin:0 0 22px}
+#rcForm .rcf-ok h3{margin:0 0 8px;font-size:21px;color:#065f46}
+#rcForm .rcf-ok p{margin:0 0 16px;color:#285c49}
+#rcForm .rcf-ok button{background:#059669;color:#fff}
+#rcForm.rcf-done form{display:none}
+#rcForm.rcf-done .rcf-ok{display:block}
+/* banner parceria */
+#rcForm .rcf-banner{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:18px;align-items:center;padding:18px;border:1px solid var(--rcf-bd);border-radius:16px;background:var(--rcf-bg)}
+#rcForm .rcf-banner img{display:block;width:100%;height:auto;border-radius:10px;background:#fff;border:1px solid var(--rcf-bd);padding:8px}
+#rcForm .rcf-banner p{margin:0 0 10px;font-size:14.5px}
+#rcForm .rcf-banner textarea{min-height:96px;font:13px/1.45 ui-monospace,Consolas,monospace;resize:none}
+#rcForm .rcf-copy{margin-top:10px;min-height:42px;padding:0 20px;background:#0b1b3f;color:#fff;font-size:14.5px}
+/* faq */
+#rcForm details{margin:0 0 10px;border:1px solid var(--rcf-bd);border-radius:14px;background:var(--rcf-bg);overflow:hidden}
+#rcForm summary{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 16px;cursor:pointer;font-weight:700;list-style:none}
+#rcForm summary::-webkit-details-marker{display:none}
+#rcForm summary:after{content:"\002B";flex:0 0 auto;font-size:22px;line-height:1;color:#1d4ed8}
+#rcForm details[open] summary:after{content:"\2212"}
+#rcForm details>div{padding:0 16px 14px;font-size:14.5px}
+#rcForm details>div p{margin:0 0 8px}
+#rcForm .rcf-contact{margin:6px 0 0;padding:16px 18px;border-radius:14px;background:var(--rcf-soft);font-size:14.5px}
+/* tema escuro */
+body.dark #rcForm{--rcf-bd:rgba(255,255,255,.16);--rcf-tx:#e5edf8;--rcf-mut:#9fb0c6;--rcf-bg:#1f2937;--rcf-soft:#111827}
+body.dark #rcForm a{color:#7db7ff}
+body.dark #rcForm .rcf-cta{color:#1d4ed8!important}
+body.dark #rcForm legend{color:#cfe0ff}
+body.dark #rcForm input[type=text],body.dark #rcForm input[type=email],body.dark #rcForm input[type=tel],body.dark #rcForm select,body.dark #rcForm textarea{color:#e5edf8}
+body.dark #rcForm input:focus,body.dark #rcForm select:focus,body.dark #rcForm textarea:focus{background:#0b1220}
+body.dark #rcForm .rcf-type input:checked+span{background:rgba(37,99,235,.25);color:#cfe0ff}
+body.dark #rcForm .rcf-steps li:before{background:rgba(37,99,235,.25);color:#cfe0ff}
+body.dark #rcForm .rcf-warn{background:#3a2412;border-color:#7a4a22;color:#f6d9bd}
+body.dark #rcForm .rcf-warn b{color:#ffb878}
+body.dark #rcForm .rcf-copy{background:#2563eb}
+@media(max-width:700px){#rcForm .rcf-hero{grid-template-columns:1fr}#rcForm .rcf-hero>div,#rcForm .rcf-logo{grid-column:1;grid-row:auto}#rcForm .rcf-logo{order:-1;width:170px}#rcForm .rcf-grid,#rcForm .rcf-types,#rcForm .rcf-steps,#rcForm .rcf-need ul{grid-template-columns:1fr}#rcForm fieldset{padding:14px}#rcForm .rcf-hero{padding:20px 18px}#rcForm .rcf-hero h2{font-size:22px}#rcForm .rcf-actions button,#rcForm .rcf-cta{width:100%;justify-content:center}#rcForm .rcf-banner{grid-template-columns:1fr}#rcForm .rcf-banner img{max-width:230px}}
+</style>
+
+<section aria-labelledby="rcf-t1" class="rcf-hero">
+  <figure class="rcf-logo"><img alt="Radiocol Brasil" decoding="async" height="152" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5msUiFK8ORDUhHsyTc4Esjdt2rQWplUDXwqTMpB1hJxqgUvjl-dVxx3e5ghw2aCe1dht68gGPYjmhJjqSLDxEHWC-dGyRZ-DEy1yNCEiisFGyAa-f2kwTHKvA3Tjl4P3C2-lbYWoOheP6ot_dl53IG9uWN3PQGVLUlu1gcDHpfYgjuja7IA0KidnD/w200-h152/logo-radiocol.png" width="200" /></figure>
+  <div>
+  <h2 id="rcf-t1">Coloque a sua rádio no Radiocol Brasil</h2>
+  <p>Você tem uma rádio FM, AM ou webradio e quer aumentar o número de ouvintes e de visitas ao seu site? Cadastre a sua emissora no <b>Radiocol</b>, um dos maiores portais agregadores de rádios do Brasil. Depois de aprovada, ela é listada e adicionada aos diretórios do site.</p>
+  <ul class="rcf-pills">
+    <li>100% gratuito</li>
+    <li>Mais de 1 milhão de visitantes por mês</li>
+    <li>FM, AM e webradio</li>
+  </ul>
+  <a class="rcf-cta" href="#rcf-form-anchor">Preencher o formulário</a>
+  </div>
+</section>
+
+<div class="rcf-warn" role="note">
+  <i aria-hidden="true">⚠</i>
+  <div>
+    <b>Atenção: novas webradios temporariamente suspensas</b>
+    <p>Por motivo de adequação técnica do site, o cadastro de <b>novas webradios</b> está suspenso por tempo indeterminado. Emissoras FM e AM continuam sendo analisadas, e a atualização de dados de rádios já cadastradas segue disponível.</p>
+  </div>
+</div>
+
+<section aria-labelledby="rcf-t2" class="rcf-sec">
+  <h2 id="rcf-t2">Como funciona</h2>
+  <ol class="rcf-steps">
+    <li data-n="1"><b>Preencha o formulário</b><span>Informe os dados da rádio, o link da transmissão e os contatos que devem aparecer.</span></li>
+    <li data-n="2"><b>Nossa equipe analisa</b><span>Conferimos os dados e se o áudio está no ar. Respondemos pelo e-mail informado.</span></li>
+    <li data-n="3"><b>Sua rádio é publicada</b><span>A página da emissora entra nos diretórios por cidade, estado e gênero.</span></li>
+  </ol>
+  <div class="rcf-need">
+    <b>Tenha em mãos antes de começar:</b>
+    <ul>
+      <li>Nome, frequência e cidade da rádio</li>
+      <li>Link do streaming de áudio</li>
+      <li>Logotipo (link da imagem, de preferência PNG)</li>
+      <li>Site, redes sociais, telefone e WhatsApp</li>
+      <li>Breve texto sobre a emissora</li>
+      <li>Seu e-mail para retorno</li>
+    </ul>
+  </div>
+</section>
+
+<div id="rcf-form-anchor"></div>
+<form aria-label="Formulário de cadastro ou atualização de rádio" autocomplete="on" id="rcf-form" novalidate="">
+  <fieldset>
+    <legend>1. O que você precisa?</legend>
+    <div aria-label="Tipo de solicitação" class="rcf-types" role="radiogroup">
+      <label class="rcf-type"><input checked="" name="tipo" type="radio" value="Novo cadastro" /><span>Cadastrar nova rádio</span></label>
+      <label class="rcf-type"><input name="tipo" type="radio" value="Atualização de dados" /><span>Atualizar dados</span></label>
+      <label class="rcf-type"><input name="tipo" type="radio" value="Remoção ou correção" /><span>Remover / corrigir</span></label>
+    </div>
+    <div class="rcf-full" style="margin-top: 14px;">
+      <label>Endereço da página atual da rádio <span class="rcf-opt">(somente se for atualização, remoção ou correção)</span></label>
+      <input id="rcf-pagina" name="pagina_atual" placeholder="https://www.radiocol.com.br/..." type="text" />
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>2. Dados da emissora</legend>
+    <div class="rcf-grid">
+      <div class="rcf-full">
+        <label>Nome da rádio <span class="rcf-req">*</span></label>
+        <input id="rcf-nome" maxlength="120" name="nome" placeholder="Ex.: Rádio Serra dos Cristais FM" required="" type="text" />
+      </div>
+      <div>
+        <label>Tipo de emissora <span class="rcf-req">*</span></label>
+        <select id="rcf-emis" name="emissora" required="">
+          <option value="">Selecione</option>
+          <option>FM</option><option>AM</option><option>Webradio</option>
+        </select>
+      </div>
+      <div>
+        <label>Frequência <span class="rcf-opt" id="rcf-freqopt"></span></label>
+        <input id="rcf-freq" maxlength="40" name="frequencia" placeholder="Ex.: 89,3 MHz ou 1470 kHz" type="text" />
+      </div>
+      <div class="rcf-full" id="rcf-webwarn" style="display: none;">
+        <div class="rcf-warn" role="alert" style="margin: 0px;"><i aria-hidden="true">⚠</i><div><p>O cadastro de <b>novas webradios</b> está suspenso no momento. Você ainda pode enviar uma solicitação de <b>atualização, remoção ou correção</b> de uma webradio já listada.</p></div></div>
+      </div>
+      <div>
+        <label>Gênero principal <span class="rcf-req">*</span></label>
+        <select id="rcf-genero" name="genero" required="">
+          <option value="">Selecione</option>
+          <option>Popular</option><option>Sertanejo</option><option>Pop/Rock</option><option>Adulto contemporâneo</option>
+          <option>Gospel / Evangélica</option><option>Católica</option><option>Notícias / Jornalismo</option><option>Esportes</option>
+          <option>MPB</option><option>Forró / Regional</option><option>Eletrônica / Dance</option><option>Clássica</option><option>Outro</option>
+        </select>
+      </div>
+      <div>
+        <label>Cidade <span class="rcf-req">*</span></label>
+        <input autocomplete="address-level2" id="rcf-cidade" maxlength="80" name="cidade" required="" type="text" />
+      </div>
+      <div>
+        <label>Estado <span class="rcf-req">*</span></label>
+        <select autocomplete="address-level1" id="rcf-uf" name="uf" required="">
+          <option value="">Selecione</option>
+          <option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option>
+        </select>
+      </div>
+      <div class="rcf-full">
+        <label>Link da transmissão em áudio (stream) <span class="rcf-req">*</span></label>
+        <input id="rcf-audio" name="link_audio" placeholder="https://servidor.com:8000/stream" required="" type="text" />
+        <p class="rcf-hint">Endereço do streaming (Shoutcast, Icecast, .mp3, .aac). Sem ele não conseguimos colocar a rádio no ar.</p>
+      </div>
+      <div class="rcf-full">
+        <label>Link da transmissão em vídeo <span class="rcf-opt">(opcional, .m3u8)</span></label>
+        <input id="rcf-video" name="link_video" placeholder="https://servidor.com/radio/playlist.m3u8" type="text" />
+      </div>
+      <div class="rcf-full">
+        <label>Link do logotipo <span class="rcf-opt">(imagem PNG ou JPG, de preferência fundo transparente)</span></label>
+        <input id="rcf-logo" name="link_logo" placeholder="https://..." type="text" />
+        <p class="rcf-hint">Se não tiver o link, deixe em branco. Depois do envio, responda o nosso e-mail com o logotipo em anexo.</p>
+      </div>
+      <div class="rcf-full">
+        <label>Sobre a rádio <span class="rcf-opt">(história, programação, área de cobertura)</span></label>
+        <textarea id="rcf-desc" maxlength="2000" name="descricao"></textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>3. Contatos da emissora que serão exibidos no portal</legend>
+    <div class="rcf-grid">
+      <div>
+        <label>Site <span class="rcf-opt">(opcional)</span></label>
+        <input id="rcf-site" name="site" placeholder="https://www.suaradio.com.br" type="text" />
+      </div>
+      <div>
+        <label>Redes sociais <span class="rcf-opt">(opcional)</span></label>
+        <input id="rcf-redes" maxlength="250" name="redes_sociais" type="text" />
+      </div>
+      <div>
+        <label>Telefone <span class="rcf-opt">(opcional)</span></label>
+        <input autocomplete="off" id="rcf-tel" maxlength="30" name="telefone" placeholder="(00) 0000-0000" type="tel" />
+      </div>
+      <div>
+        <label>WhatsApp <span class="rcf-opt">(opcional)</span></label>
+        <input autocomplete="off" id="rcf-zap" maxlength="30" name="whatsapp" placeholder="(00) 90000-0000" type="tel" />
+      </div>
+      <div>
+        <label>Comercial / publicidade <span class="rcf-opt">(opcional)</span></label>
+        <input autocomplete="off" id="rcf-com" maxlength="30" name="comercial" placeholder="(00) 90000-0000" type="tel" />
+      </div>
+      <div>
+        <label>Endereço da emissora <span class="rcf-opt">(opcional)</span></label>
+        <input id="rcf-end" maxlength="200" name="endereco" placeholder="Rua, número, bairro, CEP" type="text" />
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>4. Quem está solicitando</legend>
+    <div class="rcf-grid">
+      <div>
+        <label>Seu nome <span class="rcf-req">*</span></label>
+        <input autocomplete="name" id="rcf-resp" maxlength="100" name="responsavel" required="" type="text" />
+      </div>
+      <div>
+        <label>Sua relação com a rádio <span class="rcf-req">*</span></label>
+        <select id="rcf-vinc" name="vinculo" required="">
+          <option value="">Selecione</option>
+          <option>Proprietário / Direção</option><option>Programação / Locução</option><option>Comunicação / Assessoria</option><option>Técnico / Engenharia</option><option>Ouvinte</option><option>Outro</option>
+        </select>
+      </div>
+      <div>
+        <label>Seu e-mail <span class="rcf-req">*</span></label>
+        <input autocomplete="email" id="rcf-email" maxlength="120" name="email" required="" type="email" />
+      </div>
+      <div>
+        <label>Seu telefone ou WhatsApp <span class="rcf-opt">(opcional)</span></label>
+        <input autocomplete="tel" id="rcf-cel" maxlength="30" name="telefone_solicitante" type="tel" />
+      </div>
+      <div class="rcf-full">
+        <label>Observações <span class="rcf-opt">(opcional)</span></label>
+        <textarea id="rcf-obs" maxlength="1000" name="observacoes" style="min-height: 80px;"></textarea>
+      </div>
+      <div class="rcf-full">
+        <label class="rcf-check"><input id="rcf-ok" required="" type="checkbox" /><span>Declaro que as informações são verdadeiras, li e aceito o <a href="/p/termo-de-uso-e-responsabilidade.html" rel="noopener" target="_blank">Termo de Uso e Responsabilidade</a> e autorizo o Radiocol Brasil a publicar os dados e contatos informados acima na página da emissora. <span class="rcf-req">*</span></span></label>
+      </div>
+      <div aria-hidden="true" class="rcf-hp">
+        <label>Não preencha este campo</label>
+        <input autocomplete="off" id="rcf-hp" name="site_url_extra" tabindex="-1" type="text" />
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="rcf-actions">
+    <button class="rcf-send" type="submit">Enviar solicitação</button>
+  </div>
+  <div aria-live="polite" class="rcf-msg" id="rcf-msg" role="status"></div>
+</form>
+
+<div class="rcf-ok" id="rcf-okbox" role="status" tabindex="-1">
+  <h3>Solicitação enviada!</h3>
+  <p>Recebemos os dados da sua rádio. Nossa equipe vai analisar e retornar pelo e-mail informado. O prazo pode variar conforme o volume de pedidos.</p>
+  <button id="rcf-again" type="button">Enviar outra solicitação</button>
+</div>
+
+<section aria-labelledby="rcf-t3" class="rcf-sec" style="margin-top: 26px;">
+  <h2 id="rcf-t3">Parceria: coloque o nosso banner no seu site</h2>
+  <div class="rcf-banner">
+    <img alt="Banner do Radiocol Brasil" decoding="async" height="243" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5msUiFK8ORDUhHsyTc4Esjdt2rQWplUDXwqTMpB1hJxqgUvjl-dVxx3e5ghw2aCe1dht68gGPYjmhJjqSLDxEHWC-dGyRZ-DEy1yNCEiisFGyAa-f2kwTHKvA3Tjl4P3C2-lbYWoOheP6ot_dl53IG9uWN3PQGVLUlu1gcDHpfYgjuja7IA0KidnD/s320/logo-radiocol.png" width="320" />
+    <div>
+      <p>O cadastro é gratuito. Pedimos apenas, a título de parceria, que você publique o nosso banner no site ou blog da sua rádio. Copie o código abaixo e cole no HTML da sua página.</p>
+      <label class="rcf-opt" style="margin: 0px 0px 4px;">Código do banner</label>
+      <textarea id="rcf-code" readonly="" rows="4"><a href="https://www.radiocol.com.br" title="Ouça sua rádio favorita no site Radiocol"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5msUiFK8ORDUhHsyTc4Esjdt2rQWplUDXwqTMpB1hJxqgUvjl-dVxx3e5ghw2aCe1dht68gGPYjmhJjqSLDxEHWC-dGyRZ-DEy1yNCEiisFGyAa-f2kwTHKvA3Tjl4P3C2-lbYWoOheP6ot_dl53IG9uWN3PQGVLUlu1gcDHpfYgjuja7IA0KidnD/s320/logo-radiocol.png" alt="Ouça essa rádio ao vivo pelo Radiocol" width="320" height="243" style="max-width:100%;height:auto"></a></textarea>
+      <button class="rcf-copy" id="rcf-copy" type="button">Copiar código</button>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="rcf-t4" class="rcf-sec" style="margin-top: 26px;">
+  <h2 id="rcf-t4">Perguntas frequentes</h2>
+  <details>
+    <summary>Quanto custa cadastrar a minha rádio?</summary>
+    <div><p>Nada. O cadastro de emissoras FM, AM e webradios é gratuito. Como parceria, pedimos que você coloque o nosso banner no seu site ou blog.</p></div>
+  </details>
+  <details>
+    <summary>Quais são as vantagens?</summary>
+    <div><p>A sua emissora fica em nossos diretórios, visível a mais de 1 milhão de internautas por mês. Isso ajuda a tornar a sua marca conhecida e a aumentar o número de acessos ao seu site.</p></div>
+  </details>
+  <details>
+    <summary>Como altero os dados da minha rádio?</summary>
+    <div><p>Use o formulário acima e escolha <b>Atualizar dados</b>, informando o endereço da página da sua rádio. Se a sua emissora está fora do ar ou o player não toca, você também pode usar o <a href="/p/informar-problema-para-ouvir-radio.html">formulário de contato</a>.</p></div>
+  </details>
+  <details>
+    <summary>Como excluo a minha rádio das listagens?</summary>
+    <div><p>A qualquer momento, o proprietário pode pedir a exclusão pelo formulário acima (opção <b>Remover / corrigir</b>) ou pelo e-mail <a href="mailto:redecolbrazil@gmail.com">redecolbrazil@gmail.com</a>.</p></div>
+  </details>
+  <details>
+    <summary>Por quanto tempo a minha rádio fica listada?</summary>
+    <div><p>Por tempo indeterminado, exceto se houver descumprimento do <a href="/p/termo-de-uso-e-responsabilidade.html" rel="noopener" target="_blank">Termo de Uso</a> ou se o proprietário pedir a exclusão.</p><p><b>Importante:</b> emissoras com o streaming de áudio fora do ar por mais de 7 dias podem ser removidas permanentemente dos diretórios e não poderão ser cadastradas novamente.</p></div>
+  </details>
+  <details>
+    <summary>O Radiocol pode recusar um cadastro?</summary>
+    <div><p>Sim. O Radiocol se reserva o direito de não processar cadastros que estejam em desacordo com o <a href="/p/termo-de-uso-e-responsabilidade.html" rel="noopener" target="_blank">Termo de Uso e Responsabilidade</a>.</p></div>
+  </details>
+  <p class="rcf-contact"><b>Ficou com alguma dúvida?</b> Escreva para <a href="mailto:redecolbrazil@gmail.com">redecolbrazil@gmail.com</a>.</p>
+</section>
+
+<script>
+(function(){
+  var RCF_TO='redecolbrazil@gmail.com';
+  var RCF_FILA='https://script.google.com/macros/s/COLE-AQUI-O-ID/exec'; /* fila de aprovação (planilha) */
+  var RCF_WEB_PAUSED=true; /* true = novos cadastros de webradio suspensos */
+  var form=document.getElementById('rcf-form'),msg=document.getElementById('rcf-msg'),
+      box=document.getElementById('rcForm'),okbox=document.getElementById('rcf-okbox'),
+      again=document.getElementById('rcf-again'),btn=form.querySelector('.rcf-send'),
+      emis=document.getElementById('rcf-emis'),freq=document.getElementById('rcf-freq'),
+      freqopt=document.getElementById('rcf-freqopt'),webwarn=document.getElementById('rcf-webwarn'),
+      t0=Date.now();
+  var urlFields=['rcf-pagina','rcf-audio','rcf-video','rcf-logo','rcf-site'];
+
+  function tipo(){var r=form.querySelector('input[name=tipo]:checked');return r?r.value:'';}
+  function blockedWeb(){return RCF_WEB_PAUSED&&tipo()==='Novo cadastro'&&emis.value==='Webradio';}
+  function sync(){
+    var web=emis.value==='Webradio';
+    if(web){freq.removeAttribute('required');freqopt.textContent='(não se aplica a webradio)';}
+    else{freq.setAttribute('required','');freqopt.innerHTML='<span class="rcf-req">*</span>';}
+    webwarn.style.display=blockedWeb()?'block':'none';
+  }
+  emis.addEventListener('change',sync);
+  form.addEventListener('change',function(e){if(e.target.name==='tipo')sync();});
+  sync();
+
+  function fixUrl(v){
+    v=(v||'').trim();
+    if(!v)return '';
+    if(!/^[a-z][a-z0-9+.-]*:\/\//i.test(v))v='https://'+v;
+    return v;
+  }
+  function validUrl(v){
+    return /^https?:\/\/[^\s\/$.?#][^\s]*\.[^\s]{2,}$/i.test(v)||/^https?:\/\/(localhost|\d{1,3}(\.\d{1,3}){3})(:\d+)?([\/?#]\S*)?$/i.test(v);
+  }
+  function mark(el,bad){
+    if(bad){el.setAttribute('aria-invalid','true');}else{el.removeAttribute('aria-invalid');}
+  }
+  function say(text,cls,html){
+    msg.className='rcf-msg'+(cls?' '+cls:'');
+    if(html)msg.innerHTML=text;else msg.textContent=text;
+  }
+  form.addEventListener('input',function(e){mark(e.target,false);});
+
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    if(document.getElementById('rcf-hp').value)return;
+    if(blockedWeb()){
+      say('O cadastro de novas webradios está suspenso no momento. Escolha "Atualizar dados" ou "Remover / corrigir" para uma webradio já listada.','err');
+      emis.focus();
+      return;
+    }
+    var first=null,i,el;
+    var req=form.querySelectorAll('[required]');
+    for(i=0;i<req.length;i++){
+      el=req[i];
+      var empty=el.type==='checkbox'?!el.checked:!String(el.value).trim();
+      mark(el,empty);
+      if(empty&&!first)first=el;
+    }
+    var em=document.getElementById('rcf-email');
+    if(em.value&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value.trim())){mark(em,true);if(!first)first=em;}
+    for(i=0;i<urlFields.length;i++){
+      el=document.getElementById(urlFields[i]);
+      if(el.value.trim()){
+        el.value=fixUrl(el.value);
+        if(!validUrl(el.value)){mark(el,true);if(!first)first=el;}
+      }
+    }
+    if(first){
+      say('Revise os campos destacados antes de enviar.','err');
+      first.focus();
+      return;
+    }
+    if(Date.now()-t0<4000){say('Aguarde alguns segundos e envie novamente.','err');return;}
+    try{
+      var last=+localStorage.getItem('rcf:last')||0;
+      if(Date.now()-last<60000){say('Aguarde um minuto para enviar outra solicitação.','err');return;}
+    }catch(e){}
+
+    var fd=new FormData(form),data={},k,labels={
+      tipo:'Tipo de solicitação',pagina_atual:'Página atual',nome:'Nome da rádio',emissora:'Tipo de emissora',frequencia:'Frequência',genero:'Gênero',
+      cidade:'Cidade',uf:'UF',link_audio:'Link de áudio',link_video:'Link de vídeo (m3u8)',link_logo:'Link do logotipo',
+      descricao:'Sobre a rádio',site:'Site',redes_sociais:'Redes sociais',telefone:'Telefone',whatsapp:'WhatsApp',
+      comercial:'Comercial',endereco:'Endereço',responsavel:'Solicitante',vinculo:'Relação com a rádio',
+      telefone_solicitante:'Telefone do solicitante',observacoes:'Observações'
+    };
+    var name=(fd.get('nome')||'').trim(),city=(fd.get('cidade')||'').trim(),uf=fd.get('uf')||'';
+    data._subject=fd.get('tipo')+': '+name+' ('+city+'/'+uf+')';
+    data._template='table';
+    data._captcha='false';
+    for(k in labels){
+      if(!labels.hasOwnProperty(k))continue;
+      var v=(fd.get(k)||'').toString().trim();
+      if(v)data[labels[k]]=v;
+    }
+    data['E-mail do solicitante']=(fd.get('email')||'').trim();
+    data.email=(fd.get('email')||'').trim();
+    data['Aceite do Termo de Uso e autorização de publicação']='Sim';
+    data['Enviado de']=location.href;
+
+    /* campos com os nomes originais, para a fila de aprovação */
+    var bruto={};
+    fd.forEach(function(v,key){v=String(v).trim();if(v)bruto[key]=v;});
+    bruto.origem=location.href;
+
+    function viaFila(){
+      if(!RCF_FILA||RCF_FILA.indexOf('COLE-AQUI')>=0)return Promise.reject(new Error('sem fila'));
+      /* text/plain evita a verificação CORS e permite ler a resposta do Apps Script */
+      return fetch(RCF_FILA,{method:'POST',body:JSON.stringify(bruto)})
+        .then(function(r){return r.json();})
+        .then(function(j){
+          if(j&&j.ok)return j;
+          var e=new Error((j&&j.erro)||'fail');e.recusado=!!(j&&j.erro);throw e;
+        });
+    }
+    function viaEmail(){
+      return fetch('https://formsubmit.co/ajax/'+RCF_TO,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(data)
+      }).then(function(r){return r.json();}).then(function(j){
+        if(j&&(j.success===true||j.success==='true'))return {};
+        throw new Error('fail');
+      });
+    }
+    function sucesso(j){
+      try{localStorage.setItem('rcf:last',String(Date.now()));}catch(e){}
+      say('','');
+      var p=okbox.querySelector('.rcf-prot');
+      if(!p){p=document.createElement('p');p.className='rcf-prot';okbox.insertBefore(p,okbox.querySelector('button'));}
+      p.innerHTML=j&&j.protocolo?'Protocolo: <b>'+j.protocolo+'</b>':'';
+      box.classList.add('rcf-done');
+      okbox.focus();
+      if(okbox.scrollIntoView)okbox.scrollIntoView({block:'center'});
+    }
+
+    btn.disabled=true;
+    say('Enviando…','');
+    viaFila().catch(function(err){
+      if(err&&err.recusado){btn.disabled=false;say(err.message,'err');return null;} /* ex.: limite de envios */
+      return viaEmail(); /* fila indisponível: envia por e-mail como antes */
+    }).then(function(j){if(j)sucesso(j);}).catch(function(){
+      btn.disabled=false;
+      var body='';
+      for(var key in data){
+        if(data.hasOwnProperty(key)&&key.charAt(0)!=='_')body+=key+': '+data[key]+'\n';
+      }
+      say('Não foi possível enviar agora. <a href="mailto:'+RCF_TO+'?subject='+encodeURIComponent(data._subject)+'&body='+encodeURIComponent(body.slice(0,1500))+'">Enviar pelo seu aplicativo de e-mail</a>','err',true);
+    });
+  });
+
+  again.addEventListener('click',function(){
+    form.reset();
+    box.classList.remove('rcf-done');
+    btn.disabled=false;
+    t0=Date.now();
+    sync();
+    form.querySelector('input').focus();
+  });
+
+  /* copiar código do banner */
+  var code=document.getElementById('rcf-code'),copy=document.getElementById('rcf-copy');
+  copy.addEventListener('click',function(){
+    function ok(){copy.textContent='Código copiado!';setTimeout(function(){copy.textContent='Copiar código';},2200);}
+    function fallback(){
+      code.focus();code.select();
+      try{if(document.execCommand('copy'))ok();}catch(e){}
+    }
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(code.value).then(ok,fallback);
+    }else{fallback();}
+  });
+})();
+</script>
+</div>

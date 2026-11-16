@@ -1,0 +1,183 @@
+<!-- ===================================================================
+     RADIOCOL — endereço de áudio dinâmico (lido do GitHub)
+     Cole este bloco no Tema > Editar HTML, logo ANTES de </body>
+     (depois do script do MediaElement.js).
+     Troque SEU-USUARIO pelo seu usuário do GitHub.
+     =================================================================== -->
+<b:if cond='data:view.isPost'>
+<script>var RC_POST_ID = '<data:view.postId/>';</script>
+<script>
+//<![CDATA[
+(function () {
+  var BASE   = 'https://SEU-USUARIO.github.io/radiocol-monitor/r/';
+  // Alternativa via jsDelivr (CDN): 'https://cdn.jsdelivr.net/gh/SEU-USUARIO/radiocol-monitor@main/docs/r/'
+  var SHARDS = 32;                 // igual ao SHARDS do robô
+  var AVISO_OFFLINE = true;        // aviso discreto quando a rádio está confirmada fora do ar
+  var FEATURES = ['prevtrack', 'playpause', 'nexttrack', 'current', 'progress', 'duration',
+                  'volume', 'playlist', 'shuffle', 'loop', 'fullscreen'];   // iguais aos dos posts
+
+  function shard(p) {
+    var h = 0;
+    for (var i = 0; i < p.length; i++) h = (Math.imul(h, 31) + p.charCodeAt(i)) >>> 0;
+    return ('0' + (h % SHARDS)).slice(-2);
+  }
+  // .m3u8 -> application/x-mpegURL ; o resto -> audio/mpeg (igual ao padrão dos posts)
+  function tipo(u) { return /\.m3u8(\?|#|$)/i.test(u) ? 'application/x-mpegURL' : 'audio/mpeg'; }
+
+  // A base usa o ID do post: continua valendo mesmo se a URL do post mudar
+  var meta = document.querySelector('meta[itemprop="postId"]');
+  var pid = (window.RC_POST_ID || (meta && meta.content) || '').replace(/\D/g, '');
+  if (!pid) return;
+  fetch(BASE + shard(pid) + '.json', { cache: 'default' })
+    .then(function (r) { return r.ok ? r.json() : {}; })
+    .then(function (map) {
+      var e = map[pid];
+      if (!e) return;
+      window.RADIOCOL_STREAM = e;
+      if (e.c) trocarContatos(e.c);
+      if (!e.u) return;
+      aplicar(e);
+      document.dispatchEvent(new CustomEvent('radiocol:stream', { detail: e }));
+    })
+    .catch(function () { /* sem rede/CDN: o post continua com o link original */ });
+
+  // ---------- WhatsApp / telefone ----------
+  function dig(s) { return (s || '').replace(/\D/g, ''); }
+  function nacional(d) { return d.length > 11 && d.indexOf('55') === 0 ? d.slice(2) : d; }
+  function mesmoNumero(a, b) {
+    a = nacional(dig(a)); b = nacional(dig(b));
+    if (a.length < 8 || b.length < 8 || a.slice(-8) !== b.slice(-8)) return false;
+    var da = a.length >= 10 ? a.slice(0, 2) : '', db = b.length >= 10 ? b.slice(0, 2) : '';
+    return !da || !db || da === db;
+  }
+  function formatar(d) {
+    d = nacional(d);
+    if (d.length === 11) return '(' + d.slice(0, 2) + ') ' + d.slice(2, 7) + '-' + d.slice(7);
+    if (d.length === 10) return '(' + d.slice(0, 2) + ') ' + d.slice(2, 6) + '-' + d.slice(6);
+    return d;
+  }
+  function trocarContatos(pares) {
+    var raiz = document.querySelector('.post-outer, .post, article, main') || document.body;
+    var links = raiz.querySelectorAll('a[href]');
+    pares.forEach(function (par) {
+      var antigo = par[0], novo = par[1], whats = par[2] === 'w';
+      var novoIntl = novo.length <= 11 ? '55' + novo : novo;
+      // 1) links wa.me / api.whatsapp.com / tel:
+      for (var i = 0; i < links.length; i++) {
+        var a = links[i], h = a.getAttribute('href');
+        var m = h.match(/(wa\.me\/|phone=|tel:)(\+?[\d%\s\-().]+)/i);
+        if (!m || !mesmoNumero(decodeURIComponent(m[2]), antigo)) continue;
+        var rep = /tel:/i.test(m[1]) ? '+' + novoIntl : novoIntl;
+        a.setAttribute('href', h.replace(m[2], rep));
+      }
+      // 2) número escrito no texto, com qualquer pontuação: (84) 99988-7766, 84 9 9988 7766…
+      var nac = nacional(antigo);
+      var re = new RegExp('(?:\\+?55[\\s.-]*)?\\(?' + nac.split('').join('[\\s().\\-]{0,3}'), 'g');
+      var w = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT, null), n, nos = [];
+      while ((n = w.nextNode())) if (!/^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName)) nos.push(n);
+      nos.forEach(function (t) {
+        if (re.test(t.nodeValue)) { re.lastIndex = 0; t.nodeValue = t.nodeValue.replace(re, formatar(novo)); }
+        re.lastIndex = 0;
+      });
+    });
+  }
+
+  // ---------- localizar a instância do MediaElement de um <audio> ----------
+  function instancia(a) {
+    if (a.player && a.player.setSrc) return a.player;
+    if (window.mejs && mejs.players) {
+      for (var k in mejs.players) {
+        var p = mejs.players[k];
+        if (p && (p.node === a || p.domNode === a || (p.media && p.media.originalNode === a))) return p;
+      }
+    }
+    return null;
+  }
+
+  // ---------- 1) players <audio> já existentes no post ----------
+  function atualizarAudios(e) {
+    var audios = document.querySelectorAll('.post-body audio');
+    for (var i = 0; i < audios.length; i++) {
+      var a = audios[i], fontes = a.querySelectorAll('source');
+      var atual = fontes.length ? fontes[0].getAttribute('src') : a.getAttribute('src');
+      if (atual === e.u) continue;                             // já está certo
+      if (e.o && atual && atual !== e.o) continue;             // não é o player da rádio
+      for (var k = 0; k < fontes.length; k++) { fontes[k].setAttribute('src', e.u); fontes[k].setAttribute('type', tipo(e.u)); }
+      if (!fontes.length) a.setAttribute('src', e.u);
+      var p = instancia(a);
+      if (p) {
+        if (p.paused === false || (p.media && p.media.paused === false)) continue; // não interrompe quem já ouve
+        try { p.setSrc([{ src: e.u, type: tipo(e.u) }]); p.load(); } catch (err) { try { p.setSrc(e.u); } catch (x) {} }
+      } else if (a.paused) {
+        a.load();
+      }
+    }
+  }
+
+  // ---------- 2) iframe "Ao vivo" -> player no padrão do site ----------
+  function tituloRadio() {
+    var h = document.querySelector('.post-title, h1.entry-title, h1');
+    return (h ? h.textContent : document.title).replace(/\s+/g, ' ').trim();
+  }
+
+  function trocarIframe(url) {
+    var ifr = null, todos = document.querySelectorAll('.post-body iframe[title]');
+    for (var i = 0; i < todos.length; i++) {
+      var t = todos[i].getAttribute('title').normalize('NFD').replace(/[̀-ͯ]/g, '');
+      if (/ao vivo/i.test(t)) { ifr = todos[i]; break; }
+    }
+    if (!ifr) return;
+
+    if (typeof window.RADIOCOL_PLAYER === 'function') {       // gancho opcional do tema
+      var box0 = document.createElement('div');
+      ifr.parentNode.replaceChild(box0, ifr);
+      window.RADIOCOL_PLAYER(url, box0);
+      return;
+    }
+
+    // Mesmo HTML do player usado nos posts (MediaElement.js)
+    var nome = tituloRadio();
+    var center = document.createElement('center');
+    var wrap = document.createElement('div');
+    wrap.className = 'media-wrapper';
+    var audio = document.createElement('audio');
+    audio.id = 'player-radiocol';
+    audio.setAttribute('controls', '');
+    audio.setAttribute('preload', 'none');
+    audio.setAttribute('width', 'auto');
+    audio.setAttribute('data-cast-title', nome);
+    audio.setAttribute('data-cast-description', 'Transmissão ao vivo da ' + nome);
+    var src = document.createElement('source');
+    src.setAttribute('src', url);
+    src.setAttribute('title', nome);
+    src.setAttribute('type', tipo(url));
+    audio.appendChild(src);
+    wrap.appendChild(audio);
+    center.appendChild(wrap);
+    ifr.parentNode.replaceChild(center, ifr);
+
+    if (window.MediaElementPlayer) {
+      new MediaElementPlayer(audio, { features: FEATURES });
+    }
+    // sem MediaElement carregado, fica o <audio controls> nativo do navegador
+  }
+
+  function aplicar(e) {
+    atualizarAudios(e);
+    if (e.f && /^https:\/\//i.test(e.u) && e.s !== 0) trocarIframe(e.u);
+
+    if (AVISO_OFFLINE && e.s === 0) {
+      var alvo = document.querySelector('#radiocol-aviso') || document.querySelector('.post-body');
+      if (alvo && !document.getElementById('rc-off')) {
+        var d = document.createElement('div');
+        d.id = 'rc-off';
+        d.style.cssText = 'margin:10px 0;padding:10px 14px;border-radius:8px;background:#fff4e5;color:#8a4b00;font-size:14px';
+        d.textContent = 'O áudio desta emissora pode estar temporariamente fora do ar. Já estamos verificando.';
+        alvo.insertBefore(d, alvo.firstChild);
+      }
+    }
+  }
+})();
+//]]>
+</script>
+</b:if>
