@@ -2,5 +2,5 @@
   "_como_usar": "Chave = caminho do post. Use 'stream' para fixar um endereço manualmente ou 'ignore': true para parar de monitorar (ex.: rádio que encerrou). Apague o exemplo abaixo.",
   "_exemplo:/2023/05/radio-exemplo-fm.html": {"stream": "https://exemplo.com/stream", "note": "corrigido à mão em 16/11"},
   "https://www.radiocol.com.br/2020/04/cadastrar-sua-radio-diretorios-site-radios-online.html": {"ignore": true, "note": "página do formulário"},
-  "https://www.radiocol.com.br/2020/02/ouvir-radio-nacional-am-980-de-brasilia-df-ao-vivo.html": {"stream": "https://radio2.lflr.com.br/ebc-live/radio-nacional-am/playlist.m3u8"}
+  "https://www.radiocol.com.br/2020/02/ouvir-radio-nacional-am-980-de-brasilia-df-ao-vivo.html": {"stream": "https://radionacionalbrasilia-stream.ebc.com.br/index.m3u8"}
 }
