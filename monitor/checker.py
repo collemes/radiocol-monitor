@@ -1,6 +1,7 @@
 """Testa se um endereço de streaming está realmente entregando áudio."""
 import asyncio
 import ssl
+from collections import defaultdict
 from dataclasses import dataclass
 from urllib.parse import urljoin, urlparse
 
@@ -72,6 +73,7 @@ class Checker:
     def __init__(self, session: aiohttp.ClientSession):
         self.s = session
         self.sem = asyncio.Semaphore(config.CONCURRENCY)
+        self.host_sems = defaultdict(lambda: asyncio.Semaphore(config.PER_HOST))
         self.cache = {}
 
     async def check(self, url: str) -> Result:
@@ -79,7 +81,13 @@ class Checker:
             return Result(False, "sem endereço")
         if url in self.cache:
             return self.cache[url]
-        async with self.sem:
+        try:
+            hp = urlparse(url)
+            host_key = f"{hp.hostname}:{hp.port}"
+        except ValueError:
+            host_key = url
+        # primeiro espera a vez do servidor, depois uma vaga geral; só então o relógio começa
+        async with self.host_sems[host_key], self.sem:
             try:
                 r = await asyncio.wait_for(self._check(url, 0), config.READ_TIMEOUT + config.CONNECT_TIMEOUT + 8)
             except asyncio.TimeoutError:
@@ -94,7 +102,8 @@ class Checker:
             return Result(False, "playlist em excesso de níveis", url)
         timeout = aiohttp.ClientTimeout(total=None, sock_connect=config.CONNECT_TIMEOUT,
                                         sock_read=config.READ_TIMEOUT)
-        headers = {"User-Agent": config.USER_AGENT, "Icy-MetaData": "0", "Accept": "*/*"}
+        headers = {"User-Agent": config.USER_AGENT, "Icy-MetaData": "0", "Accept": "*/*",
+                   "Referer": config.SITE_URL + "/"}  # como o player do site faria
         try:
             async with self.s.get(url, headers=headers, timeout=timeout, allow_redirects=True,
                                   max_redirects=6) as resp:
@@ -102,7 +111,7 @@ class Checker:
                 final = str(resp.url)
                 if resp.status >= 400:
                     return Result(False, f"HTTP {resp.status}", final, ct)
-                data = await asyncio.wait_for(_read_some(resp, 64 * 1024), config.READ_TIMEOUT)
+                data = await asyncio.wait_for(_read_some(resp, 32 * 1024), config.READ_TIMEOUT)
         except aiohttp.ClientConnectorCertificateError:
             return Result(False, "certificado SSL inválido", url)
         except aiohttp.ClientConnectorError as e:
@@ -167,6 +176,7 @@ class Checker:
             reader, writer = await asyncio.wait_for(
                 asyncio.open_connection(host, port, ssl=ctx), config.CONNECT_TIMEOUT)
             writer.write((f"GET {path} HTTP/1.0\r\nHost: {host}\r\nUser-Agent: {config.USER_AGENT}\r\n"
+                          f"Referer: {config.SITE_URL}/\r\n"
                           "Icy-MetaData: 0\r\nAccept: */*\r\n\r\n").encode())
             await writer.drain()
             first = await asyncio.wait_for(reader.readline(), config.READ_TIMEOUT)

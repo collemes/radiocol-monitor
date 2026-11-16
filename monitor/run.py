@@ -6,12 +6,14 @@ import time
 from datetime import datetime, timezone, timedelta
 
 import aiohttp
-from urllib.parse import unquote, urlparse
+import re
+from urllib.parse import unquote, urljoin, urlparse
 
 from . import config
 from .blogger import fetch_post_body, fetch_post_body_raw, fetch_posts
 from .checker import Checker
-from .extract import extract_contacts, extract_live_iframe, extract_sites, extract_streams, stream_score
+from .extract import (extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
+                      extract_streams, stream_score)
 from .extras import check_old_urls, contact_pairs, register_old_url, scan_site_whatsapp
 from .finder import Finder, variants
 from .notify import build_report, send_email, write_public
@@ -69,7 +71,7 @@ async def main():
         return overrides.get(rec.get("path")) or overrides.get(rec.get("id")) or {}
 
     events = {"fixed": [], "recovered": [], "new_posts": []}
-    connector = aiohttp.TCPConnector(limit=config.CONCURRENCY + 10, limit_per_host=config.PER_HOST,
+    connector = aiohttp.TCPConnector(limit=config.CONCURRENCY + 20, limit_per_host=config.PER_HOST * 2,
                                      ttl_dns_cache=600)
     async with aiohttp.ClientSession(connector=connector) as session:
         # 1) posts do Blogger --------------------------------------------------------
@@ -98,6 +100,7 @@ async def main():
             rec["_content_sites"] = extract_sites(p.content)
             rec["_cands"] = cands
             rec["_iframe"] = extract_live_iframe(p.content)
+            rec["_content"] = p.content
 
         # URL de post mudou: leva junto os ajustes manuais do overrides.json
         moved = events.get("url_changed", [])
@@ -125,6 +128,7 @@ async def main():
                     body = await fetch_post_body(session, p.url)
                 rec = posts_state[p.id]
                 rec["_cands"] = extract_streams(body)
+                rec["_content"] = (rec.get("_content") or "") + "\n" + (body or "")
                 rec["_content_sites"] = rec["_content_sites"] or extract_sites(body)
             await asyncio.gather(*(grab(p) for p in need_page))
 
@@ -156,6 +160,41 @@ async def main():
                 rec["_cands"] = found + [c for c in rec["_cands"] if c not in found]
             await asyncio.gather(*(read_iframe(r) for r in iframe_recs))
 
+        # Player em popup ("Clique para ouvir ao vivo", window.open, página de player):
+        # abre a página do popup e procura o stream lá dentro (1x por semana por post)
+        popup_recs = [posts_state[p] for p in seen if not posts_state[p]["_cands"]]
+        popup_recs = [r for r in popup_recs if extract_player_links(r.get("_content", ""), r["url"])]
+        if popup_recs:
+            log(f"{len(popup_recs)} posts com player em popup; abrindo os players…")
+            sem_p = asyncio.Semaphore(10)
+            week_ago_p = (datetime.now(BRT) - timedelta(days=7)).strftime("%Y-%m-%d")
+
+            async def read_popup(rec):
+                links = extract_player_links(rec.get("_content", ""), rec["url"])
+                if (rec.get("popup") == links[0] and rec.get("popup_streams")
+                        and (rec.get("popup_read") or "") >= week_ago_p):
+                    rec["_cands"] = list(rec["popup_streams"])
+                    return
+                found = []
+                for link in links:
+                    if "?" in link:  # stream passado na própria URL do player (?url=..., ?radio=...)
+                        found += [u for u in extract_streams(unquote(link.split("?", 1)[1])) if u not in found]
+                    async with sem_p:
+                        page = await fetch_post_body_raw(session, link)
+                    found += [u for u in extract_streams(page) if u not in found]
+                    if not found:   # player montado dentro de um iframe da página do popup
+                        for ifr in re.findall(r"""<iframe\b[^>]*?\bsrc\s*=\s*["']([^"']+)["']""", page, re.I)[:2]:
+                            async with sem_p:
+                                sub = await fetch_post_body_raw(session, urljoin(link, ifr))
+                            found += [u for u in extract_streams(sub) if u not in found]
+                    if found:
+                        rec["popup"] = link
+                        break
+                rec["popup_read"] = today()
+                rec["popup_streams"] = found[:5]
+                rec["_cands"] = sorted(found[:5], key=lambda u: 0 if u.startswith("https") else 1)
+            await asyncio.gather(*(read_popup(r) for r in popup_recs))
+
         # posts apagados (ex.: emissora substituída por outra): a URL antiga precisa de 301
         for pid in [k for k in posts_state if k not in seen]:
             if not config.LIMIT_POSTS:
@@ -168,6 +207,7 @@ async def main():
         for pid in seen:
             rec = posts_state[pid]
             cands = rec.pop("_cands")
+            rec.pop("_content", None)
             rec["sites"] = rec.pop("_content_sites")
             iframe = rec.pop("_iframe", None)
             if iframe:

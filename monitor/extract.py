@@ -40,6 +40,7 @@ BLOCK_HOSTS = (
     "pinterest.com", "flickr.com", "maps.app.goo.gl", "goo.gl", "bit.ly", "wikipedia.org",
     "apple.com", "play.google.com", "spotify.com", "deezer.com", "jsdelivr.net", "cloudflare.com",
     "w3.org", "schema.org", "gravatar.com", "radiocol.com.br", "addthis.com", "sharethis.com",
+    "servidor.com", "example.com", "exemplo.com", "suaradio.com.br", "seusite.com.br",
 )
 BLOCK_EXT_RE = re.compile(
     r"\.(png|jpe?g|gif|webp|svg|ico|bmp|css|js|json|xml|pdf|docx?|zip|rar|woff2?|ttf|php)(?:[?#]|$)",
@@ -76,7 +77,7 @@ def stream_score(url: str) -> int:
         return 0
     path = p.path or "/"
     score = 0
-    if AUDIO_EXT_RE.search(path) or AUDIO_EXT_RE.search(url):
+    if AUDIO_EXT_RE.search(path):
         score += 6
     if STREAM_PATH_RE.search(path) or path.endswith(";"):
         score += 4
@@ -122,6 +123,11 @@ def extract_streams(content: str):
     text = html.unescape(content)
     for m in URL_RE.finditer(text):
         add(m.group(0), 0)
+    # streams "embutidos" em links de player (?url=https%3A%2F%2F...)
+    from urllib.parse import unquote
+    if "%3A%2F%2F" in text.upper():
+        for m in URL_RE.finditer(unquote(text)):
+            add(m.group(0), 0)
     ranked = sorted(found.items(), key=lambda kv: (-kv[1][0], kv[1][1]))
     return [u for u, _ in ranked]
 
@@ -172,6 +178,7 @@ UF = {
 }
 FREQ_RE = re.compile(r"\b(\d{2,3})[.,](\d)\b")
 AM_RE = re.compile(r"\b(\d{3,4})\s*(?:am|khz)\b", re.I)
+AM_BEFORE_RE = re.compile(r"\bam\s*(\d{3,4})\b", re.I)
 
 
 def norm(s: str) -> str:
@@ -184,10 +191,22 @@ def frequency(s: str):
     m = FREQ_RE.search(s2)
     if m and 87 <= int(m.group(1)) <= 108:
         return f"{int(m.group(1))}.{m.group(2)}"
-    m = AM_RE.search(s2)
-    if m and 500 <= int(m.group(1)) <= 1800:
-        return m.group(1)
+    for rx in (AM_RE, AM_BEFORE_RE):
+        m = rx.search(s2)
+        if m and 500 <= int(m.group(1)) <= 1800:
+            return m.group(1)
     return None
+
+
+def band(s: str):
+    """'am', 'fm' ou None, conforme o nome."""
+    t = f" {norm(s)} "
+    if " am " in t:
+        return "am"
+    if " fm " in t:
+        return "fm"
+    f = frequency(s)
+    return ("fm" if "." in f else "am") if f else None
 
 
 def name_tokens(s: str):
@@ -235,3 +254,54 @@ def extract_contacts(content: str):
     phones = _uniq([digits(m) for m in TEL_RE.findall(text)])
     phones = [p for p in phones if not any(same_number(p, w) for w in whats)]
     return {"whatsapp": whats, "telefone": phones}
+
+
+# ---------- players em popup / página de player ----------
+WINOPEN_RE = re.compile(r"""window\.open\s*\(\s*['"]([^'"]+)['"]""", re.I)
+JS_URL_RE = re.compile(r"""['"]((?:https?:)?//[^'"\s]+|/[^'"\s]+)['"]""")
+TAG_RE = re.compile(r"<[^>]+>")
+PLAYER_TEXT_RE = re.compile(r"(ouvir|ou[cç]a|escut|ao vivo|aovivo|player|tocar|play|clique aqui|abrir r[aá]dio)", re.I)
+PLAYER_HREF_RE = re.compile(r"(player|popup|pop-up|aovivo|ao-vivo|ouvir|/play\b|radio\.php|tocar)", re.I)
+A_TAG_RE = re.compile(r"<a\b([^>]*)>(.*?)</a>", re.I | re.S)
+
+
+def extract_player_links(content: str, base: str, limit=3):
+    """Links que abrem o player da rádio (popup, window.open, "Clique para ouvir ao vivo")."""
+    from urllib.parse import urljoin
+    out = []
+
+    def add(u):
+        u = _clean(u)
+        if not u or u.startswith(("#", "mailto:", "tel:", "whatsapp:")):
+            return
+        if u.startswith("//"):
+            u = "https:" + u
+        u = urljoin(base, u)
+        if not u.lower().startswith("http") or BLOCK_EXT_RE.search(u) or SOCIAL_RE.search(u):
+            return
+        if "/search/label/" in u or u.split("#")[0] == base.split("#")[0]:
+            return
+        if u not in out:
+            out.append(u)
+
+    text = content or ""
+    for u in WINOPEN_RE.findall(text):
+        add(u)
+    for attrs, inner in A_TAG_RE.findall(text):
+        attrs_u = html.unescape(attrs)
+        label = TAG_RE.sub(" ", inner)
+        href = re.search(r"""\bhref\s*=\s*(["'])(.*?)\1""", attrs_u, re.I | re.S)
+        href = href.group(2).strip() if href else ""
+        onclick = " ".join(m[1] for m in re.findall(r"""\bon\w+\s*=\s*(["'])(.*?)\1""", attrs_u, re.I | re.S))
+        is_player = PLAYER_TEXT_RE.search(label) or PLAYER_HREF_RE.search(href) or "window.open" in onclick \
+            or re.search(r"""target\s*=\s*["']_blank""", attrs_u, re.I) and PLAYER_TEXT_RE.search(label)
+        if not is_player:
+            continue
+        if href.lower().startswith("javascript:"):
+            for u in JS_URL_RE.findall(href):
+                add(u)
+        elif href:
+            add(href)
+        for u in JS_URL_RE.findall(onclick):
+            add(u)
+    return out[:limit]

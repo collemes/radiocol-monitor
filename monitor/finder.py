@@ -15,7 +15,7 @@ from urllib.parse import quote, urljoin, urlparse
 import aiohttp
 
 from . import config
-from .extract import extract_streams, frequency, name_tokens, norm
+from .extract import band, extract_streams, frequency, name_tokens, norm
 
 IFRAME_RE = re.compile(r"""<iframe\b[^>]*?\bsrc\s*=\s*["']([^"']+)["']""", re.I)
 RB_SERVERS = [
@@ -170,6 +170,7 @@ class Finder:
         if len(toks) > 1:
             queries.append(max(toks, key=len))
         freq = frequency(title)
+        post_band = band(title)
         labels = " ".join(norm(l) for l in rec.get("labels", []))
         stations = {}
         for q in queries:
@@ -185,10 +186,14 @@ class Finder:
             name = st.get("name", "")
             sc = similarity(title, name)
             sfreq = frequency(name + " " + (st.get("tags") or ""))
+            st_band = band(name)
             if freq and sfreq:
                 sc += 0.15 if sfreq == freq else -0.4
             elif freq and not sfreq:
                 sc -= 0.05
+            if post_band and st_band and post_band != st_band:
+                sc -= 0.4          # AM x FM: emissoras diferentes
+            freq_ok = not freq or sfreq == freq
             state = norm(st.get("state") or "")
             if state and state in labels:
                 sc += 0.05
@@ -196,13 +201,14 @@ class Finder:
             if rec.get("_need_https") and url and not url.startswith("https"):
                 continue
             if url and sc >= config.SUGGEST_SCORE:
-                scored.append((round(min(sc, 1.0), 3), url, name))
+                scored.append((round(min(sc, 1.0), 3), url, name, freq_ok))
         scored.sort(key=lambda x: (-x[0], 0 if x[1].startswith("https") else 1))
-        for sc, url, name in scored[:5]:
+        for sc, url, name, freq_ok in scored[:5]:
             r = await self.c.check(url)
             if r.ok:
+                # só aplica sozinho se o nome bate E a frequência do post confere com a da estação
                 return {"url": url, "source": f"Radio Browser: {name}", "score": sc,
-                        "confidence": "high" if sc >= config.AUTO_APPLY_SCORE else "suggest"}
+                        "confidence": "high" if sc >= config.AUTO_APPLY_SCORE and freq_ok else "suggest"}
         return None
 
     async def find(self, rec):
