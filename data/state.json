@@ -1,0 +1,1805 @@
+{
+ "posts": {
+  "1266553419021684199": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": []
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "1266553419021684199",
+   "labels": [
+    "Brasília",
+    "DF",
+    "Evangelica",
+    "Mobile",
+    "Rede_Novo_Tempo"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/08/ouvir-radio-novo-tempo-fm-929-brasilia-df-ao-vivo.html",
+   "post_candidates": [
+    "https://streamradio.novotempo.com/CDN-RADIO-PT/smil:radionovotempo.smil/playlist.m3u8"
+   ],
+   "post_stream": "https://streamradio.novotempo.com/CDN-RADIO-PT/smil:radionovotempo.smil/playlist.m3u8",
+   "post_updated": "2026-08-06T10:03:58.663-03:00",
+   "reason": "ok (HLS)",
+   "sites": [
+    "https://www.novotempo.com/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://streamradio.novotempo.com/CDN-RADIO-PT/smil:radionovotempo.smil/playlist.m3u8",
+   "title": "Ouvir a Rádio Novo Tempo FM 92,9 de Brasília DF Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/08/ouvir-radio-novo-tempo-fm-929-brasilia-df-ao-vivo.html"
+  },
+  "1360912116355020446": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "555137421089"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": true,
+   "https_tried": "2026-11-16",
+   "id": "1360912116355020446",
+   "labels": [
+    "Gaúcha",
+    "MigraçãoAmFm",
+    "Popular",
+    "RS",
+    "Sobradinho"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/11/ouvir-radio-sobradinho-fm-88-3-de-sobradinho-rs-online.html",
+   "post_candidates": [
+    "https://stream.loopert.com/stream/131"
+   ],
+   "post_stream": "https://stream.loopert.com/stream/131",
+   "post_updated": "2026-11-15T23:09:47.266-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.radiosobradinho.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://stream.loopert.com/stream/131",
+   "title": "Ouvir a Rádio Sobradinho FM 88,3 de Sobradinho RS Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/11/ouvir-radio-sobradinho-fm-88-3-de-sobradinho-rs-online.html"
+  },
+  "1685305145453565795": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": []
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "1685305145453565795",
+   "labels": [
+    "Brasília",
+    "DF",
+    "GO",
+    "Mobile",
+    "Planaltina de Goiás",
+    "Popular"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2022/10/ouvir-radio-saudade-fm-965-de-brasilia-df-online.html",
+   "post_candidates": [
+    "https://24373.live.streamtheworld.com/SAUDADE2_FMAAC.aac"
+   ],
+   "post_stream": "https://24373.live.streamtheworld.com/SAUDADE2_FMAAC.aac",
+   "post_updated": "2026-11-14T00:43:15.627-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.saudadefm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://24373.live.streamtheworld.com/SAUDADE2_FMAAC.aac",
+   "title": "Ouvir a Rádio Saudade FM 96,5 de Brasília DF Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2022/10/ouvir-radio-saudade-fm-965-de-brasilia-df-online.html"
+  },
+  "2207890735526103113": {
+   "contacts": {
+    "telefone": [
+     "555433811550"
+    ],
+    "whatsapp": [
+     "5554999401045"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "2207890735526103113",
+   "labels": [
+    "MigraçãoAmFm",
+    "Mobile",
+    "Popular",
+    "RS",
+    "Soledade"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/11/ouvir-radio-soledade-fm-1045-de-soledade-rs.html",
+   "post_candidates": [
+    "https://10.stmip.net:10586/;?1794583708892"
+   ],
+   "post_stream": "https://10.stmip.net:10586/;?1794583708892",
+   "post_updated": "2026-11-13T12:40:18.027-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://radiosoledade.com/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://10.stmip.net:10586/;?1794583708892",
+   "title": "Ouvir a Rádio Soledade FM 104,5 de Soledade RS Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/11/ouvir-radio-soledade-fm-1045-de-soledade-rs.html"
+  },
+  "2318694634618398376": {
+   "contacts": {
+    "telefone": [
+     "555137223033"
+    ],
+    "whatsapp": [
+     "5551997572500"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "2318694634618398376",
+   "labels": [
+    "Adulta",
+    "Cachoeira do Sul",
+    "M",
+    "MigraçãoAmFm",
+    "Mobile",
+    "RS"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2019/08/ouvir-radio-fandango-classica-fm-895-de-cachoeira-do-sul-rs-online.html",
+   "post_candidates": [
+    "https://s01.transmissaodigital.com:7128/;"
+   ],
+   "post_stream": "https://s01.transmissaodigital.com:7128/;",
+   "post_updated": "2026-11-13T08:50:20.882-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.radiofandango.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://s01.transmissaodigital.com:7128/;",
+   "title": "Ouvir a Rádio Fandango Clássica FM 89,5 de Cachoeira do Sul RS Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2019/08/ouvir-radio-fandango-classica-fm-895-de-cachoeira-do-sul-rs-online.html"
+  },
+  "2319379000732731894": {
+   "contacts": {
+    "telefone": [
+     "554435691040"
+    ],
+    "whatsapp": [
+     "5544999799197"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "2319379000732731894",
+   "labels": [
+    "Juranda",
+    "Mobile",
+    "Popular",
+    "PR"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2018/06/ouvir-radio-terra-nativa-fm-953-de.html",
+   "post_candidates": [
+    "https://virtues.live:8196/stream"
+   ],
+   "post_stream": "https://virtues.live:8196/stream",
+   "post_updated": "2026-11-15T23:32:29.775-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.terranativafm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://virtues.live:8196/stream",
+   "title": "Ouvir a Rádio Terra Nativa FM 95,3 de Juranda PR Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2018/06/ouvir-radio-terra-nativa-fm-953-de.html"
+  },
+  "2372948074585920927": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "554132973297"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "2372948074585920927",
+   "labels": [
+    "Curitiba",
+    "Popular",
+    "PR",
+    "Rede_Massa_FM"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2020/02/ouvir-radio-massa-fm-977-de-curitiba-pr-ao-vivo.html",
+   "post_candidates": [
+    "https://live.virtualcast.com.br/massacuritiba"
+   ],
+   "post_stream": "https://live.virtualcast.com.br/massacuritiba",
+   "post_updated": "2026-11-15T23:30:47.050-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://massafm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://live.virtualcast.com.br/massacuritiba",
+   "title": "Ouvir a Rádio Massa FM 97,7 de Curitiba PR Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2020/02/ouvir-radio-massa-fm-977-de-curitiba-pr-ao-vivo.html"
+  },
+  "2489646811514846692": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "557435415453"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "2489646811514846692",
+   "labels": [
+    "BA",
+    "Popular",
+    "Senhor do Bonfim"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2012/08/ouvir-radio-rainha-fm-973-de-senhor-do.html",
+   "post_candidates": [
+    "https://streaming.livespanel.com:20973/rainhafm"
+   ],
+   "post_stream": "https://streaming.livespanel.com:20973/rainhafm",
+   "post_updated": "2026-11-15T02:13:34.995-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://rainhafm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://streaming.livespanel.com:20973/rainhafm",
+   "title": "Ouvir a Rádio Rainha FM 97,3 de Senhor do Bonfim BA Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2012/08/ouvir-radio-rainha-fm-973-de-senhor-do.html"
+  },
+  "2752034786548373630": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "557536343239"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "2752034786548373630",
+   "labels": [
+    "Amargosa",
+    "BA",
+    "Mobile",
+    "Popular"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/11/ouvir-radio-vale-fm-102-3-de-amargosa-ao-vivo.html",
+   "post_candidates": [
+    "https://valefm.acessaradios.com.br/live"
+   ],
+   "post_stream": "https://valefm.acessaradios.com.br/live",
+   "post_updated": "2026-11-15T02:26:27.706-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.fmvale.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://valefm.acessaradios.com.br/live",
+   "title": "Ouvir a Rádio Vale FM 102,3 de Amargosa BA Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/11/ouvir-radio-vale-fm-102-3-de-amargosa-ao-vivo.html"
+  },
+  "28161681183706354": {
+   "contacts": {
+    "telefone": [
+     "555534115000"
+    ],
+    "whatsapp": [
+     "5555991289039"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "28161681183706354",
+   "labels": [
+    "Mobile",
+    "Popular",
+    "RS",
+    "Uruguaiana"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2020/04/ouvir-radio-lider-fm-999-de-uruguaiana-rs-aovivo.html",
+   "post_candidates": [
+    "https://audiostream.i9suaradio.com:1125/stream"
+   ],
+   "post_stream": "https://audiostream.i9suaradio.com:1125/stream",
+   "post_updated": "2026-08-12T15:43:36.182-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.lider99fm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://audiostream.i9suaradio.com:1125/stream",
+   "title": "Ouvir a Rádio Líder FM 99,9 de Uruguaiana RS Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2020/04/ouvir-radio-lider-fm-999-de-uruguaiana-rs-aovivo.html"
+  },
+  "2962386222059705292": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": []
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "2962386222059705292",
+   "labels": [
+    "Caicó",
+    "Popular",
+    "RN"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2021/01/ouvir-radio-serido-fm-1007-de-caico-rn-ao-vivo-online.html",
+   "post_candidates": [
+    "https://play.wisestream.io/mundialcaico"
+   ],
+   "post_stream": "https://play.wisestream.io/mundialcaico",
+   "post_updated": "2026-11-15T23:50:04.929-03:00",
+   "reason": "ok",
+   "sites": [],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://play.wisestream.io/mundialcaico",
+   "title": "Ouvir a Rádio Mundial FM 100,7 de Caicó RN Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2021/01/ouvir-radio-serido-fm-1007-de-caico-rn-ao-vivo-online.html"
+  },
+  "3110001534922628072": {
+   "contacts": {
+    "telefone": [
+     "555137421090"
+    ],
+    "whatsapp": []
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "3110001534922628072",
+   "labels": [
+    "Popular",
+    "RS",
+    "Sobradinho"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2014/09/ouvir-radio-jacui-fm-973-de-sobradinho.html",
+   "post_candidates": [
+    "https://casthttps.suaradionanet.net/10700/stream"
+   ],
+   "post_stream": "https://casthttps.suaradionanet.net/10700/stream",
+   "post_updated": "2026-11-15T23:11:34.568-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.radiosobradinho.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://casthttps.suaradionanet.net/10700/stream",
+   "title": "Ouvir a Rádio Jacuí FM 97,3 de Sobradinho RS Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2014/09/ouvir-radio-jacui-fm-973-de-sobradinho.html"
+  },
+  "3211271039923511934": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "5562982761613",
+     "5562984808453"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "3211271039923511934",
+   "labels": [
+    "Caldas Novas",
+    "GO",
+    "Mobile",
+    "Popular",
+    "Rede_Serra_Dourada"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/08/ouvir-radio-serra-dourada-fm-907-de-caldas-novas-go-ao-vivo-online.html",
+   "post_candidates": [
+    "https://qrkkg7qqzj.zoeweb.tv/rrqcn/_definst_/rrqcn.stream/playlist.m3u8",
+    "https://www.redeserradourada.com.br/radio/caldas-novas-907-fm/"
+   ],
+   "post_stream": "https://qrkkg7qqzj.zoeweb.tv/rrqcn/_definst_/rrqcn.stream/playlist.m3u8",
+   "post_updated": "2026-11-12T14:43:46.168-03:00",
+   "reason": "ok (HLS)",
+   "sites": [],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://qrkkg7qqzj.zoeweb.tv/rrqcn/_definst_/rrqcn.stream/playlist.m3u8",
+   "title": "Ouvir a Rádio Serra Dourada FM 90,7 de Caldas Novas GO Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/08/ouvir-radio-serra-dourada-fm-907-de-caldas-novas-go-ao-vivo-online.html"
+  },
+  "3404658373311535037": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "5562997020600"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "3404658373311535037",
+   "labels": [
+    "Anápolis",
+    "GO",
+    "Mobile",
+    "Popular"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2018/10/ouvir-radio-amor-fm-1037-de-anapolis-go.html",
+   "post_candidates": [
+    "https://r10.ciclano.io/proxy/rdioamor/stream"
+   ],
+   "post_stream": "https://r10.ciclano.io/proxy/rdioamor/stream",
+   "post_updated": "2026-11-15T00:31:01.789-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.amorfm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://r10.ciclano.io/proxy/rdioamor/stream",
+   "title": "Ouvir a Rádio Amor FM de Anápolis GO Ao Vivo e Online - A Rádio do Amado Batista",
+   "url": "https://www.radiocol.com.br/2018/10/ouvir-radio-amor-fm-1037-de-anapolis-go.html"
+  },
+  "3479100631050199770": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": []
+   },
+   "fail_count": 1,
+   "first_seen": "2026-11-16",
+   "id": "3479100631050199770",
+   "labels": [
+    "GO",
+    "Goiânia",
+    "MigraçãoAmFm",
+    "Popular"
+   ],
+   "last_check": "2026-11-16",
+   "path": "/2026/11/ouvir-radio-arrocha-857-de-goiania-go.html",
+   "post_candidates": [
+    "https://radios.plus/rbc3"
+   ],
+   "post_stream": "https://radios.plus/rbc3",
+   "post_updated": "2026-11-15T01:23:17.447-03:00",
+   "reason": "certificado SSL inválido",
+   "sites": [
+    "https://radios.plus/"
+   ],
+   "source": "post",
+   "status": "off",
+   "stream": "https://radios.plus/rbc3",
+   "title": "Ouvir a Rádio Arrocha 85,7 de Goiânia GO Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/11/ouvir-radio-arrocha-857-de-goiania-go.html"
+  },
+  "3529357755993381009": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "554236233479"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "3529357755993381009",
+   "labels": [
+    "Guarapuava",
+    "Popular",
+    "PR"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2015/01/ouvir-radio-92-fm-921-de-guarapuava-pr.html",
+   "post_candidates": [
+    "https://ice.fabricahost.com.br/radio92fm"
+   ],
+   "post_stream": "https://ice.fabricahost.com.br/radio92fm",
+   "post_updated": "2026-11-15T23:34:28.990-03:00",
+   "reason": "ok",
+   "sites": [
+    "http://www.radio92fm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://ice.fabricahost.com.br/radio92fm",
+   "title": "Ouvir a Rádio 92 FM 92,1 de Guarapuava PR Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2015/01/ouvir-radio-92-fm-921-de-guarapuava-pr.html"
+  },
+  "3711716645803025882": {
+   "contacts": {
+    "telefone": [
+     "556230921037"
+    ],
+    "whatsapp": [
+     "556220201037"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "3711716645803025882",
+   "labels": [
+    "GO",
+    "Goiânia",
+    "Rede_Massa_FM",
+    "Sertanejo"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/11/ouvir-radio-massa-fm-103-7-de-goiania-go-ao-vivo.html",
+   "post_candidates": [
+    "https://play.wisestream.io/massafmgoiania"
+   ],
+   "post_stream": "https://play.wisestream.io/massafmgoiania",
+   "post_updated": "2026-11-15T00:47:57.238-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://massa.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://play.wisestream.io/massafmgoiania",
+   "title": "Ouvir a Rádio Massa FM 103,7 de Goiânia GO Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/11/ouvir-radio-massa-fm-103-7-de-goiania-go-ao-vivo.html"
+  },
+  "3788546407644017177": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "5562996231057"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "3788546407644017177",
+   "labels": [
+    "Anápolis",
+    "Esportes",
+    "GO",
+    "MigraçãoAmFm",
+    "News",
+    "Rede_Jovem_Pan_News"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/11/ouvir-radio-jovem-pan-news-fm-1057-de-anapolis-go-ao-vivo-e-online.html",
+   "post_candidates": [
+    "https://ice.fabricahost.com.br/1057anapolis"
+   ],
+   "post_stream": "https://ice.fabricahost.com.br/1057anapolis",
+   "post_updated": "2026-11-14T23:06:42.661-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://radio105-7.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://ice.fabricahost.com.br/1057anapolis",
+   "title": "Ouvir a Rádio Jovem Pan News FM 105,7 de Anápolis GO Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/11/ouvir-radio-jovem-pan-news-fm-1057-de-anapolis-go-ao-vivo-e-online.html"
+  },
+  "4033300511350146078": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "556235211937"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "4033300511350146078",
+   "labels": [
+    "Adulta",
+    "GO",
+    "Goiânia",
+    "MigraçãoAmFm"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/11/ouvir-radio-ufg-fm-885-de-goiania-go-ao-vivo.html",
+   "post_candidates": [
+    "https://streaming.ufg.br:8443/radiouniversitaria"
+   ],
+   "post_stream": "https://streaming.ufg.br:8443/radiouniversitaria",
+   "post_updated": "2026-11-15T01:42:16.162-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://radio.ufg.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://streaming.ufg.br:8443/radiouniversitaria",
+   "title": "Ouvir a Rádio UFG FM 88,5 de Goiânia GO Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/11/ouvir-radio-ufg-fm-885-de-goiania-go-ao-vivo.html"
+  },
+  "4045517885850046717": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "5548991881009"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "4045517885850046717",
+   "labels": [
+    "Florianópolis",
+    "jovem",
+    "Mobile",
+    "Rede_Atlântida"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2020/09/ouvir-radio-atlantida-fm-1009-de-florianopolis-sc-ao-vivo.html",
+   "post_candidates": [
+    "https://playerservices.streamtheworld.com/api/livestream-redirect/ATL_FLO.mp3"
+   ],
+   "post_stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/ATL_FLO.mp3",
+   "post_updated": "2026-11-12T18:28:57.349-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://atlantidasc.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/ATL_FLO.mp3",
+   "title": "Ouvir a Rádio Atlântida FM 100,9 de Florianópolis SC Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2020/09/ouvir-radio-atlantida-fm-1009-de-florianopolis-sc-ao-vivo.html"
+  },
+  "4206357029893965752": {
+   "contact_alerted": "5520622099155401",
+   "contact_suggestion": {
+    "kind": "whatsapp",
+    "post": "5562999155401",
+    "since": "2026-11-16",
+    "site": "5520622099155401",
+    "url": "https://radio96fm.net/"
+   },
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "5562999155401"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "4206357029893965752",
+   "labels": [
+    "Anápolis",
+    "GO",
+    "jovem"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2011/08/ouvir-radio-96-fm-963-de-anapolis-ao.html",
+   "post_candidates": [
+    "https://cast4.hoost.com.br:20079/live"
+   ],
+   "post_stream": "https://cast4.hoost.com.br:20079/live",
+   "post_updated": "2026-11-15T00:10:15.282-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://radio96fm.net/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://cast4.hoost.com.br:20079/live",
+   "title": "Ouvir a Rádio 96 FM 96,3 de Anápolis GO ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2011/08/ouvir-radio-96-fm-963-de-anapolis-ao.html"
+  },
+  "4431592172252869640": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "5596667147"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "4431592172252869640",
+   "labels": [
+    "Mobile",
+    "Popular",
+    "RS",
+    "Sobradinho"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/11/ouvir-radio-gazeta-fm-96-1-de-sobradinho-rs.html",
+   "post_candidates": [
+    "https://hts03.brascast.com:7108/live"
+   ],
+   "post_stream": "https://hts03.brascast.com:7108/live",
+   "post_updated": "2026-11-15T23:20:01.586-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.gaz.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://hts03.brascast.com:7108/live",
+   "title": "Ouvir a Rádio Gazeta FM 96,1 de Sobradinho RS Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/11/ouvir-radio-gazeta-fm-96-1-de-sobradinho-rs.html"
+  },
+  "4458650813867027333": {
+   "contacts": {
+    "telefone": [
+     "554132646687"
+    ],
+    "whatsapp": [
+     "5541991231023"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "4458650813867027333",
+   "labels": [
+    "Curitiba",
+    "Popular",
+    "PR"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2020/05/ouvir-radio-caioba-fm-1023-de-curitiba-pr-ao-vivo.html",
+   "post_candidates": [
+    "https://9408.brasilstream.com.br/stream"
+   ],
+   "post_stream": "https://9408.brasilstream.com.br/stream",
+   "post_updated": "2026-11-15T23:27:54.591-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://caiobafm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://9408.brasilstream.com.br/stream",
+   "title": "Ouvir a Rádio Caiobá FM 102,3 de Curitiba PR Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2020/05/ouvir-radio-caioba-fm-1023-de-curitiba-pr-ao-vivo.html"
+  },
+  "5324803904444323078": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "5561981182221"
+    ]
+   },
+   "fail_count": 1,
+   "first_seen": "2026-11-16",
+   "id": "5324803904444323078",
+   "labels": [
+    "DF",
+    "Mobile",
+    "Religiosa",
+    "Taguatinga-DF"
+   ],
+   "last_check": "2026-11-16",
+   "path": "/2024/09/ouvir-radio-brasilia-crista-fm-1051-de-taguatinga-df-ao-vivo-e-online.html",
+   "post_candidates": [
+    "https://live10.livemus.com.br:27254/stream"
+   ],
+   "post_stream": "https://live10.livemus.com.br:27254/stream",
+   "post_updated": "2024-09-18T09:12:17.970-03:00",
+   "reason": "certificado SSL inválido",
+   "sites": [
+    "https://brasiliacrista.com.br/"
+   ],
+   "source": "post",
+   "status": "off",
+   "stream": "https://live10.livemus.com.br:27254/stream",
+   "title": "Ouvir a Rádio Brasília Cristã FM 105,1 de Taguatinga DF Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2024/09/ouvir-radio-brasilia-crista-fm-1051-de-taguatinga-df-ao-vivo-e-online.html"
+  },
+  "5331018936004992678": {
+   "contacts": {
+    "telefone": [
+     "557734541819"
+    ],
+    "whatsapp": [
+     "5577999071007"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "5331018936004992678",
+   "labels": [
+    "BA",
+    "Caetité",
+    "MigraçãoAmFm",
+    "Mobile",
+    "Popular"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2020/02/ouvir-radio-educadora-santana-fm-1007-caetite-ba-ao-vivo.html",
+   "post_candidates": [
+    "https://player.rpmhost.com.br/proxy/8050"
+   ],
+   "post_stream": "https://player.rpmhost.com.br/proxy/8050",
+   "post_updated": "2026-11-15T23:38:09.252-03:00",
+   "reason": "ok",
+   "sites": [
+    "http://www.educadorasantana.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://player.rpmhost.com.br/proxy/8050",
+   "title": "Ouvir a Rádio Educadora Santana FM 100,7 de Caetité BA Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2020/02/ouvir-radio-educadora-santana-fm-1007-caetite-ba-ao-vivo.html"
+  },
+  "5532549614920778225": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": []
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "5532549614920778225",
+   "labels": [
+    "Cachoeira do Sul",
+    "Mobile",
+    "Popular",
+    "RS"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2018/06/ouvir-radio-fandango-fm-1025-de.html",
+   "post_candidates": [
+    "https://s01.transmissaodigital.com:7112/stream"
+   ],
+   "post_stream": "https://s01.transmissaodigital.com:7112/stream",
+   "post_updated": "2026-11-13T08:44:46.794-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.radiofandango.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://s01.transmissaodigital.com:7112/stream",
+   "title": "Ouvir a Rádio Fandango FM 102,5 de Cachoeira do Sul RS Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2018/06/ouvir-radio-fandango-fm-1025-de.html"
+  },
+  "600644195579955922": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "5561999350089"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "600644195579955922",
+   "labels": [
+    "Brasília",
+    "DF",
+    "Rede_89_FM_Radio_Rock",
+    "Rock"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/08/ouvir-89-fm-a-radio-rock-1005-de-brasilia-df-ao-vivo-online.html",
+   "post_candidates": [
+    "https://ice-br.fabricahost.com.br/play/89rockbrasilia"
+   ],
+   "post_stream": "https://ice-br.fabricahost.com.br/play/89rockbrasilia",
+   "post_updated": "2026-08-06T10:24:53.762-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://89brasilia.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://ice-br.fabricahost.com.br/play/89rockbrasilia",
+   "title": "Ouvir a 89 FM A Rádio Rock 100,5 de Brasília DF Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/08/ouvir-89-fm-a-radio-rock-1005-de-brasilia-df-ao-vivo-online.html"
+  },
+  "6077191773466935829": {
+   "contacts": {
+    "telefone": [
+     "556233151133"
+    ],
+    "whatsapp": [
+     "5562998410495"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "6077191773466935829",
+   "labels": [
+    "Anápolis",
+    "Evangelica",
+    "GO",
+    "MigraçãoAmFm"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2017/07/ouvir-radio-imprensa-fm-1049-de.html",
+   "post_candidates": [
+    "https://r16.ciclano.io/proxy/lidiamag/stream"
+   ],
+   "post_stream": "https://r16.ciclano.io/proxy/lidiamag/stream",
+   "post_updated": "2026-11-14T22:49:28.684-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://imprensamadureira.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://r16.ciclano.io/proxy/lidiamag/stream",
+   "title": "Ouvir a Rádio Imprensa FM 104,9 de Anápolis GO Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2017/07/ouvir-radio-imprensa-fm-1049-de.html"
+  },
+  "6088895527493861722": {
+   "contact_alerted": "556298149077",
+   "contact_suggestion": {
+    "kind": "whatsapp",
+    "post": "5562981459077",
+    "since": "2026-11-16",
+    "site": "556298149077",
+    "url": "https://www.radiovozdocoracaoimaculado.net/"
+   },
+   "contacts": {
+    "telefone": [
+     "556230983977"
+    ],
+    "whatsapp": [
+     "5562981459077"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "6088895527493861722",
+   "labels": [
+    "Anápolis",
+    "Catolica",
+    "GO",
+    "MigraçãoAmFm"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2020/05/ouvir-radio-voz-do-coracao-imaculado-fm-1077-de-anapolis-go-ao-vivo.html",
+   "post_candidates": [
+    "https://cdn-radiovoz.ciclano.io:9033/stream"
+   ],
+   "post_stream": "https://cdn-radiovoz.ciclano.io:9033/stream",
+   "post_updated": "2026-11-14T22:55:16.117-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.radiovozdocoracaoimaculado.net/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://cdn-radiovoz.ciclano.io:9033/stream",
+   "title": "Ouvir a Rádio Voz do Coração Imaculado FM 107,7 de Anápolis GO Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2020/05/ouvir-radio-voz-do-coracao-imaculado-fm-1077-de-anapolis-go-ao-vivo.html"
+  },
+  "6299943087857749237": {
+   "contacts": {
+    "telefone": [
+     "551130531040"
+    ],
+    "whatsapp": [
+     "5511983345777"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "6299943087857749237",
+   "labels": [
+    "Esportes",
+    "MigraçãoAmFm",
+    "Mobile",
+    "Popular",
+    "SP",
+    "São Paulo"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2021/04/ouvir-radio-capital-fm-775-de-sao-paulo-sp-ao-vivo-online.html",
+   "post_candidates": [
+    "https://streaming.inweb.com.br/capital"
+   ],
+   "post_stream": "https://streaming.inweb.com.br/capital",
+   "post_updated": "2026-11-14T00:21:27.061-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.capitalcomvoce.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://streaming.inweb.com.br/capital",
+   "title": "Ouvir a Rádio Capital FM 77,5 de São Paulo SP Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2021/04/ouvir-radio-capital-fm-775-de-sao-paulo-sp-ao-vivo-online.html"
+  },
+  "6549539877426865779": {
+   "contacts": {
+    "telefone": [
+     "556233119408"
+    ],
+    "whatsapp": [
+     "5562996332240"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "6549539877426865779",
+   "labels": [
+    "Anápolis",
+    "Catolica",
+    "GO",
+    "MigraçãoAmFm",
+    "Mobile",
+    "Popular"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2020/03/ouvir-radio-sao-francisco-fm-977-de-anapolis-go-ao-vivo.html",
+   "post_candidates": [
+    "https://cast.hoost.com.br:20150/stream"
+   ],
+   "post_stream": "https://cast.hoost.com.br:20150/stream",
+   "post_updated": "2026-11-14T22:45:55.151-03:00",
+   "reason": "ok",
+   "sites": [
+    "http://www.radiosaochico.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://cast.hoost.com.br:20150/stream",
+   "title": "Ouvir a Rádio São Francisco FM 97,7 de Anápolis GO Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2020/03/ouvir-radio-sao-francisco-fm-977-de-anapolis-go-ao-vivo.html"
+  },
+  "6758295665479331246": {
+   "contacts": {
+    "telefone": [
+     "553432121007"
+    ],
+    "whatsapp": [
+     "5534998861007"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "6758295665479331246",
+   "labels": [
+    "MG",
+    "Mobile",
+    "Sertanejo",
+    "Uberlândia"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2020/06/ouvir-radio-paranaiba-fm-1007-de-uberlandia-mg-ao-vivo.html",
+   "post_candidates": [
+    "https://ice.fabricahost.com.br/paranaibafm"
+   ],
+   "post_stream": "https://ice.fabricahost.com.br/paranaibafm",
+   "post_updated": "2026-11-13T22:08:28.382-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://paranaibafm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://ice.fabricahost.com.br/paranaibafm",
+   "title": "Ouvir a Rádio Paranaíba FM 100,7 de Uberlândia MG Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2020/06/ouvir-radio-paranaiba-fm-1007-de-uberlandia-mg-ao-vivo.html"
+  },
+  "6764171027980305016": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": []
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "6764171027980305016",
+   "labels": [
+    "Anápolis",
+    "Evangelica",
+    "GO",
+    "Rede_Aleluia"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2016/01/ouvir-rede-aleluia-fm-1003-de-anapolis.html",
+   "post_candidates": [
+    "https://station.azrmcsoftbroadcast.com.br/listen/radio_anapolis/anapolis"
+   ],
+   "post_stream": "https://station.azrmcsoftbroadcast.com.br/listen/radio_anapolis/anapolis",
+   "post_updated": "2026-11-14T22:48:03.179-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://redealeluia.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://station.azrmcsoftbroadcast.com.br/listen/radio_anapolis/anapolis",
+   "title": "Ouvir a Rede Aleluia FM 100,3 de Anápolis GO Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2016/01/ouvir-rede-aleluia-fm-1003-de-anapolis.html"
+  },
+  "6919504692657818705": {
+   "contacts": {
+    "telefone": [
+     "6133211313"
+    ],
+    "whatsapp": [
+     "556133211313"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "6919504692657818705",
+   "labels": [
+    "Adulta",
+    "Brasília",
+    "DF",
+    "Mobile",
+    "Rede_Alpha_FM"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/09/ouvir-radio-alpha-fm-895-ao-vivo-online-de-brasilia-df.html",
+   "post_candidates": [
+    "https://play.wisestream.io/alphafmbsb"
+   ],
+   "post_stream": "https://play.wisestream.io/alphafmbsb",
+   "post_updated": "2026-11-12T18:30:54.360-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://brasilia.alphafm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://play.wisestream.io/alphafmbsb",
+   "title": "Ouvir a Rádio Alpha FM 89,5 de Brasília DF Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/09/ouvir-radio-alpha-fm-895-ao-vivo-online-de-brasilia-df.html"
+  },
+  "6967919485524199274": {
+   "contacts": {
+    "telefone": [
+     "555137225688"
+    ],
+    "whatsapp": []
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "6967919485524199274",
+   "labels": [
+    "Cachoeira do Sul",
+    "Mobile",
+    "Popular",
+    "Rede_MaisNova",
+    "RS"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/11/ouvir-radio-maisnova-fm-965-de-cachoeira-do-sul-rs.html",
+   "post_candidates": [
+    "https://painel.sintonizar.tv.br/stream/mncachoeiradosul"
+   ],
+   "post_stream": "https://painel.sintonizar.tv.br/stream/mncachoeiradosul",
+   "post_updated": "2026-11-13T09:11:30.424-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.maisnova.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://painel.sintonizar.tv.br/stream/mncachoeiradosul",
+   "title": "Ouvir a Rádio Maisnova FM 96,5 de Cachoeira do Sul RS Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/11/ouvir-radio-maisnova-fm-965-de-cachoeira-do-sul-rs.html"
+  },
+  "6982061966148229759": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "556232939830"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "6982061966148229759",
+   "labels": [
+    "GO",
+    "Goiânia",
+    "Mobile",
+    "Popular",
+    "Rede_Sucesso_FM"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2011/08/ouvir-radio-sucesso-fm-983-de-goiania.html",
+   "post_candidates": [
+    "https://clark.jmvstream.com/stream"
+   ],
+   "post_stream": "https://clark.jmvstream.com/stream",
+   "post_updated": "2026-07-29T15:47:17.502-03:00",
+   "reason": "ok",
+   "sites": [
+    "http://www.radiosucessofm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://clark.jmvstream.com/stream",
+   "title": "Ouvir a Rádio Sucesso FM 98,3 de Goiânia GO Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2011/08/ouvir-radio-sucesso-fm-983-de-goiania.html"
+  },
+  "7097544022727978125": {
+   "contacts": {
+    "telefone": [
+     "551135099290"
+    ],
+    "whatsapp": [
+     "5508009291515"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "7097544022727978125",
+   "labels": [
+    "Mobile",
+    "Popular",
+    "Rede_Massa_FM",
+    "SP",
+    "São Paulo"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2020/03/ouvir-radio-massa-fm-929-de-sao-paulo-sp-ao-vivo.html",
+   "post_candidates": [
+    "https://live.virtualcast.com.br/massasaopaulo"
+   ],
+   "post_stream": "https://live.virtualcast.com.br/massasaopaulo",
+   "post_updated": "2026-11-12T18:30:32.870-03:00",
+   "reason": "ok",
+   "sites": [
+    "http://www.massafm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://live.virtualcast.com.br/massasaopaulo",
+   "title": "Ouvir a Rádio Massa FM 92,9 de São Paulo SP Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2020/03/ouvir-radio-massa-fm-929-de-sao-paulo-sp-ao-vivo.html"
+  },
+  "711282828367308572": {
+   "contacts": {
+    "telefone": [
+     "556733252444"
+    ],
+    "whatsapp": [
+     "5567991271027"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "711282828367308572",
+   "labels": [
+    "Assistir",
+    "Campo Grande",
+    "Mobile",
+    "MS",
+    "Popular"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2021/04/ouvir-e-assistir-a-radio-blink-102-fm-1027-de-campo-grande-ms-ao-vivo-online.html",
+   "post_candidates": [
+    "https://playerservices.streamtheworld.com/api/livestream-redirect/BLINK102FMAAC.aac"
+   ],
+   "post_stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/BLINK102FMAAC.aac",
+   "post_updated": "2026-11-14T00:12:20.314-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.blink102.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/BLINK102FMAAC.aac",
+   "title": "Ouvir e Assistir a Rádio Blink 102 FM 102,7 de Campo Grande MS Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2021/04/ouvir-e-assistir-a-radio-blink-102-fm-1027-de-campo-grande-ms-ao-vivo-online.html"
+  },
+  "7470338066123516329": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "559134251974"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "7470338066123516329",
+   "labels": [
+    "Bragança",
+    "Catolica",
+    "Mobile",
+    "PA",
+    "Popular"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/09/ouvir-radio-rosario-fm-1067-de-braganca-pa-ao-vivo-online.html",
+   "post_candidates": [
+    "https://radio3.caeteweb.com.br/rosario/radio.mp3"
+   ],
+   "post_stream": "https://radio3.caeteweb.com.br/rosario/radio.mp3",
+   "post_updated": "2026-09-24T09:38:50.908-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://fundacaoeducadora.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://radio3.caeteweb.com.br/rosario/radio.mp3",
+   "title": "Ouvir a Rádio Rosário FM 106,7 de Bragança PA Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/09/ouvir-radio-rosario-fm-1067-de-braganca-pa-ao-vivo-online.html"
+  },
+  "7620623400118575511": {
+   "contacts": {
+    "telefone": [
+     "551137713831"
+    ],
+    "whatsapp": [
+     "5591984416545"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "7620623400118575511",
+   "labels": [
+    "Mobile",
+    "Rede_Nativa_FM",
+    "Sertanejo",
+    "SP",
+    "São Paulo"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2020/03/ouvir-radio-nativa-fm-953-de-sao-paulo-sp-ao-vivo.html",
+   "post_candidates": [
+    "https://playerservices.streamtheworld.com/api/livestream-redirect/NATIVA_SP_SC"
+   ],
+   "post_stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/NATIVA_SP_SC",
+   "post_updated": "2024-12-10T13:43:25.801-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.band.uol.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/NATIVA_SP_SC",
+   "title": "Ouvir a Rádio Nativa FM 95,3 de São Paulo SP Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2020/03/ouvir-radio-nativa-fm-953-de-sao-paulo-sp-ao-vivo.html"
+  },
+  "7632718319543239641": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": []
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "7632718319543239641",
+   "labels": [
+    "Adulta-MPB",
+    "Brasília",
+    "DF",
+    "MigraçãoAmFm"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/08/ouvir-radio-93-fm-933-de-brasilia-df-ao-vivo.html",
+   "post_candidates": [
+    "https://cast.hoost.com.br:9256/stream"
+   ],
+   "post_stream": "https://cast.hoost.com.br:9256/stream",
+   "post_updated": "2026-11-13T18:36:10.681-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://networkprodutora.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://cast.hoost.com.br:9256/stream",
+   "title": "Ouvir a Rádio 93 FM 93,3 de Brasília DF Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/08/ouvir-radio-93-fm-933-de-brasilia-df-ao-vivo.html"
+  },
+  "7710691551531820921": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": []
+   },
+   "fail_count": 1,
+   "first_seen": "2026-11-16",
+   "id": "7710691551531820921",
+   "labels": [
+    "Brasília",
+    "Brazlandia",
+    "DF",
+    "l_FM",
+    "Mobile",
+    "Popular",
+    "Rede_Mais_Brasil_FM"
+   ],
+   "last_check": "2026-11-16",
+   "path": "/2025/09/ouvir-radio-mais-fm-1013-de-brasilia-df-ao-vivo-online.html",
+   "post_candidates": [
+    "https://whd1.webradios.com.br:18518/8518"
+   ],
+   "post_stream": "https://whd1.webradios.com.br:18518/8518",
+   "post_updated": "2025-09-08T22:59:31.120-03:00",
+   "reason": "tempo esgotado",
+   "sites": [
+    "https://www.maisfmbrasil.com.br/"
+   ],
+   "source": "post",
+   "status": "off",
+   "stream": "https://whd1.webradios.com.br:18518/8518",
+   "title": "Ouvir a Rádio Viva FM 101,3 de Brasília DF ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2025/09/ouvir-radio-mais-fm-1013-de-brasilia-df-ao-vivo-online.html"
+  },
+  "7787319698480618229": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": []
+   },
+   "fail_count": 1,
+   "first_seen": "2026-11-16",
+   "id": "7787319698480618229",
+   "labels": [
+    "Cadastrar"
+   ],
+   "last_check": "2026-11-16",
+   "path": "/2020/04/cadastrar-sua-radio-diretorios-site-radios-online.html",
+   "post_candidates": [
+    "https://servidor.com/radio/playlist.m3u8",
+    "https://servidor.com:8000/stream",
+    "https://www.suaradio.com.br"
+   ],
+   "post_stream": "https://servidor.com/radio/playlist.m3u8",
+   "post_updated": "2026-11-14T19:58:47.217-03:00",
+   "reason": "certificado SSL inválido",
+   "sites": [],
+   "source": "post",
+   "status": "off",
+   "stream": "https://servidor.com/radio/playlist.m3u8",
+   "title": "Cadastrar emissora de Rádio ou Webradio no portal Radiocol Brasil",
+   "url": "https://www.radiocol.com.br/2020/04/cadastrar-sua-radio-diretorios-site-radios-online.html"
+  },
+  "8017017169416775972": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "5511911119850"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "8017017169416775972",
+   "labels": [
+    "Adulta",
+    "GO",
+    "Goiânia",
+    "Mobile",
+    "Rede_Sucesso_News"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/11/ouvir-radio-metropolitana-fm-889-de-goiania-go-ao-vivo-online.html",
+   "post_candidates": [
+    "https://ice.fabricahost.com.br/88fmgoiania"
+   ],
+   "post_stream": "https://ice.fabricahost.com.br/88fmgoiania",
+   "post_updated": "2026-11-15T02:00:58.670-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.metropolitana.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://ice.fabricahost.com.br/88fmgoiania",
+   "title": "Ouviir a Rádio Metropolitana FM 88,9 de GO Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/11/ouvir-radio-metropolitana-fm-889-de-goiania-go-ao-vivo-online.html"
+  },
+  "805242358110714062": {
+   "contacts": {
+    "telefone": [
+     "557130259430"
+    ],
+    "whatsapp": []
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "805242358110714062",
+   "labels": [
+    "BA",
+    "Mobile",
+    "Popular",
+    "Salvador"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2012/01/ouvir-radio-piata-fm-943-de-salvador-ao.html",
+   "post_candidates": [
+    "https://streaming.livespanel.com:9430/stream"
+   ],
+   "post_stream": "https://streaming.livespanel.com:9430/stream",
+   "post_updated": "2026-11-15T02:09:53.679-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.piatafm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://streaming.livespanel.com:9430/stream",
+   "title": "Ouvir a Rádio Piatã FM 94,3 de Salvador BA Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2012/01/ouvir-radio-piata-fm-943-de-salvador-ao.html"
+  },
+  "8070623905915749582": {
+   "contacts": {
+    "telefone": [],
+    "whatsapp": [
+     "559134251295"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "8070623905915749582",
+   "labels": [
+    "Bragança",
+    "MigraçãoAmFm",
+    "Mobile",
+    "PA",
+    "Popular"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2026/09/ouvir-radio-educadora-fm-937-de-braganca-pa-ao-vivo-online.html",
+   "post_candidates": [
+    "https://radio3.caeteweb.com.br/educadora/radio.mp3"
+   ],
+   "post_stream": "https://radio3.caeteweb.com.br/educadora/radio.mp3",
+   "post_updated": "2026-09-24T09:27:58.690-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://www.fundacaoeducadora.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://radio3.caeteweb.com.br/educadora/radio.mp3",
+   "title": "Ouvir a Rádio Educadora FM 93,7 de Bragança PA Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2026/09/ouvir-radio-educadora-fm-937-de-braganca-pa-ao-vivo-online.html"
+  },
+  "8664223170945398409": {
+   "contacts": {
+    "telefone": [
+     "553532411509"
+    ],
+    "whatsapp": [
+     "5535997050964"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "8664223170945398409",
+   "labels": [
+    "MG",
+    "Pouso Alegre",
+    "Rede_Super_Radio_Minas",
+    "Sertanejo"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2022/10/ouvir-super-radio-minas-fm-889-de-pouso-alegre-mg-ao-vivo-online.html",
+   "post_candidates": [
+    "https://stm01.virtualcast.com.br:8350/minassgs"
+   ],
+   "post_stream": "https://stm01.virtualcast.com.br:8350/minassgs",
+   "post_updated": "2026-11-15T23:43:05.681-03:00",
+   "reason": "ok",
+   "sites": [
+    "http://www.minasfm.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://stm01.virtualcast.com.br:8350/minassgs",
+   "title": "Ouvir a Super Rádio Minas FM 88,9 de Pouso Alegre MG Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2022/10/ouvir-super-radio-minas-fm-889-de-pouso-alegre-mg-ao-vivo-online.html"
+  },
+  "9094801189796899923": {
+   "contacts": {
+    "telefone": [
+     "554732229070"
+    ],
+    "whatsapp": [
+     "5547991192730"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "9094801189796899923",
+   "labels": [
+    "Blumenau",
+    "MigraçãoAmFm",
+    "Mobile",
+    "Popular",
+    "SC"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2022/04/ouvir-radio-clube-fm-891-de-blumenau-sc-ao-vivo-e-online.html",
+   "post_candidates": [
+    "https://paineldj5.com.br:20061/stream?1789562886829"
+   ],
+   "post_stream": "https://paineldj5.com.br:20061/stream?1789562886829",
+   "post_updated": "2026-09-16T09:58:55.373-03:00",
+   "reason": "ok",
+   "sites": [
+    "https://clube.fm/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://paineldj5.com.br:20061/stream?1789562886829",
+   "title": "Ouvir a Rádio Clube FM 89,1 de Blumenau SC Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2022/04/ouvir-radio-clube-fm-891-de-blumenau-sc-ao-vivo-e-online.html"
+  },
+  "9125481203948157124": {
+   "contacts": {
+    "telefone": [
+     "556233289120"
+    ],
+    "whatsapp": [
+     "556262995280101"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "9125481203948157124",
+   "labels": [
+    "Anápolis",
+    "GO",
+    "Mobile",
+    "Popular"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2021/03/ouvir-radio-manchester-fm-933-de-anapolis-go-ao-vivo-online.html",
+   "post_candidates": [
+    "https://ssl1.transmissaodigital.com:20440/stream?1794706189342"
+   ],
+   "post_stream": "https://ssl1.transmissaodigital.com:20440/stream?1794706189342",
+   "post_updated": "2026-11-14T22:37:01.293-03:00",
+   "reason": "ok",
+   "sites": [
+    "http://www.radiomanchester.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://ssl1.transmissaodigital.com:20440/stream?1794706189342",
+   "title": "Ouvir a Rádio Manchester FM 93,3 de Anápolis GO Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2021/03/ouvir-radio-manchester-fm-933-de-anapolis-go-ao-vivo-online.html"
+  },
+  "954645745228053230": {
+   "contacts": {
+    "telefone": [
+     "556130384673"
+    ],
+    "whatsapp": [
+     "5561999291071"
+    ]
+   },
+   "fail_count": 0,
+   "first_seen": "2026-11-16",
+   "http_only": false,
+   "id": "954645745228053230",
+   "labels": [
+    "Assistir",
+    "Brasília",
+    "DF",
+    "Mobile",
+    "Sertanejo"
+   ],
+   "last_check": "2026-11-16",
+   "last_ok": "2026-11-16",
+   "path": "/2020/02/ouvir-radio-atividade-fm-de-brasilia-df-ao-vivo.html",
+   "post_candidates": [
+    "https://a.cdni.live/radioatividade/radioatividade/playlist.m3u8"
+   ],
+   "post_stream": "https://a.cdni.live/radioatividade/radioatividade/playlist.m3u8",
+   "post_updated": "2026-11-12T14:04:48.129-03:00",
+   "reason": "ok (HLS)",
+   "sites": [
+    "https://www.radioatividade.com.br/"
+   ],
+   "source": "post",
+   "status": "ok",
+   "stream": "https://a.cdni.live/radioatividade/radioatividade/playlist.m3u8",
+   "title": "Ouvir e Assistir a Rádio Atividade FM 107,1 de Brasília DF Ao Vivo e Online",
+   "url": "https://www.radiocol.com.br/2020/02/ouvir-radio-atividade-fm-de-brasilia-df-ao-vivo.html"
+  }
+ },
+ "site": "https://www.radiocol.com.br",
+ "updated": "2026-11-16 12:48"
+}
