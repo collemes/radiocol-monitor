@@ -43,7 +43,7 @@ BLOCK_HOSTS = (
     "servidor.com", "example.com", "exemplo.com", "suaradio.com.br", "seusite.com.br",
 )
 BLOCK_EXT_RE = re.compile(
-    r"\.(png|jpe?g|gif|webp|svg|ico|bmp|css|js|json|xml|pdf|docx?|zip|rar|woff2?|ttf|php)(?:[?#]|$)",
+    r"\.(png|jpe?g|gif|webp|avif|heic|svg|ico|bmp|css|js|json|xml|pdf|docx?|zip|rar|woff2?|ttf|php)(?:[?#]|$)",
     re.I,
 )
 SOCIAL_RE = re.compile(r"(facebook|instagram|twitter|youtube|tiktok|whatsapp|wa\.me|linkedin|t\.me)", re.I)

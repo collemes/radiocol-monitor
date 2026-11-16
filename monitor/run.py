@@ -10,7 +10,7 @@ import re
 from urllib.parse import unquote, urljoin, urlparse
 
 from . import config
-from .blogger import BODY_RE, fetch_post_body, fetch_post_body_raw, fetch_posts
+from .blogger import BODY_RE, fetch_post_body, fetch_post_body_raw, fetch_posts, load_blogger_backup
 from .checker import Checker
 from .extract import (classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
                       extract_streams, stream_score)
@@ -167,16 +167,66 @@ async def main():
         if popup_recs:
             log(f"{len(popup_recs)} posts com player em popup; abrindo os players…")
             sem_p = asyncio.Semaphore(10)
+            sem_wb = asyncio.Semaphore(2)   # Internet Archive: poucas consultas por vez
             week_ago_p = (datetime.now(BRT) - timedelta(days=7)).strftime("%Y-%m-%d")
+            month_ago_p = (datetime.now(BRT) - timedelta(days=30)).strftime("%Y-%m-%d")
+            backup = {}
+            for fn in config.POPUP_BACKUP_FILES:
+                fp = os.path.join(config.DATA_DIR, fn)
+                if os.path.exists(fp):
+                    try:
+                        backup.update(load_blogger_backup(fp))
+                        log(f"backup {fn}: {len(backup)} páginas de player")
+                    except Exception as e:
+                        log(f"backup {fn} ilegível: {e}")
+
+            def streams_in(html_text):
+                m_b = BODY_RE.search(html_text or "")
+                return extract_streams(m_b.group(1) if m_b else (html_text or ""))
+
+            async def from_dead_popup(rec, link):
+                """Popup de site desativado: backup do Blogger, depois Internet Archive (cache permanente)."""
+                path = urlparse(link).path
+                if path in backup:
+                    rec["popup_source"] = "backup do Blogger"
+                    return streams_in(backup[path])
+                if rec.get("popup") == link and rec.get("popup_source") == "Internet Archive" and rec.get("popup_streams"):
+                    return list(rec["popup_streams"])
+                if not config.USE_WAYBACK or (rec.get("wayback_tried") or "") >= month_ago_p:
+                    return []
+                rec["wayback_tried"] = today()
+                try:
+                    async with sem_wb:
+                        async with session.get(config.WAYBACK_API, params={"url": urlparse(link).netloc + path},
+                                               timeout=aiohttp.ClientTimeout(total=30)) as r:
+                            snap = ((await r.json(content_type=None)) or {}).get("archived_snapshots", {}).get("closest") or {}
+                        if not snap.get("available") or not snap.get("timestamp"):
+                            return []
+                        raw = f"{config.WAYBACK_WEB}/{snap['timestamp']}id_/{link}"
+                        page = await fetch_post_body_raw(session, raw)
+                        await asyncio.sleep(1)
+                except Exception:
+                    return []
+                found = streams_in(page)
+                if found:
+                    rec["popup_source"] = "Internet Archive"
+                return found
 
             async def read_popup(rec):
                 links = extract_player_links(rec.get("_content", ""), rec["url"])
+                dead = (urlparse(links[0]).hostname or "").lower() in config.DEAD_POPUP_HOSTS
                 if (rec.get("popup") == links[0] and rec.get("popup_streams")
-                        and (rec.get("popup_read") or "") >= week_ago_p):
+                        and (dead or (rec.get("popup_read") or "") >= week_ago_p)):
                     rec["_cands"] = list(rec["popup_streams"])
                     return
                 found = []
                 for link in links:
+                    if (urlparse(link).hostname or "").lower() in config.DEAD_POPUP_HOSTS:
+                        found = await from_dead_popup(rec, link)
+                        if found:
+                            rec["popup"] = link
+                            break
+                        continue
                     if "?" in link:  # stream passado na própria URL do player (?url=..., ?radio=...)
                         found += [u for u in extract_streams(unquote(link.split("?", 1)[1])) if u not in found]
                     async with sem_p:

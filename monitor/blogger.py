@@ -99,3 +99,23 @@ async def fetch_post_body_raw(session, url):
             return (await r.content.read(400_000)).decode("utf-8", "ignore")
     except Exception:
         return ""
+
+
+def load_blogger_backup(path):
+    """Lê o backup (.xml ou .xml.gz) exportado pelo Blogger: {caminho do post: html}."""
+    import gzip
+    import xml.etree.ElementTree as ET
+    opener = gzip.open if path.endswith(".gz") else open
+    with opener(path, "rb") as f:
+        root = ET.parse(f).getroot()
+    ns = {"a": "http://www.w3.org/2005/Atom"}
+    out = {}
+    for e in root.findall("a:entry", ns):
+        kinds = [c.get("term", "") for c in e.findall("a:category", ns)]
+        if kinds and not any(k.endswith("#post") for k in kinds if "kind" in k) and any("kind" in k for k in kinds):
+            continue  # comentários, configurações, modelo
+        link = next((l.get("href") for l in e.findall("a:link", ns) if l.get("rel") == "alternate"), None)
+        content = e.find("a:content", ns)
+        if link and content is not None and content.text:
+            out[urlparse(link).path] = content.text
+    return out

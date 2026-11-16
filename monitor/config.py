@@ -49,6 +49,16 @@ USE_RADIO_BROWSER = _bool("USE_RADIO_BROWSER", True)
 USE_OFFICIAL_SITE = _bool("USE_OFFICIAL_SITE", True)
 COUNTRY_CODE = os.environ.get("COUNTRY_CODE", "BR")
 
+# Páginas de player em popup que saíram do ar (ex.: o antigo blog radiosaovivo).
+# O robô não tenta abrir esses sites; procura o stream no backup do Blogger
+# (data/radiosaovivo.xml ou .xml.gz) e, se não houver, nas cópias do Internet Archive.
+DEAD_POPUP_HOSTS = [h.strip().lower() for h in os.environ.get(
+    "DEAD_POPUP_HOSTS", "radiosaovivo.radiocol.com.br").split(",") if h.strip()]
+POPUP_BACKUP_FILES = ["radiosaovivo.xml", "radiosaovivo.xml.gz"]
+USE_WAYBACK = _bool("USE_WAYBACK", True)
+WAYBACK_API = os.environ.get("WAYBACK_API", "https://archive.org/wayback/available")
+WAYBACK_WEB = os.environ.get("WAYBACK_WEB", "https://web.archive.org/web")
+
 # Limite de posts (0 = todos). Útil para testar.
 LIMIT_POSTS = _int("LIMIT_POSTS", 0)
 

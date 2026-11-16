@@ -196,7 +196,7 @@ def build_report(posts, events, today, old_urls=None):
     email_sections = [
         _table("🔴 Precisam de revisão manual (novos)", [_row(r, _sugg(r)) for r in new_off[:cap]]),
         _table("⚪ Posts sem endereço de áudio (novos)", [_row(r) for r in new_nolink[:cap]]),
-        _table("✅ Corrigidos automaticamente hoje", fixed_rows[:cap],
+        _table("✅ Endereço novo gravado na base hoje (o site usa via script do tema; o post não é alterado)", fixed_rows[:cap],
                ("Post", "Endereço antigo", "Endereço novo", "Origem")),
     ]
     if len(new_off) > cap or len(new_nolink) > cap or len(fixed_rows) > cap:
@@ -225,7 +225,7 @@ def build_report(posts, events, today, old_urls=None):
                [_row(r, _sugg(r)) for r in iframe_http]),
         _table("🔁 Botões de popup ainda sem stream https (continuam abrindo o popup)",
                [_row(r, _sugg(r)) for r in popup_http]),
-        _table("✅ Corrigidos automaticamente hoje", fixed_rows,
+        _table("✅ Endereço novo gravado na base hoje (o site usa via script do tema; o post não é alterado)", fixed_rows,
                ("Post", "Endereço antigo", "Endereço novo", "Origem")),
         _table("⏸️ Ignorados (não são post de rádio, rádios encerradas ou marcados no overrides.json)",
                [_row(r) for r in sorted(recs, key=lambda r: r.get("title", "")) if r.get("status") == "ignorado"]),
