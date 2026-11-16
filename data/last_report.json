@@ -1,14 +1,14 @@
 {
  "alertas_novos": 3,
- "corrigidos_hoje": 28,
+ "corrigidos_hoje": 36,
  "data": "2026-11-16",
- "fora_confirmado": 1506,
- "fora_do_ar": 1506,
+ "fora_confirmado": 1498,
+ "fora_do_ar": 1499,
  "iframes": 0,
  "iframes_so_http": 0,
  "iframes_trocados_por_player": 0,
  "ignorados": 31,
- "ok": 1061,
+ "ok": 1068,
  "popups": 2,
  "popups_so_http": 0,
  "popups_trocados_por_player": 1,
@@ -18,5 +18,5 @@
  "so_http": 58,
  "urls_sem_301": 1,
  "voltaram_hoje": 1,
- "whatsapp_divergente": 18
+ "whatsapp_divergente": 16
 }
