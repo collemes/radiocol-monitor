@@ -185,7 +185,9 @@
     var tits = corpo.querySelectorAll('h2,h3,h4,h5,p,div');
     for (var t = 0; t < tits.length; t++) {
       var h = tits[t];
-      if (h.children.length > 3 || !/^\s*siga\b.{0,40}redes sociais/i.test(h.textContent || '')) continue;
+      var txt = (h.textContent || '').replace(/\s+/g, ' ').trim();
+      // 'Siga nas redes sociais a Rádio X', 'A Rádio X também está nas redes sociais', 'Redes sociais', 'Siga a Rádio X'...
+      if (h.children.length > 3 || txt.length > 160 || !/redes sociais|m[íi]dias sociais|^siga\b|^acompanhe\b/i.test(txt)) continue;
       if (/^(P|DIV)$/.test(h.tagName) && ((h.textContent || '').length > 140 || h.querySelector('ul,ol,h1,h2,h3,h4,h5,h6'))) continue;
       // a lista vem logo depois do título (mesmo nível ou um nível abaixo)
       var ul = null, n = h.nextElementSibling, passos = 0;
@@ -203,7 +205,7 @@
         var rede = redeDe(a.href);
         itens.push({ a: a, rede: rede, rotulo: (li.textContent.split(':')[0] || '').trim() });
       });
-      if (!itens.length) continue;
+      if (!itens.some(function (it) { return it.rede; })) continue;   // a lista precisa ter ao menos uma rede social
       estiloRedes();
       var box = document.createElement('div');
       box.className = 'rc-redes';
