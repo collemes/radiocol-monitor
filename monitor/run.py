@@ -49,6 +49,35 @@ def log(*a):
     print(f"[{datetime.now(BRT):%H:%M:%S}]", *a, flush=True)
 
 
+async def ler_tocou(session):
+    """Avisos 'tocou / falhou' enviados pelo player dos visitantes (via Apps Script). {post_id: {...}}"""
+    if not config.TOCOU_URL:
+        return {}
+    try:
+        async with session.get(config.TOCOU_URL, timeout=aiohttp.ClientTimeout(total=40)) as r:
+            if r.status != 200:
+                return {}
+            d = json.loads(await r.text())
+            return d.get("posts") or {}
+    except Exception as ex:
+        log(f"Avisos 'tocou no Brasil' indisponíveis: {ex}")
+        return {}
+
+
+def situacao_brasil(aviso, stream, hoje):
+    """'ok' se tocou para alguém no Brasil há poucos dias; 'off' se só falhou; None sem dados."""
+    if not aviso or aviso.get("u") != stream:
+        return None, None
+    d0 = date.fromisoformat(hoje)
+    dias = lambda k, n: {d: c for d, c in (aviso.get(k) or {}).items() if (d0 - date.fromisoformat(d)).days <= n}
+    oks = dias("ok", config.TOCOU_DIAS_OK)
+    if oks:
+        return "ok", max(oks)
+    if not dias("ok", 7) and sum(dias("er", 7).values()) >= config.TOCOU_ERROS:
+        return "off", max(dias("er", 7))
+    return None, None
+
+
 def change(rec, new_url, source, note=""):
     hist = rec.setdefault("history", [])
     hist.append({"date": today(), "from": rec.get("stream"), "to": new_url, "source": source, "note": note})
@@ -325,11 +354,53 @@ async def main():
             for i, res in zip(failed, retry):
                 results[i] = res
 
+        # Servidor que não responde para NENHUMA rádio (tempo esgotado / conexão recusada) e nunca tocou para o
+        # robô: muitos servidores brasileiros bloqueiam acesso de fora do Brasil (o GitHub roda nos EUA).
+        # Esses ficam como "bloqueio": não entram como fora do ar, o site não mostra aviso e o robô não troca o link.
+        host_n, host_ok = {}, {}
+        for rec, res in zip(to_check, results):
+            h = urlparse(rec["stream"]).hostname or ""
+            host_n[h] = host_n.get(h, 0) + 1
+            host_ok[h] = host_ok.get(h, 0) + (1 if res.ok else 0)
+
+        def parece_bloqueio(rec, res):
+            h = urlparse(rec["stream"]).hostname or ""
+            if host_ok.get(h) or rec.get("last_ok"):
+                return False
+            r = res.reason or ""
+            if "tempo esgotado" in r or "Reset" in r or "Disconnected" in r:
+                return True
+            return "ConnectionRefused" in r and host_n.get(h, 0) >= 3
+
+        tocou = await ler_tocou(session)
+        if tocou:
+            log(f"Avisos de ouvintes no Brasil: {len(tocou)} posts")
         off = []
         for rec, res in zip(to_check, results):
             rec["last_check"] = today()
+            br, quando = situacao_brasil(tocou.get(rec.get("id") or ""), rec["stream"], today()) if not res.ok else (None, None)
+            if br == "ok":                     # o robô não alcança, mas tocou para ouvintes no Brasil
+                if rec.get("status") in ("off", "bloqueio"):
+                    events["recovered"].append(rec["url"])
+                rec.update(status="ok", fail_count=0, br_ok=quando, http_only=rec["stream"].startswith("http://"),
+                           reason=f"tocou para ouvintes no Brasil em {quando[8:10]}/{quando[5:7]} "
+                                  f"(o robô, fora do Brasil, recebe: {res.reason})")
+                rec.pop("suggestion", None)
+                rec.pop("alerted", None)
+                continue
+            rec.pop("br_ok", None) if res.ok else None
+            if br == "off" and not res.ok:     # falhou também para ouvintes no Brasil: fora do ar de verdade
+                rec.update(status="off", reason=f"não tocou para ouvintes no Brasil (último erro {quando[8:10]}/{quando[5:7]})")
+                rec["fail_count"] = max(rec.get("fail_count", 0) + 1, config.CONFIRM_RUNS)
+                off.append(rec)
+                continue
+            if not res.ok and parece_bloqueio(rec, res):
+                rec.update(status="bloqueio", fail_count=0,
+                           reason=f"servidor não responde ao robô (fora do Brasil) — {res.reason}")
+                rec.pop("alerted", None)
+                continue
             if res.ok:
-                if rec.get("status") == "off":
+                if rec.get("status") in ("off", "bloqueio"):
                     events["recovered"].append(rec["url"])
                 rec.update(status="ok", reason=res.reason, fail_count=0, last_ok=today())
                 rec["http_only"] = res.http_only
@@ -364,6 +435,12 @@ async def main():
         # 3c) posts com iframe que ainda só têm http: procura uma versão https em
         #     outras fontes (site oficial, Radio Browser) para poder trocar pelo player
         finder = Finder(session, checker)
+        # sites usados por 3+ posts são de rede: só vale o player da praça (cidade/frequência) do post
+        usos = {}
+        for r in posts_state.values():
+            for d in {urlparse(x).netloc.replace("www.", "") for x in r.get("sites") or []}:
+                usos[d] = usos.get(d, 0) + 1
+        finder.rede = {d for d, n in usos.items() if n >= 3}
         need_https = [r for r in to_check if (r.get("iframe") or r.get("popup")) and r.get("status") == "ok"
                       and r.get("http_only") and r.get("source") != "manual"
                       and (r.get("https_search") or "") < week_ago]

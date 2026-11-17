@@ -15,8 +15,8 @@
  */
 
 var CONFIG = {
-  GITHUB_REPO: 'SEU-USUARIO/radiocol-monitor',
-  PAGES_BASE: 'https://SEU-USUARIO.github.io/radiocol-monitor/',
+  GITHUB_REPO: 'collemes/radiocol-monitor',
+  PAGES_BASE: 'https://collemes.github.io/radiocol-monitor/',
   ADMIN_EMAIL: 'redecolbrazil@gmail.com',
   SITE: 'https://www.radiocol.com.br',
   SHARDS: 32,
@@ -100,6 +100,7 @@ function tipoNormal_(t) {
 
 // ---------------------------------------------------------------- recebimento
 function doPost(e) {
+  if (e && e.parameter && e.parameter.rc === 'tocou') return tocou_(e.parameter);   // aviso do player (visitante)
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
   try {
@@ -152,7 +153,48 @@ function doPost(e) {
   }
 }
 
-function doGet() { return json_({ ok: true, servico: 'radiocol-solicitacoes' }); }
+function doGet(e) {
+  if (e && e.parameter && e.parameter.acao === 'tocou') return json_(relatorioTocou_());   // lido pelo robô
+  return json_({ ok: true, servico: 'radiocol-solicitacoes' });
+}
+
+// ---------------------------------------------------------------------------
+// "Tocou no Brasil": o script do tema avisa quando o áudio de um post realmente toca
+// (ou falha) para um visitante. O robô roda nos EUA e alguns servidores brasileiros
+// não respondem a ele; esses avisos são a confirmação feita de dentro do Brasil.
+// Guarda um resumo pequeno por post nas Propriedades do script (últimos 10 dias).
+// ---------------------------------------------------------------------------
+function tocou_(p) {
+  var pid = String(p.p || '').replace(/\D/g, '').slice(0, 25);
+  var u = String(p.u || '').slice(0, 400);
+  if (!pid || !/^https?:\/\//i.test(u)) return json_({ ok: false });
+  var lock = LockService.getScriptLock();
+  if (!lock.tryLock(5000)) return json_({ ok: false, ocupado: true });
+  try {
+    var props = PropertiesService.getScriptProperties();
+    var chave = 't_' + pid, dia = Utilities.formatDate(new Date(), 'America/Sao_Paulo', 'yyyy-MM-dd');
+    var r = {};
+    try { r = JSON.parse(props.getProperty(chave) || '{}'); } catch (x) { r = {}; }
+    if (r.u !== u) r = { u: u, ok: {}, er: {} };                 // endereço mudou: começa de novo
+    var tipo = String(p.ok) === '1' ? 'ok' : 'er';
+    r[tipo][dia] = Math.min((r[tipo][dia] || 0) + 1, 999);
+    var limite = Utilities.formatDate(new Date(Date.now() - 10 * 864e5), 'America/Sao_Paulo', 'yyyy-MM-dd');
+    ['ok', 'er'].forEach(function (k) { Object.keys(r[k]).forEach(function (d) { if (d < limite) delete r[k][d]; }); });
+    props.setProperty(chave, JSON.stringify(r));
+    return json_({ ok: true });
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function relatorioTocou_() {
+  var todas = PropertiesService.getScriptProperties().getProperties(), out = {};
+  Object.keys(todas).forEach(function (k) {
+    if (k.indexOf('t_') !== 0) return;                         // nunca devolve outras propriedades (ex.: GITHUB_TOKEN)
+    try { out[k.slice(2)] = JSON.parse(todas[k]); } catch (x) {}
+  });
+  return { ok: true, posts: out };
+}
 
 function situacaoAtual_(pagina) {
   var path = String(pagina).replace(/^https?:\/\/[^\/]+/i, '').split('?')[0].split('#')[0];
@@ -277,9 +319,12 @@ function configurar() {
   sh.getRange(1, 1, 1, COLS.length).setValues([COLS.map(function (c) { return c[1]; })])
     .setFontWeight('bold').setBackground('#f3f3f3');
   sh.setFrozenRows(1);
+  // garante linhas e colunas suficientes (uma aba nova vem com 1000 linhas e 26 colunas)
+  var LINHAS = 5000;
+  if (sh.getMaxRows() < LINHAS) sh.insertRowsAfter(sh.getMaxRows(), LINHAS - sh.getMaxRows());
+  if (sh.getMaxColumns() < COLS.length) sh.insertColumnsAfter(sh.getMaxColumns(), COLS.length - sh.getMaxColumns());
   var regra = SpreadsheetApp.newDataValidation().requireValueInList(['Pendente', 'Aprovar', 'Aprovar remoção', 'Recusar'], true).build();
-  sh.getRange(2, C.decisao, 2000, 1).setDataValidation(regra);
-  sh.getRange(2, C.decisao, 2000, 1).setBackground('#fff8e1');
+  sh.getRange(2, C.decisao, LINHAS - 1, 1).setDataValidation(regra).setBackground('#fff8e1');
   sh.setColumnWidth(C.stream, 280); sh.setColumnWidth(C.stream_atual, 280); sh.setColumnWidth(C.situacao, 300);
   sh.hideColumns(C.bruto);
   ScriptApp.getProjectTriggers().forEach(function (t) {

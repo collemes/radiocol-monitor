@@ -94,6 +94,12 @@ def stream_score(url: str) -> int:
     return score if score >= 3 else 0
 
 
+def desescapa(t: str) -> str:
+    """JSON/JS: 'https:\\/\\/x.com\\/live' e '\\u00e3' -> texto normal."""
+    t = t.replace("\\/", "/")
+    return re.sub(r"\\u([0-9a-fA-F]{4})", lambda m: chr(int(m.group(1), 16)), t)
+
+
 def extract_streams(content: str):
     """Lista de URLs de streaming encontradas, da mais para a menos provável."""
     if not content:
@@ -120,7 +126,7 @@ def extract_streams(content: str):
         add(m.group(1), 6)
     for m in DATA_ATTR_RE.finditer(content):
         add(m.group(1), 3)
-    text = html.unescape(content)
+    text = desescapa(html.unescape(content))
     for m in URL_RE.finditer(text):
         add(m.group(0), 0)
     # streams "embutidos" em links de player (?url=https%3A%2F%2F...)

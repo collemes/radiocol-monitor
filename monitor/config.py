@@ -74,3 +74,12 @@ DRY_RUN_EMAIL = _bool("DRY_RUN_EMAIL", False)  # True = só grava o HTML em data
 
 # Link público do relatório completo (GitHub Pages), opcional
 REPORT_URL = os.environ.get("REPORT_URL", "")
+
+# "Tocou no Brasil": avisos do player dos visitantes, recebidos pelo Apps Script (mesmo web app do formulário).
+# O robô roda nos EUA; esses avisos confirmam de dentro do Brasil se a rádio toca. Vazio = desligado.
+TOCOU_URL = os.environ.get(
+    "TOCOU_URL",
+    "https://script.google.com/macros/s/AKfycbw_rfLs89RKAVD_TgY8UnC1efOAYNThCJsRMFP1s7p7zdrIl9nac6WB51nXOGdQYA9P/exec?acao=tocou")
+TOCOU_DIAS_OK = _int("TOCOU_DIAS_OK", 3)      # tocou para alguém no Brasil nos últimos N dias = está no ar
+TOCOU_ERROS = _int("TOCOU_ERROS", 3)          # N falhas no Brasil em 7 dias, sem nenhum "tocou" = fora do ar
+

@@ -25,6 +25,8 @@ def public_entry(rec):
         e["o"] = rec["post_stream"]  # endereço antigo que está no texto do post
     if rec.get("status") == "off":
         e["s"] = 0
+    if rec.get("status") in ("off", "bloqueio") or rec.get("br_ok"):
+        e["v"] = 1  # o robô não consegue confirmar: o player dos visitantes avisa se tocou (Apps Script)
     if rec.get("http_only"):
         e["h"] = 1
     if rec.get("contact_overrides"):
@@ -176,6 +178,7 @@ def build_report(posts, events, today, old_urls=None):
     off = [r for r in recs if r.get("status") == "off"]
     confirmed = [r for r in off if r.get("fail_count", 0) >= config.CONFIRM_RUNS]
     nolink = [r for r in recs if r.get("status") == "sem_link"]
+    bloqueio = [r for r in recs if r.get("status") == "bloqueio"]
     http_only = [r for r in recs if r.get("status") == "ok" and r.get("http_only")]
     iframes = [r for r in recs if r.get("iframe")]
     iframe_ok = [r for r in iframes if r.get("status") == "ok" and not r.get("http_only")]
@@ -195,6 +198,8 @@ def build_report(posts, events, today, old_urls=None):
         "fora_do_ar": len(off),
         "fora_confirmado": len(confirmed),
         "sem_link": len(nolink),
+        "bloqueio": len(bloqueio),
+        "confirmadas_brasil": sum(1 for r in recs if r.get("status") == "ok" and r.get("br_ok")),
         "so_http": len(http_only),
         "corrigidos_hoje": len(events["fixed"]),
         "voltaram_hoje": len(events["recovered"]),
@@ -223,7 +228,7 @@ def build_report(posts, events, today, old_urls=None):
                 f"<h2>{title}</h2>"
                 f"<p>{summary['posts']} posts · <b style=color:green>{summary['ok']} tocando</b> · "
                 f"<b style=color:#c00>{summary['fora_do_ar']} fora do ar</b> "
-                f"({summary['fora_confirmado']} confirmados) · {summary['sem_link']} sem link · "
+                f"({summary['fora_confirmado']} confirmados) · {summary['bloqueio']} não testáveis daqui · {summary['confirmadas_brasil']} confirmadas por ouvintes no Brasil · {summary['sem_link']} sem link · "
                 f"{summary['so_http']} só em http · {summary['corrigidos_hoje']} corrigidos hoje · "
                 f"{summary['voltaram_hoje']} voltaram sozinhos · {summary['ignorados']} ignorados "
                 f"(não são rádio, encerradas ou marcados por você) · iframes 'Ao vivo': "
@@ -262,6 +267,9 @@ def build_report(posts, events, today, old_urls=None):
         _table("🟡 Falharam hoje pela 1ª vez (aguardando confirmação)",
                [_row(r, _sugg(r)) for r in off if r not in confirmed]),
         _table("⚪ Sem endereço de áudio no post", [_row(r) for r in nolink]),
+        _table("🌎 Não deu para testar daqui — o servidor não responde ao robô (que roda fora do Brasil). "
+               "Provável bloqueio de acesso estrangeiro: confira tocando no site; o site não mostra aviso de fora do ar",
+               [_row(r) for r in sorted(bloqueio, key=lambda r: r.get("title", ""))]),
         _table("🟠 Só funcionam em http:// (o navegador pode bloquear no site https)",
                [_row(r, _sugg(r)) for r in http_only]),
         _table("🔁 Iframes 'Ao vivo' ainda sem stream https (continuam com o iframe)",

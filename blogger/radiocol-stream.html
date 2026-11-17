@@ -49,9 +49,46 @@
       if (e.c) trocarContatos(e.c);
       if (!e.u) return;
       aplicar(e);
+      if (e.v) { try { confirmarReproducao(pid, e); } catch (x) {} }
       document.dispatchEvent(new CustomEvent('radiocol:stream', { detail: e }));
     })
     .catch(function () { /* sem rede/CDN: o post continua com o link original */ });
+
+  // ---------- "Tocou no Brasil": confirma para o robô que o áudio toca para quem está no Brasil ----------
+  // Só nos posts que o robô não consegue testar (e.v = 1). Um aviso de cada tipo por post, por navegador, por dia.
+  var TOCOU_URL = 'https://script.google.com/macros/s/AKfycbw_rfLs89RKAVD_TgY8UnC1efOAYNThCJsRMFP1s7p7zdrIl9nac6WB51nXOGdQYA9P/exec';
+  function avisarTocou(pid, u, ok) {
+    var dia = new Date().toISOString().slice(0, 10), chave = 'rc-tocou-' + pid + '-' + (ok ? 1 : 0);
+    try { if (localStorage.getItem(chave) === dia) return; localStorage.setItem(chave, dia); } catch (x) {}
+    var corpo = new URLSearchParams({ rc: 'tocou', p: pid, u: u, ok: ok ? '1' : '0' });
+    try {
+      if (navigator.sendBeacon && navigator.sendBeacon(TOCOU_URL, corpo)) return;
+    } catch (x) {}
+    try { fetch(TOCOU_URL, { method: 'POST', mode: 'no-cors', body: corpo, keepalive: true }); } catch (x) {}
+  }
+  function confirmarReproducao(pid, e) {
+    var audios = document.querySelectorAll('.post-body audio');
+    Array.prototype.forEach.call(audios, function (a) {
+      if (a._rcConfirma) return;
+      a._rcConfirma = true;
+      var tentou = false, timer = null;
+      var endereco = function () {
+        var s = a.currentSrc || a.getAttribute('src') || '';
+        return /^https?:/i.test(s) && s.indexOf('data:') !== 0 ? s : e.u;   // hls.js (blob:) -> endereço da base
+      };
+      a.addEventListener('play', function () { tentou = true; });
+      a.addEventListener('playing', function () {
+        clearTimeout(timer);
+        var t0 = a.currentTime;
+        timer = setTimeout(function () {                       // 8 s tocando de verdade
+          if (!a.paused && a.currentTime > t0 + 3) avisarTocou(pid, endereco() === e.u ? e.u : endereco(), true);
+        }, 8000);
+      });
+      a.addEventListener('error', function () {
+        if (tentou && !a.hasAttribute('data-radiocol-sem-stream')) avisarTocou(pid, e.u, false);
+      });
+    });
+  }
 
   // ---------- "Ouça também": rádios da mesma cidade (ou do estado) ----------
   var VBASE = BASE.replace(/r\/$/, 'v/');   // docs/v/<uf>.json, gerado pelo robô

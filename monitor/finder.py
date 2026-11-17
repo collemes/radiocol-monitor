@@ -15,11 +15,14 @@ from urllib.parse import quote, urljoin, urlparse
 import aiohttp
 
 from . import config
-from .extract import band, extract_streams, frequency, name_tokens, norm
+import json
+
+from .extract import band, desescapa, extract_streams, frequency, name_tokens, norm
 
 IFRAME_RE = re.compile(r"""<iframe\b[^>]*?\b(?:data-)?src\s*=\s*["']([^"']+)["']""", re.I)
 SCRIPT_SRC_RE = re.compile(r"""<script\b[^>]*?\bsrc\s*=\s*["']([^"']+)["']""", re.I)
 LINK_RE = re.compile(r"""<a\b[^>]*?\bhref\s*=\s*["']([^"'#]+)["'][^>]*>(.*?)</a>""", re.I | re.S)
+API_RE = re.compile(r"""["'`]((?:https?://[^"'`\s]+)?/(?:wp-json|api)/[^"'`\s]*|[^"'`\s]+\.json(?:\?[^"'`\s]*)?)["'`]""", re.I)
 POPUP_RE = re.compile(r"""window\.open\(\s*["']([^"']+)["']""", re.I)
 # páginas e scripts que costumam ter o player da rádio
 PLAYER_HINT_RE = re.compile(r"ao[-_ ]?vivo|player|ou[çc]a|ouvir|escute|listen|live|radio[-_ ]?online|stream|tocador", re.I)
@@ -84,6 +87,9 @@ class Finder:
         self.s = session
         self.c = checker
         self.rb = None
+        self.rede = set()          # domínios usados por 3+ posts (sites de rede): o run.py preenche
+        self._sites = {}           # cache da raspagem por site (a rede é raspada 1x por execução)
+        self._listas = {}          # cache das listas de emissoras dos servidores (AzuraCast/Icecast)
 
     async def _get_text(self, url, limit=400_000):
         try:
@@ -128,72 +134,172 @@ class Finder:
         return None
 
     # ------------------------------------------------------------------ 3
+    @staticmethod
+    def _contextos(texto, urls):
+        """Para cada endereço achado, o trecho do texto em volta (onde aparece o nome da praça)."""
+        t = desescapa(texto)
+        out = []
+        for u in urls:
+            i = t.find(u)
+            if i < 0:
+                i = t.find(u.split("//", 1)[-1])
+            if i < 0:
+                out.append((u, ""))
+                continue
+            # o trecho é o item da lista onde o endereço está: objeto JSON {...} ou <li>/<option>/<a>/<tr>
+            antes, depois = t[max(0, i - 400): i], t[i + len(u): i + len(u) + 300]
+            ini = max(antes.rfind(k) for k in ("{", "<li", "<option", "<tr", "<a ", "<button", "<div"))
+            antes = antes[ini:] if ini >= 0 else antes[-200:]
+            fins = [j for j in (depois.find(k) for k in ("}", "</li", "</option", "</tr", "</a", "</button", "</div")) if j >= 0]
+            depois = depois[:min(fins)] if fins else depois[:150]
+            ctx = antes + u + depois
+            out.append((u, norm(re.sub(r"<[^>]+>", " ", ctx))))
+        return out
+
+    async def _lista_servidor(self, url):
+        """AzuraCast (/listen/... ou /radio/...): pede /api/stations e devolve todas as emissoras do servidor,
+        cada uma com o nome/descrição como contexto. Icecast: /status-json.xsl. Uma vez por servidor."""
+        pu = urlparse(url)
+        base = f"{pu.scheme}://{pu.netloc}"
+        if base in self._listas:
+            return self._listas[base]
+        self._listas[base] = []
+        achados = []
+        if re.match(r"/(listen|radio|public)/", pu.path):
+            txt = await self._get_text(base + "/api/stations", limit=2_000_000)
+            try:
+                for st in json.loads(txt) if txt else []:
+                    ctx = norm(" ".join(str(st.get(k) or "") for k in ("name", "shortcode", "description")))
+                    urls = [st.get("listen_url")] + [m.get("url") for m in st.get("mounts") or []]
+                    for u in urls:
+                        if u and u.startswith("http"):
+                            achados.append((u, ctx))
+            except Exception:
+                pass
+        if not achados:
+            txt = await self._get_text(base + "/status-json.xsl", limit=2_000_000)
+            try:
+                src = (json.loads(txt).get("icestats") or {}).get("source") if txt else None
+                for so in ([src] if isinstance(src, dict) else src or []):
+                    ctx = norm(" ".join(str(so.get(k) or "") for k in ("server_name", "server_description", "listenurl")))
+                    if so.get("listenurl"):
+                        achados.append((so["listenurl"].replace("http://", pu.scheme + "://", 1)
+                                        if pu.scheme == "https" else so["listenurl"], ctx))
+            except Exception:
+                pass
+        self._listas[base] = achados
+        return achados
+
     async def _site_candidates(self, site):
-        """Raspa o site oficial: página inicial + iframes de player + scripts de player +
-        janelas popup + até 3 páginas internas 'ao vivo/player/ouça'. Devolve os endereços achados."""
+        """Raspa o site oficial e devolve [(endereço, contexto)]: página inicial, iframes de player,
+        janelas popup, scripts (do próprio site e de players), listas JSON/API e até 3 páginas
+        internas 'ao vivo/player/ouça'. Sites de rede são raspados uma vez por execução."""
+        if site in self._sites:
+            return self._sites[site]
         cands, vistos = [], set()
+        host = urlparse(site).netloc.replace("www.", "")
 
-        def junta(lista):
-            for c in lista:
-                if c not in cands:
-                    cands.append(c)
+        def junta(pares):
+            for u, ctx in pares:
+                if u not in [c[0] for c in cands]:
+                    cands.append((u, ctx))
 
-        async def le(url, profundidade):
-            if url in vistos or len(vistos) >= 14:
+        async def le(url, profundidade, limite=400_000):
+            if url in vistos or len(vistos) >= 24:
                 return
             vistos.add(url)
-            page = await self._get_text(url)
+            page = await self._get_text(url, limit=limite)
             if not page:
                 return
-            junta(extract_streams(page))
+            junta(self._contextos(page, extract_streams(page)))
             if profundidade == 0:
                 return
-            host = urlparse(url).netloc.replace("www.", "")
+            texto = desescapa(page)
             extras = []
             for ifr in IFRAME_RE.findall(page)[:6]:                       # player em iframe
-                extras.append(urljoin(url, ifr))
+                extras.append((urljoin(url, ifr), 400_000))
             for pop in POPUP_RE.findall(page)[:3]:                        # botão que abre janelinha do player
-                extras.append(urljoin(url, pop))
-            for js in SCRIPT_SRC_RE.findall(page):                        # script do player (ex.: player.js)
+                extras.append((urljoin(url, pop), 400_000))
+            for js in SCRIPT_SRC_RE.findall(page):                        # scripts: do site (qualquer nome) e de players
                 js_url = urljoin(url, js)
-                if PLAYER_HINT_RE.search(urlparse(js_url).path) or "radio" in js_url.lower():
-                    extras.append(js_url)
+                mesmo = urlparse(js_url).netloc.replace("www.", "") == host
+                if mesmo or PLAYER_HINT_RE.search(urlparse(js_url).path) or "radio" in js_url.lower():
+                    extras.append((js_url, 2_000_000))
+            for api in API_RE.findall(texto)[:8]:                         # listas de praças em JSON / API
+                api_url = urljoin(url, api)
+                if urlparse(api_url).netloc.replace("www.", "") == host:
+                    extras.append((api_url, 2_000_000))
             internas = 0
-            for href, texto in LINK_RE.findall(page):                     # página "Ao vivo", "Ouça", "Player"
+            for href, txt in LINK_RE.findall(page):                       # página "Ao vivo", "Ouça", "Player"
                 u = urljoin(url, href.strip())
-                if internas >= 3 or not u.startswith("http"):
+                if internas >= 3 or not u.startswith("http") or urlparse(u).netloc.replace("www.", "") != host:
                     continue
-                if urlparse(u).netloc.replace("www.", "") != host:
-                    continue
-                if PLAYER_HINT_RE.search(urlparse(u).path) or PLAYER_HINT_RE.search(re.sub(r"<[^>]+>", " ", texto)):
-                    extras.append(u)
+                if PLAYER_HINT_RE.search(urlparse(u).path) or PLAYER_HINT_RE.search(re.sub(r"<[^>]+>", " ", txt)):
+                    extras.append((u, 400_000))
                     internas += 1
-            for u in extras:
-                if SKIP_HOST_RE.search(urlparse(u).netloc) or u in cands:
+            scripts = 0
+            for u, lim in extras:
+                if SKIP_HOST_RE.search(urlparse(u).netloc) or u in [c[0] for c in cands]:
                     continue
-                await le(u, profundidade - 1)
+                if lim > 400_000:
+                    scripts += 1
+                    if scripts > 10:
+                        continue
+                await le(u, 1 if lim > 400_000 else profundidade - 1, lim)   # script: ainda segue as APIs que ele chama
 
         await le(site, 2)
+        # servidores de rede (AzuraCast / Icecast): a lista completa de emissoras, com nome de cada praça
+        for u, _ in list(cands)[:6]:
+            junta(await self._lista_servidor(u))
+        self._sites[site] = cands
         return cands
+
+    @staticmethod
+    def _pontos_praca(rec, url, ctx):
+        """Quanto o endereço/trecho combina com a cidade e a frequência do post."""
+        pts = 0
+        compacto = lambda t: re.sub(r"[^a-z0-9]", "", norm(t))
+        alvo = compacto(url) + " " + compacto(ctx)
+        loc = rec.get("loc") or []
+        if loc and loc[0] and len(compacto(loc[0])) >= 4 and compacto(loc[0]) in alvo:
+            pts += 3
+        f = frequency(rec.get("title", ""))
+        if f and "." in f:
+            a, b = f.split(".")
+            if re.search(rf"(?<!\d){a}[.,_ ]?{b}(?!\d)", norm(url) + " " + ctx):
+                pts += 2
+        return pts
 
     async def from_official_site(self, rec):
         if not config.USE_OFFICIAL_SITE:
             return None
         for site in rec.get("sites", [])[:2]:
-            cands = await self._site_candidates(site)
+            pares = await self._site_candidates(site)
             if rec.get("_need_https"):
-                cands = [c for c in cands if c.startswith("https")]
+                pares = [p for p in pares if p[0].startswith("https")]
+            pares = [p for p in pares if p[0] != rec.get("stream")]
+            dominio = urlparse(site).netloc.replace("www.", "")
+            rede = dominio in self.rede or len(pares) > 3
+            if rede:
+                # site de rede: só serve o player da praça do post (cidade e/ou frequência no endereço ou ao lado dele)
+                pontuados = sorted(((self._pontos_praca(rec, u, c), u) for u, c in pares), key=lambda x: -x[0])
+                pontuados = [x for x in pontuados if x[0] > 0][:8]
+                for pts, u in pontuados:
+                    r = await self.c.check(u)
+                    if r.ok:
+                        empate = sum(1 for p, _ in pontuados if p == pts) > 1
+                        return {"url": u, "source": f"site da rede ({dominio}, praça do post)",
+                                "confidence": "high" if pts >= 3 and not empate else "suggest", "score": 0.85}
+                continue
             working = []
-            for u in cands[:12]:
-                if u == rec.get("stream"):
-                    continue
+            for u, _ in pares[:12]:
                 r = await self.c.check(u)
                 if r.ok:
                     working.append(u)
             if working:
                 https = [w for w in working if w.startswith("https")]
                 best = (https or working)[0]
-                return {"url": best, "source": f"site oficial ({urlparse(site).netloc})",
+                return {"url": best, "source": f"site oficial ({dominio})",
                         "confidence": "high" if len(set(working)) == 1 else "suggest",
                         "score": 0.9, "alternatives": working[1:4]}
         return None
@@ -211,6 +317,9 @@ class Finder:
             except Exception:
                 continue
             self.rb = None
+        self.rede = set()          # domínios usados por 3+ posts (sites de rede): o run.py preenche
+        self._sites = {}           # cache da raspagem por site (a rede é raspada 1x por execução)
+        self._listas = {}          # cache das listas de emissoras dos servidores (AzuraCast/Icecast)
         return []
 
     async def from_radio_browser(self, rec):
