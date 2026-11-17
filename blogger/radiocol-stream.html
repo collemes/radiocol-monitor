@@ -32,6 +32,8 @@
   try { prepararPopup(); } catch (err) {}
   // Post de rádio sem nenhum player: coloca o player abaixo da linha "Gênero" (corrige o card repetido)
   try { prepararSemPlayer(); } catch (err) {}
+  // Seção "Siga nas redes sociais" do post vira um card com botões
+  try { redesSociais(); } catch (err) {}
 
   // A base usa o ID do post: continua valendo mesmo se a URL do post mudar
   var meta = document.querySelector('meta[itemprop="postId"]');
@@ -145,6 +147,130 @@
     document.head.appendChild(st);
   }
 
+  // ---------- "Siga nas redes sociais": lista do post -> card com botões ----------
+  function listaRedes() { return [
+    // [teste do endereço, chave, nome, cor, ícone (Font Awesome 6 Brands)]
+    [/(^|\.)instagram\.com$/, 'instagram', 'Instagram', 'linear-gradient(45deg,#f9a03f,#e1306c 55%,#833ab4)', ''],
+    [/(^|\.)(facebook\.com|fb\.com|fb\.me)$/, 'facebook', 'Facebook', '#1877f2', ''],
+    [/(^|\.)(youtube\.com|youtu\.be)$/, 'youtube', 'YouTube', '#ff0000', ''],
+    [/(^|\.)tiktok\.com$/, 'tiktok', 'TikTok', '#111', ''],
+    [/(^|\.)(twitter\.com|x\.com)$/, 'x', 'X (Twitter)', '#111', ''],
+    [/(^|\.)(wa\.me|whatsapp\.com)$/, 'whatsapp', 'WhatsApp', '#25d366', ''],
+    [/(^|\.)(spotify\.com|spotify\.link)$/, 'spotify', 'Spotify', '#1db954', ''],
+    [/(^|\.)(t\.me|telegram\.me)$/, 'telegram', 'Telegram', '#229ed9', ''],
+    [/(^|\.)linkedin\.com$/, 'linkedin', 'LinkedIn', '#0a66c2', ''],
+    [/(^|\.)soundcloud\.com$/, 'soundcloud', 'SoundCloud', '#ff5500', ''],
+    [/(^|\.)threads\.net$/, 'threads', 'Threads', '#111', '']
+  ]; }
+  function redeDe(href) {
+    var host = '';
+    try { host = new URL(href, location.href).hostname.replace(/^www\.|^m\./, ''); } catch (x) { return null; }
+    var REDES = listaRedes();
+    for (var i = 0; i < REDES.length; i++) if (REDES[i][0].test(host)) return REDES[i];
+    return null;
+  }
+  function perfilDe(href, rede) {
+    var u;
+    try { u = new URL(href, location.href); } catch (x) { return ''; }
+    var partes = u.pathname.split('/').filter(Boolean);
+    if (rede[1] === 'whatsapp') return 'Fale com a rádio';
+    if (rede[1] === 'youtube') return partes[0] && partes[0][0] === '@' ? partes[0] : 'Canal da rádio';
+    var p = (partes[0] || '').replace(/^@/, '');
+    if (!p || /^(profile\.php|pages|channel|user|c|share|p|reel|people|groups)$/i.test(p)) return 'Perfil da rádio';
+    return '@' + decodeURIComponent(p);
+  }
+  function redesSociais() {
+    var corpo = document.querySelector('.post-body');
+    if (!corpo || corpo.querySelector('.rc-redes')) return;
+    var tits = corpo.querySelectorAll('h2,h3,h4,h5,p,div');
+    for (var t = 0; t < tits.length; t++) {
+      var h = tits[t];
+      if (h.children.length > 3 || !/^\s*siga\b.{0,40}redes sociais/i.test(h.textContent || '')) continue;
+      if (/^(P|DIV)$/.test(h.tagName) && ((h.textContent || '').length > 140 || h.querySelector('ul,ol,h1,h2,h3,h4,h5,h6'))) continue;
+      // a lista vem logo depois do título (mesmo nível ou um nível abaixo)
+      var ul = null, n = h.nextElementSibling, passos = 0;
+      while (n && passos < 4 && !ul) {
+        if (n.tagName === 'UL') ul = n;
+        else if (/^H[1-6]$/.test(n.tagName)) break;
+        else ul = n.querySelector && n.querySelector('ul');
+        n = n.nextElementSibling; passos++;
+      }
+      if (!ul) continue;
+      var itens = [];
+      ul.querySelectorAll('li').forEach(function (li) {
+        var a = li.querySelector('a[href]');
+        if (!a) return;
+        var rede = redeDe(a.href);
+        itens.push({ a: a, rede: rede, rotulo: (li.textContent.split(':')[0] || '').trim() });
+      });
+      if (!itens.length) continue;
+      estiloRedes();
+      var box = document.createElement('div');
+      box.className = 'rc-redes';
+      var grade = document.createElement('div');
+      grade.className = 'rc-redes-grade';
+      itens.forEach(function (it) {
+        var r = it.rede || [null, 'site', it.rotulo && it.rotulo.length < 25 ? it.rotulo : 'Site', '#5b6b82', ''];
+        var a = document.createElement('a');
+        a.className = 'rc-rede rc-' + r[1];
+        a.href = it.a.getAttribute('href');
+        a.target = '_blank';
+        a.rel = 'nofollow noopener';
+        var ic = document.createElement('span');
+        ic.className = 'rc-rede-ic';
+        ic.setAttribute('aria-hidden', 'true');
+        ic.style.background = r[3];
+        if (r[4]) ic.setAttribute('data-ic', r[4]);
+        else ic.textContent = r[1] === 'x' ? '𝕏' : r[1] === 'threads' ? '@' : '🌐';
+        var tx = document.createElement('span');
+        tx.className = 'rc-rede-tx';
+        var b = document.createElement('b');
+        b.textContent = r[2];
+        var s = document.createElement('small');
+        s.textContent = it.rede ? perfilDe(a.href, r) : a.hostname.replace(/^www\./, '');
+        tx.appendChild(b); tx.appendChild(s);
+        var seta = document.createElement('span');
+        seta.className = 'rc-rede-seta';
+        seta.setAttribute('aria-hidden', 'true');
+        seta.textContent = '↗';
+        a.appendChild(ic); a.appendChild(tx); a.appendChild(seta);
+        a.setAttribute('aria-label', r[2] + ' ' + s.textContent + ' (abre em nova aba)');
+        grade.appendChild(a);
+      });
+      h.parentNode.insertBefore(box, h);
+      box.appendChild(h);                 // o título continua o mesmo (bom para SEO), só ganha o estilo do card
+      h.classList.add('rc-redes-titulo');
+      box.appendChild(grade);
+      ul.style.display = 'none';
+      return;
+    }
+  }
+  function estiloRedes() {
+    if (document.getElementById('rc-redes-css')) return;
+    var st = document.createElement('style');
+    st.id = 'rc-redes-css';
+    st.textContent =
+      '.rc-redes{margin:22px 0;padding:18px;border:1px solid rgba(120,120,120,.18);border-radius:16px;background:var(--bg-cards,#fff);' +
+      'box-shadow:0 6px 20px rgba(20,40,75,.06)}' +
+      '.post-body .rc-redes .rc-redes-titulo{margin:0 0 14px!important;padding:0;font-size:17px;line-height:1.35;text-align:left!important}' +
+      '.rc-redes-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}' +
+      '.post-body a.rc-rede{display:flex;align-items:center;gap:12px;min-width:0;padding:10px 12px;border:1px solid rgba(120,120,120,.18);' +
+      'border-radius:12px;background:rgba(120,120,120,.04);color:inherit!important;text-decoration:none!important;' +
+      'transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}' +
+      '.post-body a.rc-rede:hover,.post-body a.rc-rede:focus-visible{transform:translateY(-2px);border-color:rgba(30,116,244,.35);box-shadow:0 8px 18px rgba(20,40,75,.12)}' +
+      '.rc-rede-ic{flex:0 0 40px;width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;' +
+      'color:#fff;font-size:20px;line-height:1;font-weight:700}' +
+      ".rc-rede-ic[data-ic]:before{content:attr(data-ic);font-family:'Font Awesome 6 Brands';font-weight:400;font-style:normal}" +
+      '.rc-rede-tx{display:flex;flex-direction:column;min-width:0;flex:1}' +
+      '.rc-rede-tx b{font-size:14.5px;font-weight:600;line-height:1.3}' +
+      '.rc-rede-tx small{font-size:12.5px;opacity:.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
+      '.rc-rede-seta{opacity:.45;font-size:15px;transition:opacity .2s,transform .2s}' +
+      '.post-body a.rc-rede:hover .rc-rede-seta{opacity:1;transform:translate(2px,-2px)}' +
+      '@media (max-width:480px){.rc-redes{padding:14px}.rc-redes-grade{grid-template-columns:1fr}}' +
+      '@media (prefers-reduced-motion:reduce){.post-body a.rc-rede,.rc-rede-seta{transition:none}}';
+    document.head.appendChild(st);
+  }
+
   // ---------- WhatsApp / telefone ----------
   function dig(s) { return (s || '').replace(/\D/g, ''); }
   function nacional(d) { return d.length > 11 && d.indexOf('55') === 0 ? d.slice(2) : d; }
@@ -186,6 +312,12 @@
     });
   }
 
+  function hlsProprio() {
+    var ss = document.querySelectorAll('.post-body script');
+    for (var i = 0; i < ss.length; i++) if (/\.loadSource\s*\(/.test(ss[i].textContent || '')) return true;
+    return false;
+  }
+
   // ---------- localizar a instância do MediaElement de um <audio> ----------
   function instancia(a) {
     if (a._rcPlayer && a._rcPlayer.setSrc) return a._rcPlayer;
@@ -214,6 +346,9 @@
       }
       var atual = fontes.length ? fontes[0].getAttribute('src') : a.getAttribute('src');
       if (atual === e.u) continue;                             // já está certo
+      // Post com hls.js próprio (hls.loadSource no script do post): ele mesmo toca o .m3u8.
+      // Trocar o src aqui derruba a conexão do hls.js e cria um segundo hls no mesmo <audio>.
+      if (tipo(e.u) !== 'audio/mpeg' && (/^blob:/i.test(a.getAttribute('src') || '') || hlsProprio())) continue;
       if (e.o && atual && atual !== e.o) continue;             // não é o player da rádio
       for (var k = 0; k < fontes.length; k++) { fontes[k].setAttribute('src', e.u); fontes[k].setAttribute('type', tipo(e.u)); }
       if (!fontes.length) a.setAttribute('src', e.u);
