@@ -17,7 +17,19 @@ import aiohttp
 from . import config
 from .extract import band, extract_streams, frequency, name_tokens, norm
 
-IFRAME_RE = re.compile(r"""<iframe\b[^>]*?\bsrc\s*=\s*["']([^"']+)["']""", re.I)
+IFRAME_RE = re.compile(r"""<iframe\b[^>]*?\b(?:data-)?src\s*=\s*["']([^"']+)["']""", re.I)
+SCRIPT_SRC_RE = re.compile(r"""<script\b[^>]*?\bsrc\s*=\s*["']([^"']+)["']""", re.I)
+LINK_RE = re.compile(r"""<a\b[^>]*?\bhref\s*=\s*["']([^"'#]+)["'][^>]*>(.*?)</a>""", re.I | re.S)
+POPUP_RE = re.compile(r"""window\.open\(\s*["']([^"']+)["']""", re.I)
+# páginas e scripts que costumam ter o player da rádio
+PLAYER_HINT_RE = re.compile(r"ao[-_ ]?vivo|player|ou[çc]a|ouvir|escute|listen|live|radio[-_ ]?online|stream|tocador", re.I)
+SKIP_HOST_RE = re.compile(r"youtube|youtu\.be|facebook|instagram|google|twitter|x\.com|tiktok|whatsapp|wa\.me|"
+                          r"doubleclick|gstatic|cloudflare|jquery|bootstrap|wp-includes|recaptcha|cookie|analytics|"
+                          r"hotjar|clarity|pixel|fonts\.|gravatar|addtoany|sharethis|onesignal", re.I)
+BROWSER_HEADERS = {
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.6",
+}
 RB_SERVERS = [
     "https://de1.api.radio-browser.info",
     "https://fi1.api.radio-browser.info",
@@ -75,12 +87,12 @@ class Finder:
 
     async def _get_text(self, url, limit=400_000):
         try:
-            async with self.s.get(url, headers={"User-Agent": config.USER_AGENT},
+            async with self.s.get(url, headers={"User-Agent": config.USER_AGENT, **BROWSER_HEADERS},
                                   timeout=aiohttp.ClientTimeout(total=20)) as r:
                 if r.status >= 400:
                     return ""
                 ct = r.headers.get("Content-Type", "")
-                if "html" not in ct and "text" not in ct and "json" not in ct:
+                if not any(k in ct for k in ("html", "text", "json", "javascript", "ecmascript")):
                     return ""
                 return (await r.content.read(limit)).decode("utf-8", "ignore")
         except Exception:
@@ -116,23 +128,65 @@ class Finder:
         return None
 
     # ------------------------------------------------------------------ 3
+    async def _site_candidates(self, site):
+        """Raspa o site oficial: página inicial + iframes de player + scripts de player +
+        janelas popup + até 3 páginas internas 'ao vivo/player/ouça'. Devolve os endereços achados."""
+        cands, vistos = [], set()
+
+        def junta(lista):
+            for c in lista:
+                if c not in cands:
+                    cands.append(c)
+
+        async def le(url, profundidade):
+            if url in vistos or len(vistos) >= 14:
+                return
+            vistos.add(url)
+            page = await self._get_text(url)
+            if not page:
+                return
+            junta(extract_streams(page))
+            if profundidade == 0:
+                return
+            host = urlparse(url).netloc.replace("www.", "")
+            extras = []
+            for ifr in IFRAME_RE.findall(page)[:6]:                       # player em iframe
+                extras.append(urljoin(url, ifr))
+            for pop in POPUP_RE.findall(page)[:3]:                        # botão que abre janelinha do player
+                extras.append(urljoin(url, pop))
+            for js in SCRIPT_SRC_RE.findall(page):                        # script do player (ex.: player.js)
+                js_url = urljoin(url, js)
+                if PLAYER_HINT_RE.search(urlparse(js_url).path) or "radio" in js_url.lower():
+                    extras.append(js_url)
+            internas = 0
+            for href, texto in LINK_RE.findall(page):                     # página "Ao vivo", "Ouça", "Player"
+                u = urljoin(url, href.strip())
+                if internas >= 3 or not u.startswith("http"):
+                    continue
+                if urlparse(u).netloc.replace("www.", "") != host:
+                    continue
+                if PLAYER_HINT_RE.search(urlparse(u).path) or PLAYER_HINT_RE.search(re.sub(r"<[^>]+>", " ", texto)):
+                    extras.append(u)
+                    internas += 1
+            for u in extras:
+                if SKIP_HOST_RE.search(urlparse(u).netloc) or u in cands:
+                    continue
+                await le(u, profundidade - 1)
+
+        await le(site, 2)
+        return cands
+
     async def from_official_site(self, rec):
         if not config.USE_OFFICIAL_SITE:
             return None
         for site in rec.get("sites", [])[:2]:
-            page = await self._get_text(site)
-            if not page:
-                continue
-            cands = extract_streams(page)
-            for ifr in IFRAME_RE.findall(page)[:4]:
-                ifr_url = urljoin(site, ifr)
-                if "youtube" in ifr_url or "facebook" in ifr_url or "google" in ifr_url:
-                    continue
-                cands += [c for c in extract_streams(await self._get_text(ifr_url)) if c not in cands]
+            cands = await self._site_candidates(site)
             if rec.get("_need_https"):
                 cands = [c for c in cands if c.startswith("https")]
             working = []
-            for u in cands[:8]:
+            for u in cands[:12]:
+                if u == rec.get("stream"):
+                    continue
                 r = await self.c.check(u)
                 if r.ok:
                     working.append(u)

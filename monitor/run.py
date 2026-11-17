@@ -3,7 +3,7 @@ import asyncio
 import json
 import os
 import time
-from datetime import datetime, timezone, timedelta
+from datetime import date, datetime, timezone, timedelta
 
 import aiohttp
 import re
@@ -390,8 +390,15 @@ async def main():
 
         # 4) procura substitutos para os que caíram ---------------------------------
         off.sort(key=lambda r: -r.get("fail_count", 0))
-        search = off[: config.MAX_SEARCH]
-        log(f"{len(off)} fora do ar; procurando substitutos para {len(search)}…")
+        # posts sem nenhum endereço de áudio, mas com site oficial: procura o player no site (1x por semana)
+        sem_link = [r for r in posts_state.values()
+                    if r.get("status") == "sem_link" and r.get("sites") and r.get("source") != "manual"
+                    and (not r.get("site_tried") or (date.fromisoformat(today()) - date.fromisoformat(r["site_tried"])).days >= 7)]
+        search = (off + sem_link)[: config.MAX_SEARCH]
+        for r in search:
+            if r.get("status") == "sem_link":
+                r["site_tried"] = today()
+        log(f"{len(off)} fora do ar e {len(sem_link)} sem link com site; procurando para {len(search)}…")
         sem = asyncio.Semaphore(15)
 
         async def fix(rec):
