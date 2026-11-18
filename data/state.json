@@ -2525,7 +2525,6 @@
    "wa_post_visto": "553535513300"
   },
   "1144507362066323832": {
-   "alerted": "2026-11-18",
    "contact_alerted": "555332521144",
    "contact_suggestion": {
     "kind": "whatsapp",
@@ -2542,7 +2541,7 @@
      "5553999026847"
     ]
    },
-   "fail_count": 3,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -2551,6 +2550,13 @@
      "note": "",
      "source": "site oficial (www.radiocultura1030.com.br)",
      "to": "https://sv12.hdradios.net:7506/stream"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://sv12.hdradios.net:7506/stream",
+     "note": "o endereço do robô falhou e o link do post toca (conferido pelo dono)",
+     "source": "post",
+     "to": "https://ssl.hdradios.net:7506/;"
     }
    ],
    "http_only": false,
@@ -2574,14 +2580,14 @@
    ],
    "post_stream": "https://ssl.hdradios.net:7506/;",
    "post_updated": "2021-04-30T21:31:41.664-03:00",
-   "reason": "HTTP 401",
+   "reason": "toca no navegador; o servidor recusa o robô (HTTP 401)",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.radiocultura1030.com.br/"
    ],
-   "source": "site oficial (www.radiocultura1030.com.br)",
-   "status": "off",
-   "stream": "https://sv12.hdradios.net:7506/stream",
+   "source": "post",
+   "status": "bloqueio",
+   "stream": "https://ssl.hdradios.net:7506/;",
    "title": "Ouvir a Rádio Cultura FM 93,5 de Canguçu RS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/11/ouvir-radio-cultura-am-1030-de-cangucu.html",
    "wa_post_visto": "5553999026847"
@@ -5403,7 +5409,6 @@
    "wa_post_visto": "5519996439110"
   },
   "1359579113357367976": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -5429,13 +5434,13 @@
    ],
    "post_stream": "https://18443.live.streamtheworld.com/SP_RADIOONLINE2AAC.aac",
    "post_updated": "2021-08-21T20:06:31.161-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.ipda.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://18443.live.streamtheworld.com/SP_RADIOONLINE2AAC.aac",
    "title": "Ouvir a Super Rádio Deus é Amor AM 640 de Londrina PR Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/05/ouvir-super-radio-deus-e-amor-am-640-de.html"
@@ -6959,7 +6964,6 @@
    "url": "https://www.radiocol.com.br/2016/04/ouvir-radio-boas-novas-fm-1079-de.html"
   },
   "1440156584253445403": {
-   "alerted": "2026-11-16",
    "contact_alerted": "5521999925097",
    "contacts": {
     "telefone": [
@@ -6989,13 +6993,13 @@
    ],
    "post_stream": "https://18163.live.streamtheworld.com/MELODIAFMAAC.aac?",
    "post_updated": "2022-07-04T20:44:41.704-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.melodia.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://18163.live.streamtheworld.com/MELODIAFMAAC.aac?",
    "title": "Ouvir a Rádio Melodia FM 97,5 do Rio de Janeiro RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/03/ouvir-radio-melodia-fm-975-do-rio-de-janeiro-rj-ao-vivo.html",
@@ -9680,7 +9684,6 @@
    "wa_post_visto": "554632322233"
   },
   "1614379723396015294": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "556734481604"
@@ -9711,13 +9714,13 @@
    ],
    "post_stream": "https://stream.radiosms.com.br/radio/8040/;",
    "post_updated": "2021-03-22T21:55:56.763-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.radiojotafm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://stream.radiosms.com.br/radio/8040/;",
    "title": "Ouvir a Rádio Pindorama Jota FM 100.7 de Sidrolândia MS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/02/ouvir-radio-pindorama-jota-fm-1007-de.html",
@@ -13683,7 +13686,6 @@
    "url": "https://www.radiocol.com.br/2019/01/ouvir-radio-divinopolis-fm-1023-divinopolis-mg.html"
   },
   "1868117865477276923": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -13710,13 +13712,13 @@
    ],
    "post_stream": "http://17813.live.streamtheworld.com/ESTACION40AAC_SC",
    "post_updated": "2020-08-24T22:51:26.203-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "http://www.estacion40.com.py/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "http://17813.live.streamtheworld.com/ESTACION40AAC_SC",
    "title": "Ouvir a Rádio Estación 40 FM 91,1 de Assunção Paraguai Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/10/ouvir-radio-estacion-40-fm-911-de.html"
@@ -13992,7 +13994,6 @@
    "wayback_tried": "2026-11-16"
   },
   "1892031113530543202": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": [
@@ -14020,13 +14021,13 @@
    ],
    "post_stream": "https://5a2b083e9f360.streamlock.net/confresa/confresa.stream/playlist.m3u8",
    "post_updated": "2022-08-02T20:54:53.583-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "http://www.redeterrafm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://5a2b083e9f360.streamlock.net/confresa/confresa.stream/playlist.m3u8",
    "title": "Ouvir a Rádio Terra FM 88,5 de Confresa MT Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2021/03/ouvir-radio-terra-fm-977-de-confresa-mt-ao-vivo-e-online.html",
@@ -14892,7 +14893,6 @@
    "wayback_tried": "2026-11-16"
   },
   "193745707018801112": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "556934183353"
@@ -14921,11 +14921,11 @@
    ],
    "post_stream": "https://player.painelvox.com/player-ssl/8232/;",
    "post_updated": "2020-10-22T00:06:17.672-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://player.painelvox.com/player-ssl/8232/;",
    "title": "Ouvir a Rádio Vitória Régia FM (Parecis) 88,5 de Nova Brasilândia do Oeste RO Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/05/ouvir-radio-vitoria-regia-fm-885-de.html",
@@ -18004,7 +18004,6 @@
    "url": "https://www.radiocol.com.br/2019/08/ouvir-web-radio-audio-rock-de-santiago-rs-online.html"
   },
   "2155484006879284817": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "557136220000"
@@ -18034,13 +18033,13 @@
    ],
    "post_stream": "https://live03.dgradios.com/station/8100/sucesso_salvador",
    "post_updated": "2021-04-02T20:33:07.044-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "http://www.radiosucessofm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://live03.dgradios.com/station/8100/sucesso_salvador",
    "title": "Ouvir a Rádio Sucesso FM 93,1 de Salvador BA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2021/04/ouvir-radio-sucesso-fm-931-de-salvador-ba-ao-vivo-online.html",
@@ -20676,7 +20675,6 @@
    "url": "https://www.radiocol.com.br/2015/09/ouvir-radio-jovem-pan-fm-945-de-dracena.html"
   },
   "2339666128113617179": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "554540539333"
@@ -20704,13 +20702,13 @@
    ],
    "post_stream": "https://shout35.crossradio.com.br:18038/1;",
    "post_updated": "2021-10-07T22:07:24.536-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://jovempan.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://shout35.crossradio.com.br:18038/1;",
    "title": "Ouvir a Rádio Jovem Pan FM 93,3 de Foz do Iguaçu PR Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2021/10/ouvir-radio-jovem-pan-fm-933-de-foz-do-iguacu-pr-ao-e-online.html"
@@ -31119,7 +31117,6 @@
    "wa_post_visto": "5517996689870"
   },
   "3057686785670662732": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": [
@@ -31146,13 +31143,13 @@
    ],
    "post_stream": "https://live03.dgradios.com/station/8030/cancellaam",
    "post_updated": "2021-04-02T21:45:37.516-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://sistemacancella.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://live03.dgradios.com/station/8030/cancellaam",
    "title": "Ouvir a Rádio Cancella AM 710 de Ituiutaba MG Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/04/ouvir-radio-cancella-am-710-de.html",
@@ -32039,7 +32036,6 @@
    "url": "https://www.radiocol.com.br/2017/12/ouvir-radio-terra-brasil-fm-967-de.html"
   },
   "3118348963137757952": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "556734211440"
@@ -32067,13 +32063,13 @@
    ],
    "post_stream": "https://18543.live.streamtheworld.com/MS_RADIOONLINE2AAC.aac",
    "post_updated": "2021-03-24T21:51:03.590-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.ipda.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://18543.live.streamtheworld.com/MS_RADIOONLINE2AAC.aac",
    "title": "Ouvir a Rádio Clube - Deus é Amor/A Voz da Libertação AM 720 de Dourados MS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/10/ouvir-radio-clube-deus-e-amora-voz-da.html"
@@ -32360,7 +32356,6 @@
    "url": "https://www.radiocol.com.br/2013/01/rede-da-fe-fm-1053-de-camanducaia-ao.html"
   },
   "3155916971747210856": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -32389,11 +32384,11 @@
    ],
    "post_stream": "http://www.portalternurafm.com.br/radio-meteorologia",
    "post_updated": "2020-08-11T21:06:53.608-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "http://www.portalternurafm.com.br/radio-meteorologia",
    "title": "Ouvir a Rádio Meteorologia AM 4845 (Ondas Curtas) de Ibitinga SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/05/ouvir-radio-meteorologia-am-4845-ondas.html"
@@ -40933,7 +40928,6 @@
    "wayback_tried": "2026-11-16"
   },
   "3671544046858498300": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "551633636400"
@@ -40964,13 +40958,13 @@
    ],
    "post_stream": "https://streaming.empresaspioneiras.com.br/cbnsaocarlos/stream.m3u8",
    "post_updated": "2022-08-29T21:31:58.320-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.cbnsaocarlos.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://streaming.empresaspioneiras.com.br/cbnsaocarlos/stream.m3u8",
    "title": "Ouvir a Rádio CBN FM 103,9 de São Carlos SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2019/12/radio-cbn-fm-1039-de-sao-carlos-sp-online.html",
@@ -41140,7 +41134,6 @@
    "wa_post_visto": "5549991198488"
   },
   "3695572999585590171": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "554239015801"
@@ -41170,13 +41163,13 @@
    ],
    "post_stream": "https://shout35.crossradio.com.br:18010/1",
    "post_updated": "2021-12-21T21:25:03.413-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://jovempan.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://shout35.crossradio.com.br:18010/1",
    "title": "Ouvir a Rádio Jovem Pan FM 103,5 de Ponta Grossa PR Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/12/ouvir-radio-jovem-pan-fm-1035-de-ponta.html",
@@ -41579,7 +41572,6 @@
    "wa_post_visto": "556220201037"
   },
   "3711843154533371010": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "556734481604"
@@ -41609,13 +41601,13 @@
    ],
    "post_stream": "https://stream.radiosms.com.br/radio/8060/;",
    "post_updated": "2021-03-22T22:04:06.961-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.radiojotafm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://stream.radiosms.com.br/radio/8060/;",
    "title": "Ouvir a Rádio Jota FM 99.5 de Aparecida do Taboado MS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/02/ouvir-radio-jota-fm-995-de-aparecida-do.html",
@@ -45995,7 +45987,6 @@
    "url": "https://www.radiocol.com.br/2015/07/ouvir-rup-radio-universitaria.html"
   },
   "3974085652114385159": {
-   "alerted": "2026-11-17",
    "contacts": {
     "telefone": [],
     "whatsapp": [
@@ -46026,13 +46017,13 @@
    ],
    "post_stream": "https://player.painelvox.com/player-ssl/8274",
    "post_updated": "2021-06-24T14:13:50.077-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.massafm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://player.painelvox.com/player-ssl/8274",
    "title": "Ouvir a Rádio Massa FM 106,7 de Colatina ES Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/09/ouvir-radio-massa-fm-1067-de-colatina-es-ao-vivo.html",
@@ -46764,7 +46755,6 @@
    "wa_post_visto": "5561996310292"
   },
   "4004795833192705537": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -46790,13 +46780,13 @@
    ],
    "post_stream": "https://18543.live.streamtheworld.com/MT_RADIOONLINE2AAC.aac",
    "post_updated": "2021-03-24T21:56:00.631-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.ipda.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://18543.live.streamtheworld.com/MT_RADIOONLINE2AAC.aac",
    "title": "Ouvir a Rádio Deus é Amor AM 710 de Cuiabá MT Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/10/ouvir-radio-deus-e-amor-am-710-de.html"
@@ -49836,7 +49826,6 @@
    "wa_post_visto": "5566996346964"
   },
   "4178812248470308660": {
-   "alerted": "2026-11-17",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -49875,13 +49864,13 @@
    ],
    "post_stream": "http://ice1.crossradio.com.br:8536/live.aac",
    "post_updated": "2020-08-18T21:18:48.534-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "http://www.jovempannewscampinas.com.br/"
    ],
    "source": "site oficial (www.jovempannewscampinas.com.br)",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://stm11.srvstm.com:6808/stream",
    "title": "Ouvir a Rádio Jovem Pan News AM 1230 de Campinas SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/03/ouvir-radio-jovem-pan-news-am-1230-de.html"
@@ -50011,7 +50000,6 @@
    "url": "https://www.radiocol.com.br/2015/04/ouvir-radio-97-fm-977-de-foz-do-iguacu.html"
   },
   "4190139452117917514": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "556434319850"
@@ -50039,13 +50027,13 @@
    ],
    "post_stream": "https://live03.dgradios.com/station/8110/sucesso_itumbiara",
    "post_updated": "2021-02-26T22:05:49.534-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "http://www.radiosucessofm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://live03.dgradios.com/station/8110/sucesso_itumbiara",
    "title": "Ouvir a Rádio Sucesso FM 98,5 de Itumbiara GO Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/04/ouvir-radio-sucesso-fm-985-de-itumbiara.html"
@@ -61681,7 +61669,6 @@
    "url": "https://www.radiocol.com.br/2017/11/ouvir-radio-sociedade-am-1250-de.html"
   },
   "492855189668512475": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": [
@@ -61710,13 +61697,13 @@
    ],
    "post_stream": "https://live03.dgradios.com/station/8120/sucesso_catalao",
    "post_updated": "2021-02-26T23:06:46.614-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "http://www.radiosucessofm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://live03.dgradios.com/station/8120/sucesso_catalao",
    "title": "Ouvir a Rádio Sucesso FM 97,5 de Catalão GO Ao vivo e Online",
    "url": "https://www.radiocol.com.br/2012/03/ouvir-radio-sucesso-fm-975-de-catalao.html",
@@ -65862,7 +65849,6 @@
    "url": "https://www.radiocol.com.br/2018/04/ouvir-radio-top-fm-901-de-mongagua-sp.html"
   },
   "5165055630493442365": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -65888,11 +65874,11 @@
    ],
    "post_stream": "https://stream.zeno.fm/nkggqp35qnruv",
    "post_updated": "2020-12-20T22:00:32.667-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://stream.zeno.fm/nkggqp35qnruv",
    "title": "Ouvir a Web Rádio Voo Livre FM de Água Doce do Maranhão MA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2019/12/web-radio-voo-livre-fm-de-agua-doce-do-maranhao-ma-online.html"
@@ -66380,7 +66366,6 @@
    "wa_post_visto": "5547999280334"
   },
   "5183869757128921986": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "555435221389"
@@ -66410,13 +66395,13 @@
    ],
    "post_stream": "https://r15.ciclano.io:14373/stream://r15.ciclano.io:4283/stream",
    "post_updated": "2021-05-06T19:34:47.817-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-17",
    "sites": [
     "http://www.redetche.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://r15.ciclano.io:14373/stream://r15.ciclano.io:4283/stream",
    "title": "Ouvir a Rede Tchê AM 1200 de Erechim RS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/10/ouvir-rede-tche-am-1200-de-erechim-rs.html",
@@ -67541,7 +67526,6 @@
    "url": "https://www.radiocol.com.br/2012/07/ouvir-rede-aleluia-fm-919-de-recife-ao.html"
   },
   "5255630717940685595": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -67567,11 +67551,11 @@
    ],
    "post_stream": "https://cloud1.cdnseguro.com:2582/stream",
    "post_updated": "2022-06-29T21:38:40.920-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://cloud1.cdnseguro.com:2582/stream",
    "title": "Ouvir a Rádio América Canção Nova AM 780 de São Paulo SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2022/06/ouvir-radio-america-cancao-nova-am-780-de-sao-paulo-sp-ao-vivo-e-online.html"
@@ -71012,7 +70996,6 @@
    "url": "https://www.radiocol.com.br/2012/09/ouvir-radio-102-fm-1025-de-itaperuna-ao.html"
   },
   "5486234626373549478": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "554532254366"
@@ -71042,13 +71025,13 @@
    ],
    "post_stream": "https://shout35.crossradio.com.br:18008/1",
    "post_updated": "2021-11-21T22:48:15.603-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://jovempan.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://shout35.crossradio.com.br:18008/1",
    "title": "Ouvir a Rádio Jovem Pan FM 101,5 de Cascavel PR Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/04/ouvir-radio-jovem-pan-fm-1015-de.html",
@@ -74995,7 +74978,6 @@
    "url": "https://www.radiocol.com.br/2018/07/ouvir-radio-barra-fm-1069-de-barra-de.html"
   },
   "5744462037149566393": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -75023,13 +75005,13 @@
    ],
    "post_stream": "http://17813.live.streamtheworld.com/ESTACION40AAC_SC",
    "post_updated": "2020-08-24T22:51:47.126-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "http://www.estacion40.com.py/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "http://17813.live.streamtheworld.com/ESTACION40AAC_SC",
    "title": "Ouvir a Rádio Estación 40 FM 90,5 de Pedro Juan Caballero Paraguai Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/10/ouvir-radio-estacion-40-fm-905-de-pedro.html"
@@ -75931,7 +75913,6 @@
    "wa_post_visto": "5586995919251"
   },
   "5786611574622081871": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "558432046419"
@@ -75962,13 +75943,13 @@
    ],
    "post_stream": "https://radio.saopaulo01.com.br:10973/stream",
    "post_updated": "2021-01-16T20:18:30.059-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://cbnnatal.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://radio.saopaulo01.com.br:10973/stream",
    "title": "Ouvir a Rádio CBN FM 91,1 de Natal RN Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2017/09/ouvir-radio-cbn-fm-911-de-natal-rn-ao.html",
@@ -81293,7 +81274,6 @@
    "wa_post_visto": "5538999129393"
   },
   "6139304039377166562": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "551935811902"
@@ -81322,13 +81302,13 @@
    ],
    "post_stream": "https://ssl.streamproarte.com.br:7260/stream",
    "post_updated": "2022-05-31T21:35:09.345-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.inovadorafm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://ssl.streamproarte.com.br:7260/stream",
    "title": "Ouvir a Rádio Inovadora FM Gospel 89,1 de Porto Ferreira SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/07/ouvir-radio-inovadora-fm-gospel-891-de.html",
@@ -82416,7 +82396,6 @@
    "url": "https://www.radiocol.com.br/2021/03/ouvir-radio-jovem-pan-fm-1029-de-rondonopolis-mt-ao-vivo-online.html"
   },
   "6219335410416473110": {
-   "alerted": "2026-11-18",
    "confianca": 0.9,
    "contacts": {
     "telefone": [],
@@ -82455,13 +82434,13 @@
    ],
    "post_stream": "http://209.126.127.123:8310/live",
    "post_updated": "2020-08-25T20:57:02.800-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "http://www.vozdovale.com.br/"
    ],
    "source": "site oficial (vozdovale.com.br) — tocou no navegador [navegador]",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://01.megadinamica.com:7080/live",
    "title": "Ouvir a Rádio Voz do Vale FM 103,3 de Cândido Mota e Assis SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/01/ouvir-radio-voz-do-vale-fm-1033-de.html"
@@ -84769,13 +84748,13 @@
    ],
    "post_stream": "https://stm01.virtualcast.com.br:8614/live",
    "post_updated": "2020-10-04T22:35:41.096-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.radioparaense.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://stm01.virtualcast.com.br:8614/live",
    "title": "Ouvir a Rádio Paraense FM 102,1 de Castanhal PA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/02/ouvir-radio-paraense-fm-1021-de.html",
@@ -86491,7 +86470,6 @@
    "url": "https://www.radiocol.com.br/2017/09/ouvir-radio-verde-vale-am-570-de.html"
   },
   "6443702868154868018": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -86518,13 +86496,13 @@
    ],
    "post_stream": "http://stm40.conectastm.com:7572/;",
    "post_updated": "2020-08-15T23:23:51.402-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "http://www.radioculturaguaira.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "http://stm40.conectastm.com:7572/;",
    "title": "Ouvir a Rádio Cultura FM 90,1 de Guaíra SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/02/ouvir-radio-cultura-fm-901-de-guaira-ao.html"
@@ -87063,7 +87041,6 @@
    "wa_post_visto": "556993277139"
   },
   "647675256256528527": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -87092,13 +87069,13 @@
    ],
    "post_stream": "http://1061.live.streamtheworld.com:3690/SP_STUDIOC_SC",
    "post_updated": "2020-08-24T22:59:31.439-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "http://www.ipda.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "http://1061.live.streamtheworld.com:3690/SP_STUDIOC_SC",
    "title": "Ouvir a Rádio Deus é Amor FM 100,7 de Andradina SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/09/ouvir-radio-deus-e-amor-fm-1007-de.html"
@@ -87669,7 +87646,6 @@
    "wayback_tried": "2026-11-16"
   },
   "6513670229920899328": {
-   "alerted": "2026-11-18",
    "confianca": 0.9,
    "contacts": {
     "telefone": [
@@ -87711,13 +87687,13 @@
    ],
    "post_stream": "https://ssl.xcast.com.br:13176//stream",
    "post_updated": "2021-09-01T22:15:18.544-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://planetahits.radio.br/"
    ],
    "source": "site oficial (planetahits.radio.br)",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://live8.livemus.com.br:27110/stream",
    "title": "Ouvir a Web Rádio Planeta Hits de São Mateus do Sul PR Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2019/08/ouvir-web-radio-planeta-hits-de-sao-mateus-do-sul-pr-online.html",
@@ -88993,7 +88969,6 @@
    "wa_post_visto": "558432744186"
   },
   "6596273651883926450": {
-   "alerted": "2026-11-17",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -89023,13 +88998,13 @@
    ],
    "post_stream": "http://stm7.painelvox.com:8274/;",
    "post_updated": "2020-08-11T21:01:08.717-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.simnoticias.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "http://stm7.painelvox.com:8274/;",
    "title": "Ouvir a Rede Sim FM 106,7 de Colatina ES Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/02/ouvir-rede-sim-fm-1067-de-colatina-es-ao-vivo.html"
@@ -94897,7 +94872,6 @@
    "url": "https://www.radiocol.com.br/2018/02/ouvir-radio-fm-metropolitana-943-de.html"
   },
   "6985558451927961702": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": [
@@ -94924,13 +94898,13 @@
    ],
    "post_stream": "https://14553.live.streamtheworld.com/NOVABRASIL_MACAAC.aac",
    "post_updated": "2020-11-04T21:33:03.883-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://maceio.novabrasilfm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://14553.live.streamtheworld.com/NOVABRASIL_MACAAC.aac",
    "title": "Ouvir a Rádio NovaBrasil FM 106,5 de Maceió AL Ao Vivo",
    "url": "https://www.radiocol.com.br/2019/10/radio-novabrasil-fm-1065-maceio-al-online.html",
@@ -101410,7 +101384,6 @@
    "url": "https://www.radiocol.com.br/2022/07/ouvir-radio-plus-fm-971-de-missao-velha-ce-ao-vivo-e-online.html"
   },
   "7340653041199005386": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "559137219410"
@@ -101440,13 +101413,13 @@
    ],
    "post_stream": "http://177.105.192.70:9401/stream/3/",
    "post_updated": "2020-10-04T22:59:40.199-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.oliberal.com/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "http://177.105.192.70:9401/stream/3/",
    "title": "Ouvir a Rádio Liberal FM 94,1 de Castanhal PA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/02/ouvir-radio-liberal-fm-941-de-castanhal.html",
@@ -102591,7 +102564,6 @@
    "wa_post_visto": "5569999731125"
   },
   "7421825856019823266": {
-   "alerted": "2026-11-18",
    "contacts": {
     "telefone": [
      "551130165800"
@@ -102637,13 +102609,13 @@
    ],
    "post_stream": "https://18393.live.streamtheworld.com/RADIO_ALPHAFM_ADP.aac",
    "post_updated": "2022-06-22T21:05:37.332-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "http://www.alphafm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://18393.live.streamtheworld.com/RADIO_ALPHAFM_ADP.aac",
    "title": "Ouvir a Rádio Alpha FM 101,7 de São Paulo SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/06/ouvir-radio-alpha-fm-1017-de-sao-paulo-sp-ao-vivo.html"
@@ -102822,7 +102794,6 @@
    "wa_post_visto": "5567981175505"
   },
   "7431758295366563302": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": [
@@ -102850,13 +102821,13 @@
    ],
    "post_stream": "https://streaming.empresaspioneiras.com.br/cbnararaquara/stream.m3u8",
    "post_updated": "2022-07-18T22:07:39.638-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.cbnararaquara.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://streaming.empresaspioneiras.com.br/cbnararaquara/stream.m3u8",
    "title": "Ouvir a Rádio CBN FM 95,7 de Araraquara SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/01/ouvir-radio-cbn-fm-957-de-araraquara-sp-online.html",
@@ -104503,7 +104474,6 @@
    "wa_post_visto": "5511981567494"
   },
   "7523138260867679579": {
-   "alerted": "2026-11-18",
    "contacts": {
     "telefone": [
      "551332080008"
@@ -104552,13 +104522,13 @@
    ],
    "post_stream": "https://26183.live.streamtheworld.com/SAUDADE_FMAAC.aac?dist=triton-widget&tdsdk=js-2.9&pname=tdwidgets&pversion=2.9&banners=728x90%2C300x250&burst-time=15&sbmid=b54716f3-8fd9-45c4-a4b0-10a500206723",
    "post_updated": "2022-06-08T17:46:38.236-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://www.saudadefm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://26183.live.streamtheworld.com/SAUDADE_FMAAC.aac?dist=triton-widget&tdsdk=js-2.9&pname=tdwidgets&pversion=2.9&banners=728x90%2C300x250&burst-time=15&sbmid=b54716f3-8fd9-45c4-a4b0-10a500206723",
    "title": "Ouvir a Rádio Saudade FM 99,7 de Santos SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/12/ouvir-radio-saudade-fm-997-de-santos-sp.html",
@@ -105712,7 +105682,6 @@
    "wayback_tried": "2026-11-16"
   },
   "7602767955108430584": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "554133316300"
@@ -105740,13 +105709,13 @@
    ],
    "post_stream": "https://shout35.crossradio.com.br:18006/1",
    "post_updated": "2022-01-10T21:37:13.149-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://jovempan.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://shout35.crossradio.com.br:18006/1",
    "title": "Ouvir a Rádio Jovem Pan FM 103,9 de Curitiba PR Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/02/ouvir-radio-jovem-pan-fm-1039-de.html"
@@ -109603,7 +109572,6 @@
    "url": "https://www.radiocol.com.br/2022/12/ouvir-radio-joao-pessoa-fm-977-de-joao-pessoa-pb-ao-vivo-e-online.html"
   },
   "7850186404597597808": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -109630,11 +109598,11 @@
    ],
    "post_stream": "https://interior.ne10.uol.com.br/radios/radio-jornal-petrolina",
    "post_updated": "2021-01-07T22:48:32.117-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://interior.ne10.uol.com.br/radios/radio-jornal-petrolina",
    "title": "Ouvir a Rádio Jornal FM 90,5 de Petrolina PE Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/07/ouvir-radio-jornal-fm-905-de-petrolina.html"
@@ -113832,7 +113800,6 @@
    "wa_post_visto": "5588998034666"
   },
   "8117831522247549565": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -113857,13 +113824,13 @@
    ],
    "post_stream": "https://cloud1.cdnseguro.com:25724/stream",
    "post_updated": "2022-02-07T21:39:41.706-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "https://mundialcom.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://cloud1.cdnseguro.com:25724/stream",
    "title": "Ouvir a Rádio Terra FM 98,9 de Ribeirão Preto SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2022/02/ouvir-radio-terra-fm-989-de-ribeirao-preto-sp-ao-vivo-e-online.html"
@@ -122824,7 +122791,6 @@
    "url": "https://www.radiocol.com.br/2015/09/ouvir-radio-transamerica-hits-fm-1033.html"
   },
   "8644296768204374512": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [
      "553432717475"
@@ -122851,13 +122817,13 @@
    ],
    "post_stream": "https://live03.dgradios.com/station/8130/cancellafm",
    "post_updated": "2022-10-28T16:00:20.969-03:00",
-   "reason": "HTTP 403",
+   "reason": "servidor recusa o robô (HTTP 403); confirmação pelos ouvintes",
    "search_tried": "2026-11-18",
    "sites": [
     "http://www.sistemacancella.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://live03.dgradios.com/station/8130/cancellafm",
    "title": "Ouvir a Rádio Cancella FM 97,3 de Ituiutaba MG ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2022/10/ouvir-radio-cancella-fm-973-de-ituiutaba-mg-ao-vivo-e-online.html"
@@ -133748,7 +133714,6 @@
    "wa_post_visto": "5561999291071"
   },
   "956808628191354743": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -133774,13 +133739,13 @@
    ],
    "post_stream": "https://stream.zeno.fm/hhbrbhssrbruv",
    "post_updated": "2020-12-20T22:12:34.707-03:00",
-   "reason": "HTTP 401",
+   "reason": "servidor recusa o robô (HTTP 401); confirmação pelos ouvintes",
    "search_tried": "2026-11-17",
    "sites": [
     "https://fswebradio.blogspot.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://stream.zeno.fm/hhbrbhssrbruv",
    "title": "Ouvir a Web Rádio FS de Água Doce do Maranhão MA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2019/09/ouvir-web-radio-fs-de-agua-doce-do-maranhao-ma-online.html"

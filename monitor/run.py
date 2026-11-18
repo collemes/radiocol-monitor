@@ -393,9 +393,11 @@ async def main():
 
         def parece_bloqueio(rec, res):
             h = urlparse(rec["stream"]).hostname or ""
+            r = res.reason or ""
+            if r in ("HTTP 401", "HTTP 403"):
+                return True    # servidor recusa o robô (fora do Brasil / sem navegador); quem decide são os ouvintes
             if host_ok.get(h) or rec.get("last_ok"):
                 return False
-            r = res.reason or ""
             if "tempo esgotado" in r or "Reset" in r or "Disconnected" in r:
                 return True
             return "ConnectionRefused" in r and host_n.get(h, 0) >= 3
@@ -403,6 +405,24 @@ async def main():
         tocou = await ler_tocou(session)
         if tocou:
             log(f"Avisos de ouvintes no Brasil: {len(tocou)} posts")
+
+        # O endereço que o ROBÔ colocou falhou, mas o link original do post toca (no teste do robô ou para
+        # ouvintes no Brasil)? Volta para o link do post. Ex.: Cultura FM Canguçu (sv12 -> ssl.hdradios.net).
+        voltar = [i for i, (rec, res) in enumerate(zip(to_check, results))
+                  if not res.ok and rec.get("post_stream") and rec["post_stream"] != rec["stream"]
+                  and rec.get("source") != "manual"]
+        if voltar:
+            res_post = await asyncio.gather(*(checker.check(to_check[i]["post_stream"]) for i in voltar))
+            for i, rp in zip(voltar, res_post):
+                rec = to_check[i]
+                br_post, _ = situacao_brasil(tocou.get(rec.get("id") or ""), rec["post_stream"], today())
+                if rp.ok or br_post == "ok":
+                    log(f"  link do post voltou a valer: {rec.get('title', rec['url'])}")
+                    change(rec, rec["post_stream"], "post", "o endereço do robô falhou e o link do post toca")
+                    for k in ("provisorio", "confianca", "suggestion"):
+                        rec.pop(k, None)
+                    if rp.ok:
+                        results[i] = rp
         off = []
         for rec, res in zip(to_check, results):
             rec["last_check"] = today()

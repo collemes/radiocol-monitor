@@ -644,7 +644,25 @@
         d.textContent = 'O áudio desta emissora pode estar temporariamente fora do ar. Já estamos verificando.';
         alvo.insertBefore(d, alvo.firstChild);
       }
+      esconderAvisoQuandoTocar(e);
     }
+  }
+
+  // O robô roda fora do Brasil e às vezes não alcança o servidor: se o áudio tocar de verdade aqui, some o aviso
+  // (e o player avisa o robô, que corrige o status na próxima rodada).
+  function esconderAvisoQuandoTocar(e) {
+    Array.prototype.forEach.call(document.querySelectorAll('.post-body audio'), function (a) {
+      if (a._rcAviso) return;
+      a._rcAviso = true;
+      a.addEventListener('playing', function () {
+        var t0 = a.currentTime;
+        setTimeout(function () {
+          if (a.paused || a.currentTime <= t0 + 1) return;
+          var d = document.getElementById('rc-off');
+          if (d) d.parentNode.removeChild(d);
+        }, 3000);
+      });
+    });
   }
 })();
 //]]>
