@@ -83,3 +83,12 @@ TOCOU_URL = os.environ.get(
 TOCOU_DIAS_OK = _int("TOCOU_DIAS_OK", 3)      # tocou para alguém no Brasil nos últimos N dias = está no ar
 TOCOU_ERROS = _int("TOCOU_ERROS", 3)          # N falhas no Brasil em 7 dias, sem nenhum "tocou" = fora do ar
 
+
+# Navegador de verdade (Chromium/Playwright) para sites com player montado por JavaScript.
+USE_BROWSER = _bool("USE_BROWSER", True)
+BROWSER_PATH = os.environ.get("BROWSER_PATH", "")          # vazio = Chromium instalado pelo Playwright
+MAX_BROWSER = _int("MAX_BROWSER", 250)                    # máx. sites abertos no navegador por execução
+BROWSER_CONCURRENCY = _int("BROWSER_CONCURRENCY", 3)
+BROWSER_SITE_S = _int("BROWSER_SITE_S", 50)              # tempo máximo por site
+BROWSER_BUDGET_S = _int("BROWSER_BUDGET_S", 2700)         # tempo total do navegador por execução (45 min)
+APLICAR_MIN_SCORE = float(os.environ.get("APLICAR_MIN_SCORE", "0.6"))   # sugestão >= isto já entra no site

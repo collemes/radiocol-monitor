@@ -17,6 +17,7 @@ import aiohttp
 from . import config
 import json
 
+from .navegador import Navegador
 from .extract import band, desescapa, extract_streams, frequency, name_tokens, norm
 
 IFRAME_RE = re.compile(r"""<iframe\b[^>]*?\b(?:data-)?src\s*=\s*["']([^"']+)["']""", re.I)
@@ -90,6 +91,7 @@ class Finder:
         self.rede = set()          # domínios usados por 3+ posts (sites de rede): o run.py preenche
         self._sites = {}           # cache da raspagem por site (a rede é raspada 1x por execução)
         self._listas = {}          # cache das listas de emissoras dos servidores (AzuraCast/Icecast)
+        self.nav = Navegador()     # Chromium: sites com player montado por JavaScript
 
     async def _get_text(self, url, limit=400_000):
         try:
@@ -270,38 +272,84 @@ class Finder:
                 pts += 2
         return pts
 
+    async def _escolhe(self, rec, site, pares, tocou=frozenset()):
+        """Escolhe o endereço certo entre os achados no site. 'tocou' = endereços que o navegador
+        recebeu como áudio de verdade (vale como teste, mesmo que o teste do robô falhe)."""
+        if rec.get("_need_https"):
+            pares = [p for p in pares if p[0].startswith("https")]
+        pares = [p for p in pares if p[0] != rec.get("stream")]
+        dominio = urlparse(site).netloc.replace("www.", "")
+
+        async def funciona(u):
+            return u in tocou or (await self.c.check(u)).ok
+
+        if dominio in self.rede or len({p[0] for p in pares}) > 3:
+            # site de rede: só serve o player da praça do post (cidade e/ou frequência no endereço ou ao lado dele)
+            pontuados = sorted(((self._pontos_praca(rec, u, c), u) for u, c in pares), key=lambda x: -x[0])
+            pontuados = [x for x in pontuados if x[0] > 0][:8]
+            bons = []
+            for pts, u in pontuados:
+                if bons and pts < bons[0][0]:
+                    break                                 # já achou o melhor nível de pontos
+                if await funciona(u):
+                    bons.append((pts, u))
+            if bons:
+                pts, u = bons[0]
+                empate = len({x[1] for x in bons}) > 1    # mais de um endereço QUE TOCA com os mesmos pontos
+                return {"url": u, "source": f"site da rede ({dominio}, praça do post)",
+                        "confidence": "high" if pts >= 3 and not empate else "suggest",
+                        "score": 0.85 if pts >= 3 and not empate else 0.65}
+            return None
+        working = []
+        for u, _ in pares[:12]:
+            if await funciona(u):
+                working.append(u)
+        if working:
+            prefer = [w for w in working if w in tocou] + [w for w in working if w.startswith("https")]
+            best = (prefer or working)[0]
+            return {"url": best, "source": f"site oficial ({dominio})" + (" — tocou no navegador" if best in tocou else ""),
+                    "confidence": "high" if len(set(working)) == 1 or best in tocou else "suggest",
+                    "score": 0.9, "alternatives": [w for w in working if w != best][:3]}
+        return None
+
     async def from_official_site(self, rec):
         if not config.USE_OFFICIAL_SITE:
             return None
         for site in rec.get("sites", [])[:2]:
-            pares = await self._site_candidates(site)
-            if rec.get("_need_https"):
-                pares = [p for p in pares if p[0].startswith("https")]
-            pares = [p for p in pares if p[0] != rec.get("stream")]
-            dominio = urlparse(site).netloc.replace("www.", "")
-            rede = dominio in self.rede or len(pares) > 3
-            if rede:
-                # site de rede: só serve o player da praça do post (cidade e/ou frequência no endereço ou ao lado dele)
-                pontuados = sorted(((self._pontos_praca(rec, u, c), u) for u, c in pares), key=lambda x: -x[0])
-                pontuados = [x for x in pontuados if x[0] > 0][:8]
-                for pts, u in pontuados:
-                    r = await self.c.check(u)
-                    if r.ok:
-                        empate = sum(1 for p, _ in pontuados if p == pts) > 1
-                        return {"url": u, "source": f"site da rede ({dominio}, praça do post)",
-                                "confidence": "high" if pts >= 3 and not empate else "suggest", "score": 0.85}
+            if not site.startswith("http") or "tel+" in site:
                 continue
-            working = []
-            for u, _ in pares[:12]:
-                r = await self.c.check(u)
-                if r.ok:
-                    working.append(u)
-            if working:
-                https = [w for w in working if w.startswith("https")]
-                best = (https or working)[0]
-                return {"url": best, "source": f"site oficial ({dominio})",
-                        "confidence": "high" if len(set(working)) == 1 else "suggest",
-                        "score": 0.9, "alternatives": working[1:4]}
+            # 1) leitura rápida do HTML (+ scripts, APIs, servidores de rede)
+            achado = await self._escolhe(rec, site, await self._site_candidates(site))
+            if achado:
+                return achado
+            # 2) navegador de verdade: abre o site (e troca a praça, em site de rede), clica no play
+            #    e vê o que o player toca
+            dominio = urlparse(site).netloc.replace("www.", "")
+            rede = dominio in self.rede
+            cidade = (rec.get("loc") or [None])[0] if rede else None
+            capt = await self.nav.capturar(site, cidade)
+            if capt:
+                pares = [(u, c) for u, c, _ in capt]
+                for u, _ in list(pares)[:6]:                     # servidor de rede: lista de emissoras
+                    pares += [x for x in await self._lista_servidor(u) if x[0] not in {p[0] for p in pares}]
+                achado = await self._escolhe(rec, site, pares, frozenset(u for u, _, t in capt if t))
+                if achado:
+                    achado["source"] += " [navegador]"
+                    return achado
+                # o player do site usa um servidor que não responde ao robô (fora do Brasil): aceita o endereço
+                # que o PRÓPRIO site toca, se for um só (em rede: o da praça do post). Ouvintes confirmam depois.
+                bloq = []
+                for u, c in pares[:10]:
+                    if u == rec.get("stream") or (rec.get("_need_https") and not u.startswith("https")):
+                        continue
+                    if rede and self._pontos_praca(rec, u, c) < 3:
+                        continue
+                    r = await self.c.check(u)
+                    if not r.ok and re.search(r"tempo esgotado|Refused|Reset|Disconnected", r.reason or ""):
+                        bloq.append(u)
+                if len(set(bloq)) == 1:
+                    return {"url": bloq[0], "source": f"player do site {dominio} (não testável daqui) [navegador]",
+                            "confidence": "high", "score": 0.8, "nao_testavel": True}
         return None
 
     # ------------------------------------------------------------------ 4
@@ -317,9 +365,6 @@ class Finder:
             except Exception:
                 continue
             self.rb = None
-        self.rede = set()          # domínios usados por 3+ posts (sites de rede): o run.py preenche
-        self._sites = {}           # cache da raspagem por site (a rede é raspada 1x por execução)
-        self._listas = {}          # cache das listas de emissoras dos servidores (AzuraCast/Icecast)
         return []
 
     async def from_radio_browser(self, rec):

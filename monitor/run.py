@@ -474,6 +474,11 @@ async def main():
 
         fila_off = [r for r in off if r.get("fail_count", 0) <= config.CONFIRM_RUNS
                     or dias_desde(r.get("search_tried")) >= 7]
+        # "não testáveis daqui" e endereços provisórios (sugestão < alta confiança): procura no site 1x/semana
+        fila_off += [r for r in posts_state.values()
+                     if (r.get("status") == "bloqueio" or (r.get("status") == "ok" and r.get("provisorio")))
+                     and r.get("sites") and r.get("source") != "manual" and r not in off
+                     and dias_desde(r.get("search_tried")) >= 7]
         fila_off.sort(key=lambda r: (r.get("fail_count", 0) > config.CONFIRM_RUNS, r.get("search_tried") or ""))
         # posts sem nenhum endereço de áudio, mas com site oficial: procura o player no site
         sem_link = [r for r in posts_state.values()
@@ -488,23 +493,67 @@ async def main():
             f"procurando para {len(search)} ({len(search) - min(len(search), len(fila_off))} sem link)…")
         sem = asyncio.Semaphore(15)
 
+        def aplicar_achado(rec, found):
+            alta = found["confidence"] == "high"
+            score = found.get("score") or 0
+            events["fixed"].append({"url": rec["url"], "title": rec["title"], "from": rec["stream"],
+                                    "to": found["url"], "source": found["source"] + ("" if alta else f" — provisório ({score})")})
+            change(rec, found["url"], found["source"])
+            rec["confianca"] = score
+            if alta:
+                rec.pop("provisorio", None)
+            else:
+                rec["provisorio"] = True                 # o robô segue procurando algo melhor no site da emissora
+            if found.get("nao_testavel"):
+                rec.update(status="bloqueio", fail_count=0,
+                           reason="endereço do player do site da emissora; o servidor não responde ao robô (fora do Brasil)")
+            else:
+                rec.update(status="ok", reason="corrigido automaticamente" + ("" if alta else " (provisório)"),
+                           fail_count=0, last_ok=today(), http_only=found["url"].startswith("http://"))
+            rec.pop("suggestion", None)
+            rec.pop("alerted", None)
+
         async def fix(rec):
-            async with sem:
-                found = await finder.find(rec)
-            if not found:
-                rec.pop("suggestion", None)
+            if rec.get("source") == "manual":
                 return
-            if found["confidence"] == "high" and rec.get("source") != "manual":
-                events["fixed"].append({"url": rec["url"], "title": rec["title"], "from": rec["stream"],
-                                        "to": found["url"], "source": found["source"]})
-                change(rec, found["url"], found["source"])
-                rec.update(status="ok", reason="corrigido automaticamente", fail_count=0, last_ok=today(),
-                           http_only=found["url"].startswith("http://"))
-                rec.pop("suggestion", None)
-                rec.pop("alerted", None)
+            atual_ok = rec.get("status") in ("ok", "bloqueio")      # já tem endereço: só troca se for melhor
+            async with sem:
+                found = await (finder.from_official_site(rec) if atual_ok else finder.find(rec))
+            if not found:
+                if not atual_ok:
+                    rec.pop("suggestion", None)
+                return
+            score = found.get("score") or 0
+            if atual_ok:
+                # provisório / não testável: troca só por achado do site da emissora com confiança maior
+                if found["confidence"] == "high" and score > (rec.get("confianca") or 0):
+                    aplicar_achado(rec, found)
+                return
+            if found["confidence"] == "high" or score >= config.APLICAR_MIN_SCORE:
+                aplicar_achado(rec, found)
             else:
                 rec["suggestion"] = {k: found[k] for k in ("url", "source", "score") if k in found}
+
+        # sugestões guardadas de dias anteriores com confiança >= 0,6: testa e aplica já
+        guardadas = [r for r in posts_state.values() if r.get("status") in ("off", "sem_link")
+                     and r.get("source") != "manual" and r.get("suggestion")
+                     and (r["suggestion"].get("score") or 0) >= config.APLICAR_MIN_SCORE]
+        if guardadas:
+            testes = await asyncio.gather(*(checker.check(r["suggestion"]["url"]) for r in guardadas))
+            n = 0
+            for r, res in zip(guardadas, testes):
+                if res.ok:
+                    sug = r["suggestion"]
+                    aplicar_achado(r, {"url": sug["url"], "source": sug["source"], "score": sug["score"],
+                                       "confidence": "suggest"})
+                    n += 1
+            log(f"Sugestões guardadas aplicadas (confiança >= {config.APLICAR_MIN_SCORE}): {n} de {len(guardadas)}")
+            search = [r for r in search if r.get("status") in ("off", "sem_link", "bloqueio") or r.get("provisorio")]
+
         await asyncio.gather(*(fix(r) for r in search))
+        if finder.nav.usados:
+            log(f"Navegador abriu {finder.nav.usados} sites")
+        await finder.nav.fechar()
 
         # 5) URLs antigas: confere o redirecionamento 301 ---------------------------
         if state.get("old_urls"):
