@@ -19,7 +19,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
 
@@ -29,6 +29,10 @@ jobs:
           cache: pip
 
       - run: pip install -r requirements.txt
+
+      # Navegador de verdade (Chromium) para sites com player montado por JavaScript
+      - name: Instalar navegador (Chromium)
+        run: python -m playwright install --with-deps chromium
 
       - name: Verificar posts e streams
         env:
