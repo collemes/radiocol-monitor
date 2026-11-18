@@ -23,6 +23,8 @@ def public_entry(rec):
     e = {"u": rec["stream"]}
     if rec.get("post_stream") and rec["post_stream"] != rec["stream"]:
         e["o"] = rec["post_stream"]  # endereço antigo que está no texto do post
+    elif rec.get("post_stream"):
+        e["p"] = 1  # "u" é o próprio link do post: se o post mudou depois do robô, vale o post
     if rec.get("status") == "off":
         e["s"] = 0
     if rec.get("status") in ("off", "bloqueio") or rec.get("br_ok"):

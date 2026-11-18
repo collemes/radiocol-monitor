@@ -93850,6 +93850,15 @@
    },
    "fail_count": 0,
    "first_seen": "2026-11-16",
+   "history": [
+    {
+     "date": "2026-11-17",
+     "from": "https://audio8.cmaudioevideo.com:10187/stream",
+     "note": "post editado à mão em 17/11",
+     "source": "post",
+     "to": "https://azura4.cmaudioevideo.com:8110/radio.mp3"
+    }
+   ],
    "id": "7125247480099747862",
    "labels": [
     "Caibi",
@@ -93865,18 +93874,18 @@
    ],
    "path": "/2018/07/ouvir-radio-nossa-radio-967-fm-967-de.html",
    "post_candidates": [
-    "https://audio8.cmaudioevideo.com:10187/stream"
+    "https://azura4.cmaudioevideo.com:8110/radio.mp3"
    ],
-   "post_stream": "https://audio8.cmaudioevideo.com:10187/stream",
+   "post_stream": "https://azura4.cmaudioevideo.com:8110/radio.mp3",
    "post_updated": "2021-07-02T22:03:37.737-03:00",
-   "reason": "servidor não responde ao robô (fora do Brasil) — tempo esgotado",
+   "reason": "link atualizado no post (toca no navegador)",
    "search_tried": "2026-11-17",
    "sites": [
     "https://www.nossaradio.net.br/"
    ],
    "source": "post",
-   "status": "bloqueio",
-   "stream": "https://audio8.cmaudioevideo.com:10187/stream",
+   "status": "ok",
+   "stream": "https://azura4.cmaudioevideo.com:8110/radio.mp3",
    "title": "Ouvir a Nossa Rádio 96.7 FM 96,7 de Caibi SC Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/07/ouvir-radio-nossa-radio-967-fm-967-de.html"
   },

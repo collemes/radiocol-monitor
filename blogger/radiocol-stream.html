@@ -389,6 +389,9 @@
       // Trocar o src aqui derruba a conexão do hls.js e cria um segundo hls no mesmo <audio>.
       if (tipo(e.u) !== 'audio/mpeg' && (/^blob:/i.test(a.getAttribute('src') || '') || hlsProprio())) continue;
       if (e.o && atual && atual !== e.o) continue;             // não é o player da rádio
+      // e.p: o robô não trocou nada, "u" é só o link que o post tinha. Se o post agora tem outro link,
+      // você editou o post depois da última rodada do robô: vale o link do post.
+      if (e.p && atual && atual !== e.u) continue;
       for (var k = 0; k < fontes.length; k++) { fontes[k].setAttribute('src', e.u); fontes[k].setAttribute('type', tipo(e.u)); }
       if (!fontes.length) a.setAttribute('src', e.u);
       var p = instancia(a);
