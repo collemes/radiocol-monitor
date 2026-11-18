@@ -184,11 +184,13 @@ async def main():
     os.makedirs(f"{TMP}/data", exist_ok=True)
     json.dump({"https://www.radiocol.com.br/2026/11/post-1.html": {"telefone": {"(84) 3421-0000": "(84) 3421-9999"}}},
               open(f"{TMP}/data/overrides.json", "w"))
-    for dia in (1, 2):
+    for dia in (1, 2, 3):
         print(f"\n===== execução {dia} =====")
         if dia == 2:   # dia 2: post 1 mudou de URL (frequência nova) e post 9 foi apagado
             POSTS[0]["link"][0]["href"] = "https://www.radiocol.com.br/2026/11/post-1-nova.html"
             del POSTS[8]
+        if dia == 3:   # dia 3: você trocou à mão o link do post 8 (que o robô tinha corrigido) — mesmo fora do ar, vale o seu
+            POSTS[7]["content"]["$t"] = f'<audio src="{B}/editado-morto.mp3"></audio>'
         await run.main()
 
     # Solicitações aprovadas na planilha
@@ -238,7 +240,7 @@ exp = {
     "/2026/11/post-5.html": ("ok", "master.m3u8"),
     "/2026/11/post-6.html": ("ok", "/pagina.mp3"),
     "/2026/11/post-7.html": ("ignorado", None),  # remoção aprovada
-    "/2026/11/post-8.html": ("ok", "/coluna-nova.mp3"),
+    "/2026/11/post-8.html": ("off", "/editado-morto.mp3"),   # editado à mão: o robô não troca
     "/2026/11/post-10.html": ("ok", f"https://127.0.0.1:{TLS}/seguro.mp3"),
     "/2026/11/post-11.html": ("ok", "/sohttp.mp3"),
 }
@@ -254,6 +256,10 @@ print("post 10 (iframe -> player https):", pub["10"])
 print("post 11 (iframe só http):", pub["11"])
 if pub["10"].get("f") != 1 or pub["11"].get("h") != 1:
     bad += 1
+r8 = state["/2026/11/post-8.html"]
+print("post 8 editado à mão:", pub["8"], "| editado_em:", r8.get("editado_em"), "| sugestão:", r8.get("suggestion"))
+if pub["8"].get("p") != 1 or "o" in pub["8"] or not r8.get("editado_em"):
+    bad += 1; print("FALHOU link editado no post deve prevalecer")
 olds = full_state.get("old_urls", {})
 print("URLs antigas:", json.dumps(olds, ensure_ascii=False))
 if olds.get("/2026/11/post-1.html", {}).get("status") != "ok" or olds.get("/2026/11/post-9.html", {}).get("status") != "sem_redirect":

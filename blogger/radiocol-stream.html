@@ -187,16 +187,16 @@
   // ---------- "Siga nas redes sociais": lista do post -> card com botões ----------
   function listaRedes() { return [
     // [teste do endereço, chave, nome, cor, ícone (Font Awesome 6 Brands)]
-    [/(^|\.)instagram\.com$/, 'instagram', 'Instagram', 'linear-gradient(45deg,#f9a03f,#e1306c 55%,#833ab4)', ''],
-    [/(^|\.)(facebook\.com|fb\.com|fb\.me)$/, 'facebook', 'Facebook', '#1877f2', ''],
-    [/(^|\.)(youtube\.com|youtu\.be)$/, 'youtube', 'YouTube', '#ff0000', ''],
-    [/(^|\.)tiktok\.com$/, 'tiktok', 'TikTok', '#111', ''],
+    [/(^|\.)instagram\.com$/, 'instagram', 'Instagram', 'linear-gradient(45deg,#f9a03f,#e1306c 55%,#833ab4)', '\uf16d'],
+    [/(^|\.)(facebook\.com|fb\.com|fb\.me)$/, 'facebook', 'Facebook', '#1877f2', '\uf09a'],
+    [/(^|\.)(youtube\.com|youtu\.be)$/, 'youtube', 'YouTube', '#ff0000', '\uf167'],
+    [/(^|\.)tiktok\.com$/, 'tiktok', 'TikTok', '#111', '\ue07b'],
     [/(^|\.)(twitter\.com|x\.com)$/, 'x', 'X (Twitter)', '#111', ''],
-    [/(^|\.)(wa\.me|whatsapp\.com)$/, 'whatsapp', 'WhatsApp', '#25d366', ''],
-    [/(^|\.)(spotify\.com|spotify\.link)$/, 'spotify', 'Spotify', '#1db954', ''],
-    [/(^|\.)(t\.me|telegram\.me)$/, 'telegram', 'Telegram', '#229ed9', ''],
-    [/(^|\.)linkedin\.com$/, 'linkedin', 'LinkedIn', '#0a66c2', ''],
-    [/(^|\.)soundcloud\.com$/, 'soundcloud', 'SoundCloud', '#ff5500', ''],
+    [/(^|\.)(wa\.me|whatsapp\.com)$/, 'whatsapp', 'WhatsApp', '#25d366', '\uf232'],
+    [/(^|\.)(spotify\.com|spotify\.link)$/, 'spotify', 'Spotify', '#1db954', '\uf1bc'],
+    [/(^|\.)(t\.me|telegram\.me)$/, 'telegram', 'Telegram', '#229ed9', '\uf2c6'],
+    [/(^|\.)linkedin\.com$/, 'linkedin', 'LinkedIn', '#0a66c2', '\uf08c'],
+    [/(^|\.)soundcloud\.com$/, 'soundcloud', 'SoundCloud', '#ff5500', '\uf1be'],
     [/(^|\.)threads\.net$/, 'threads', 'Threads', '#111', '']
   ]; }
   function redeDe(href) {
@@ -590,7 +590,7 @@
   function trocarIframe(url) {
     var ifr = null, todos = document.querySelectorAll('.post-body iframe[title]');
     for (var i = 0; i < todos.length; i++) {
-      var t = todos[i].getAttribute('title').normalize('NFD').replace(/[̀-ͯ]/g, '');
+      var t = todos[i].getAttribute('title').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
       if (/ao vivo/i.test(t)) { ifr = todos[i]; break; }
     }
     if (!ifr) ifr = botaoPopup();   // sem iframe: troca o botão do popup pelo player

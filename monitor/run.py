@@ -86,6 +86,11 @@ def change(rec, new_url, source, note=""):
     rec["source"] = source
 
 
+def protegido(rec):
+    """Endereço que o robô não troca sozinho: fixado no overrides.json/planilha ou editado à mão no post."""
+    return rec.get("source") == "manual" or bool(rec.get("editado_em"))
+
+
 async def main():
     t0 = time.time()
     state_path = os.path.join(config.DATA_DIR, "state.json")
@@ -304,11 +309,20 @@ async def main():
             new_post_stream = cands[0] if cands else None
             if new_post_stream != rec.get("post_stream"):
                 # Você editou o post (ou é post novo): o link do post volta a valer
-                if rec.get("post_stream") is not None or not rec.get("stream"):
+                editado = rec.get("post_stream") is not None
+                if editado or not rec.get("stream"):
+                    if editado and new_post_stream and rec.get("stream") != new_post_stream:
+                        change(rec, new_post_stream, "post", "link editado no post")
                     rec["stream"], rec["source"] = new_post_stream, "post"
                     rec["fail_count"] = 0
-                    rec.pop("suggestion", None)
-                    rec.pop("alerted", None)
+                    for k in ("suggestion", "alerted", "provisorio", "confianca"):
+                        rec.pop(k, None)
+                # Link trocado à mão no post: daqui em diante ele prevalece. O robô continua testando e,
+                # se cair, só SUGERE outro endereço por e-mail — nunca troca sozinho.
+                if editado and new_post_stream:
+                    rec["editado_em"] = today()
+                else:
+                    rec.pop("editado_em", None)
                 rec["post_stream"] = new_post_stream
             rec["post_candidates"] = cands[:6]
             if not rec.get("stream") and new_post_stream:
@@ -415,7 +429,7 @@ async def main():
         #     áudio http dentro de site https — "conteúdo misto")
         # (repete a tentativa no máximo 1x por semana para cada rádio)
         week_ago = (datetime.now(BRT) - timedelta(days=7)).strftime("%Y-%m-%d")
-        http_ok = [r for r in to_check if r.get("http_only") and r.get("source") != "manual"
+        http_ok = [r for r in to_check if r.get("http_only") and not protegido(r)
                    and (r.get("https_tried") or "") < week_ago]
         for r in http_ok:
             r["https_tried"] = today()
@@ -442,7 +456,7 @@ async def main():
                 usos[d] = usos.get(d, 0) + 1
         finder.rede = {d for d, n in usos.items() if n >= 3}
         need_https = [r for r in to_check if (r.get("iframe") or r.get("popup")) and r.get("status") == "ok"
-                      and r.get("http_only") and r.get("source") != "manual"
+                      and r.get("http_only") and not protegido(r)
                       and (r.get("https_search") or "") < week_ago]
         if need_https:
             log(f"{len(need_https)} iframes/popups só com http; procurando versão https…")
@@ -477,12 +491,12 @@ async def main():
         # "não testáveis daqui" e endereços provisórios (sugestão < alta confiança): procura no site 1x/semana
         fila_off += [r for r in posts_state.values()
                      if (r.get("status") == "bloqueio" or (r.get("status") == "ok" and r.get("provisorio")))
-                     and r.get("sites") and r.get("source") != "manual" and r not in off
+                     and r.get("sites") and not protegido(r) and r not in off
                      and dias_desde(r.get("search_tried")) >= 7]
         fila_off.sort(key=lambda r: (r.get("fail_count", 0) > config.CONFIRM_RUNS, r.get("search_tried") or ""))
         # posts sem nenhum endereço de áudio, mas com site oficial: procura o player no site
         sem_link = [r for r in posts_state.values()
-                    if r.get("status") == "sem_link" and r.get("sites") and r.get("source") != "manual"
+                    if r.get("status") == "sem_link" and r.get("sites") and not protegido(r)
                     and dias_desde(r.get("site_tried")) >= 7]
         sem_link.sort(key=lambda r: r.get("site_tried") or "")
         cota_sem_link = min(len(sem_link), max(config.MAX_SEARCH * 2 // 5, config.MAX_SEARCH - len(fila_off)))
@@ -517,6 +531,14 @@ async def main():
         async def fix(rec):
             if rec.get("source") == "manual":
                 return
+            if protegido(rec):
+                # link editado à mão no post: fora do ar, só procura uma SUGESTÃO para o e-mail
+                if rec.get("status") == "off":
+                    async with sem:
+                        found = await finder.find(rec)
+                    if found:
+                        rec["suggestion"] = {k: found[k] for k in ("url", "source", "score") if k in found}
+                return
             atual_ok = rec.get("status") in ("ok", "bloqueio")      # já tem endereço: só troca se for melhor
             async with sem:
                 found = await (finder.from_official_site(rec) if atual_ok else finder.find(rec))
@@ -537,7 +559,7 @@ async def main():
 
         # sugestões guardadas de dias anteriores com confiança >= 0,6: testa e aplica já
         guardadas = [r for r in posts_state.values() if r.get("status") in ("off", "sem_link")
-                     and r.get("source") != "manual" and r.get("suggestion")
+                     and not protegido(r) and r.get("suggestion")
                      and (r["suggestion"].get("score") or 0) >= config.APLICAR_MIN_SCORE]
         if guardadas:
             testes = await asyncio.gather(*(checker.check(r["suggestion"]["url"]) for r in guardadas))

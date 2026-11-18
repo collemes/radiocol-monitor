@@ -16,6 +16,8 @@ Robô gratuito (GitHub Actions) que todo dia:
 
 No Blogger, um script lê o `radios.json` e troca o link do player na hora — assim você **não precisa editar os 3.160 posts**.
 
+**O link que você coloca à mão no post sempre prevalece.** Quando o robô percebe que você trocou o link de um post, ele passa a usar o seu, não o troca mais sozinho (se cair, só manda uma sugestão por e-mail) e o script do tema mantém o link do post mesmo antes da próxima rodada do robô.
+
 ```
 Blogger (feed) ──► GitHub Actions (todo dia 05:17) ──► docs/r/NN.json ──► GitHub Pages ──► script no tema
                                │
