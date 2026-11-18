@@ -466,16 +466,26 @@ async def main():
             await asyncio.gather(*(find_https(r) for r in need_https))
 
         # 4) procura substitutos para os que caíram ---------------------------------
-        off.sort(key=lambda r: -r.get("fail_count", 0))
-        # posts sem nenhum endereço de áudio, mas com site oficial: procura o player no site (1x por semana)
+        # Fila de busca, revezada: cada post é pesquisado no máximo 1x por semana (quem acabou de cair entra
+        # na hora), e a cota do dia é dividida entre "fora do ar" e "sem link" — antes os 1.000+ fora do ar
+        # ocupavam toda a cota e os posts sem link nunca eram pesquisados.
+        def dias_desde(d):
+            return 999 if not d else (date.fromisoformat(today()) - date.fromisoformat(d)).days
+
+        fila_off = [r for r in off if r.get("fail_count", 0) <= config.CONFIRM_RUNS
+                    or dias_desde(r.get("search_tried")) >= 7]
+        fila_off.sort(key=lambda r: (r.get("fail_count", 0) > config.CONFIRM_RUNS, r.get("search_tried") or ""))
+        # posts sem nenhum endereço de áudio, mas com site oficial: procura o player no site
         sem_link = [r for r in posts_state.values()
                     if r.get("status") == "sem_link" and r.get("sites") and r.get("source") != "manual"
-                    and (not r.get("site_tried") or (date.fromisoformat(today()) - date.fromisoformat(r["site_tried"])).days >= 7)]
-        search = (off + sem_link)[: config.MAX_SEARCH]
+                    and dias_desde(r.get("site_tried")) >= 7]
+        sem_link.sort(key=lambda r: r.get("site_tried") or "")
+        cota_sem_link = min(len(sem_link), max(config.MAX_SEARCH * 2 // 5, config.MAX_SEARCH - len(fila_off)))
+        search = fila_off[: config.MAX_SEARCH - cota_sem_link] + sem_link[:cota_sem_link]
         for r in search:
-            if r.get("status") == "sem_link":
-                r["site_tried"] = today()
-        log(f"{len(off)} fora do ar e {len(sem_link)} sem link com site; procurando para {len(search)}…")
+            r["site_tried" if r.get("status") == "sem_link" else "search_tried"] = today()
+        log(f"{len(off)} fora do ar ({len(fila_off)} na vez) e {len(sem_link)} sem link com site; "
+            f"procurando para {len(search)} ({len(search) - min(len(search), len(fila_off))} sem link)…")
         sem = asyncio.Semaphore(15)
 
         async def fix(rec):
