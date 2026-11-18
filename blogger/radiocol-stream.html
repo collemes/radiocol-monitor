@@ -28,7 +28,7 @@
   function tipo(u) { return /\.m3u8(\?|#|$)/i.test(u) ? 'application/x-mpegURL' : 'audio/mpeg'; }
 
   // Post com botão de popup e sem player: coloca o player já (o card do tema fica completo).
-  // Enquanto não houver stream https, o play abre o popup, como o botão fazia.
+  // Enquanto não houver stream https, o play abre o popup do próprio post (se ainda existir) ou o aviso.
   try { prepararPopup(); } catch (err) {}
   // Post de rádio sem nenhum player: coloca o player abaixo da linha "Gênero" (corrige o card repetido)
   try { prepararSemPlayer(); } catch (err) {}
@@ -376,7 +376,7 @@
     for (var i = 0; i < audios.length; i++) {
       var a = audios[i], fontes = a.querySelectorAll('source');
       if (a.hasAttribute('data-radiocol-sem-stream')) {             // player criado por este script
-        if (!/^https:\/\//i.test(e.u) || e.s === 0) continue;       // http/fora do ar: clique abre janelinha/aviso
+        if (!/^https:\/\//i.test(e.u) || e.s === 0) continue;       // http/fora do ar: clique mostra o aviso
         for (var f = 0; f < fontes.length; f++) { fontes[f].setAttribute('src', e.u); fontes[f].setAttribute('type', tipo(e.u)); }
         a.removeAttribute('data-radiocol-sem-stream');
         var pr = instancia(a);
@@ -426,15 +426,11 @@
   }
 
   // Player MediaElement no lugar de um elemento antigo (botão de popup, embed/Flash, link…).
-  // Sem stream https, o clique abre o stream em janelinha, o popup (se ainda existir) ou o aviso do card.
+  // Sem stream https, o clique abre o popup do próprio post (se ainda existir) ou o aviso do card.
   function criarPlayerNoLugar(btn, pop) {
     var abrir = function () {
-      var e = window.RADIOCOL_STREAM;
-      // 1) stream conhecido só em http: abre numa janelinha (como o antigo "Tocar Player Externo")
-      if (e && e.u && e.s !== 0) {
-        window.open(e.u, '', 'width=390,height=99,toolbar=no,location=no,menubar=no,scrollbars=no,resizable=no');
-        return;
-      }
+      // (o stream em http NÃO é mais aberto em janelinha: o navegador bloqueia http no site https,
+      //  então o ouvinte vê o aviso do card e o robô continua procurando um endereço https)
       // 2) popup ainda no ar: abre como o botão fazia
       if (pop && !POPUP_DESATIVADO.test(pop)) {
         if (typeof window.abrir_player_popup === 'function') window.abrir_player_popup();

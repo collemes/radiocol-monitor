@@ -13,9 +13,9 @@ from . import config
 from .blogger import BODY_RE, fetch_post_body, fetch_post_body_raw, fetch_posts, load_blogger_backup
 from .checker import Checker
 from .extract import (classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
-                      extract_location, extract_streams, stream_score)
+                      extract_location, extract_streams, norm, stream_score)
 from .extras import check_old_urls, contact_pairs, register_old_url, scan_site_whatsapp
-from .finder import Finder, variants
+from .finder import Finder, rb_mesma_praca, variants
 from .notify import build_report, send_email, write_public
 
 BRT = timezone(timedelta(hours=-3))
@@ -328,6 +328,17 @@ async def main():
             if not rec.get("stream") and new_post_stream:
                 rec["stream"], rec["source"] = new_post_stream, "post"
 
+            # endereço do Radio Browser de OUTRA cidade (ex.: Transamérica de Barreiras num post de Itirapina):
+            # era outra emissora tocando no post. Volta ao link do post e deixa só como sugestão.
+            if (rec.get("source") or "").startswith("Radio Browser") and \
+                    not rb_mesma_praca(rec, rec["source"]) and rec.get("post_stream"):
+                rec["suggestion"] = {"url": rec["stream"], "source": rec["source"] + " — outra cidade",
+                                     "score": min(rec.get("confianca") or 0, 0.59)}
+                change(rec, rec["post_stream"], "post", "Radio Browser era de outra cidade")
+                for k in ("provisorio", "confianca", "alerted"):
+                    rec.pop(k, None)
+                rec["fail_count"] = 0
+
             ov = ov_for(rec)
             pairs = contact_pairs(rec, ov)
             if pairs:
@@ -339,10 +350,13 @@ async def main():
                 continue
             # playlists, especiais, páginas institucionais e rádios encerradas saem do monitoramento
             tipo_post = classify_post(rec.get("title", ""))
+            if not tipo_post and any(norm(l) in ("desativada", "desativado", "encerrada", "fora do ar")
+                                     for l in rec.get("labels") or []):
+                tipo_post = "encerrada"           # você marcou o post como desativado
             if tipo_post and not ov.get("stream"):
                 rec["status"] = "ignorado"
                 rec["reason"] = ("não é post de rádio (automático)" if tipo_post == "nao_radio"
-                                 else "rádio encerrada, segundo o título (automático)")
+                                 else "rádio encerrada/desativada, pelo título ou marcador (automático)")
                 rec.pop("alerted", None)
                 continue
             if ov.get("stream"):

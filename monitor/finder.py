@@ -83,6 +83,15 @@ def similarity(post_title: str, station_name: str) -> float:
     return round(0.4 * seq + 0.3 * jacc + 0.3 * cover, 3)
 
 
+LIMITE_OUTRA_PRACA = 0.59   # abaixo de APLICAR_MIN_SCORE: vira só sugestão, nunca entra sozinho
+
+
+def rb_mesma_praca(rec, texto):
+    """A estação do Radio Browser é da cidade do post? (sem cidade conhecida: não dá para garantir)"""
+    cidade = norm((rec.get("loc") or [""])[0] or "")
+    return bool(cidade) and cidade in norm(texto or "")
+
+
 class Finder:
     def __init__(self, session: aiohttp.ClientSession, checker):
         self.s = session
@@ -408,6 +417,9 @@ class Finder:
             url = st.get("url_resolved") or st.get("url")
             if rec.get("_need_https") and url and not url.startswith("https"):
                 continue
+            # rádio de rede (Jovem Pan, Transamérica, Nova Brasil…): só vale a estação da MESMA cidade do post
+            if not rb_mesma_praca(rec, name + " " + (st.get("tags") or "") + " " + (st.get("homepage") or "")):
+                sc = min(sc, LIMITE_OUTRA_PRACA)
             if url and sc >= config.SUGGEST_SCORE:
                 scored.append((round(min(sc, 1.0), 3), url, name, freq_ok))
         scored.sort(key=lambda x: (-x[0], 0 if x[1].startswith("https") else 1))

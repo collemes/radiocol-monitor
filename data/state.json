@@ -327,7 +327,6 @@
    "url": "https://www.radiocol.com.br/2013/06/ouvir-web-radio-conexao-de-embu-das.html"
   },
   "1010322788843157545": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -350,12 +349,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T21:53:08.125-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rádio Mix FM 106,9 de Vitória ES Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/03/ouvir-radio-mix-fm-1069-de-vitoria-ao.html"
   },
@@ -690,7 +689,6 @@
    "wayback_tried": "2026-11-16"
   },
   "103682643809273084": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -713,12 +711,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-23T21:10:44.721-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Centro Sul FM 105,5 do Rio de Janeiro RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2017/02/ouvir-radio-centro-sul-fm-1055-do-rio.html"
   },
@@ -764,7 +762,6 @@
    "url": "https://www.radiocol.com.br/2019/10/radio-band-fm-987-avare-sp-online.html"
   },
   "1039135728281168494": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -786,9 +783,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2022-09-20T21:34:49.611-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Farroupilha AM 680 de Porto Alegre RS Ao Vivo e Oline",
    "url": "https://www.radiocol.com.br/2021/06/ouvir-radio-farroupilha-680-am-de-porto-alegre-rs-aovivo.html"
   },
@@ -1655,7 +1652,6 @@
    "wayback_tried": "2026-11-16"
   },
   "1104196145321815196": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -1680,18 +1676,17 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T21:51:01.598-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.redesimsat.com.br/",
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rádio Sim AM 1290 de Vila Velha ES Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/03/radio-sim-am-1290-de-vila-velha-ao-vivo.html"
   },
   "1105749801835214453": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -1716,13 +1711,13 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T09:56:02.512-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.mussicom.com/",
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a 102 A Rádio Rock FM 102,1 de São Vicente SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/02/ouvir-102-radio-rock-fm-1021-de-sao.html"
   },
@@ -2736,7 +2731,6 @@
    "url": "https://www.radiocol.com.br/2014/12/ouvir-radio-agape-am-1400-de-balsa-nova.html"
   },
   "1159118006499100499": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -2761,9 +2755,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-25T22:19:02.759-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Deus é Amor/Voz da Libertação FM 91,5 de Porto Alegre - Glorinha RS Ao Vivo e Onlien",
    "url": "https://www.radiocol.com.br/2014/06/ouvir-radio-deus-e-amorvoz-da.html"
   },
@@ -4489,7 +4483,6 @@
    "url": "https://www.radiocol.com.br/2014/11/ouvir-radio-nativa-fm-1059-de-alegrete.html"
   },
   "1301892575170040352": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -4515,9 +4508,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T22:18:58.090-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Web Rádio Sancine Clube Dance de Danbury - Estados Unidos Ao Vivo",
    "url": "https://www.radiocol.com.br/2013/11/ouvir-web-radio-sancine-clube-dance-de.html"
   },
@@ -4603,7 +4596,6 @@
    "url": "https://www.radiocol.com.br/2020/05/ouvir-web-radio-apollo-fm-de-sao-paulo-sp-ao-vivo.html"
   },
   "1329602393970410610": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -4627,12 +4619,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:19:13.531-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Iguatemi FM 96,5 de Campinas SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/11/ouvir-radio-iguatemi-fm-965-de-campinas.html"
   },
@@ -6401,7 +6393,6 @@
    "url": "https://www.radiocol.com.br/2013/08/ouvir-radio-universitaria-fm-1021-de.html"
   },
   "1410675528034445088": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -6426,12 +6417,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:16:15.160-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://rededobemfm.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rede do Bem FM 106,1 de Serra Negra SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/11/ouvir-rede-do-bem-fm-1061-de-serra.html"
   },
@@ -6898,7 +6889,6 @@
    "url": "https://www.radiocol.com.br/2015/01/ouvir-radio-antena-jovem-fm-949-de.html"
   },
   "1449281149424191629": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -6922,9 +6912,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-25T21:01:14.388-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Diário FM 95,9 de Marília SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/01/ouvir-radio-diario-fm-959-de-marilia-sp.html"
   },
@@ -8170,7 +8160,6 @@
    "wayback_tried": "2026-11-16"
   },
   "1532331307131542655": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -8194,12 +8183,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T09:35:36.002-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio SIR FM 92,5 de Ipuã SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/02/ouvir-radio-sir-fm-925-de-ipua-ao-vivo.html"
   },
@@ -8555,7 +8544,6 @@
    "url": "https://www.radiocol.com.br/2012/05/ouvir-radio-marinha-fm-1059-de-corumba.html"
   },
   "1566504129464612250": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -8577,12 +8565,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T21:54:04.329-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rádio Beleza FM 105,7 de Vitória ES",
    "url": "https://www.radiocol.com.br/2012/03/ouvir-radio-beleza-fm-1057-de-vitoria.html"
   },
@@ -8793,7 +8781,6 @@
    "url": "https://www.radiocol.com.br/2019/11/radio-nova-liberdade-fm-1027-catalao-go-online.html"
   },
   "1579176827285797400": {
-   "confianca": 0.682,
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -8807,6 +8794,13 @@
      "note": "",
      "source": "Radio Browser: cultura municipal",
      "to": "https://stm7.xcast.com.br:10230/stream"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://stm7.xcast.com.br:10230/stream",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "http://stm12.vox.streamingextreme.xyz:25466/;"
     }
    ],
    "http_only": false,
@@ -8831,15 +8825,19 @@
    ],
    "post_stream": "http://stm12.vox.streamingextreme.xyz:25466/;",
    "post_updated": "2020-08-17T23:27:12.980-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://culturafmamparo.blogspot.com.br/",
     "https://www.radios.redecol.com.br/"
    ],
-   "source": "Radio Browser: cultura municipal",
+   "source": "post",
    "status": "ok",
-   "stream": "https://stm7.xcast.com.br:10230/stream",
+   "stream": "http://stm12.vox.streamingextreme.xyz:25466/;",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: cultura municipal — outra cidade",
+    "url": "https://stm7.xcast.com.br:10230/stream"
+   },
    "title": "Ouvir a Rádio Cultura Municipal FM 88,5 de Amparo SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/11/ouvir-radio-cultura-municipal-fm-1029.html"
   },
@@ -9079,7 +9077,6 @@
    "url": "https://www.radiocol.com.br/2016/11/radio-terra-fm-1035-de-parauapebas-pa.html"
   },
   "1598083603987747281": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -9104,12 +9101,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T21:54:32.998-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio FM Líder 91,1 de Cariacica ES Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/03/ouvir-radio-fm-lider-911-de-cariacica.html"
   },
@@ -12210,7 +12207,6 @@
    "url": "https://www.radiocol.com.br/2018/12/ouvir-radio-continental-fm-885-de-vila.html"
   },
   "1798399458471364462": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -12235,9 +12231,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T21:30:37.134-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Cajuru Web  de Cajuru SP ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/06/ouvir-radio-cajuru-web-ao-vivo-e-online.html"
   },
@@ -12280,7 +12276,6 @@
    "url": "https://www.radiocol.com.br/2020/10/ouvir-radio-top-fm-931-de-arapoema-to-ao-vivo-online.html"
   },
   "1804868998421402357": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -12305,9 +12300,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:09:37.790-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Web Rádio Shalom de Cariacica ES Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/12/ouvir-web-radio-shalom-de-cariacica-ao.html"
   },
@@ -12578,7 +12573,6 @@
    "url": "https://www.radiocol.com.br/2019/02/ouvir-radio-kiss-fm-925-sao-paulo-sp.html"
   },
   "1834009407473811625": {
-   "confianca": 0.682,
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -12592,6 +12586,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Nacional Amazônia",
      "to": "https://radionacionalamazonia-stream.ebc.com.br/ebc/radionacionalamazonia/playlist.m3u8"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://radionacionalamazonia-stream.ebc.com.br/ebc/radionacionalamazonia/playlist.m3u8",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://radionacionalamazonia-stream.ebc.com.br/ebc/adionacionalamazonia/playlist.m3u8"
     }
    ],
    "http_only": false,
@@ -12616,14 +12617,18 @@
    ],
    "post_stream": "https://radionacionalamazonia-stream.ebc.com.br/ebc/adionacionalamazonia/playlist.m3u8",
    "post_updated": "2023-01-10T11:53:29.040-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "https://radios.ebc.com.br/"
    ],
-   "source": "Radio Browser: Rádio Nacional Amazônia",
+   "source": "post",
    "status": "ok",
-   "stream": "https://radionacionalamazonia-stream.ebc.com.br/ebc/radionacionalamazonia/playlist.m3u8",
+   "stream": "https://radionacionalamazonia-stream.ebc.com.br/ebc/adionacionalamazonia/playlist.m3u8",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Nacional Amazônia — outra cidade",
+    "url": "https://radionacionalamazonia-stream.ebc.com.br/ebc/radionacionalamazonia/playlist.m3u8"
+   },
    "title": "Ouvir a Rádio Nacional da Amazônia AM 540 de Manaus AM Ao  Vivo e Online",
    "url": "https://www.radiocol.com.br/2016/04/ouvir-radio-nacional-da-amazonia-am-540.html"
   },
@@ -15433,7 +15438,6 @@
    "url": "https://www.radiocol.com.br/2019/01/aovivo-radio-antena-1-fm-993-divinopolis-mg.html"
   },
   "2013046406016496620": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -15457,12 +15461,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T23:50:45.881-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Unifran FM 101,3 de Franca SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/04/ouvir-radio-unifran-fm-1013-de-franca.html"
   },
@@ -17648,7 +17652,6 @@
    "wayback_tried": "2026-11-16"
   },
   "2169653956146388068": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -17673,13 +17676,13 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T23:57:25.144-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.odiarioonline.com.br/",
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Independente AM 1010 de Barretos SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/03/ouvir-radio-independente-am-1010-de.html"
   },
@@ -21116,7 +21119,6 @@
    "url": "https://www.radiocol.com.br/2019/12/radio-difusora-fm-935-de-nortelandia-mt-online.html"
   },
   "2449358711004591239": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -21141,12 +21143,12 @@
    ],
    "post_stream": "http://afiliadamix2.crossradio.com.br:9000/;",
    "post_updated": "2020-08-12T23:15:37.250-03:00",
-   "reason": "sem conexão (gaierror)",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ignorado",
    "stream": "http://afiliadamix2.crossradio.com.br:9000/;",
    "title": "Rádio Mix FM 90,3 de Avaré SP",
    "url": "https://www.radiocol.com.br/2013/08/ouvir-radio-mix-fm-903-de-avare-ao-vivo.html"
@@ -22201,7 +22203,6 @@
    "url": "https://www.radiocol.com.br/2012/03/ouvir-radio-mais-fm-975-de-itapuranga.html"
   },
   "2521102697226601455": {
-   "confianca": 0.85,
    "contacts": {
     "telefone": [
      "553433267777"
@@ -22219,6 +22220,13 @@
      "note": "",
      "source": "Radio Browser: Sete Colinas FM 101.7",
      "to": "https://8300.brasilstream.com.br/stream"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://8300.brasilstream.com.br/stream",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://ssl.srvstm.com:29524/;stream/1"
     }
    ],
    "http_only": false,
@@ -22242,14 +22250,18 @@
    ],
    "post_stream": "https://ssl.srvstm.com:29524/;stream/1",
    "post_updated": "2021-10-30T21:22:31.178-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://setecolinas.com.br/"
    ],
-   "source": "Radio Browser: Sete Colinas FM 101.7",
+   "source": "post",
    "status": "ok",
-   "stream": "https://8300.brasilstream.com.br/stream",
+   "stream": "https://ssl.srvstm.com:29524/;stream/1",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Sete Colinas FM 101.7 — outra cidade",
+    "url": "https://8300.brasilstream.com.br/stream"
+   },
    "title": "Ouvir a Rádio Sete Colinas FM 101,7 de Uberaba MG Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/07/ouvir-radio-sete-colinas-fm-1017-de.html"
   },
@@ -22373,7 +22385,6 @@
    "url": "https://www.radiocol.com.br/2013/03/ouvir-radio-clube-fm-1005-de-ribeirao.html"
   },
   "2525396636225272043": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -22397,12 +22408,12 @@
    ],
    "post_stream": "http://st7.radiola.mobi:8008/64kbps/67E311D0JF5HM18182L1AD",
    "post_updated": "2020-08-25T21:46:38.289-03:00",
-   "reason": "sem conexão (gaierror)",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://oifm.oi.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ignorado",
    "stream": "http://st7.radiola.mobi:8008/64kbps/67E311D0JF5HM18182L1AD",
    "title": "Ouvir a Rádio OI FM Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/10/ouvir-radio-oi-fm-ao-vivo-e-online.html"
@@ -24500,7 +24511,6 @@
    "url": "https://www.radiocol.com.br/2021/10/ouvir-radio-tom-fm-1043-guaira-pr-ao-vivo-e-online.html"
   },
   "2684036764787634194": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -24525,12 +24535,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-25T20:43:56.718-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Jovem Pan FM 102,9 de Capão Bonito SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/03/ouvir-radio-jovem-pan-fm-1029-de-capao.html"
   },
@@ -24954,7 +24964,6 @@
    "wayback_tried": "2026-11-16"
   },
   "2705575081077238819": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -24979,9 +24988,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:42:25.542-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Webradio Gotas Sonoras do Rio de Janeiro RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/09/ouvir-webradio-gostas-sonoras-do-rio-de.html"
   },
@@ -26216,7 +26225,6 @@
    "url": "https://www.radiocol.com.br/2018/03/ouvir-radio-farol-fm-901-de-maceio-al.html"
   },
   "2799518029180449796": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -26240,12 +26248,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:28:00.816-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Jornal FM 100,9 de Paraíba do Sul RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/10/ouvir-radio-jornal-fm-1009-de-juiz-de.html"
   },
@@ -26744,7 +26752,6 @@
    "url": "https://www.radiocol.com.br/2021/01/ouvir-radio-cidade-verde-fm-1053-de-teresina-pi-ao-vivo-online.html"
   },
   "2836408884055868575": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -26764,12 +26771,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T22:28:23.965-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Estúdio ao vivo - Rádio Beat98 FM do Rio de Janeiro",
    "url": "https://www.radiocol.com.br/2013/08/estudio-ao-vivo-radio-beat98-fm-do-rio.html"
   },
@@ -27401,7 +27408,6 @@
    "url": "https://www.radiocol.com.br/2020/06/ouvir-super-radio-tupi-fm-965-do-rio-de-janeiro-rj-ao-vivo.html"
   },
   "2879283431694224314": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -27426,9 +27432,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-25T21:05:24.445-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Web Rádio Ostras Brasil de Rio das Ostras RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/01/ouvir-web-radio-ostras-brasil-de-rio.html"
   },
@@ -27986,7 +27992,6 @@
    "url": "https://www.radiocol.com.br/2019/10/web-radio-antenna-joinville-online.html"
   },
   "2914965140362447419": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -28008,12 +28013,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:29:03.152-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rádio Energia FM 96,7 de Juiz de Fora MG",
    "url": "https://www.radiocol.com.br/2012/10/ouvir-radio-energia-fm-967-de-juiz-de.html"
   },
@@ -28412,7 +28417,6 @@
    "url": "https://www.radiocol.com.br/2021/01/ouvir-radio-serido-fm-1007-de-caico-rn-ao-vivo-online.html"
   },
   "296281690393937799": {
-   "confianca": 0.638,
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -28426,6 +28430,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Transamérica Hits (Barreiras)",
      "to": "http://servidor39.brlogic.com:8146/live"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "http://servidor39.brlogic.com:8146/live",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "http://sl.dnip.com.br:25690/;stream.mp3"
     }
    ],
    "http_only": true,
@@ -28452,19 +28463,22 @@
    ],
    "post_stream": "http://sl.dnip.com.br:25690/;stream.mp3",
    "post_updated": "2020-08-18T00:02:11.777-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://hitstransamerica.com.br/"
    ],
-   "source": "Radio Browser: Rádio Transamérica Hits (Barreiras)",
+   "source": "post",
    "status": "ok",
-   "stream": "http://servidor39.brlogic.com:8146/live",
+   "stream": "http://sl.dnip.com.br:25690/;stream.mp3",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Transamérica Hits (Barreiras) — outra cidade",
+    "url": "http://servidor39.brlogic.com:8146/live"
+   },
    "title": "Ouvir a Rádio Transamérica Hits FM 91.1 de Itapira SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/03/ouvir-radio-transamerica-hits-fm-911-de.html"
   },
   "2963411833693514508": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -28489,9 +28503,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-25T22:27:21.465-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Web Rádio Grupo Felipe Alves de Uberlândia Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/05/ouvir-web-radio-grupo-felipe-alves-de.html"
   },
@@ -28676,7 +28690,6 @@
    "url": "https://www.radiocol.com.br/2018/02/ouvir-radio-aperipe-am-630-de-aracaju.html"
   },
   "2975027004269007506": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -28700,17 +28713,16 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T23:47:33.673-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Club Regional AM 1480 de Altinópolis SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/04/ouvir-radio-club-regional-am-1480-de.html"
   },
   "2975134438126725715": {
-   "confianca": 0.625,
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -28724,6 +28736,13 @@
      "note": "",
      "source": "Radio Browser: Classic Pan",
      "to": "https://stream.zeno.fm/rtk4pzcome3vv"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://stream.zeno.fm/rtk4pzcome3vv",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://playerservices.streamtheworld.com/api/livestream-redirect/JP_CLASSICAAC.aac"
     }
    ],
    "http_only": false,
@@ -28746,14 +28765,18 @@
    ],
    "post_stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/JP_CLASSICAAC.aac",
    "post_updated": "2023-09-20T15:45:53.698-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "https://jovempan.com.br/"
    ],
-   "source": "Radio Browser: Classic Pan",
+   "source": "post",
    "status": "ok",
-   "stream": "https://stream.zeno.fm/rtk4pzcome3vv",
+   "stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/JP_CLASSICAAC.aac",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Classic Pan — outra cidade",
+    "url": "https://stream.zeno.fm/rtk4pzcome3vv"
+   },
    "title": "Ouvir a Rádio Classic Pan FM 76,9 de São Paulo SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2022/05/ouvir-radio-classic-pan-fm-769-de-sao-paulo-sp-ao-vivo-e-online.html"
   },
@@ -29404,7 +29427,6 @@
    "url": "https://www.radiocol.com.br/2021/01/ouvir-radio-jornal-meio-norte-fm-903-de-teresina-pi-ao-vivo-online.html"
   },
   "3014499713520931883": {
-   "confianca": 0.658,
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -29418,6 +29440,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Novo Tempo",
      "to": "https://streamradio.novotempo.com/CDN-RADIO-PT/smil:radionovotempo.smil/playlist.m3u8"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://streamradio.novotempo.com/CDN-RADIO-PT/smil:radionovotempo.smil/playlist.m3u8",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://stream.live.novotempo.com/radio/smil:rntBelemPA.smil/playlist.m3u8"
     }
    ],
    "http_only": false,
@@ -29441,14 +29470,18 @@
    ],
    "post_stream": "https://stream.live.novotempo.com/radio/smil:rntBelemPA.smil/playlist.m3u8",
    "post_updated": "2020-10-09T23:19:17.461-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "https://www.novotempo.com/"
    ],
-   "source": "Radio Browser: Rádio Novo Tempo",
+   "source": "post",
    "status": "ok",
-   "stream": "https://streamradio.novotempo.com/CDN-RADIO-PT/smil:radionovotempo.smil/playlist.m3u8",
+   "stream": "https://stream.live.novotempo.com/radio/smil:rntBelemPA.smil/playlist.m3u8",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Novo Tempo — outra cidade",
+    "url": "https://streamradio.novotempo.com/CDN-RADIO-PT/smil:radionovotempo.smil/playlist.m3u8"
+   },
    "title": "Ouvir a Rádio Novo Tempo AM 1080 de Belém PA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2016/10/ouvir-radio-novo-tempo-am-1080-de-belem.html"
   },
@@ -30525,12 +30558,12 @@
    "post_stream": "http://radio.servercsi.com.br:8589/;",
    "post_updated": "2020-08-21T23:56:21.194-03:00",
    "provisorio": true,
-   "reason": "corrigido automaticamente (provisório)",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.radiomania.com.br/"
    ],
    "source": "Radio Browser: Rádio Nacional Rio de Janeiro",
-   "status": "ok",
+   "status": "ignorado",
    "stream": "https://radionacionalrio-stream.ebc.com.br/ebc/radionacionalriodejaneiro/playlist.m3u8",
    "title": "Ouvir a Rádio Mania FM 91.1 do Rio de Janeiro RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2017/02/ouvir-radio-mania-fm-1029-do-rio-de.html"
@@ -30710,7 +30743,6 @@
    "url": "https://www.radiocol.com.br/2014/09/ouvir-radio-jacui-fm-973-de-sobradinho.html"
   },
   "3110155011189068651": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -30734,13 +30766,13 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T23:01:39.357-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.radiomania.com.br/",
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Mania FM 89,7 de Uberlândia MG Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/06/ouvir-radio-mania-fm-897-de-uberlandia.html"
   },
@@ -30795,7 +30827,6 @@
    "url": "https://www.radiocol.com.br/2018/03/ouvir-radio-mix-fm-949-de-sao-jose-dos.html"
   },
   "311475808008201733": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -30817,12 +30848,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-21T22:51:53.837-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Terra Brasil FM 96.7 de Arinos MG Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2017/12/ouvir-radio-terra-brasil-fm-967-de.html"
   },
@@ -31730,7 +31761,6 @@
    "url": "https://www.radiocol.com.br/2012/06/ouvir-radio-unama-fm-1055-de.html"
   },
   "3189879065997687478": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -31756,12 +31786,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:02:03.618-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Mais FM 95,3 de Mogi Guaçu SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/01/ouvir-radio-mais-fm-953-de-mogi-guacu.html"
   },
@@ -32208,7 +32238,6 @@
    "url": "https://www.radiocol.com.br/2020/02/ouvir-radio-cbn-905-de-sao-paulo-sp-ao-vivo.html"
   },
   "3207603474923915269": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -32237,12 +32266,12 @@
    ],
    "post_stream": "http://stm16.sateg.com.br:19844/;",
    "post_updated": "2020-08-27T10:36:15.376-03:00",
-   "reason": "sem conexão (gaierror)",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.iaptd.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ignorado",
    "stream": "http://stm16.sateg.com.br:19844/;",
    "title": "Ouvir a Rádio Plenitude FM (Rede do Bem) 105,5 de Campinas SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/09/ouvir-rede-do-bem-fm-1055-de-campina-ao.html"
@@ -35293,7 +35322,6 @@
    "wayback_tried": "2026-11-16"
   },
   "3406629978360149474": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -35318,12 +35346,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T22:54:33.096-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio 107,7 FM 107,7 de Itápolis SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/07/ouvir-radio-1077-fm-1071-de-itapolis-ao.html"
   },
@@ -35524,7 +35552,6 @@
    "url": "https://www.radiocol.com.br/2014/05/ouvir-radio-96-fm-963-de-concordia-sc.html"
   },
   "3430259094827464368": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -35546,12 +35573,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:03:00.612-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rádio 91 FM 91,3 de Ouro Fino MG",
    "url": "https://www.radiocol.com.br/2013/01/ouvir-radio-91-fm-913-de-ouro-fino-ao.html"
   },
@@ -35866,7 +35893,6 @@
    "url": "https://www.radiocol.com.br/2018/10/ouvir-radio-fm-o-dia-fm-927-de-teresina.html"
   },
   "34489304740716635": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -35891,12 +35917,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T09:56:21.388-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Jovem Pan FM 99,7 (retransmissora AM) de Santos Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/02/ouvir-radio-jovem-pan-fm-997.html"
   },
@@ -35944,7 +35970,6 @@
    "url": "https://www.radiocol.com.br/2016/10/ouvir-radio-boas-novas-fm-919-de-belem.html"
   },
   "3454994120706264931": {
-   "confianca": 0.888,
    "contacts": {
     "telefone": [
      "558333414144"
@@ -35962,6 +35987,13 @@
      "note": "",
      "source": "Radio Browser: Correio FM Correio FM Campina Grande",
      "to": "https://e-spo-106.fabricahost.com.br/98campinagrande?f=1787370738N01M0KSJ4K42PESWXSXPB70EDM9&tid=01M0KSJ4K4KHXWCHENK19GHDF4"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://e-spo-106.fabricahost.com.br/98campinagrande?f=1787370738N01M0KSJ4K42PESWXSXPB70EDM9&tid=01M0KSJ4K4KHXWCHENK19GHDF4",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://shout25.crossradio.com.br:18078/live"
     }
    ],
    "http_only": false,
@@ -35985,14 +36017,18 @@
    ],
    "post_stream": "https://shout25.crossradio.com.br:18078/live",
    "post_updated": "2020-12-27T21:23:18.424-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://portalcorreio.uol.com.br/"
    ],
-   "source": "Radio Browser: Correio FM Correio FM Campina Grande",
+   "source": "post",
    "status": "ok",
-   "stream": "https://e-spo-106.fabricahost.com.br/98campinagrande?f=1787370738N01M0KSJ4K42PESWXSXPB70EDM9&tid=01M0KSJ4K4KHXWCHENK19GHDF4",
+   "stream": "https://shout25.crossradio.com.br:18078/live",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Correio FM Correio FM Campina Grande — outra cidade",
+    "url": "https://e-spo-106.fabricahost.com.br/98campinagrande?f=1787370738N01M0KSJ4K42PESWXSXPB70EDM9&tid=01M0KSJ4K4KHXWCHENK19GHDF4"
+   },
    "title": "Ouvir a Rádio 98 FM (Correio FM) 98,1 de Campina Grande PB Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/05/ouvir-radio-98-fm-981-de-campina-grande-pb-ao-vivo.html"
   },
@@ -37123,13 +37159,13 @@
    ],
    "post_stream": "http://sceua.softhost.com.br:8012/;stream.mp3",
    "post_updated": "2020-08-17T13:58:11.360-03:00",
-   "reason": "servidor não responde ao robô (fora do Brasil) — tempo esgotado",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "search_tried": "2026-11-17",
    "sites": [
     "http://www.paieterno.com.br/"
    ],
    "source": "post",
-   "status": "bloqueio",
+   "status": "ignorado",
    "stream": "http://sceua.softhost.com.br:8012/;stream.mp3",
    "title": "Ouvir a Rádio VoxPatris FM 103,7 - Rede Pai Eterno de  Presidente Prudente SP  Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2011/08/ouvir-radio-demais-fm-1037-de.html"
@@ -37712,7 +37748,6 @@
    "url": "https://www.radiocol.com.br/2023/02/ouvir-radio-brahma-fm-959-de-goiania-go-ao-vivo-online.html"
   },
   "3575498658627815161": {
-   "confianca": 0.647,
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -37726,6 +37761,13 @@
      "note": "",
      "source": "Radio Browser: Jovem Pan Natal",
      "to": "http://pannatal.jmvstream.com:8522/stream/"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "http://pannatal.jmvstream.com:8522/stream/",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "http://stm8.xcast.com.br:10668/stream"
     }
    ],
    "http_only": true,
@@ -37751,14 +37793,18 @@
    ],
    "post_stream": "http://stm8.xcast.com.br:10668/stream",
    "post_updated": "2020-08-13T11:38:09.067-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "https://jovempan.com.br/"
    ],
-   "source": "Radio Browser: Jovem Pan Natal",
+   "source": "post",
    "status": "ok",
-   "stream": "http://pannatal.jmvstream.com:8522/stream/",
+   "stream": "http://stm8.xcast.com.br:10668/stream",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Jovem Pan Natal — outra cidade",
+    "url": "http://pannatal.jmvstream.com:8522/stream/"
+   },
    "title": "Ouvir a Rádio Jovem Pan FM 88,1 de Matão SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2019/03/aovivo-radio-jovem-pan-fm-881-matao-sp-online.html"
   },
@@ -37879,7 +37925,6 @@
    "wayback_tried": "2026-11-16"
   },
   "3585111392469497388": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -37903,9 +37948,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T21:47:54.692-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Sucesso FM 91,9 de Tupaciguara MG Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/03/ouvir-radio-sucesso-fm-919-de.html"
   },
@@ -44269,7 +44314,6 @@
    "url": "https://www.radiocol.com.br/2020/09/ouvir-radio-massa-fm-1067-de-colatina-es-ao-vivo.html"
   },
   "3976827061239060815": {
-   "confianca": 0.665,
    "contacts": {
     "telefone": [
      "555136643000"
@@ -44287,6 +44331,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Atlântico Sul FM",
      "to": "https://streaming.livespanel.com:21057/stream"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://streaming.livespanel.com:21057/stream",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://stream.ouveai.com.br/proxy/atlanticosul?mp=/stream"
     }
    ],
    "http_only": false,
@@ -44309,14 +44360,18 @@
    ],
    "post_stream": "https://stream.ouveai.com.br/proxy/atlanticosul?mp=/stream",
    "post_updated": "2021-06-13T19:02:40.526-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://www.atlanticosul947.com.br/"
    ],
-   "source": "Radio Browser: Rádio Atlântico Sul FM",
+   "source": "post",
    "status": "ok",
-   "stream": "https://streaming.livespanel.com:21057/stream",
+   "stream": "https://stream.ouveai.com.br/proxy/atlanticosul?mp=/stream",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Atlântico Sul FM — outra cidade",
+    "url": "https://streaming.livespanel.com:21057/stream"
+   },
    "title": "Ouvir a Rádio Atlântico Sul FM 94,7 de Torres RS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/12/ouvir-radio-atlantico-sul-fm-947-de.html"
   },
@@ -45134,7 +45189,6 @@
    "url": "https://www.radiocol.com.br/2012/10/ouvir-radio-mania-fm-909-de-rio-bonito.html"
   },
   "4020158531990980336": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -45158,9 +45212,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-25T21:55:58.882-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Atlântica FM 93,7 de Rio das Ostras RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/09/ouvir-radio-atlantica-fm-937-de-rio-das.html"
   },
@@ -46731,7 +46785,6 @@
    "url": "https://www.radiocol.com.br/2013/06/ouvir-radio-mania-fm-889-de-paraty-ao.html"
   },
   "4117633125940246123": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -46756,12 +46809,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:33:20.863-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio 107 FM 107,1 de Petrópolis - Rio de Janeiro Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/10/ouvir-radio-107-fm-1071-de-petropolis.html"
   },
@@ -47083,14 +47136,14 @@
    "post_candidates": [],
    "post_updated": "2020-08-26T23:54:36.289-03:00",
    "provisorio": true,
-   "reason": "corrigido automaticamente (provisório)",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.setecolinas.com.br/",
     "https://www.radios.redecol.com.br/"
    ],
    "source": "Radio Browser: Rádio Sete Colinas FM",
-   "status": "ok",
+   "status": "ignorado",
    "stream": "https://streaming.livespanel.com:20107/setecolinas",
    "title": "Ouvir a Rádio Sete Colinas FM 98,1 de Uberaba MG Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/03/ouvir-radio-sete-colinas-fm-981-de.html"
@@ -48969,7 +49022,6 @@
    "url": "https://www.radiocol.com.br/2017/12/ouvir-radio-montanheza-fm-935-de.html"
   },
   "4241665837075781737": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -48995,13 +49047,13 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-24T22:21:39.473-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://rededocoracao.com/",
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rede do Coração AM 1440 do Rio de Janeiro RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/12/ouvir-rede-do-coracao-am-1440-do-rio-de.html"
   },
@@ -49476,7 +49528,6 @@
    "url": "https://www.radiocol.com.br/2020/09/ouvir-radio-taruma-fm-1043-de-macapa-ap-ao-vivo.html"
   },
   "4287156540040647756": {
-   "alerted": "2026-11-17",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -49505,13 +49556,13 @@
    "post_candidates": [],
    "post_stream": null,
    "post_updated": "2020-08-25T21:12:34.969-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://redesalvacao.com.br/"
    ],
    "source": "post",
-   "status": "sem_link",
+   "status": "ignorado",
    "stream": null,
    "title": "Ouvir a Rede Salvação FM 89,5 de Ribeirão Preto SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/12/ouvir-rede-salvacao-fm-895-de-ribeirao.html"
@@ -50693,14 +50744,14 @@
    ],
    "post_stream": "http://50.30.47.30:8198/",
    "post_updated": "2020-08-27T00:02:21.979-03:00",
-   "reason": "servidor não responde ao robô (fora do Brasil) — tempo esgotado",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "search_tried": "2026-11-17",
    "sites": [
     "http://transamericauberaba.com.br/",
     "https://www.radios.redecol.com.br/"
    ],
    "source": "post",
-   "status": "bloqueio",
+   "status": "ignorado",
    "stream": "http://50.30.47.30:8198/",
    "title": "Ouvir a Rádio Transamérica Pop FM 93,3 de Uberaba MG Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/03/ouvir-radio-transamerica-pop-fm-933-de.html"
@@ -51709,7 +51760,6 @@
    "url": "https://www.radiocol.com.br/2014/04/ouvir-radio-morada-fm-889-de-cunha-pora.html"
   },
   "4416465875929363138": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -51734,12 +51784,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-24T23:00:32.783-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://rededobemfm.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rede do Bem FM 90,3 de São José dos Campos SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/09/ouvir-rede-do-bem-fm-903-de-sao-jose.html"
   },
@@ -54140,7 +54190,6 @@
    "url": "https://www.radiocol.com.br/2016/06/ouvir-radio-cidade-fm-947-de-araguaina.html"
   },
   "4599864007426655433": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -54164,13 +54213,13 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T22:24:39.084-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.radio1029.com.br/",
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio 102,9 FM 102,9 (antiga Jovem Pan FM) do Rio de Janeiro Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/10/ouvir-radio-1029-fm-1029-antiga-jovem.html"
   },
@@ -54517,7 +54566,6 @@
    "url": "https://www.radiocol.com.br/2017/04/ouvir-radio-difusora-am-920-de-picos-pi.html"
   },
   "4613396086821578344": {
-   "confianca": 0.667,
    "contacts": {
     "telefone": [
      "556530541019"
@@ -54533,6 +54581,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Capital do Papel 101,9 FM",
      "to": "https://5a57bda70564a.streamlock.net/capitaldopapelpr/capitaldopapelpr.stream/playlist.m3u8"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://5a57bda70564a.streamlock.net/capitaldopapelpr/capitaldopapelpr.stream/playlist.m3u8",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://ssl.srvstm.com:17256/;"
     }
    ],
    "http_only": false,
@@ -54555,14 +54610,18 @@
    ],
    "post_stream": "https://ssl.srvstm.com:17256/;",
    "post_updated": "2021-03-10T12:53:09.848-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "https://capitalfmcuiaba.com.br/"
    ],
-   "source": "Radio Browser: Rádio Capital do Papel 101,9 FM",
+   "source": "post",
    "status": "ok",
-   "stream": "https://5a57bda70564a.streamlock.net/capitaldopapelpr/capitaldopapelpr.stream/playlist.m3u8",
+   "stream": "https://ssl.srvstm.com:17256/;",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Capital do Papel 101,9 FM — outra cidade",
+    "url": "https://5a57bda70564a.streamlock.net/capitaldopapelpr/capitaldopapelpr.stream/playlist.m3u8"
+   },
    "title": "Ouvir a Rádio Capital FM 101,9 de Cuiabá MT Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/10/ouvir-radio-capital-fm-1019-de-cuiaba.html"
   },
@@ -54729,7 +54788,6 @@
    "wayback_tried": "2026-11-16"
   },
   "4629296537649540466": {
-   "confianca": 0.757,
    "contacts": {
     "telefone": [
      "551128709750"
@@ -54747,6 +54805,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Jovem Pan 100.9 FM",
      "to": "https://stream.zeno.fm/c45wbq2us3buv"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://stream.zeno.fm/c45wbq2us3buv",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://playerservices.streamtheworld.com/api/livestream-redirect/JP_SP_FMAAC.aac"
     }
    ],
    "http_only": false,
@@ -54770,14 +54835,18 @@
    ],
    "post_stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/JP_SP_FMAAC.aac",
    "post_updated": "2022-06-19T21:28:27.436-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "https://jovempan.com.br/"
    ],
-   "source": "Radio Browser: Rádio Jovem Pan 100.9 FM",
+   "source": "post",
    "status": "ok",
-   "stream": "https://stream.zeno.fm/c45wbq2us3buv",
+   "stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/JP_SP_FMAAC.aac",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Jovem Pan 100.9 FM — outra cidade",
+    "url": "https://stream.zeno.fm/c45wbq2us3buv"
+   },
    "title": "Ouvir a Rádio Jovem Pan FM 100,9 de São Paulo SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2022/06/ouvir-radio-jovem-pan-fm-jpfm-1009-de-sao-paulo-sp-ao-vivo-e-online.html"
   },
@@ -55502,7 +55571,6 @@
    "url": "https://www.radiocol.com.br/2022/06/ouvir-radio-rio-claro-fm-919-de-ipora-go-ao-vivo-e-online.html"
   },
   "4698243873786294635": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -55528,12 +55596,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-22T21:04:34.130-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Fanática FM 104,5 do Rio de Janeiro RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2017/02/ouvir-radio-fanatica-fm-1045-do-rio-de.html"
   },
@@ -56298,7 +56366,6 @@
    "url": "https://www.radiocol.com.br/2013/11/ouvir-web-radio-estacao-reggae-de-sao.html"
   },
   "4742624277025452594": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -56323,9 +56390,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T21:41:11.162-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Web Rádio Brasil Sertanejo de Fernandópolis SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/04/ouvir-web-radio-brasil-sertanejo-de.html"
   },
@@ -56990,7 +57057,6 @@
    "wayback_tried": "2026-11-16"
   },
   "4789577270418910673": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -57013,13 +57079,13 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-21T22:38:45.136-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://cbnvitoria.com.br/",
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rádio CBN AM 1250 de Vitória ES",
    "url": "https://www.radiocol.com.br/2012/03/ouvir-radio-cbn-fm-953-de-vitoria-ao.html"
   },
@@ -57797,7 +57863,6 @@
    "url": "https://www.radiocol.com.br/2020/03/ouvir-radio-guima-fm-885-de-santa-vitoria-mg-ao-vivo.html"
   },
   "484053542914377119": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -57822,9 +57887,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-11-07T22:31:08.961-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rádio Globo AM 710 de Maceió AL",
    "url": "https://www.radiocol.com.br/2016/04/ouvir-radio-globo-am-710-de-maceio-al.html"
   },
@@ -57922,7 +57987,6 @@
    "url": "https://www.radiocol.com.br/2019/11/radio-caraibas-fm-1007-de-irece-ba-online.html"
   },
   "4851017681899942866": {
-   "confianca": 0.687,
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -57936,6 +58000,13 @@
      "note": "",
      "source": "Radio Browser: 104.7 Universitária - UFES",
      "to": "https://everest.radionanet.com:8990/stream"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://everest.radionanet.com:8990/stream",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "http://srv27.brasilstream.com.br:8642/stream"
     }
    ],
    "http_only": false,
@@ -57960,14 +58031,18 @@
    ],
    "post_stream": "http://srv27.brasilstream.com.br:8642/stream",
    "post_updated": "2020-08-11T22:08:47.358-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://www.universitariafm.ufes.br/"
    ],
-   "source": "Radio Browser: 104.7 Universitária - UFES",
+   "source": "post",
    "status": "ok",
-   "stream": "https://everest.radionanet.com:8990/stream",
+   "stream": "http://srv27.brasilstream.com.br:8642/stream",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: 104.7 Universitária - UFES — outra cidade",
+    "url": "https://everest.radionanet.com:8990/stream"
+   },
    "title": "Ouvir a Rádio Universitária FM 104,7 de Vitória ES Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/01/ouvir-radio-universitaria-fm-1047-de.html"
   },
@@ -59472,7 +59547,6 @@
    "wayback_tried": "2026-11-16"
   },
   "4931291519243138644": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -59497,13 +59571,13 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:11:36.539-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.ondalivream.com.br/",
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Onda Livre AM 910 de Piracicaba SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/12/ouvir-radio-onda-livre-am-910-de.html"
   },
@@ -60265,7 +60339,6 @@
    "url": "https://www.radiocol.com.br/2018/05/ouvir-radio-vale-verde-fm-953-de-mogi.html"
   },
   "4977688666143007774": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -60289,12 +60362,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:40:17.364-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio FM dos Anjos 106,9 de Barra de São Francisco ES Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/09/ouvir-radio-fm-dos-anjos-1069-de-sao.html"
   },
@@ -62839,7 +62912,6 @@
    "url": "https://www.radiocol.com.br/2017/04/ouvir-radio-antares-am-800-de-teresina.html"
   },
   "512242539093749281": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -62864,9 +62936,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T21:43:08.542-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Web Rádio Arena de Americana SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/04/ouvir-web-radio-arena-de-americana-ao.html"
   },
@@ -63614,7 +63686,6 @@
    "wayback_tried": "2026-11-16"
   },
   "517616627035145569": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -63638,12 +63709,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T09:38:29.016-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Lidersom FM 89,5 de Orlândia SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/02/ouvir-radio-lidersom-fm-895-de-orlandia.html"
   },
@@ -63965,7 +64036,6 @@
    "url": "https://www.radiocol.com.br/2014/05/ouvir-radio-maisnova-fm-991-de-soledade.html"
   },
   "519541200236870270": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -63989,9 +64059,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T20:53:34.337-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Web Rádio Moc City de Montes Claros MG Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/08/ouvir-web-radio-moc-city-de-montes.html"
   },
@@ -64292,7 +64362,6 @@
    "url": "https://www.radiocol.com.br/2018/03/ouvir-rede-aleluia-fm-991-de-macapa-ap.html"
   },
   "5212050164261761309": {
-   "confianca": 0.621,
    "contacts": {
     "telefone": [
      "554734111155"
@@ -64308,6 +64377,13 @@
      "note": "",
      "source": "Radio Browser: Jovem Pan News",
      "to": "https://stream.zeno.fm/vlcraijc6yiuv"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://stream.zeno.fm/vlcraijc6yiuv",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://azuracast.secnet.com.br/radio/8010/radio.mp3"
     }
    ],
    "http_only": false,
@@ -64332,19 +64408,22 @@
    ],
    "post_stream": "https://azuracast.secnet.com.br/radio/8010/radio.mp3",
    "post_updated": "2022-03-31T22:18:09.462-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "https://www.gcd.com.br/"
    ],
-   "source": "Radio Browser: Jovem Pan News",
+   "source": "post",
    "status": "ok",
-   "stream": "https://stream.zeno.fm/vlcraijc6yiuv",
+   "stream": "https://azuracast.secnet.com.br/radio/8010/radio.mp3",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Jovem Pan News — outra cidade",
+    "url": "https://stream.zeno.fm/vlcraijc6yiuv"
+   },
    "title": "Ouvir a Rádio Jovem Pan News FM 93,9 de Rio do Sul SC Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2022/03/ouvir-radio-jovem-pan-news-fm-939-de-rio-do-sul-sc-ao-vivo-e-online.html"
   },
   "5212781564773900419": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -64367,12 +64446,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-21T23:42:59.323-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.radiotribuna.com.br/",
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rádio Tribuna AM 590 de Vitória ES",
    "url": "https://www.radiocol.com.br/2012/03/ouvir-radio-tribuna-am-590-de-vitoria.html"
   },
@@ -65690,7 +65769,6 @@
    "url": "https://www.radiocol.com.br/2015/05/ouvir-radio-musical-fm-1009-de-campo.html"
   },
   "5307016089266496567": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -65715,9 +65793,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T21:41:48.630-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Web Rádio As Mais Pedidas Sertanejas de Piracicaba SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/04/ouvir-web-radio-as-mais-pedidas.html"
   },
@@ -66942,7 +67020,6 @@
    "url": "https://www.radiocol.com.br/2019/01/ouvir-radio-mais-fm-1059-de.html"
   },
   "5393843070428438996": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -66966,9 +67043,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-25T20:00:05.929-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio MPB FM 90,3 do Rio de Janeiro RJ  ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2011/08/ouvir-radio-mpb-fm-903-do-rio-de.html"
   },
@@ -67598,7 +67675,6 @@
    "url": "https://www.radiocol.com.br/2014/05/ouvir-radio-maisnova-fm-1025-de-passo.html"
   },
   "5451756941354850389": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -67622,11 +67698,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:15:32.684-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Nova Sumaré AM 540 de Sumaré SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/11/ouvir-radio-nova-sumare-am-540-de.html"
   },
@@ -70845,7 +70921,6 @@
    "url": "https://www.radiocol.com.br/2014/05/ouvir-radio-maisnova-fm-945-de-pelotas.html"
   },
   "5660454292436202224": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -70870,9 +70945,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-25T20:43:37.480-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Mix FM 104,7 de Itapeva SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/03/ouvir-radio-mix-fm-1047-de-itapeva-sp.html"
   },
@@ -71933,7 +72008,6 @@
    "url": "https://www.radiocol.com.br/2020/05/ouvir-radio-cancao-nova-am-670-de-nova-esperanca-pr-ao-vivo.html"
   },
   "5737563578179905129": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -71956,11 +72030,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T21:52:10.829-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rádio Jovem Pan News Vitória AM 640 de Vitória ES",
    "url": "https://www.radiocol.com.br/2012/03/ouvir-radio-vitoria-am-640-de-vitoria.html"
   },
@@ -73002,7 +73076,6 @@
    "wayback_tried": "2026-11-16"
   },
   "5788961579202059091": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -73027,11 +73100,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T09:56:43.517-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Mix FM 98,1 de São Vicente - Litoral de SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/02/ouvir-radio-mix-fm-981-de-sao-vicente.html"
   },
@@ -73390,7 +73463,6 @@
    "url": "https://www.radiocol.com.br/2012/02/ouvir-radio-92-fm-923-de-sao-luis-ao.html"
   },
   "5815157503477853900": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -73414,9 +73486,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T22:55:00.844-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rede Nossa Rádio FM 96,3 de Cajobi Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/07/ouvir-rede-nossa-radio-fm-963-de-cajobi.html"
   },
@@ -73461,7 +73533,6 @@
    "url": "https://www.radiocol.com.br/2012/06/ouvir-radio-fc-fm-965-de-codo-ao-vivo-e.html"
   },
   "5818797411914044517": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -73486,9 +73557,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T22:11:03.995-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Vida FM 89,1 de Lisboa Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/11/ouvir-radio-vida-fm-891-de-lisboa-ao.html"
   },
@@ -73686,7 +73757,6 @@
    "url": "https://www.radiocol.com.br/2019/05/ouvir-radio-camara-fm-1015-balneario-camboriu-sc-online.html"
   },
   "5832795904433568355": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -73710,12 +73780,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T23:57:44.837-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.radioindependentebarretos.com.br/",
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Independente FM 97,9 de Barretos Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/03/ouvir-radio-independente-fm-979-de.html"
   },
@@ -73920,7 +73990,6 @@
    "url": "https://www.radiocol.com.br/2019/09/ouvir-radio-vale-fm-915-de-ipameri-go-online.html"
   },
   "5861396016094286605": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -73944,11 +74013,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T22:32:50.288-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Cidade AM 890 de Matão SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/08/ouvir-radio-cidade-am-890-de-matao-ao.html"
   },
@@ -74276,7 +74345,6 @@
    "url": "https://www.radiocol.com.br/2021/12/ouvir-radio-cbn-fm-1065-de-uniao-da-vitoria-pr-ao-vivo-e-online.html"
   },
   "5882137430944410309": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -74301,11 +74369,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-23T22:26:14.341-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Band FM 96,7 de Ribeirão Preto SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/04/ouvir-radio-band-fm-967-de-ribeirao.html"
   },
@@ -74389,7 +74457,6 @@
    "url": "https://www.radiocol.com.br/2019/04/ouvir-rede-aleluia-fm-983-de-franca-sp-online.html"
   },
   "5886869224777999297": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -74412,12 +74479,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-21T22:31:07.349-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.gazeta820.com.br/",
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rádio Gazeta AM 820 de Vitória ES",
    "url": "https://www.radiocol.com.br/2018/01/ouvir-radio-gazeta-am-820-de-vitoria-es.html"
   },
@@ -75026,7 +75093,6 @@
    "url": "https://www.radiocol.com.br/2022/06/ouvir-radio-transamerica-fm-1001-de-sao-paulo-sp-ao-vivo-e-online.html"
   },
   "594855928582171378": {
-   "confianca": 0.67,
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -75040,6 +75106,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Globo - Rio de Janeiro",
      "to": "https://26683.live.streamtheworld.com:443/RADIO_GLOBO_RJAAC.aac?dist=site"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://26683.live.streamtheworld.com:443/RADIO_GLOBO_RJAAC.aac?dist=site",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "http://servidor39.brlogic.com:8202/live"
     }
    ],
    "http_only": false,
@@ -75065,14 +75138,18 @@
    ],
    "post_stream": "http://servidor39.brlogic.com:8202/live",
    "post_updated": "2020-08-22T21:05:26.412-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://www.radiodabencao.com.br/"
    ],
-   "source": "Radio Browser: Rádio Globo - Rio de Janeiro",
+   "source": "post",
    "status": "ok",
-   "stream": "https://26683.live.streamtheworld.com:443/RADIO_GLOBO_RJAAC.aac?dist=site",
+   "stream": "http://servidor39.brlogic.com:8202/live",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Globo - Rio de Janeiro — outra cidade",
+    "url": "https://26683.live.streamtheworld.com:443/RADIO_GLOBO_RJAAC.aac?dist=site"
+   },
    "title": "Ouvir a Rádio da Benção FM 107,1 do Rio de Janeiro RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2017/12/ouvir-radio-da-bencao-fm-1071-d0-rio-de.html"
   },
@@ -76030,7 +76107,6 @@
    "url": "https://www.radiocol.com.br/2020/02/ouvir-radio-justica-fm-1047-de-brasilia-df-ao-vivo.html"
   },
   "6032667707168553910": {
-   "confianca": 0.739,
    "contacts": {
     "telefone": [
      "555136271988"
@@ -76048,6 +76124,13 @@
      "note": "",
      "source": "Radio Browser: Jovem Pan News",
      "to": "https://stream.zeno.fm/vlcraijc6yiuv"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://stream.zeno.fm/vlcraijc6yiuv",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://r14.ciclano.io:15020/stream"
     }
    ],
    "http_only": false,
@@ -76073,14 +76156,18 @@
    ],
    "post_stream": "https://r14.ciclano.io:15020/stream",
    "post_updated": "2021-04-13T20:13:56.603-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "https://jplitoral.com.br/"
    ],
-   "source": "Radio Browser: Jovem Pan News",
+   "source": "post",
    "status": "ok",
-   "stream": "https://stream.zeno.fm/vlcraijc6yiuv",
+   "stream": "https://r14.ciclano.io:15020/stream",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Jovem Pan News — outra cidade",
+    "url": "https://stream.zeno.fm/vlcraijc6yiuv"
+   },
    "title": "Ouvir a Rádio Jovem Pan News FM 92,3 de Imbé RS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/11/ouvir-radio-jovem-pan-news-fm-923-de.html"
   },
@@ -76317,7 +76404,6 @@
    "url": "https://www.radiocol.com.br/2014/07/ouvir-radio-real-am-540-de-canoas-rs-ao.html"
   },
   "604149368999118614": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -76341,11 +76427,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T21:44:45.350-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Extra FM 101,9 de Uberlândia MG Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/03/ouvir-radio-extra-fm-1019-de-uberlandia.html"
   },
@@ -78386,7 +78472,6 @@
    "url": "https://www.radiocol.com.br/2014/06/ouvir-radio-antena-1-fm-893-de-porto.html"
   },
   "6160982384188190105": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -78409,11 +78494,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-24T22:20:54.206-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rede do Coração (RDC) FM 105,7 de Vitória ES",
    "url": "https://www.radiocol.com.br/2015/12/ouvir-rede-do-coracao-rdc-fm-1057-de.html"
   },
@@ -79228,7 +79313,6 @@
    "url": "https://www.radiocol.com.br/2013/02/ouvir-radio-cbn-fm-905-de-ribeirao.html"
   },
   "6226978816566306788": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -79253,9 +79337,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-23T23:37:40.952-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Band FM 91,9 de Tupaciguara MG Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2016/02/ouvir-radio-band-fm-919-de-tupaciguara.html"
   },
@@ -79746,7 +79830,6 @@
    "wayback_tried": "2026-11-16"
   },
   "6257041314691689177": {
-   "confianca": 0.741,
    "contacts": {
     "telefone": [
      "557135340100"
@@ -79762,6 +79845,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Transamérica 100.1 FM",
      "to": "https://playerservices.streamtheworld.com/api/livestream-redirect/RT_SPAAC.aac"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://playerservices.streamtheworld.com/api/livestream-redirect/RT_SPAAC.aac",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://21933.live.streamtheworld.com/RT_SALAAC.aac?"
     }
    ],
    "http_only": false,
@@ -79786,14 +79876,18 @@
    ],
    "post_stream": "https://21933.live.streamtheworld.com/RT_SALAAC.aac?",
    "post_updated": "2022-06-24T15:30:08.138-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://www.radiotransamerica.com.br/"
    ],
-   "source": "Radio Browser: Rádio Transamérica 100.1 FM",
+   "source": "post",
    "status": "ok",
-   "stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/RT_SPAAC.aac",
+   "stream": "https://21933.live.streamtheworld.com/RT_SALAAC.aac?",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Transamérica 100.1 FM — outra cidade",
+    "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/RT_SPAAC.aac"
+   },
    "title": "Ouvir a Rádio Transamérica FM 100,1 de Salvador BA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2022/06/ouvir-radio-transamerica-fm-1001-de-salvador-ba-ao-vivo-e-online.html"
   },
@@ -80889,7 +80983,6 @@
    "wayback_tried": "2026-11-16"
   },
   "6306697330419075898": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -80917,11 +81010,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-18T21:14:45.918-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.globocampinas.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Globo AM 1390 de Campinas SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/03/ouvir-radio-globo-am-1390-de-campinas.html"
   },
@@ -81217,7 +81310,6 @@
    "url": "https://www.radiocol.com.br/2017/11/ouvir-radio-integracao-fm-885-de.html"
   },
   "6329953495957530994": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -81243,12 +81335,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:15:56.267-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.bandnewsfm.com.br/",
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio BandNews FM 106,7 de Campinas SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/11/ouvir-radio-bandnews-fm-1067-de.html"
   },
@@ -84007,12 +84099,12 @@
    "post_stream": "https://r10.ciclano.io:15037/stream",
    "post_updated": "2020-12-19T22:05:19.444-03:00",
    "provisorio": true,
-   "reason": "corrigido automaticamente (provisório)",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://jovempan.com.br/"
    ],
    "source": "Radio Browser: Jovem Pan FM Fortaleza",
-   "status": "ok",
+   "status": "ignorado",
    "stream": "https://streaming.livespanel.com:8060/stream",
    "title": "Ouvir a Rádio Jovem Pan News FM 92,9 de Fortaleza CE Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/12/ouvir-radio-jovem-pan-news-fm-929-de-fortaleza-ce-ao-vivo.html"
@@ -84408,7 +84500,6 @@
    "url": "https://www.radiocol.com.br/2011/08/radio-ecclesia-fm-975-de-luanda-angola.html"
   },
   "6545137557314551370": {
-   "confianca": 0.656,
    "contacts": {
     "telefone": [
      "557436410001"
@@ -84426,6 +84517,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Cidade Grajaú 91.1 FM",
      "to": "https://servidor25-2.brlogic.com:8268/live?source=website"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://servidor25-2.brlogic.com:8268/live?source=website",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://servidor37-3.brlogic.com:8276/live"
     }
    ],
    "http_only": false,
@@ -84448,14 +84546,18 @@
    ],
    "post_stream": "https://servidor37-3.brlogic.com:8276/live",
    "post_updated": "2020-11-10T23:24:53.636-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "https://grupocidadefm.com/"
    ],
-   "source": "Radio Browser: Rádio Cidade Grajaú 91.1 FM",
+   "source": "post",
    "status": "ok",
-   "stream": "https://servidor25-2.brlogic.com:8268/live?source=website",
+   "stream": "https://servidor37-3.brlogic.com:8276/live",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Cidade Grajaú 91.1 FM — outra cidade",
+    "url": "https://servidor25-2.brlogic.com:8268/live?source=website"
+   },
    "title": "Ouvir a Rádio Cidade FM 91,1 de Irecê BA Online",
    "url": "https://www.radiocol.com.br/2019/11/radio-cidade-fm-911-de-irece-ba-online.html"
   },
@@ -85066,7 +85168,6 @@
    "url": "https://www.radiocol.com.br/2014/09/ouvir-radio-guaira-fm-977-de-santa-rosa.html"
   },
   "657306914665683113": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -85090,11 +85191,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T22:27:20.453-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Nativa FM 103,7 do Rio de Janeiro RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/01/ouvir-radio-nativa-fm-1037-do-rio-de.html"
   },
@@ -85695,7 +85796,6 @@
    "url": "https://www.radiocol.com.br/2012/08/ouvir-radio-mix-fm-977-de-maceio-ao.html"
   },
   "6624963147528030113": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -85720,12 +85820,12 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T00:03:10.223-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://bandnewsfm.band.uol.com.br/",
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio BandNews FM 96,7 de Ribeirão Preto SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/03/ouvir-radio-bandnews-fm-967-de-sao.html"
   },
@@ -87761,7 +87861,6 @@
    "url": "https://www.radiocol.com.br/2020/06/ouvir-nossa-radio-fm-917-de-bituruna-pr-ao-vivo.html"
   },
   "6754964385164532188": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -87786,9 +87885,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T23:39:00.763-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio República AM 1380 de Morro Agudo SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/05/ouvir-radio-republica-am-1380-de-morro.html"
   },
@@ -88083,7 +88182,6 @@
    "url": "https://www.radiocol.com.br/2016/01/ouvir-rede-aleluia-fm-1003-de-anapolis.html"
   },
   "6767302544570147156": {
-   "confianca": 0.693,
    "contacts": {
     "telefone": [
      "556436234457"
@@ -88101,6 +88199,13 @@
      "note": "",
      "source": "Radio Browser: Radio Cidade Verde",
      "to": "https://ssl1.transmissaodigital.com:20010/;"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://ssl1.transmissaodigital.com:20010/;",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://shout25.crossradio.com.br:18076/1"
     }
    ],
    "http_only": false,
@@ -88124,14 +88229,18 @@
    ],
    "post_stream": "https://shout25.crossradio.com.br:18076/1",
    "post_updated": "2022-06-22T21:43:48.284-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://www.fmcidade.net/"
    ],
-   "source": "Radio Browser: Radio Cidade Verde",
+   "source": "post",
    "status": "ok",
-   "stream": "https://ssl1.transmissaodigital.com:20010/;",
+   "stream": "https://shout25.crossradio.com.br:18076/1",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Radio Cidade Verde — outra cidade",
+    "url": "https://ssl1.transmissaodigital.com:20010/;"
+   },
    "title": "Ouvir a Rádio Cidade FM 87,9 de Rio Verde GO Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2016/04/ouvir-radio-cidade-fm-de-rio-verde-go.html"
   },
@@ -89152,7 +89261,6 @@
    "url": "https://www.radiocol.com.br/2016/12/ouvir-radio-mix-fm-945-de-macapa-ap-ao.html"
   },
   "685919914983951100": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -89178,11 +89286,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-22T21:07:04.510-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Top Rio FM 97,1 de Piraí RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2017/02/ouvir-radio-97-fm-971-de-pirai-rj-ao.html"
   },
@@ -91696,7 +91804,6 @@
    "url": "https://www.radiocol.com.br/2014/03/ouvir-radio-serra-dourada-fm-909-de.html"
   },
   "7013458662445733297": {
-   "confianca": 0.603,
    "contacts": {
     "telefone": [],
     "whatsapp": [
@@ -91713,6 +91820,13 @@
      "note": "",
      "source": "Radio Browser: Massa FM São Paulo",
      "to": "https://stm01.virtualcast.com.br:8000/massasaopaulo"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://stm01.virtualcast.com.br:8000/massasaopaulo",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://stm01.virtualcast.com.br:8214/live"
     }
    ],
    "http_only": false,
@@ -91736,14 +91850,18 @@
    ],
    "post_stream": "https://stm01.virtualcast.com.br:8214/live",
    "post_updated": "2021-02-16T11:54:40.341-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "https://www.massafm.com.br/"
    ],
-   "source": "Radio Browser: Massa FM São Paulo",
+   "source": "post",
    "status": "ok",
-   "stream": "https://stm01.virtualcast.com.br:8000/massasaopaulo",
+   "stream": "https://stm01.virtualcast.com.br:8214/live",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Massa FM São Paulo — outra cidade",
+    "url": "https://stm01.virtualcast.com.br:8000/massasaopaulo"
+   },
    "title": "Ouvir a Rádio Massa FM 98,5 de São Luís MA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/12/ouvir-radio-massa-fm-985-de-sao-luis-ma-ao-vivo-online.html"
   },
@@ -94886,7 +95004,6 @@
    "url": "https://www.radiocol.com.br/2019/06/ouvir-web-radio-riacho-doce-de-belford.html"
   },
   "7207901773340124002": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -94910,10 +95027,10 @@
    ],
    "post_stream": "http://cdn.rj.assocrj.com.br:8000/1?hash=",
    "post_updated": "2020-08-20T00:02:28.997-03:00",
-   "reason": "sem conexão (ConnectionRefusedError)",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
    "source": "post",
-   "status": "off",
+   "status": "ignorado",
    "stream": "http://cdn.rj.assocrj.com.br:8000/1?hash=",
    "title": "Rádio Planalto AM 890 de Brasília DF",
    "url": "https://www.radiocol.com.br/2016/07/ouvir-radio-planalto-am-890-de-brasilia.html"
@@ -98264,7 +98381,6 @@
    "url": "https://www.radiocol.com.br/2016/07/ouvir-radio-tropical-fm-927-de.html"
   },
   "7421825856019823266": {
-   "confianca": 0.6,
    "contacts": {
     "telefone": [
      "551130165800"
@@ -98280,6 +98396,13 @@
      "note": "",
      "source": "Radio Browser: ALPHA FM 101.7",
      "to": "https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_ALPHAFM_ADP.aac"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_ALPHAFM_ADP.aac",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://18393.live.streamtheworld.com/RADIO_ALPHAFM_ADP.aac"
     }
    ],
    "http_only": false,
@@ -98303,14 +98426,18 @@
    ],
    "post_stream": "https://18393.live.streamtheworld.com/RADIO_ALPHAFM_ADP.aac",
    "post_updated": "2022-06-22T21:05:37.332-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://www.alphafm.com.br/"
    ],
-   "source": "Radio Browser: ALPHA FM 101.7",
+   "source": "post",
    "status": "ok",
-   "stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_ALPHAFM_ADP.aac",
+   "stream": "https://18393.live.streamtheworld.com/RADIO_ALPHAFM_ADP.aac",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: ALPHA FM 101.7 — outra cidade",
+    "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_ALPHAFM_ADP.aac"
+   },
    "title": "Ouvir a Rádio Alpha FM 101,7 de São Paulo SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/06/ouvir-radio-alpha-fm-1017-de-sao-paulo-sp-ao-vivo.html"
   },
@@ -100069,7 +100196,6 @@
    "url": "https://www.radiocol.com.br/2020/05/ouvir-web-a-radio-black-de-diadema-sp-ao-vivo.html"
   },
   "7523138260867679579": {
-   "confianca": 0.717,
    "contacts": {
     "telefone": [
      "551332080008"
@@ -100087,6 +100213,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Saudade FM 99.7",
      "to": "https://playerservices.streamtheworld.com/api/livestream-redirect/SAUDADE_FMAAC.aac"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://playerservices.streamtheworld.com/api/livestream-redirect/SAUDADE_FMAAC.aac",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://26183.live.streamtheworld.com/SAUDADE_FMAAC.aac?dist=triton-widget&tdsdk=js-2.9&pname=tdwidgets&pversion=2.9&banners=728x90%2C300x250&burst-time=15&sbmid=b54716f3-8fd9-45c4-a4b0-10a500206723"
     }
    ],
    "http_only": false,
@@ -100111,14 +100244,18 @@
    ],
    "post_stream": "https://26183.live.streamtheworld.com/SAUDADE_FMAAC.aac?dist=triton-widget&tdsdk=js-2.9&pname=tdwidgets&pversion=2.9&banners=728x90%2C300x250&burst-time=15&sbmid=b54716f3-8fd9-45c4-a4b0-10a500206723",
    "post_updated": "2022-06-08T17:46:38.236-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "https://www.saudadefm.com.br/"
    ],
-   "source": "Radio Browser: Rádio Saudade FM 99.7",
+   "source": "post",
    "status": "ok",
-   "stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/SAUDADE_FMAAC.aac",
+   "stream": "https://26183.live.streamtheworld.com/SAUDADE_FMAAC.aac?dist=triton-widget&tdsdk=js-2.9&pname=tdwidgets&pversion=2.9&banners=728x90%2C300x250&burst-time=15&sbmid=b54716f3-8fd9-45c4-a4b0-10a500206723",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Saudade FM 99.7 — outra cidade",
+    "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/SAUDADE_FMAAC.aac"
+   },
    "title": "Ouvir a Rádio Saudade FM 99,7 de Santos SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/12/ouvir-radio-saudade-fm-997-de-santos-sp.html"
   },
@@ -101464,7 +101601,6 @@
    "url": "https://www.radiocol.com.br/2012/05/ouvir-radio-grande-fm-921-de-dourados.html"
   },
   "7615194513248841167": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -101489,9 +101625,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T22:20:08.308-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Web Rádio do Clel de Uberaba Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/11/ouvir-web-radio-do-clel-de-uberaba-ao.html"
   },
@@ -103379,7 +103515,6 @@
    "url": "https://www.radiocol.com.br/2017/08/ouvir-radio-jangadeiro-fm-997-de-sobral.html"
   },
   "772752351420034387": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -103405,9 +103540,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:37:33.180-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Bradesco Esportes Fm 91,1 de Petrópolis - Rio de Janeiro Ao vivo e Online",
    "url": "https://www.radiocol.com.br/2012/09/ouvir-radio-bradesco-esportes-fm-911-de.html"
   },
@@ -103725,7 +103860,6 @@
    "url": "https://www.radiocol.com.br/2013/05/web-radio-redencao-de-sorocaba-ao-vivo.html"
   },
   "7759278554645377679": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -103749,11 +103883,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-21T22:39:58.339-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rádio SIM FM 91.9 de Vitória e Vila Velha ES",
    "url": "https://www.radiocol.com.br/2017/12/ouvir-radio-sim-fm-919-de-vitoria-e.html"
   },
@@ -104227,7 +104361,6 @@
    "url": "https://www.radiocol.com.br/2020/10/ouvir-radio-deus-e-amor-fm-965-de-belem-pa-ao-vivo.html"
   },
   "7784511699133143332": {
-   "confianca": 0.633,
    "contacts": {
     "telefone": [
      "551121823122"
@@ -104243,6 +104376,13 @@
      "note": "",
      "source": "Radio Browser: Cultura FM 103.3",
      "to": "https://player-culturafm.stream.uol.com.br/live/culturafm.m3u8"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://player-culturafm.stream.uol.com.br/live/culturafm.m3u8",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://radiocultura.jmvstream.com/stream"
     }
    ],
    "http_only": false,
@@ -104265,14 +104405,18 @@
    ],
    "post_stream": "https://radiocultura.jmvstream.com/stream",
    "post_updated": "2022-06-27T20:57:12.244-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://culturafm.cmais.com.br/"
    ],
-   "source": "Radio Browser: Cultura FM 103.3",
+   "source": "post",
    "status": "ok",
-   "stream": "https://player-culturafm.stream.uol.com.br/live/culturafm.m3u8",
+   "stream": "https://radiocultura.jmvstream.com/stream",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Cultura FM 103.3 — outra cidade",
+    "url": "https://player-culturafm.stream.uol.com.br/live/culturafm.m3u8"
+   },
    "title": "Ouvir a Rádio Cultura FM 103,3 de São Paulo SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/02/ouvir-radio-cultura-fm-1033-de-sao.html"
   },
@@ -105868,7 +106012,6 @@
    "wayback_tried": "2026-11-16"
   },
   "7910198649858944379": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -105892,11 +106035,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T10:16:33.845-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Melhor FM 104,5 de Limeira SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/11/ouvir-radio-melhor-fm-1045-de-limeira.html"
   },
@@ -106246,7 +106389,6 @@
    "url": "https://www.radiocol.com.br/2020/01/web-radio-estacao-gospel-de-floriano-pi-online.html"
   },
   "7949297634229927685": {
-   "confianca": 0.741,
    "contacts": {
     "telefone": [
      "556134811001"
@@ -106264,6 +106406,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Transamérica 100.1 FM",
      "to": "https://playerservices.streamtheworld.com/api/livestream-redirect/RT_SPAAC.aac"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://playerservices.streamtheworld.com/api/livestream-redirect/RT_SPAAC.aac",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://shout25.crossradio.com.br:19124/1;"
     }
    ],
    "http_only": false,
@@ -106287,14 +106436,18 @@
    ],
    "post_stream": "https://shout25.crossradio.com.br:19124/1;",
    "post_updated": "2021-02-04T22:08:26.571-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://www.radiotransamerica.com.br/"
    ],
-   "source": "Radio Browser: Rádio Transamérica 100.1 FM",
+   "source": "post",
    "status": "ok",
-   "stream": "https://playerservices.streamtheworld.com/api/livestream-redirect/RT_SPAAC.aac",
+   "stream": "https://shout25.crossradio.com.br:19124/1;",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Transamérica 100.1 FM — outra cidade",
+    "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/RT_SPAAC.aac"
+   },
    "title": "Ouvir a Rádio Transamérica FM 100,1 de Brasília DF Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/02/ouvir-radio-transamerica-fm-1001-de-brasilia-df-ao-vivo.html"
   },
@@ -107775,7 +107928,6 @@
    "url": "https://www.radiocol.com.br/2015/06/especial-cristiano-araujo-melhores.html"
   },
   "8048967142731741129": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -107800,11 +107952,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-25T20:45:18.673-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Nativa FM 98,7 de Avaré SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/03/ouvir-radio-nativa-fm-987-de-avare-sp.html"
   },
@@ -116436,7 +116588,6 @@
    "wayback_tried": "2026-11-16"
   },
   "8569913606652325209": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -116460,11 +116611,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T22:51:08.245-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Flash FM 100,3 de Santa Rita do Passa Quatro SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/07/ouvir-radio-flash-fm-1003-de-santa-rita.html"
   },
@@ -116679,7 +116830,6 @@
    "url": "https://www.radiocol.com.br/2018/12/ouvir-radio-paranaiba-fm-995-de-rio.html"
   },
   "8578951654726797449": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -116703,11 +116853,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-26T22:25:52.577-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.radios.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Tropical FM 96,5 de Jaú SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/10/ouvir-radio-tropical-fm-965-de-jau-ao.html"
   },
@@ -117518,7 +117668,6 @@
    "wayback_tried": "2026-11-16"
   },
   "8640854791468394038": {
-   "confianca": 0.611,
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -117532,6 +117681,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Transamérica Hits (Barreiras)",
      "to": "http://servidor39.brlogic.com:8146/live"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "http://servidor39.brlogic.com:8146/live",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "http://c1.fabricahost.com.br:8073/stream"
     }
    ],
    "http_only": true,
@@ -117558,14 +117714,18 @@
    ],
    "post_stream": "http://c1.fabricahost.com.br:8073/stream",
    "post_updated": "2020-08-24T23:00:15.512-03:00",
-   "provisorio": true,
-   "reason": "corrigido automaticamente (provisório)",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.fmcidade103.com.br/"
    ],
-   "source": "Radio Browser: Rádio Transamérica Hits (Barreiras)",
-   "status": "ok",
-   "stream": "http://servidor39.brlogic.com:8146/live",
+   "source": "post",
+   "status": "ignorado",
+   "stream": "http://c1.fabricahost.com.br:8073/stream",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Transamérica Hits (Barreiras) — outra cidade",
+    "url": "http://servidor39.brlogic.com:8146/live"
+   },
    "title": "Ouvir a Rádio Transamérica Hits FM 103,3 de Itirapina SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2015/09/ouvir-radio-transamerica-hits-fm-1033.html"
   },
@@ -117777,7 +117937,6 @@
    "url": "https://www.radiocol.com.br/2021/03/ouvir-radio-easy-centro-america-fm-991-de-cuiaba-mt-ao-vivo-online.html"
   },
   "8653905741475338070": {
-   "confianca": 0.717,
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -117791,6 +117950,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Educadora 91.7 FM",
      "to": "https://stm22.xcast.com.br:11282/stream"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://stm22.xcast.com.br:11282/stream",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "http://cast.hoost.com.br:8766/stream"
     }
    ],
    "http_only": false,
@@ -117816,14 +117982,18 @@
    ],
    "post_stream": "http://cast.hoost.com.br:8766/stream",
    "post_updated": "2020-08-17T23:57:30.778-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://www.educadorafm.com.br/"
    ],
-   "source": "Radio Browser: Rádio Educadora 91.7 FM",
+   "source": "post",
    "status": "ok",
-   "stream": "https://stm22.xcast.com.br:11282/stream",
+   "stream": "http://cast.hoost.com.br:8766/stream",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Educadora 91.7 FM — outra cidade",
+    "url": "https://stm22.xcast.com.br:11282/stream"
+   },
    "title": "Ouvir a Rádio Educadora FM 91,7 de Campinas SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/10/ouvir-radio-educadora-fm-917-de.html"
   },
@@ -118361,7 +118531,6 @@
    "url": "https://www.radiocol.com.br/2019/08/ouvir-radio-nova-pauta-fm-1007-de-santiago-rs-online.html"
   },
   "8690591598983724917": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -118385,11 +118554,11 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-27T21:40:13.866-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "http://www.redecol.com.br/"
    ],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Jovem Pan FM 102,9 do Rio de Janeiro RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/04/ouvir-radio-jovem-pan-fm-1029-do-rio-de.html"
   },
@@ -118924,7 +119093,6 @@
    "url": "https://www.radiocol.com.br/2017/08/ouvir-radio-ibiapaba-fm-1015-de-sao.html"
   },
   "8720050932097342255": {
-   "confianca": 0.717,
    "contacts": {
     "telefone": [
      "558532308890"
@@ -118942,6 +119110,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Jangadeiro 88.9 FM",
      "to": "https://stream-173.zeno.fm/xuh02vfzurhvv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJ4dWgwMnZmenVyaHZ2IiwiaG9zdCI6InN0cmVhbS0xNzMuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IkJHc3RGbW5SUmtHcGZRaU1BeWYwQVEiLCJpYXQiOjE3MzIzMTc5ODQsImV4cCI6MTczMjMxODA0NH0.hliqQ3jfax1Meam5u3WqqW_DM-nDoS3rj-ZgxCB4b0M"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://stream-173.zeno.fm/xuh02vfzurhvv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJ4dWgwMnZmenVyaHZ2IiwiaG9zdCI6InN0cmVhbS0xNzMuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IkJHc3RGbW5SUmtHcGZRaU1BeWYwQVEiLCJpYXQiOjE3MzIzMTc5ODQsImV4cCI6MTczMjMxODA0NH0.hliqQ3jfax1Meam5u3WqqW_DM-nDoS3rj-ZgxCB4b0M",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://cast4.hoost.com.br:20286/JangadeiroFM"
     }
    ],
    "http_only": false,
@@ -118964,19 +119139,22 @@
    ],
    "post_stream": "https://cast4.hoost.com.br:20286/JangadeiroFM",
    "post_updated": "2021-07-19T22:11:03.147-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "https://todomundoama.com.br/"
    ],
-   "source": "Radio Browser: Rádio Jangadeiro 88.9 FM",
+   "source": "post",
    "status": "ok",
-   "stream": "https://stream-173.zeno.fm/xuh02vfzurhvv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJ4dWgwMnZmenVyaHZ2IiwiaG9zdCI6InN0cmVhbS0xNzMuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IkJHc3RGbW5SUmtHcGZRaU1BeWYwQVEiLCJpYXQiOjE3MzIzMTc5ODQsImV4cCI6MTczMjMxODA0NH0.hliqQ3jfax1Meam5u3WqqW_DM-nDoS3rj-ZgxCB4b0M",
+   "stream": "https://cast4.hoost.com.br:20286/JangadeiroFM",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Jangadeiro 88.9 FM — outra cidade",
+    "url": "https://stream-173.zeno.fm/xuh02vfzurhvv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJ4dWgwMnZmenVyaHZ2IiwiaG9zdCI6InN0cmVhbS0xNzMuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IkJHc3RGbW5SUmtHcGZRaU1BeWYwQVEiLCJpYXQiOjE3MzIzMTc5ODQsImV4cCI6MTczMjMxODA0NH0.hliqQ3jfax1Meam5u3WqqW_DM-nDoS3rj-ZgxCB4b0M"
+   },
    "title": "Ouvir a Rádio Jangadeiro FM 88,9 de Fortaleza CE Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/11/ouvir-radio-jangadeiro-fm-889-de-fortaleza-ce-ao-vivo-online.html"
   },
   "8722107568177625677": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -119004,12 +119182,12 @@
    ],
    "post_stream": "http://cast62.sitehosting.com.br:8359/;",
    "post_updated": "2020-08-27T10:23:24.788-03:00",
-   "reason": "sem conexão (ConnectionRefusedError)",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [
     "https://www.radios.redecol.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ignorado",
    "stream": "http://cast62.sitehosting.com.br:8359/;",
    "title": "Ouvir a Rádio Diário FM 100,7 de Campos dos Goytacazes RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/10/ouvir-radio-diario-fm-1007-de-campos.html"
@@ -119730,7 +119908,6 @@
    "wayback_tried": "2026-11-16"
   },
   "8764622729586490391": {
-   "confianca": 0.705,
    "contacts": {
     "telefone": [
      "554432464987"
@@ -119748,6 +119925,13 @@
      "note": "",
      "source": "Radio Browser: Rádio Colméia 98.7 FM",
      "to": "https://stm04.virtualcast.com.br:8024/colmeiamaringa?1771884660703"
+    },
+    {
+     "date": "2026-11-18",
+     "from": "https://stm04.virtualcast.com.br:8024/colmeiamaringa?1771884660703",
+     "note": "Radio Browser era de outra cidade",
+     "source": "post",
+     "to": "https://stm01.virtualcast.com.br:8138/live"
     }
    ],
    "http_only": false,
@@ -119771,14 +119955,18 @@
    ],
    "post_stream": "https://stm01.virtualcast.com.br:8138/live",
    "post_updated": "2021-09-27T22:19:04.636-03:00",
-   "provisorio": true,
    "reason": "corrigido automaticamente (provisório)",
    "sites": [
     "http://www.colmeiafm.com.br/"
    ],
-   "source": "Radio Browser: Rádio Colméia 98.7 FM",
+   "source": "post",
    "status": "ok",
-   "stream": "https://stm04.virtualcast.com.br:8024/colmeiamaringa?1771884660703",
+   "stream": "https://stm01.virtualcast.com.br:8138/live",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Rádio Colméia 98.7 FM — outra cidade",
+    "url": "https://stm04.virtualcast.com.br:8024/colmeiamaringa?1771884660703"
+   },
    "title": "Ouvir a Rádio Colméia FM 98,7 de Maringá PR Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/06/ouvir-radio-colmeia-fm-987-rede.html"
   },
@@ -123825,7 +124013,6 @@
    "url": "https://www.radiocol.com.br/2013/07/ouvir-radio-noticia-fm-927-de-sao-jose.html"
   },
   "9064465394485110121": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -123847,9 +124034,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2021-01-06T15:06:12.532-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Rádio Capibaribe Jovem Cap AM 1240 de Recife PE",
    "url": "https://www.radiocol.com.br/2012/07/ouvir-radio-capibaribe-am-1240-de.html"
   },
@@ -128096,7 +128283,6 @@
    "url": "https://www.radiocol.com.br/2015/07/ouvir-radio-nova-fm-1063-de-nova-cantu.html"
   },
   "966531753621058581": {
-   "alerted": "2026-11-16",
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -128120,9 +128306,9 @@
    "popup_streams": [],
    "post_candidates": [],
    "post_updated": "2020-08-25T22:28:24.341-03:00",
-   "reason": "nenhum endereço de áudio no post",
+   "reason": "rádio encerrada/desativada, pelo título ou marcador (automático)",
    "sites": [],
-   "status": "sem_link",
+   "status": "ignorado",
    "title": "Ouvir a Rádio Família FM 104,5 do Rio de Janeiro RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/05/ouvir-radio-familia-fm-1044-do-rio-de.html"
   },
