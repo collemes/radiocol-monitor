@@ -489,14 +489,15 @@ async def main():
         search = fila_off[: config.MAX_SEARCH - cota_sem_link] + sem_link[:cota_sem_link]
         for r in search:
             r["site_tried" if r.get("status") == "sem_link" else "search_tried"] = today()
-        log(f"{len(off)} fora do ar ({len(fila_off)} na vez) e {len(sem_link)} sem link com site; "
-            f"procurando para {len(search)} ({len(search) - min(len(search), len(fila_off))} sem link)…")
+        n_sl = sum(1 for r in search if r.get("status") == "sem_link")
+        log(f"{len(off)} fora do ar, {len(fila_off)} na fila (fora do ar, não testáveis e provisórios) e "
+            f"{len(sem_link)} sem link com site; procurando para {len(search)} ({len(search) - n_sl} da fila + {n_sl} sem link)…")
         sem = asyncio.Semaphore(15)
 
         def aplicar_achado(rec, found):
             alta = found["confidence"] == "high"
             score = found.get("score") or 0
-            events["fixed"].append({"url": rec["url"], "title": rec["title"], "from": rec["stream"],
+            events["fixed"].append({"url": rec["url"], "title": rec["title"], "from": rec.get("stream"),
                                     "to": found["url"], "source": found["source"] + ("" if alta else f" — provisório ({score})")})
             change(rec, found["url"], found["source"])
             rec["confianca"] = score
