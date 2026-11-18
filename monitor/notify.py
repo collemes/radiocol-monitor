@@ -159,9 +159,16 @@ def _contact_rows(recs):
     rows = []
     for r in recs:
         c = r["contact_suggestion"]
+        sc = c.get("score")
+        if r.get("contact_auto"):
+            situ = f"✅ já aparece no site (confiança {sc})"
+        elif r.get("wa_editado_em"):
+            situ = "✋ você editou o WhatsApp no post: não é trocado sozinho"
+        else:
+            situ = f"sugestão (confiança {sc if sc is not None else '—'})"
         rows.append(f'<tr><td><a href="{html.escape(r["url"])}">{html.escape(r["title"])}</a></td>'
                     f'<td>{_fmt_phone(c["post"])}</td><td><b>{_fmt_phone(c["site"])}</b></td>'
-                    f'<td><a href="{html.escape(c["url"])}">site oficial</a></td></tr>')
+                    f'<td><a href="{html.escape(c["url"])}">site oficial</a><br><small>{situ}</small></td></tr>')
     return rows
 
 

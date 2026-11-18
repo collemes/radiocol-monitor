@@ -586,7 +586,15 @@ async def main():
         # 6) WhatsApp no site oficial (cada post 1x por semana) ----------------------
         if config.USE_OFFICIAL_SITE:
             await scan_site_whatsapp(session, list(posts_state.values()), ov_for, today(), finder._get_text,
-                                     force=bool(config.LIMIT_POSTS))
+                                     force=bool(config.LIMIT_POSTS), rede=finder.rede)
+            for rec in posts_state.values():         # inclui as trocas automáticas de WhatsApp
+                if rec.get("status") == "ignorado":
+                    continue
+                pairs = contact_pairs(rec, ov_for(rec))
+                if pairs:
+                    rec["contact_overrides"] = pairs
+                else:
+                    rec.pop("contact_overrides", None)
 
     # 7) saídas -------------------------------------------------------------------
     state["updated"] = now()

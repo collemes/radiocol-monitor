@@ -30,6 +30,7 @@ from monitor import finder, run  # noqa: E402
 AUDIO = b"ID3\x03\x00\x00\x00\x00\x00\x00" + (b"\xff\xfb\x90\x64" + b"\x00" * 413) * 60
 B = f"http://127.0.0.1:{P}"
 STATE = {"dead_fixed": False}
+WHATS, WHATS_AUTO = [], []
 
 
 def entry(i, title, content, labels=()):
@@ -192,6 +193,9 @@ async def main():
         if dia == 3:   # dia 3: você trocou à mão o link do post 8 (que o robô tinha corrigido) — mesmo fora do ar, vale o seu
             POSTS[7]["content"]["$t"] = f'<audio src="{B}/editado-morto.mp3"></audio>'
         await run.main()
+        st2 = json.load(open(f"{TMP}/data/state.json"))["posts"]["2"]
+        WHATS.append((st2.get("contact_suggestion") or {}).get("score"))
+        WHATS_AUTO.append(st2.get("contact_auto"))
 
     # Solicitações aprovadas na planilha
     from monitor import apply
@@ -256,6 +260,10 @@ print("post 10 (iframe -> player https):", pub["10"])
 print("post 11 (iframe só http):", pub["11"])
 if pub["10"].get("f") != 1 or pub["11"].get("h") != 1:
     bad += 1
+print("WhatsApp do site (post 2) — confiança por dia:", WHATS, "| troca automática:", WHATS_AUTO)
+# dia 1: só sugestão (0,85); dia 2: mesmo número de novo -> 0,95 -> passa a aparecer no post
+if not (WHATS[0] <= 0.9 and WHATS_AUTO[0] is None and WHATS[1] > 0.9 and WHATS_AUTO[1] == ["5584999887766", "5584977776666", "w"]):
+    bad += 1; print("FALHOU WhatsApp automático")
 r8 = state["/2026/11/post-8.html"]
 print("post 8 editado à mão:", pub["8"], "| editado_em:", r8.get("editado_em"), "| sugestão:", r8.get("suggestion"))
 if pub["8"].get("p") != 1 or "o" in pub["8"] or not r8.get("editado_em"):

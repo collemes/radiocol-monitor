@@ -92,3 +92,4 @@ BROWSER_CONCURRENCY = _int("BROWSER_CONCURRENCY", 3)
 BROWSER_SITE_S = _int("BROWSER_SITE_S", 50)              # tempo máximo por site
 BROWSER_BUDGET_S = _int("BROWSER_BUDGET_S", 2700)         # tempo total do navegador por execução (45 min)
 APLICAR_MIN_SCORE = float(os.environ.get("APLICAR_MIN_SCORE", "0.6"))   # sugestão >= isto já entra no site
+WHATS_AUTO_MIN = float(os.environ.get("WHATS_AUTO_MIN", "0.9"))   # WhatsApp do site oficial acima disto entra no post
