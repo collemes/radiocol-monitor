@@ -61,6 +61,25 @@ def variants(url: str):
         out.append(base[:-2] + "/stream")
     elif path.endswith(";"):
         out.append(base[:-1])
+    host = (p.hostname or "").lower()
+    # StreamTheWorld: o ponto de montagem mudou de nome (…AAC.aac -> …AAC_SC, sem extensão, versão MP3)
+    m = re.search(r"(/api/livestream-redirect/)([A-Za-z0-9_]+?)(\.(?:aac|mp3))?$", path)
+    if "streamtheworld.com" in host and m:
+        pre = url[: url.index(m.group(1))] + m.group(1)
+        nome = m.group(2)
+        base_nome = nome[:-3] if nome.upper().endswith("AAC") else nome
+        for n in (nome + "_SC", nome, base_nome + "AAC_SC", base_nome + "_SC", base_nome + ".mp3", base_nome + "AAC.aac"):
+            if n != m.group(2) + (m.group(3) or ""):
+                out.append(pre + n)
+    # play.radio.br (Wowza/Icecast): HLS fora do ar, mas o mesmo ponto em icecast.audio no ar (e vice-versa)
+    if host.endswith("play.radio.br"):
+        if path.endswith("/playlist.m3u8"):
+            out.append(base[: -len("playlist.m3u8")] + "icecast.audio")
+        elif path.endswith("/icecast.audio"):
+            out.append(base[: -len("icecast.audio")] + "playlist.m3u8")
+    # AzuraCast antigo /radio/PORTA/ponto -> com extensão
+    if re.match(r"^/radio/\d+/[^/.]+$", path):
+        out += [base + ".mp3", base + ".aac"]
     if p.scheme == "http":
         out += ["https://" + v[len("http://"):] for v in list(out) if v.startswith("http://")]
     seen, res = set(), []
