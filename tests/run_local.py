@@ -289,4 +289,62 @@ print("arquivos de shard:", len(os.listdir(f"{TMP}/docs/r")))
 print("prévia do e-mail:", os.path.exists(f"{TMP}/data/email_preview.html"))
 shutil.copy(f"{TMP}/data/email_preview.html", "/tmp/email_preview.html")
 shutil.copy(f"{TMP}/docs/relatorio.html", "/tmp/relatorio.html")
+
+# ----- regras novas (2026-11-18): variações Shoutcast de painel, mesma conta no servidor, página do player
+print("\n===== regras de busca (unitárias) =====")
+v = finder.variants("https://player.roxcast.com.br/proxy/7440")
+if "https://player.roxcast.com.br/proxy/7440/;" not in v or "https://player.roxcast.com.br/proxy/7440/stream" not in v:
+    bad += 1; print("FALHOU variação /proxy/PORTA -> /;", v)
+v = finder.variants("https://stream02.ouveai.com.br/8010/stream")
+if "https://stream02.ouveai.com.br/8010/;" not in v:
+    bad += 1; print("FALHOU variação /PORTA/stream -> /PORTA/;", v)
+v = finder.variants("https://player.srvstm.com/proxy/6798%20/;")
+if "https://player.srvstm.com/proxy/6798/;" not in v:
+    bad += 1; print("FALHOU espaço no endereço", v)
+if finder.variants("https://ice.fabricahost.com.br/arenafm2") != []:
+    bad += 1; print("FALHOU: Icecast compartilhado sem porta não deve gerar variações de Shoutcast")
+F = finder.Finder.__new__(finder.Finder)
+if F._conta("https://ice.fabricahost.com.br/arenafm2") is not None or \
+        F._conta("https://stm01.virtualcast.com.br:8168/live") != ("stm01.virtualcast.com.br", 8168):
+    bad += 1; print("FALHOU chave da conta no servidor")
+pg = finder.Finder._paginas({"sites": ["https://a.com.br/"], "stream": "https://livecasthd.com.br/play.php?porta=1",
+                             "reason": "responde página HTML, não áudio"})
+if pg != ["https://a.com.br/", "https://livecasthd.com.br/play.php?porta=1"] or \
+        finder.Finder._paginas({"sites": [], "stream": "https://x/1", "reason": "HTTP 404"}) != []:
+    bad += 1; print("FALHOU página do player do post", pg)
+a = finder.Finder._ajusta_pagina_player({"url": "u", "source": "site oficial (x)", "confidence": "suggest", "score": 0.9}, True)
+if a["score"] >= 0.6:
+    bad += 1; print("FALHOU: página do player com vários endereços deve ser só sugestão", a)
+
+
+class _Chk:
+    def __init__(self, bons):
+        self.bons = bons
+
+    async def check(self, u):
+        return type("R", (), {"ok": u in self.bons, "reason": "ok"})()
+
+
+async def _conta_testes():
+    global bad
+    lista = [("http://outro-nome:8168/stream", "radio a"), ("http://outro-nome:8170/live", "radio b")]
+    f = finder.Finder.__new__(finder.Finder)
+    f.c = _Chk({"https://stm01.virtualcast.com.br:8168/stream"})
+    f._listas = {"https://stm01.virtualcast.com.br:8168": lista}
+    r = await f.from_mesma_conta({"stream": "https://stm01.virtualcast.com.br:8168/live", "reason": "HTTP 404"})
+    print("mesma conta (404):", r)
+    if not r or r["url"] != "https://stm01.virtualcast.com.br:8168/stream" or r["confidence"] != "high":
+        bad += 1; print("FALHOU ponto de montagem novo na mesma porta")
+    # servidor compartilhado (porta padrão): nunca troca por outra rádio do mesmo servidor
+    f._listas = {"https://ice.fabricahost.com.br": [("https://ice.fabricahost.com.br/outra", "outra")]}
+    f.c = _Chk({"https://ice.fabricahost.com.br/outra"})
+    if await f.from_mesma_conta({"stream": "https://ice.fabricahost.com.br/arenafm2", "reason": "HTTP 404"}):
+        bad += 1; print("FALHOU: servidor compartilhado não pode trocar de rádio")
+    # dois pontos na mesma porta: ambíguo, não troca
+    f._listas = {"https://s.x.com:9000": [("http://s.x.com:9000/a", ""), ("http://s.x.com:9000/b", "")]}
+    f.c = _Chk({"https://s.x.com:9000/a", "https://s.x.com:9000/b"})
+    if await f.from_mesma_conta({"stream": "https://s.x.com:9000/live", "reason": "HTTP 404"}):
+        bad += 1; print("FALHOU: mais de um ponto na porta deve ficar sem troca")
+
+asyncio.run(_conta_testes())
 print("RESULTADO:", "TUDO CERTO" if not bad else f"{bad} FALHA(S)")

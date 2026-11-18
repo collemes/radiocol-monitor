@@ -54,13 +54,26 @@ def variants(url: str):
             pass
     path = p.path or ""
     base = url.split("?")[0]
+    # espaço digitado por engano no endereço (".../proxy/6798%20/;")
+    if re.search(r"%20|\s", path):
+        limpo = re.sub(r"(%20|\s)+", "", base)
+        out.append(limpo)
+        base, path = limpo, re.sub(r"(%20|\s)+", "", path)
     if path in ("", "/"):
         root = base.rstrip("/")
         out += [root + "/;", root + "/stream", root + "/;stream.mp3"]
     elif path.endswith("/;"):
-        out.append(base[:-2] + "/stream")
+        out += [base[:-2] + "/stream", base + "stream.mp3"]
     elif path.endswith(";"):
         out.append(base[:-1])
+    # Shoutcast atrás de proxy https dos painéis (player.xxx/proxy/PORTA, /player-ssl/PORTA, /PORTA/stream):
+    # sem o ";" o Shoutcast devolve a página HTML de status em vez do áudio
+    if re.search(r"/\d{3,5}/?$", path):
+        root = base.rstrip("/")
+        out += [root + "/;", root + "/stream", root + "/;stream.mp3"]
+    elif re.search(r"/\d{3,5}/stream$", path):
+        root = base[: -len("stream")]
+        out += [root + ";", root + ";stream.mp3"]
     host = (p.hostname or "").lower()
     # StreamTheWorld: o ponto de montagem mudou de nome (…AAC.aac -> …AAC_SC, sem extensão, versão MP3)
     m = re.search(r"(/api/livestream-redirect/)([A-Za-z0-9_]+?)(\.(?:aac|mp3))?$", path)
@@ -161,6 +174,56 @@ class Finder:
             r = await self.c.check(u)
             if r.ok:
                 return {"url": u, "source": src, "confidence": "high", "score": 1.0}
+        return await self.from_mesma_conta(rec)
+
+    @staticmethod
+    def _conta(url):
+        """Chave da 'conta' da rádio no servidor de streaming: host + porta própria (Shoutcast/Icecast de painel)
+        ou host + /radio/PORTA (AzuraCast). Sem porta própria o servidor é compartilhado: None."""
+        try:
+            p = urlparse(url)
+            porta = p.port
+        except ValueError:
+            return None
+        host = (p.hostname or "").lower()
+        m = re.match(r"/radio/(\d{4,5})(/|$)", p.path or "")
+        if m:
+            return (host, "radio", m.group(1))
+        if porta and porta not in (80, 443):
+            return (host, porta)
+        return None
+
+    async def from_mesma_conta(self, rec):
+        """Ponto de montagem renomeado (HTTP 404) no MESMO servidor e MESMA porta/conta da rádio: pergunta ao
+        próprio servidor (Icecast status-json / AzuraCast api) qual é o ponto atual. Só aplica se houver um só."""
+        url = rec.get("stream") or ""
+        if not (rec.get("reason") or "").startswith("HTTP 404"):
+            return None
+        conta = self._conta(url)
+        if not conta:
+            return None
+        pu = urlparse(url)
+        achados = []
+        for u, _ in await self._lista_servidor(url):
+            try:
+                pv = urlparse(u)
+                if conta[1] == "radio":
+                    ok = re.match(rf"/radio/{conta[2]}(/|$)", pv.path or "")
+                else:
+                    ok = pv.port == conta[1]   # Icecast pode anunciar outro nome de host: vale a porta
+            except ValueError:
+                continue
+            if ok:
+                # usa o host e o esquema do endereço do post (o nome anunciado pode não ter certificado)
+                achados.append(f"{pu.scheme}://{pu.netloc}{pv.path}" + (f"?{pv.query}" if pv.query else ""))
+        achados = [a for a in dict.fromkeys(achados) if a != url]
+        if rec.get("_need_https"):
+            achados = [a for a in achados if a.startswith("https")]
+        if len(achados) != 1:
+            return None
+        if (await self.c.check(achados[0])).ok:
+            return {"url": achados[0], "source": "mesmo servidor e porta da rádio (ponto de montagem novo)",
+                    "confidence": "high", "score": 0.95}
         return None
 
     # ------------------------------------------------------------------ 3
@@ -340,14 +403,38 @@ class Finder:
                     "score": 0.9, "alternatives": [w for w in working if w != best][:3]}
         return None
 
+    @staticmethod
+    def _paginas(rec):
+        """Sites oficiais do post (até 2) e, se o 'stream' do post é na verdade a página do player da rádio
+        (responde HTML: player.xxx/proxy/PORTA, play.php?porta=…, site/radio/nome), essa página também —
+        o áudio de verdade está dentro dela."""
+        paginas = list(rec.get("sites", [])[:2])
+        st = rec.get("stream") or ""
+        if (rec.get("reason") or "").startswith("responde página HTML") and st.startswith("http") \
+                and st not in paginas:
+            paginas.append(st)
+        return paginas
+
+    @staticmethod
+    def _ajusta_pagina_player(achado, pagina_player):
+        """Página do player que estava no post: só entra sozinho se um único endereço tocar;
+        com vários, vira sugestão (abaixo de APLICAR_MIN_SCORE) — pode ser página de rede com outras praças."""
+        if achado and pagina_player:
+            achado["source"] = achado["source"].replace("site oficial", "página do player do post")
+            if achado["confidence"] != "high":
+                achado["score"] = min(achado.get("score") or 0, 0.55)
+        return achado
+
     async def from_official_site(self, rec):
         if not config.USE_OFFICIAL_SITE:
             return None
-        for site in rec.get("sites", [])[:2]:
+        for site in self._paginas(rec):
             if not site.startswith("http") or "tel+" in site:
                 continue
+            pagina_player = site == rec.get("stream")
             # 1) leitura rápida do HTML (+ scripts, APIs, servidores de rede)
-            achado = await self._escolhe(rec, site, await self._site_candidates(site))
+            achado = self._ajusta_pagina_player(
+                await self._escolhe(rec, site, await self._site_candidates(site)), pagina_player)
             if achado:
                 return achado
             # 2) navegador de verdade: abre o site (e troca a praça, em site de rede), clica no play
@@ -360,7 +447,8 @@ class Finder:
                 pares = [(u, c) for u, c, _ in capt]
                 for u, _ in list(pares)[:6]:                     # servidor de rede: lista de emissoras
                     pares += [x for x in await self._lista_servidor(u) if x[0] not in {p[0] for p in pares}]
-                achado = await self._escolhe(rec, site, pares, frozenset(u for u, _, t in capt if t))
+                achado = self._ajusta_pagina_player(
+                    await self._escolhe(rec, site, pares, frozenset(u for u, _, t in capt if t)), pagina_player)
                 if achado:
                     achado["source"] += " [navegador]"
                     return achado
