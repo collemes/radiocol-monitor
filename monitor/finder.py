@@ -10,7 +10,7 @@ import asyncio
 import random
 import re
 from difflib import SequenceMatcher
-from urllib.parse import quote, urljoin, urlparse
+from urllib.parse import parse_qsl, quote, urljoin, urlparse, urlsplit
 
 import aiohttp
 
@@ -42,12 +42,98 @@ RB_SERVERS = [
 ]
 
 
-def variants(url: str):
+# parâmetros que só servem de "anti-cache", rastreamento ou sessão: o servidor toca igual sem eles
+RUIDO_QUERY = {"type", "nocache", "ver", "_", "id", "source", "t", "ts", "time", "cache", "rand", "r", "v"}
+RASTREIO_QUERY = {"fbclid", "gclid", "lang", "dist", "tdsdk", "pname", "pversion", "banners", "burst-time", "sbmid",
+                  "rj-ttl", "rj-tok"}
+
+
+def _origem_no_proxy(url: str, p):
+    """Proxies de player que embrulham o stream da rádio no próprio endereço
+    (…/stream1234?http://IP:PORTA/;  …/proxy.php?ip=X&port=P&mount=/stream  …/?q=http://…).
+    Quando o proxy cai, o servidor de origem — o MESMO stream — costuma continuar no ar."""
+    q = p.query or ""
+    if re.match(r"https?://", q, re.I):
+        return q
+    try:
+        params = dict((k.lower(), v) for k, v in parse_qsl(q, keep_blank_values=True))
+    except ValueError:
+        return None
+    for k in ("url", "q", "u", "stream", "src", "quest"):
+        v = params.get(k) or ""
+        if re.match(r"https?://[^/\s]+", v, re.I):
+            return v
+    ip, porta = params.get("ip") or params.get("host") or params.get("server"), params.get("port") or params.get("porta")
+    if ip and porta and re.fullmatch(r"[A-Za-z0-9.-]+", ip) and porta.isdigit():
+        mount = params.get("mount") or "/"
+        if not mount.startswith("/"):
+            mount = "/" + mount
+        return f"http://{ip}:{porta}{mount}"
+    return None
+
+
+def _query_so_ruido(p):
+    """O endereço tem query, mas só de anti-cache/rastreamento (?type=http&nocache=1, ?1794855577, ?fbclid=…)."""
+    if not p.query or re.search(r"\.(php|aspx?|cgi|jsp)$", p.path or "", re.I):
+        return False
+    try:
+        pares = parse_qsl(p.query, keep_blank_values=True)
+    except ValueError:
+        return False
+    if not pares:
+        return False
+    # na raiz de um servidor compartilhado a query pode escolher a rádio: só com porta própria
+    if (p.path or "/") == "/" and (p.port in (None, 80, 443)):
+        return False
+    for k, v in pares:
+        k = k.lower()
+        if k in RASTREIO_QUERY or k.startswith("utm_"):
+            continue
+        if re.fullmatch(r"[\d&]+", k) and not v:          # ?1794855577  ?&1630278471824
+            continue
+        # anti-cache: só com valor numérico/vazio ou tipo de arquivo (?type=http, ?id=1565655919529, ?_=3)
+        # — um valor com nome (?id=radiox) pode escolher a rádio e nunca é removido
+        if k in RUIDO_QUERY and re.fullmatch(r"\d*|https?|\.?(mp3|aac|m3u|ogg)|site|website|[0-9a-f]{20,}", v, re.I):
+            continue
+        return False
+    return True
+
+
+def variants(url: str, _interno=False):
     out = []
     try:
-        p = urlparse(url)
+        # urlsplit, não urlparse: o urlparse corta o ";" final do Shoutcast (".../9940/;" virava path "/"
+        # e gerava ".../;/;" e ".../;/stream" em vez de ".../stream" e ".../;stream.mp3")
+        p = urlsplit(url)
+        p.port
     except ValueError:
         return out
+    host = (p.hostname or "").lower()
+    # Zeno.FM: nó antigo (node-XX.zeno.fm) ou link com token vencido (?rj-tok=…) -> endereço estável
+    # stream.zeno.fm/ID (mesmo ID = mesma rádio). As rádios da Radiojar migraram para a Zeno com o mesmo ID.
+    mz = re.match(r"^/([a-z0-9]{8,})(?:\.(?:aac|mp3))?/?$", p.path or "", re.I)
+    if mz and (host.endswith(".zeno.fm") or host.endswith(".radiojar.com")) and host != "stream.zeno.fm":
+        out.append(f"https://stream.zeno.fm/{mz.group(1)}")
+    if host == "stream.zeno.fm" and p.query:
+        out.append(url.split("?")[0])
+    # proxy de player fora do ar: testa o servidor de origem embrulhado no endereço (o mesmo stream)
+    if not _interno:
+        origem = _origem_no_proxy(url, p)
+        if origem and origem != url:
+            out.append(origem)
+            out += [v for v in variants(origem, _interno=True) if v != url]
+    # painel com proxy por nome (…/proxy/NOME?mp=/live): o ponto de montagem do painel mudou (/live <-> /stream)
+    mm = re.search(r"([?&]mp=)(/[^&]*)", url)
+    if re.match(r"^/proxy/[^/]+/?$", p.path or "") and mm:
+        for m in ("/stream", "/live", "/;"):
+            if m != mm.group(2):
+                out.append(url[: mm.start(2)] + m + url[mm.end(2):])
+    # Wowza/HLS: chunklist com número de sessão (chunklist_w123….m3u8) vence; a playlist.m3u8 é a estável
+    if re.search(r"/chunklist[^/]*\.m3u8$", p.path or "", re.I):
+        out.append(re.sub(r"/chunklist[^/]*\.m3u8(\?.*)?$", "/playlist.m3u8", url))
+    # query só de anti-cache/rastreamento (?type=http&nocache=1, ?1794855577, ?fbclid=…): sem ela
+    if _query_so_ruido(p):
+        out.append(url.split("?")[0])
     if p.scheme == "http":
         out.append("https://" + url[len("http://"):])
         if p.port == 80 or p.port is None:
@@ -59,7 +145,9 @@ def variants(url: str):
         limpo = re.sub(r"(%20|\s)+", "", base)
         out.append(limpo)
         base, path = limpo, re.sub(r"(%20|\s)+", "", path)
-    if path in ("", "/"):
+    # raiz com query que não é só anti-cache (?id=radiox) num servidor compartilhado: a query escolhe a rádio
+    raiz_ok = not p.query or _query_so_ruido(p) or p.port not in (None, 80, 443)
+    if path in ("", "/") and raiz_ok:
         root = base.rstrip("/")
         out += [root + "/;", root + "/stream", root + "/;stream.mp3"]
     elif path.endswith("/;"):

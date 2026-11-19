@@ -303,6 +303,34 @@ if "https://player.srvstm.com/proxy/6798/;" not in v:
     bad += 1; print("FALHOU espaço no endereço", v)
 if finder.variants("https://ice.fabricahost.com.br/arenafm2") != []:
     bad += 1; print("FALHOU: Icecast compartilhado sem porta não deve gerar variações de Shoutcast")
+# ----- regras novas (2026-11-19)
+v = finder.variants("http://servidor21.dnip.com.br:9940/;")
+if "http://servidor21.dnip.com.br:9940/stream" not in v or "https://servidor21.dnip.com.br:9940/;stream.mp3" not in v \
+        or any("/;/" in x for x in v):
+    bad += 1; print("FALHOU Shoutcast '/;' (o ';' final não pode sumir)", v)
+v = finder.variants("https://node-30.zeno.fm/n2s14rugfv8uv?rj-ttl=5&rj-tok=AAABeuqk8qAA")
+v2 = finder.variants("http://ample-zeno-05.radiojar.com/4xa2ects7a5tv")
+if "https://stream.zeno.fm/n2s14rugfv8uv" not in v or "https://stream.zeno.fm/4xa2ects7a5tv" not in v2 \
+        or "https://stream.zeno.fm/qfau0echa8zuv" not in finder.variants("https://node-04.zeno.fm/qfau0echa8zuv.aac"):
+    bad += 1; print("FALHOU Zeno.FM nó antigo/token vencido -> stream.zeno.fm/ID", v, v2)
+v = finder.variants("https://cdn.radioscast.com.br/bs/proxy/stream.php?ip=stm3.xcast.com.br&port=7244&mount=/stream")
+v2 = finder.variants("https://cdn.radioscast.com.br/stream1234?http://stm7.betelhost.com.br:11824/;")
+if "http://stm3.xcast.com.br:7244/stream" not in v or "http://stm7.betelhost.com.br:11824/;" not in v2 \
+        or "http://stm7.betelhost.com.br:11824/stream" not in v2:
+    bad += 1; print("FALHOU origem embrulhada no proxy do player", v, v2)
+v = finder.variants("https://live.paineldj.com.br/proxy/tparanavai?mp=/live")
+if "https://live.paineldj.com.br/proxy/tparanavai?mp=/stream" not in v or any("paineldj" not in x for x in v):
+    bad += 1; print("FALHOU painel /proxy/NOME?mp=/live -> /stream", v)
+v = finder.variants("https://5a1c76baf08c0.streamlock.net/difusora/difusora/chunklist_w1355963099.m3u8")
+if v != ["https://5a1c76baf08c0.streamlock.net/difusora/difusora/playlist.m3u8"]:
+    bad += 1; print("FALHOU Wowza chunklist de sessão -> playlist.m3u8", v)
+v = finder.variants("https://r13.ciclano.io:15219/stream?type=http&nocache=40")
+if "https://r13.ciclano.io:15219/stream" not in v:
+    bad += 1; print("FALHOU query de anti-cache", v)
+# query que escolhe a rádio (?id=nome, stream.php?porta=) nunca é removida; raiz de servidor compartilhado não vira /;
+if finder.variants("https://host.com/live?id=radiox") or finder.variants("https://host.com/?id=radiox") \
+        or finder.variants("https://svrstream2.svreua.com/stream.php?porta=8380"):
+    bad += 1; print("FALHOU: query que escolhe a rádio não pode ser removida")
 F = finder.Finder.__new__(finder.Finder)
 if F._conta("https://ice.fabricahost.com.br/arenafm2") is not None or \
         F._conta("https://stm01.virtualcast.com.br:8168/live") != ("stm01.virtualcast.com.br", 8168):
