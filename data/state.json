@@ -326,7 +326,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1003989588104184948",
    "labels": [
@@ -523,7 +523,7 @@
      "5508009291515"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1018500580860579353",
    "labels": [
@@ -651,7 +651,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1028029628274527336",
    "labels": [
@@ -856,7 +856,7 @@
      "5514998989657"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1037486508880675489",
    "labels": [
@@ -1062,7 +1062,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1051032745987845217",
    "labels": [
@@ -1215,12 +1215,11 @@
    "wa_post_visto": "5566997239999"
   },
   "1067978100913737666": {
-   "alerted": "2026-11-19",
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 4,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "id": "1067978100913737666",
    "labels": [
@@ -1244,11 +1243,11 @@
    ],
    "post_stream": "https://sc3s.cdn.upx.com:9191/;stream.mp3",
    "post_updated": "2020-10-03T23:59:18.472-03:00",
-   "reason": "HTTP 502",
+   "reason": "servidor não responde ao robô (fora do Brasil) — tempo esgotado",
    "search_tried": "2026-11-19",
    "sites": [],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://sc3s.cdn.upx.com:9191/;stream.mp3",
    "title": "Ouvir a Rádio Marinha FM 104,1 de Belém PA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2019/02/ouvir-radio-marinha-fm-1041-de-belem-pa.html"
@@ -1312,7 +1311,7 @@
      "5508003421050"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1074050158008421346",
    "labels": [
@@ -1395,7 +1394,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1077283390568134517",
    "labels": [
@@ -1437,7 +1436,7 @@
      "5554999530616"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1086462632181781974",
    "labels": [
@@ -1479,7 +1478,7 @@
      "5554999909869"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1089094651023198351",
    "labels": [
@@ -1607,7 +1606,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "109609389405738202",
    "labels": [
@@ -1650,7 +1649,7 @@
      "55981020497"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1099879465289736713",
    "labels": [
@@ -1690,7 +1689,7 @@
      "5593992347573"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1101030909917069807",
    "labels": [
@@ -1728,7 +1727,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1102381269807694533",
    "labels": [
@@ -2017,7 +2016,7 @@
      "5551998822900"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "111481737628343710",
    "labels": [
@@ -2058,7 +2057,7 @@
      "5553984311620"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1115383309949468342",
    "labels": [
@@ -2133,7 +2132,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1118190567839587786",
    "labels": [
@@ -2227,7 +2226,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1119509219786809215",
    "labels": [
@@ -2265,7 +2264,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1121769600024158336",
    "labels": [
@@ -2477,7 +2476,7 @@
      "5551995719050"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1132140114780561169",
    "labels": [
@@ -2517,7 +2516,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1141549102880689781",
    "labels": [
@@ -2718,7 +2717,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1144811066595194301",
    "labels": [
@@ -2760,7 +2759,7 @@
      "5592991425676"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1153920187427205411",
    "labels": [
@@ -2947,7 +2946,7 @@
      "5594991800797"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1161250173024776023",
    "labels": [
@@ -3141,11 +3140,12 @@
    "url": "https://www.radiocol.com.br/2015/04/ouvir-rede-sim-fm-897-de-sao-domingos.html"
   },
   "1179449102547877887": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "1179449102547877887",
    "labels": [
@@ -3228,7 +3228,7 @@
      "5564999509570"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1185389527155881746",
    "labels": [
@@ -3271,7 +3271,7 @@
      "5555996660113"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "118633070479197453",
    "labels": [
@@ -3502,7 +3502,7 @@
      "558009291515"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1204682430494936740",
    "labels": [
@@ -3953,7 +3953,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1243011352824011987",
    "labels": [
@@ -4046,7 +4046,7 @@
      "551935734510"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1249547321916030475",
    "labels": [
@@ -4268,7 +4268,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 5,
+   "fail_count": 6,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "1271371950907593054",
@@ -4311,7 +4311,7 @@
      "556195721291"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1272086458459511390",
    "labels": [
@@ -4401,7 +4401,7 @@
      "5564992009530"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1282518798064879280",
    "labels": [
@@ -4541,7 +4541,7 @@
      "558835812171"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1284336639737891051",
    "labels": [
@@ -4621,7 +4621,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1287192362979199065",
    "labels": [
@@ -4715,7 +4715,7 @@
      "5555996625856"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1300364137499590227",
    "labels": [
@@ -4789,7 +4789,7 @@
      "5588992603012"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1319059902129914738",
    "labels": [
@@ -4832,7 +4832,7 @@
      "5511951609229"
     ]
    },
-   "fail_count": 5,
+   "fail_count": 6,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -4917,7 +4917,7 @@
      "5546999797636"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1332101522707466064",
    "labels": [
@@ -4959,7 +4959,7 @@
      "5587999525260"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1335650649486530871",
    "labels": [
@@ -4997,7 +4997,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1338395425468792991",
    "labels": [
@@ -5164,7 +5164,7 @@
      "5575998616587"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1339422402715768429",
    "labels": [
@@ -5203,7 +5203,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1344909627981416123",
    "labels": [
@@ -5244,7 +5244,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "1348725664145010591",
    "labels": [
@@ -5284,7 +5284,7 @@
      "559134233199"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1349850387765602585",
    "labels": [
@@ -5505,7 +5505,7 @@
      "5519996439110"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1358208389058956997",
    "labels": [
@@ -5779,7 +5779,7 @@
      "5568999968088"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1366238025509769699",
    "labels": [
@@ -5817,7 +5817,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1366632549155875567",
    "labels": [
@@ -5937,7 +5937,7 @@
      "5575998042298"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1374063440076623415",
    "labels": [
@@ -6379,7 +6379,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1388878261273636081",
    "labels": [
@@ -6511,7 +6511,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1394477161401799969",
    "labels": [
@@ -6593,7 +6593,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1398982965803928939",
    "labels": [
@@ -6676,6 +6676,7 @@
    "wayback_tried": "2026-11-16"
   },
   "1408678548202109782": {
+   "alerted": "2026-11-20",
    "confianca": 0.9,
    "contacts": {
     "telefone": [
@@ -6683,7 +6684,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -6805,7 +6806,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "141213202651414819",
    "labels": [
@@ -6934,7 +6935,7 @@
      "5586995959550"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1423059333060752334",
    "labels": [
@@ -6976,7 +6977,7 @@
      "5519992005515"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "14232888168981005",
    "labels": [
@@ -7063,7 +7064,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1440155752679057068",
    "labels": [
@@ -7145,7 +7146,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1444541246431190245",
    "labels": [
@@ -7265,7 +7266,7 @@
      "5538992548989"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1450353810065615909",
    "labels": [
@@ -7665,7 +7666,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1474752903540201032",
    "labels": [
@@ -7940,7 +7941,7 @@
      "5549984034327"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1496471532393865739",
    "labels": [
@@ -8070,7 +8071,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1503651630126663999",
    "labels": [
@@ -8146,13 +8147,14 @@
    "url": "https://www.radiocol.com.br/2013/10/ouvir-radio-paulista-fm-995-de-avare-ao.html"
   },
   "150614336580327872": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "5541997960477"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "150614336580327872",
    "labels": [
@@ -8754,7 +8756,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1543443930978017885",
    "labels": [
@@ -8841,7 +8843,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1557984140072869384",
    "labels": [
@@ -8879,7 +8881,7 @@
      "5585987302901"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1559247761256115431",
    "labels": [
@@ -8912,12 +8914,11 @@
    "wa_post_visto": "5585987302901"
   },
   "1562061017824772644": {
-   "alerted": "2026-11-19",
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 4,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "id": "1562061017824772644",
    "labels": [
@@ -8939,11 +8940,11 @@
    ],
    "post_stream": "https://sc3s.cdn.upx.com:9191/;stream.mp3",
    "post_updated": "2021-03-20T21:47:23.463-03:00",
-   "reason": "HTTP 502",
+   "reason": "servidor não responde ao robô (fora do Brasil) — tempo esgotado",
    "search_tried": "2026-11-19",
    "sites": [],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://sc3s.cdn.upx.com:9191/;stream.mp3",
    "title": "Ouvir a Rádio Marinha FM 105,9 de Corumbá MS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/05/ouvir-radio-marinha-fm-1059-de-corumba.html"
@@ -9020,13 +9021,14 @@
    "wa_post_visto": "554234213350"
   },
   "1568303910461080283": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "554734442733"
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "1568303910461080283",
@@ -9158,7 +9160,7 @@
      "5564996551027"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1577677245086334132",
    "labels": [
@@ -9405,7 +9407,7 @@
      "5567998151001"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1591968662463966081",
    "labels": [
@@ -9573,7 +9575,7 @@
      "5547991491324"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1599403664549861196",
    "labels": [
@@ -9709,7 +9711,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1608215663379112420",
    "labels": [
@@ -9748,7 +9750,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1609801796231112213",
    "labels": [
@@ -9788,7 +9790,7 @@
      "554632322233"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1613131347652683847",
    "labels": [
@@ -9992,7 +9994,7 @@
      "556496956061"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1629082778640064166",
    "labels": [
@@ -10190,7 +10192,7 @@
      "556233751340"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1636008708187439082",
    "labels": [
@@ -10405,7 +10407,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1651565296518232667",
    "labels": [
@@ -10488,7 +10490,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1655157230671680861",
    "labels": [
@@ -10530,7 +10532,7 @@
      "555433586909"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1655892935743508692",
    "labels": [
@@ -10943,7 +10945,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1671572677826399415",
    "labels": [
@@ -11103,11 +11105,12 @@
    "url": "https://www.radiocol.com.br/2019/01/ouvir-radio-estrada-real-fm-937-itaguara-mg.html"
   },
   "1685305145453565795": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "1685305145453565795",
@@ -11148,7 +11151,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1686348101875376549",
    "labels": [
@@ -11229,7 +11232,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1690800970586855938",
    "labels": [
@@ -11591,7 +11594,7 @@
      "5583982075882"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1709648872722390316",
    "labels": [
@@ -11755,7 +11758,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1725307434994226960",
    "labels": [
@@ -11835,7 +11838,7 @@
      "5508003421050"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1726621209514859987",
    "labels": [
@@ -12013,7 +12016,7 @@
      "5567993044187"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1734892218605618680",
    "labels": [
@@ -12058,7 +12061,7 @@
      "5549991881714"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1737845957907996017",
    "labels": [
@@ -12162,7 +12165,7 @@
      "5521980135915"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1745259686898149507",
    "labels": [
@@ -12855,7 +12858,7 @@
      "5563999597507"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1800010523551723847",
    "labels": [
@@ -12976,7 +12979,7 @@
      "5575982259270"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1810134091299040960",
    "labels": [
@@ -13195,7 +13198,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -13387,7 +13390,7 @@
      "5545991170029"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "183932613957222794",
    "labels": [
@@ -13597,7 +13600,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1846902255968918132",
    "labels": [
@@ -13689,7 +13692,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1853014323530425057",
    "labels": [
@@ -13882,7 +13885,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1868453910007703792",
    "labels": [
@@ -13961,7 +13964,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "1870367036991464275",
    "labels": [
@@ -14003,7 +14006,7 @@
      "555332312020"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "18716618282340602",
    "labels": [
@@ -14077,7 +14080,7 @@
      "5511931170620"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1882850817303168828",
    "labels": [
@@ -14245,7 +14248,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1896755330925623783",
    "labels": [
@@ -14935,7 +14938,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "193618302037310416",
    "labels": [
@@ -15096,13 +15099,14 @@
    "wa_post_visto": "5569984742923"
   },
   "1937865025528255723": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "5511969888396"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "1937865025528255723",
    "labels": [
@@ -15281,7 +15285,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1943947584104621114",
    "labels": [
@@ -15363,7 +15367,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 3,
+   "fail_count": 4,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "1950097847180837664",
@@ -15539,7 +15543,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "195829871838554676",
    "labels": [
@@ -15770,7 +15774,7 @@
      "5554997007725"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1975662893248973669",
    "labels": [
@@ -15812,7 +15816,7 @@
      "5534998929393"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "197721560192010531",
    "labels": [
@@ -15963,7 +15967,7 @@
      "5549991752973"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "1988916535033800651",
    "labels": [
@@ -16002,7 +16006,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "199381511768289553",
    "labels": [
@@ -16110,6 +16114,7 @@
    "wayback_tried": "2026-11-16"
   },
   "2006645838089429684": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "559132760099"
@@ -16118,7 +16123,7 @@
      "5591984138399"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "2006645838089429684",
    "labels": [
@@ -16231,7 +16236,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2013310571200068012",
    "labels": [
@@ -16404,7 +16409,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2020808768622400777",
    "labels": [
@@ -16487,7 +16492,7 @@
      "5575992593570"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2023772980319041259",
    "labels": [
@@ -16691,6 +16696,7 @@
    "wa_post_visto": "5553999018258"
   },
   "2044576131149929949": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "555532423066"
@@ -16699,7 +16705,7 @@
      "5555996828511"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "2044576131149929949",
    "labels": [
@@ -16866,7 +16872,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2055352343873998575",
    "labels": [
@@ -17023,7 +17029,7 @@
      "5569993218279"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2072345464330175773",
    "labels": [
@@ -17106,7 +17112,7 @@
      "555391144883"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2073639687203157374",
    "labels": [
@@ -17146,7 +17152,7 @@
      "5592994921021"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2075478104900268525",
    "labels": [
@@ -17427,7 +17433,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2089704010588761682",
    "labels": [
@@ -17579,7 +17585,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2105317685675216600",
    "labels": [
@@ -17619,7 +17625,7 @@
      "554920491212"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2108964172192437136",
    "labels": [
@@ -17663,7 +17669,7 @@
      "5581986565510"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2112715415090931085",
    "labels": [
@@ -17739,7 +17745,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 13,
+   "fail_count": 14,
    "first_seen": "2026-11-16",
    "id": "2113035719019668163",
    "labels": [
@@ -17787,7 +17793,7 @@
      "5569984064499"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2119508234067544984",
    "labels": [
@@ -18104,7 +18110,7 @@
      "5548988261042"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2155352293928399350",
    "labels": [
@@ -18142,7 +18148,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2155422429805274865",
    "labels": [
@@ -18381,6 +18387,7 @@
    "wa_post_visto": "552225511094"
   },
   "2167140628463450939": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "556233733056"
@@ -18389,7 +18396,7 @@
      "55206220920855120"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "2167140628463450939",
    "labels": [
@@ -18537,7 +18544,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2171951721574695264",
    "labels": [
@@ -18820,7 +18827,7 @@
      "5554992352835"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "219211215540291725",
    "labels": [
@@ -18898,7 +18905,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2195167073118534949",
    "labels": [
@@ -19149,7 +19156,7 @@
      "5534998149577"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2204768974757805606",
    "labels": [
@@ -19353,7 +19360,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2221401855584312203",
    "labels": [
@@ -19564,7 +19571,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "223561721839185001",
    "labels": [
@@ -19648,7 +19655,7 @@
      "5554984186298"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2237322668452377143",
    "labels": [
@@ -19691,7 +19698,7 @@
      "5508003421050"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2245360697747436999",
    "labels": [
@@ -19730,7 +19737,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2245508747483282535",
    "labels": [
@@ -19857,7 +19864,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2256266737266209175",
    "labels": [
@@ -19902,7 +19909,7 @@
      "5554996441185"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "225692760305256064",
    "labels": [
@@ -20330,7 +20337,7 @@
      "5554996310104"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2291916676869414527",
    "labels": [
@@ -20698,7 +20705,7 @@
      "5541998874103"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2330056595971349283",
    "labels": [
@@ -20812,7 +20819,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "233439650616290079",
    "labels": [
@@ -21093,7 +21100,7 @@
      "5561981009090"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2365324136157439011",
    "labels": [
@@ -21441,7 +21448,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2386268505164808435",
    "labels": [
@@ -21531,7 +21538,7 @@
      "5511931170620"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2393738178602826497",
    "labels": [
@@ -21571,7 +21578,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2393813187843680805",
    "labels": [
@@ -21920,7 +21927,7 @@
      "5598992092383"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2437993068508397587",
    "labels": [
@@ -22012,7 +22019,7 @@
      "5565999129519"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2442649156537019794",
    "labels": [
@@ -22136,7 +22143,7 @@
      "551156413030"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "2454636444268128967",
    "labels": [
@@ -22285,7 +22292,7 @@
      "5571999925485"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2464624596025779807",
    "labels": [
@@ -22369,7 +22376,7 @@
      "5541998821370"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2469347715876277625",
    "labels": [
@@ -22447,7 +22454,7 @@
      "5516996971045"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2473584760657593466",
    "labels": [
@@ -22528,7 +22535,7 @@
      "5555991802660"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2478334143017876305",
    "labels": [
@@ -22621,7 +22628,7 @@
      "5585991186467"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2480548176312339120",
    "labels": [
@@ -22930,7 +22937,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2492465575050387311",
    "labels": [
@@ -23273,7 +23280,7 @@
      "5595991429410"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2521303230153436137",
    "labels": [
@@ -23364,7 +23371,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2523969067966057841",
    "labels": [
@@ -23615,7 +23622,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2534851088610444273",
    "labels": [
@@ -23786,7 +23793,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2542671485349238548",
    "labels": [
@@ -23980,6 +23987,7 @@
    "wa_post_visto": "5543999847270"
   },
   "2549503056870180694": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "554733750555"
@@ -23988,7 +23996,7 @@
      "5547992902604"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "2549503056870180694",
    "labels": [
@@ -24078,7 +24086,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2559474206797853547",
    "labels": [
@@ -24308,7 +24316,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2571558905037940511",
    "labels": [
@@ -24349,7 +24357,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2577574928214797766",
    "labels": [
@@ -24389,7 +24397,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2578128479853301325",
    "labels": [
@@ -25158,11 +25166,12 @@
    "wa_post_visto": "5511964240304"
   },
   "2641710923626054129": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "2641710923626054129",
    "labels": [
@@ -25496,7 +25505,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2669031461857391594",
    "labels": [
@@ -25539,7 +25548,7 @@
      "5569992823219"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2673333762718725964",
    "labels": [
@@ -25580,7 +25589,7 @@
      "5544988235931"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2679727268587977090",
    "labels": [
@@ -25903,7 +25912,7 @@
      "5531991921386"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2697077501760799240",
    "labels": [
@@ -25988,7 +25997,7 @@
      "5554999119183"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2700644120361669637",
    "labels": [
@@ -26188,7 +26197,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2718470433398270879",
    "labels": [
@@ -26484,6 +26493,7 @@
    "wa_post_visto": "5551997488759"
   },
   "2734397506353792361": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "554721036000"
@@ -26492,7 +26502,7 @@
      "5547991381005"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "2734397506353792361",
@@ -26617,7 +26627,7 @@
    "url": "https://www.radiocol.com.br/2020/02/ouvir-web-radio-nova-vida-fm-campinas-sp-ao-vivo.html"
   },
   "2745365773610015653": {
-   "confianca": 0.8,
+   "confianca": 0.9,
    "contacts": {
     "telefone": [
      "554632254641"
@@ -26629,13 +26639,6 @@
    "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
-    {
-     "date": "2026-11-18",
-     "from": "https://audio01.viaflux.com.br:9275/live.aac",
-     "note": "",
-     "source": "site oficial (elitefm.com.br) — tocou no navegador [navegador]",
-     "to": "https://audio01.viaflux.com:9275/live.aac"
-    },
     {
      "date": "2026-11-18",
      "from": "https://audio01.viaflux.com:9275/live.aac",
@@ -26670,6 +26673,13 @@
      "note": "",
      "source": "player do site elitefm.com.br (não testável daqui) [navegador]",
      "to": "https://audio01.viaflux.com:9270/status-json.xsl"
+    },
+    {
+     "date": "2026-11-20",
+     "from": "https://audio01.viaflux.com:9270/status-json.xsl",
+     "note": "",
+     "source": "site oficial (elitefm.com.br) — tocou no navegador [navegador]",
+     "to": "https://audio01.viaflux.com:9275/live.aac"
     }
    ],
    "http_only": false,
@@ -26681,7 +26691,7 @@
     "PR"
    ],
    "last_check": "2026-11-20",
-   "last_ok": "2026-11-19",
+   "last_ok": "2026-11-20",
    "loc": [
     "Pato Branco",
     "pr"
@@ -26692,14 +26702,14 @@
    ],
    "post_stream": "https://audio01.viaflux.com.br:9275/live.aac",
    "post_updated": "2021-12-29T21:24:15.390-03:00",
-   "reason": "endereço do player do site da emissora; o servidor não responde ao robô (fora do Brasil)",
+   "reason": "corrigido automaticamente",
    "search_tried": "2026-11-20",
    "sites": [
     "https://www.elitefm.com.br/"
    ],
-   "source": "player do site elitefm.com.br (não testável daqui) [navegador]",
-   "status": "bloqueio",
-   "stream": "https://audio01.viaflux.com:9270/status-json.xsl",
+   "source": "site oficial (elitefm.com.br) — tocou no navegador [navegador]",
+   "status": "ok",
+   "stream": "https://audio01.viaflux.com:9275/live.aac",
    "title": "Ouvir a Rádio Elite FM 101,7 de Pato Branco PR Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/05/ouvir-radio-elite-fm-1017-de-pato.html",
    "wa_post_visto": "5546991191017"
@@ -26831,7 +26841,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2763809061623342850",
    "labels": [
@@ -26870,7 +26880,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2766913526687014325",
    "labels": [
@@ -27150,7 +27160,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2783478460436611823",
    "labels": [
@@ -27188,7 +27198,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2787017994868134778",
    "labels": [
@@ -27314,7 +27324,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2792231485715552807",
    "labels": [
@@ -27455,7 +27465,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "279624616529825319",
    "labels": [
@@ -27530,7 +27540,7 @@
      "5511943805100"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2807274573383957498",
    "labels": [
@@ -27569,7 +27579,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2812217245140731886",
    "labels": [
@@ -27693,7 +27703,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "2818501532370900879",
    "labels": [
@@ -27731,7 +27741,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2820112602416860217",
    "labels": [
@@ -28158,7 +28168,7 @@
      "556735097500"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "28439455926709970",
    "labels": [
@@ -28246,7 +28256,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2845982161795083279",
    "labels": [
@@ -28338,7 +28348,7 @@
      "5591984416545"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2846931973510890756",
    "labels": [
@@ -28566,7 +28576,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2877663385235617823",
    "labels": [
@@ -29161,7 +29171,7 @@
      "5555991315487"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2905546733755084673",
    "labels": [
@@ -29280,7 +29290,7 @@
      "5547988016197"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2914624382995113971",
    "labels": [
@@ -29449,7 +29459,7 @@
      "5508003421050"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "292816007328331033",
    "labels": [
@@ -29571,7 +29581,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2947543641620261761",
    "labels": [
@@ -29763,7 +29773,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -30071,7 +30081,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -30128,7 +30138,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2975529325976136905",
    "labels": [
@@ -30239,7 +30249,7 @@
      "556436561682"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "298804819261641807",
    "labels": [
@@ -30412,7 +30422,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "2999578138131339998",
    "labels": [
@@ -30669,7 +30679,7 @@
      "5516997663401"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3012520352217858060",
    "labels": [
@@ -30786,7 +30796,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -30842,7 +30852,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3017955230482155941",
    "labels": [
@@ -30886,7 +30896,7 @@
      "5551995749969"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3020731631705515214",
    "labels": [
@@ -31104,7 +31114,7 @@
      "5519984401277"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3033344370853597891",
    "labels": [
@@ -31193,7 +31203,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3043397871411880625",
    "labels": [
@@ -31482,7 +31492,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3067030656376910666",
    "labels": [
@@ -31566,7 +31576,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3075394145222071259",
    "labels": [
@@ -31793,7 +31803,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "308897364493064387",
    "labels": [
@@ -31833,7 +31843,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3091647471919138186",
    "labels": [
@@ -32069,7 +32079,7 @@
      "5514998992999"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "310397861069379441",
    "labels": [
@@ -32336,7 +32346,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "312349162306685804",
    "labels": [
@@ -32414,7 +32424,7 @@
      "556599618989"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3134707558191370593",
    "labels": [
@@ -32627,7 +32637,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "3157476439438160253",
    "labels": [
@@ -32801,7 +32811,7 @@
      "554333151300"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3166277378066355272",
    "labels": [
@@ -33092,7 +33102,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3185201748469040915",
    "labels": [
@@ -33254,6 +33264,7 @@
    "url": "https://www.radiocol.com.br/2013/01/ouvir-radio-mais-fm-953-de-mogi-guacu.html"
   },
   "3190063252732728140": {
+   "alerted": "2026-11-20",
    "contact_alerted": "5584987812337",
    "contacts": {
     "telefone": [
@@ -33264,7 +33275,7 @@
     ]
    },
    "editado_em": "2026-11-19",
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -33348,7 +33359,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3192285451714778130",
    "labels": [
@@ -33385,7 +33396,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3192743061019699837",
    "labels": [
@@ -33423,7 +33434,7 @@
      "5553991520610"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3193085722682972416",
    "labels": [
@@ -33503,7 +33514,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3201085000453627385",
    "labels": [
@@ -33544,7 +33555,7 @@
      "5567999789292"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3201156759335469781",
    "labels": [
@@ -33690,7 +33701,7 @@
      "5511999119981"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "320683399275946586",
    "labels": [
@@ -33837,7 +33848,7 @@
      "5583987054336"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3218079592538537263",
    "labels": [
@@ -33919,7 +33930,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3226531711396830497",
    "labels": [
@@ -34092,7 +34103,7 @@
    "post_stream": "https://shout25.crossradio.com.br:18094/live",
    "post_updated": "2020-12-27T21:13:49.097-03:00",
    "provisorio": true,
-   "reason": "corrigido automaticamente (provisório)",
+   "reason": "ok",
    "search_tried": "2026-11-20",
    "sites": [
     "http://www.correiosat.com.br/"
@@ -34403,7 +34414,7 @@
    "post_stream": "https://stm27.srvaudio.com.br:9330/stream",
    "post_updated": "2022-11-12T22:06:38.803-03:00",
    "provisorio": true,
-   "reason": "corrigido automaticamente (provisório)",
+   "reason": "ok",
    "search_tried": "2026-11-20",
    "sites": [
     "https://www.radio107fm.com/"
@@ -34694,7 +34705,7 @@
      "5538999092480"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3278126447040279343",
    "labels": [
@@ -34950,7 +34961,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3287330399639124242",
    "labels": [
@@ -35166,7 +35177,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3296945742837945588",
    "labels": [
@@ -35306,7 +35317,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "330640378410185853",
    "labels": [
@@ -35475,7 +35486,7 @@
      "558588572644"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3315415063322597095",
    "labels": [
@@ -35799,13 +35810,14 @@
    "wayback_tried": "2026-11-16"
   },
   "3341597914607292196": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "5598988960719"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "3341597914607292196",
    "labels": [
@@ -36063,7 +36075,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3364164021727277787",
    "labels": [
@@ -36197,7 +36209,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3370760179825453700",
    "labels": [
@@ -36287,7 +36299,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3373959055340800280",
    "labels": [
@@ -36367,7 +36379,7 @@
      "5571996269130"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3377999041935774836",
    "labels": [
@@ -36449,7 +36461,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3380867246063036082",
    "labels": [
@@ -36602,7 +36614,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3392945837844036054",
    "labels": [
@@ -36780,7 +36792,7 @@
      "5541991220590"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3402103826697339304",
    "labels": [
@@ -37067,7 +37079,7 @@
      "5581998900016"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3419914013050921109",
    "labels": [
@@ -37217,7 +37229,7 @@
      "5544991571203"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3433866323973410792",
    "labels": [
@@ -37237,7 +37249,7 @@
    ],
    "post_stream": "https://centova.svdns.com.br:20044/stream",
    "post_updated": "2021-11-25T21:47:36.297-03:00",
-   "reason": "HTTP 502",
+   "reason": "HTTP 500",
    "search_tried": "2026-11-18",
    "sites": [
     "https://musicafm.com.br/"
@@ -37299,7 +37311,7 @@
      "558934218044"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3436090776226451039",
    "labels": [
@@ -37568,7 +37580,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "345127167107764688",
@@ -37582,7 +37594,7 @@
     "Rede_Boas_Novas"
    ],
    "last_check": "2026-11-20",
-   "last_ok": "2026-11-19",
+   "last_ok": "2026-11-20",
    "loc": [
     "Belém",
     "pa"
@@ -37594,13 +37606,13 @@
    ],
    "post_stream": "https://cdn.jmvstream.com/w/LVW-9375/LVW9375_6i0wPBCHYc/chunklist.m3u8",
    "post_updated": "2020-10-09T23:41:28.819-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok (HLS)",
    "search_tried": "2026-11-20",
    "sites": [
     "http://www.boasnovas.net/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://cdn.jmvstream.com/w/LVW-9375/LVW9375_6i0wPBCHYc/chunklist.m3u8",
    "title": "Ouvir a Rádio Boas Novas FM 91,9 de Belém PA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2016/10/ouvir-radio-boas-novas-fm-919-de-belem.html"
@@ -37615,7 +37627,7 @@
      "5583982040098"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -37672,7 +37684,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 15,
+   "fail_count": 16,
    "first_seen": "2026-11-16",
    "id": "3459922295763193710",
    "labels": [
@@ -37854,7 +37866,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3475346762867022895",
    "labels": [
@@ -37937,7 +37949,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3477557598414519386",
    "labels": [
@@ -37976,7 +37988,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 17,
+   "fail_count": 18,
    "first_seen": "2026-11-16",
    "id": "3479100631050199770",
    "labels": [
@@ -38228,7 +38240,7 @@
      "5561985809070"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3503989148829621344",
    "labels": [
@@ -38471,7 +38483,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3513671778466417800",
    "labels": [
@@ -38683,7 +38695,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3522134217977074459",
    "labels": [
@@ -38852,7 +38864,7 @@
      "5588996375003"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3533260696097120779",
    "labels": [
@@ -39025,7 +39037,7 @@
      "5599988130034"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3547587125037592044",
    "labels": [
@@ -39159,7 +39171,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "3554690568468389905",
@@ -39204,7 +39216,7 @@
      "5588997981314"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3556097615479964559",
    "labels": [
@@ -39374,7 +39386,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3572204773203126168",
    "labels": [
@@ -39453,7 +39465,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -39555,7 +39567,7 @@
      "5551981059938"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3576491389723959614",
    "labels": [
@@ -39704,7 +39716,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3599184500220840775",
    "labels": [
@@ -39745,7 +39757,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3599923722059164235",
    "labels": [
@@ -39886,7 +39898,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3608901097699899228",
    "labels": [
@@ -39925,7 +39937,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3609824724082802078",
    "labels": [
@@ -39964,7 +39976,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3611547405301571518",
    "labels": [
@@ -40047,7 +40059,7 @@
      "5581999375776"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3614213161171043453",
    "labels": [
@@ -40339,6 +40351,7 @@
    "wa_post_visto": "554684017407"
   },
   "3627225066299853097": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "557436413214"
@@ -40347,7 +40360,7 @@
      "5591984416545"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -40447,7 +40460,7 @@
      "5577999711532"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3632277738206229830",
    "labels": [
@@ -40590,7 +40603,7 @@
      "558588572644"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3646394688650878636",
    "labels": [
@@ -41177,7 +41190,7 @@
      "5547984825000"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3669377562476980429",
    "labels": [
@@ -41295,7 +41308,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3672764471940005039",
    "labels": [
@@ -41336,7 +41349,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3679017029416770345",
    "labels": [
@@ -41543,7 +41556,7 @@
      "5553999468941"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3700407900924197684",
    "labels": [
@@ -41631,7 +41644,7 @@
      "5554999460458"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3701692579144222652",
    "labels": [
@@ -41778,7 +41791,7 @@
      "5547996892019"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3708744890497148823",
    "labels": [
@@ -41857,7 +41870,7 @@
      "556220201037"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "3711716645803025882",
@@ -41868,7 +41881,7 @@
     "Sertanejo"
    ],
    "last_check": "2026-11-20",
-   "last_ok": "2026-11-19",
+   "last_ok": "2026-11-20",
    "loc": [
     "Goiânia",
     "go"
@@ -41879,13 +41892,13 @@
    ],
    "post_stream": "https://play.wisestream.io/massafmgoiania",
    "post_updated": "2026-11-15T00:47:57.238-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok",
    "search_tried": "2026-11-20",
    "sites": [
     "https://massa.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://play.wisestream.io/massafmgoiania",
    "title": "Ouvir a Rádio Massa FM 103,7 de Goiânia GO Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2026/11/ouvir-radio-massa-fm-103-7-de-goiania-go-ao-vivo.html",
@@ -42179,7 +42192,7 @@
      "5547988143998"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3722907280082360057",
    "labels": [
@@ -42264,7 +42277,7 @@
      "5508009291515"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3728091108203058880",
    "labels": [
@@ -42305,7 +42318,7 @@
      "5562995155770"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3731703453056300240",
    "labels": [
@@ -42347,7 +42360,7 @@
      "5584998193671"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3733284724257586929",
    "labels": [
@@ -42712,7 +42725,7 @@
      "5543999930318"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3754624936995271366",
    "labels": [
@@ -42933,7 +42946,7 @@
      "5551982116538"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3768198595780566619",
    "labels": [
@@ -43113,7 +43126,7 @@
      "5593991369840"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3778370535412754271",
    "labels": [
@@ -43329,7 +43342,7 @@
      "5547991081031"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3797769374551052244",
    "labels": [
@@ -43454,7 +43467,7 @@
      "5517991212020"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3817002168558081254",
    "labels": [
@@ -43493,7 +43506,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3820518266287317910",
    "labels": [
@@ -43535,7 +43548,7 @@
      "5527981771015"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3820601512098085663",
    "labels": [
@@ -43577,7 +43590,7 @@
      "5547999069970"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3822409183944685338",
    "labels": [
@@ -43628,7 +43641,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5551980111288",
-    "score": 0.95,
+    "score": 1.0,
     "since": "2026-11-20",
     "site": "5551998720887",
     "url": "https://www.radio88e7fm.com.br/"
@@ -43641,7 +43654,7 @@
      "5551980111288"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "3825627038176267620",
    "labels": [
@@ -43807,7 +43820,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3830206533279454486",
    "labels": [
@@ -43936,7 +43949,7 @@
      "557734292019"
     ]
    },
-   "fail_count": 3,
+   "fail_count": 4,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -43987,7 +44000,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3847412977234833499",
    "labels": [
@@ -44067,7 +44080,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3848629938921169165",
    "labels": [
@@ -44377,7 +44390,7 @@
      "5527995008850"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3858585577962300444",
    "labels": [
@@ -44475,7 +44488,7 @@
      "5584998510566"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3861242961530716875",
    "labels": [
@@ -44567,7 +44580,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3862689801643914231",
    "labels": [
@@ -45022,14 +45035,6 @@
   },
   "3886377180722099711": {
    "contact_alerted": "557734441043",
-   "contact_suggestion": {
-    "kind": "whatsapp",
-    "post": "5577999581576",
-    "score": 0.6,
-    "since": "2026-11-20",
-    "site": "557734441043",
-    "url": "https://www.radioportalsudoeste.com.br/"
-   },
    "contacts": {
     "telefone": [
      "557734441043"
@@ -45112,7 +45117,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3887726526873753599",
    "labels": [
@@ -45192,7 +45197,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3895379799285557550",
    "labels": [
@@ -45950,7 +45955,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3957189597212392033",
    "labels": [
@@ -46244,7 +46249,7 @@
      "5591991921009"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3970518548280431769",
    "labels": [
@@ -46408,7 +46413,7 @@
      "5551997009471"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -46506,7 +46511,7 @@
      "5508003421050"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "3980489201789800818",
    "labels": [
@@ -46945,7 +46950,7 @@
      "5547999425795"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4000453771128789399",
    "labels": [
@@ -47211,7 +47216,7 @@
      "5575999955978"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4012490872252646857",
    "labels": [
@@ -47303,7 +47308,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4015546138793541911",
    "labels": [
@@ -47424,7 +47429,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4027710929135361977",
    "labels": [
@@ -47467,7 +47472,7 @@
      "5541988087508"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4028208941790474498",
    "labels": [
@@ -47592,7 +47597,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4034616470452835274",
    "labels": [
@@ -47981,7 +47986,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4050495287427593070",
    "labels": [
@@ -48288,7 +48293,7 @@
      "5575998299696"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4066849119361215259",
    "labels": [
@@ -48367,7 +48372,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4071151943951963768",
    "labels": [
@@ -48506,7 +48511,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4086327675691393807",
    "labels": [
@@ -48546,7 +48551,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4086671571335420581",
    "labels": [
@@ -48704,7 +48709,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4097758291815137281",
    "labels": [
@@ -48746,7 +48751,7 @@
      "5519992810415"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4101626090601923869",
    "labels": [
@@ -48785,7 +48790,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4107013685296145814",
    "labels": [
@@ -48871,7 +48876,7 @@
      "5531999714649"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "4108378827306668445",
    "labels": [
@@ -48958,7 +48963,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4115662227362166893",
    "labels": [
@@ -49035,7 +49040,7 @@
      "5517991341959"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4119918515503052647",
    "labels": [
@@ -49075,7 +49080,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "412459166442853960",
    "labels": [
@@ -49190,7 +49195,7 @@
      "556220200907"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4128711916046543924",
    "labels": [
@@ -49469,7 +49474,7 @@
      "5545999632592"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "413766949367776397",
    "labels": [
@@ -49509,7 +49514,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4138958585331311406",
    "labels": [
@@ -49748,11 +49753,12 @@
    "wa_post_visto": "5567992724655"
   },
   "4150143039414242238": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "4150143039414242238",
    "labels": [
@@ -50042,7 +50048,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4168439011035648611",
    "labels": [
@@ -50266,7 +50272,7 @@
      "5563984659867"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4182868807762742898",
    "labels": [
@@ -50553,7 +50559,7 @@
      "5516992664665"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4204269463979526199",
    "labels": [
@@ -50676,7 +50682,7 @@
      "5554996691013"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4209328917454516403",
    "labels": [
@@ -50813,7 +50819,7 @@
      "5554991749640"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4217342003092327209",
    "labels": [
@@ -51180,7 +51186,7 @@
      "5551989262338"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4235136788407895209",
    "labels": [
@@ -51223,7 +51229,7 @@
      "556195721291"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4235228525325509579",
    "labels": [
@@ -51403,7 +51409,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4243258190189784188",
    "labels": [
@@ -51648,7 +51654,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4272661564860756261",
    "labels": [
@@ -52146,7 +52152,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "431470528203258209",
    "labels": [
@@ -52346,7 +52352,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4319718564426078858",
    "labels": [
@@ -52385,7 +52391,7 @@
      "5566999716827"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4325939954761581751",
    "labels": [
@@ -52610,7 +52616,7 @@
      "557136278596"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4331581272891195097",
    "labels": [
@@ -52648,7 +52654,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4333273195096514813",
    "labels": [
@@ -52690,7 +52696,7 @@
      "555195702200"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4337468681574808321",
    "labels": [
@@ -52872,7 +52878,7 @@
      "554333565500"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4345687764095223735",
    "labels": [
@@ -52968,7 +52974,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4351170061192239688",
    "labels": [
@@ -53081,13 +53087,14 @@
    "url": "https://www.radiocol.com.br/2013/03/ouvir-radio-transamerica-pop-fm-933-de.html"
   },
   "4355674068913258422": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "5544997017088"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "4355674068913258422",
    "labels": [
@@ -53204,7 +53211,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4359855150978568936",
    "labels": [
@@ -53245,7 +53252,7 @@
      "5562985470513"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4362268921728347633",
    "labels": [
@@ -53347,7 +53354,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 0,
+   "fail_count": 1,
    "first_seen": "2026-11-16",
    "id": "4369980324103934527",
    "labels": [
@@ -53368,13 +53375,13 @@
    ],
    "post_stream": "https://webradios.net/api/proxy-stream.php?ip=sv10.hdradios.net&port=9200&mount=/stream",
    "post_updated": "2021-01-24T22:17:07.996-03:00",
-   "reason": "servidor não responde ao robô (fora do Brasil) — tempo esgotado",
-   "search_tried": "2026-11-19",
+   "reason": "responde página HTML, não áudio",
+   "search_tried": "2026-11-20",
    "sites": [
     "https://www.radiogospelapocalipse.com/"
    ],
    "source": "post",
-   "status": "bloqueio",
+   "status": "off",
    "stream": "https://webradios.net/api/proxy-stream.php?ip=sv10.hdradios.net&port=9200&mount=/stream",
    "title": "Ouvir a Web Rádio Gospel Apocalipse de Aracaju SE Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/01/ouvir-web-radio-gospel-apocalipse-de.html"
@@ -53619,7 +53626,7 @@
      "5573999059490"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -53639,7 +53646,7 @@
     "Popular"
    ],
    "last_check": "2026-11-20",
-   "last_ok": "2026-11-19",
+   "last_ok": "2026-11-20",
    "loc": [
     "Jequié",
     "ba"
@@ -53650,14 +53657,14 @@
    "post_candidates": [],
    "post_updated": "2020-11-19T22:23:50.072-03:00",
    "provisorio": true,
-   "reason": "HTTP 404",
+   "reason": "ok",
    "search_tried": "2026-11-20",
    "site_tried": "2026-11-17",
    "sites": [
     "http://www.radio95fm.net/"
    ],
    "source": "Radio Browser: Rádio 95 FM Jequié - BA",
-   "status": "off",
+   "status": "ok",
    "stream": "https://stream01.ouveai.com.br:1040/stream?1716398413708=",
    "title": "Ouvir a Rádio 95 FM 94,9 de Jequié BA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/08/ouvir-radio-95-fm-949-de-jequie-ao-vivo.html",
@@ -54297,7 +54304,7 @@
      "5522992279062"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4425875270212105947",
    "labels": [
@@ -54416,7 +54423,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4438670050877636520",
    "labels": [
@@ -54491,7 +54498,7 @@
      "5555997321071"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4443117041196405505",
    "labels": [
@@ -54604,7 +54611,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4444367870354595988",
    "labels": [
@@ -54865,7 +54872,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4463841243320304146",
    "labels": [],
@@ -55045,7 +55052,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4490936071051936530",
    "labels": [
@@ -55179,13 +55186,14 @@
    "wa_post_visto": "5544991239393"
   },
   "4496362823200690333": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "555532761868"
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "4496362823200690333",
@@ -55384,7 +55392,7 @@
      "554332535829"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4502303015132240959",
    "labels": [
@@ -55519,7 +55527,7 @@
      "5519971021493"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4517227718913310598",
    "labels": [
@@ -55562,7 +55570,7 @@
      "5545988308278"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4518733110947704408",
    "labels": [
@@ -56598,7 +56606,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4591377701717621783",
    "labels": [
@@ -56638,7 +56646,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4599528845486878935",
    "labels": [
@@ -56930,7 +56938,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4606170125607239557",
    "labels": [
@@ -57021,7 +57029,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4611561691078465201",
    "labels": [
@@ -57060,7 +57068,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -57117,7 +57125,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4623833224493743867",
    "labels": [
@@ -57155,7 +57163,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "462483277062274722",
    "labels": [
@@ -57284,7 +57292,7 @@
      "5511931171009"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -57492,7 +57500,7 @@
      "5567996461029"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4650947829674232605",
    "labels": [
@@ -57617,7 +57625,7 @@
      "5521991907486"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4656761357018479507",
    "labels": [
@@ -57658,7 +57666,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4657213624796202719",
    "labels": [
@@ -57751,7 +57759,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4661048083470608529",
    "labels": [
@@ -57794,7 +57802,7 @@
      "5543999608287"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4667160643262442804",
    "labels": [
@@ -57898,7 +57906,7 @@
      "5551992238585"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4682842756677640276",
    "labels": [
@@ -58643,7 +58651,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4730535667482235586",
    "labels": [
@@ -58761,7 +58769,7 @@
      "5554992352835"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "473560068985568631",
    "labels": [
@@ -58990,7 +58998,7 @@
      "555484188390"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4749552925984165669",
    "labels": [
@@ -59112,7 +59120,7 @@
      "5561982080978"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4762953094359947382",
    "labels": [
@@ -59398,7 +59406,7 @@
      "5547999421206"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4774505465099940480",
    "labels": [
@@ -59487,7 +59495,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "477895757012599850",
    "labels": [
@@ -59559,7 +59567,7 @@
    "post_stream": "http://hts02.kshost.com.br:8840/live",
    "post_updated": "2020-10-10T23:54:37.479-03:00",
    "provisorio": true,
-   "reason": "corrigido automaticamente (provisório)",
+   "reason": "ok",
    "search_tried": "2026-11-20",
    "sites": [
     "https://radiofm91.com.br/"
@@ -59664,7 +59672,7 @@
      "556635663317"
     ]
    },
-   "fail_count": 3,
+   "fail_count": 4,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "4796439628070868858",
@@ -59704,7 +59712,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4798136490653549819",
    "labels": [
@@ -59785,7 +59793,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4805319318566347404",
    "labels": [
@@ -59916,6 +59924,7 @@
    "wa_post_visto": "5541984248445"
   },
   "4808453791230041661": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "553733412224"
@@ -59924,7 +59933,7 @@
      "553788536566"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "4808453791230041661",
    "labels": [
@@ -60223,7 +60232,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4826437600507470956",
    "labels": [
@@ -60302,7 +60311,7 @@
      "5585992280992"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4828451075539320254",
    "labels": [
@@ -60428,7 +60437,7 @@
      "3432510441"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4839912514152483869",
    "labels": [
@@ -60593,7 +60602,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -60650,7 +60659,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "485470891488057989",
    "labels": [
@@ -60787,7 +60796,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4856938081135222118",
    "labels": [
@@ -60956,7 +60965,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4863616091729477183",
    "labels": [
@@ -61135,7 +61144,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4870565931378375233",
    "labels": [
@@ -61178,7 +61187,7 @@
      "5511943805100"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4877805019564888669",
    "labels": [
@@ -61269,7 +61278,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4887885228534094957",
    "labels": [
@@ -61314,7 +61323,7 @@
      "5575999989850"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4889324070308714127",
    "labels": [
@@ -61354,7 +61363,7 @@
      "556134841585"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4891000821218716113",
    "labels": [
@@ -61448,7 +61457,7 @@
      "5573982211021"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4893380694788389945",
    "labels": [
@@ -61486,7 +61495,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4902828266272716650",
    "labels": [
@@ -61519,13 +61528,14 @@
    "url": "https://www.radiocol.com.br/2015/10/ouvir-radio-girassol-fm-879-de-belo.html"
   },
   "4903296662215912135": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "556241020134"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "4903296662215912135",
    "labels": [
@@ -61674,7 +61684,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4909661446784130844",
    "labels": [
@@ -61935,6 +61945,15 @@
   },
   "4920255993176530357": {
    "confianca": 0.9,
+   "contact_alerted": "556231218222",
+   "contact_suggestion": {
+    "kind": "whatsapp",
+    "post": "556238772606",
+    "score": 0.6,
+    "since": "2026-11-20",
+    "site": "556231218222",
+    "url": "http://radiobonsventos.com.br/"
+   },
    "contacts": {
     "telefone": [
      "556232554001"
@@ -62237,7 +62256,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4937239537377797435",
    "labels": [
@@ -62458,7 +62477,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4941439130408590916",
    "labels": [
@@ -62727,7 +62746,7 @@
      "5549991711049"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4950338227641546876",
    "labels": [
@@ -62771,7 +62790,7 @@
      "5547991870105"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "495226893437817279",
    "labels": [
@@ -63021,7 +63040,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4974139250234695090",
    "labels": [
@@ -63093,7 +63112,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4978207666338069060",
    "labels": [
@@ -63294,7 +63313,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "4985216265072930271",
    "labels": [
@@ -63553,7 +63572,7 @@
    ],
    "post_stream": "https://c1.audiostream.com.br:2007/site",
    "post_updated": "2022-04-22T22:37:47.020-03:00",
-   "reason": "ok (ICY)",
+   "reason": "ok",
    "search_tried": "2026-11-18",
    "sites": [
     "https://guaiba.com.br/"
@@ -63613,7 +63632,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5007207912015206138",
    "labels": [
@@ -63652,7 +63671,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5008309922915848080",
    "labels": [
@@ -63689,7 +63708,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5010731677474977398",
    "labels": [
@@ -63815,7 +63834,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5018607866806758266",
    "labels": [
@@ -64631,7 +64650,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5064243378622638241",
    "labels": [
@@ -64715,7 +64734,7 @@
      "5543991011021"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "5066908206010424188",
    "labels": [
@@ -64787,7 +64806,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5070178015556911894",
    "labels": [
@@ -64923,7 +64942,7 @@
      "5551991135939"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5080697734513406651",
    "labels": [
@@ -65353,7 +65372,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5104428378915788835",
    "labels": [
@@ -65526,7 +65545,7 @@
      "5591991601130"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5115098705965997280",
    "labels": [
@@ -65701,7 +65720,7 @@
      "5586988159696"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5121976156561554372",
    "labels": [
@@ -65955,7 +65974,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5150142923479182974",
    "labels": [
@@ -65998,7 +66017,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5150526665039780270",
    "labels": [
@@ -66187,7 +66206,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5161564343055040735",
    "labels": [
@@ -66226,7 +66245,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5161802277329395661",
    "labels": [
@@ -66426,7 +66445,7 @@
      "5511992338054"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5173940037298971956",
    "labels": [
@@ -66469,7 +66488,7 @@
      "5591991868937"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5174034428346095973",
    "labels": [
@@ -66614,7 +66633,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5177567383332145994",
    "labels": [
@@ -66689,7 +66708,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5180726567407308826",
    "labels": [
@@ -66828,7 +66847,7 @@
      "5504130581120"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5184227684278559334",
    "labels": [
@@ -66871,7 +66890,7 @@
      "5554992352835"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5187227902493197597",
    "labels": [
@@ -66995,7 +67014,7 @@
      "5568999689570"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "519589031428254002",
    "labels": [
@@ -67179,7 +67198,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5209906628051947810",
    "labels": [
@@ -67219,7 +67238,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5210643545988661613",
    "labels": [
@@ -67260,7 +67279,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -67406,7 +67425,7 @@
      "5545999559899"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5214719015529105417",
    "labels": [
@@ -67498,7 +67517,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 3,
+   "fail_count": 4,
    "first_seen": "2026-11-16",
    "id": "5218229830875041417",
    "labels": [
@@ -67574,7 +67593,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5220594374332857617",
    "labels": [
@@ -67612,7 +67631,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5228532694843405921",
    "labels": [
@@ -67865,7 +67884,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5252213587693766114",
    "labels": [
@@ -68171,7 +68190,7 @@
      "5544999890094"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5268307083928855902",
    "labels": [
@@ -68379,7 +68398,7 @@
      "5511931170620"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5279420614268893316",
    "labels": [
@@ -68422,7 +68441,7 @@
      "5522981714311"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5280436202319758126",
    "labels": [
@@ -68804,7 +68823,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5308797159564063311",
    "labels": [
@@ -68939,7 +68958,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "531339234876158505",
    "labels": [
@@ -68981,7 +69000,7 @@
      "5554999871463"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5317916317055680554",
    "labels": [
@@ -69017,7 +69036,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5323209085231536548",
    "labels": [
@@ -69058,7 +69077,7 @@
      "5561981182221"
     ]
    },
-   "fail_count": 17,
+   "fail_count": 18,
    "first_seen": "2026-11-16",
    "id": "5324803904444323078",
    "labels": [
@@ -69143,7 +69162,7 @@
      "5512996118989"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5332485063161045080",
    "labels": [
@@ -69182,7 +69201,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5333327738987696222",
    "labels": [
@@ -69340,7 +69359,7 @@
      "5583991367768"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "535014442328038561",
    "labels": [
@@ -69612,7 +69631,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5363846998549509743",
    "labels": [
@@ -69937,11 +69956,12 @@
    "wa_post_visto": "5566999220104"
   },
   "5383701359822114560": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "5383701359822114560",
    "labels": [
@@ -70047,7 +70067,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5394213077125249969",
    "labels": [
@@ -70090,7 +70110,7 @@
      "5511994694112"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5397634632413953447",
    "labels": [
@@ -70221,7 +70241,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5425991223902375466",
    "labels": [
@@ -70303,7 +70323,7 @@
      "5579999909300"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5429778076109428967",
    "labels": [
@@ -70443,7 +70463,7 @@
      "5547988254631"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5437242318568185167",
    "labels": [
@@ -70530,6 +70550,7 @@
    "wa_post_visto": "558130948080"
   },
   "5437406153061599870": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
@@ -70538,7 +70559,7 @@
     ]
    },
    "editado_em": "2026-11-20",
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -71208,7 +71229,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5469498151233055017",
    "labels": [
@@ -71376,7 +71397,7 @@
      "5554992352835"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5479910434392481747",
    "labels": [
@@ -71599,7 +71620,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5491347308855166579",
    "labels": [
@@ -72019,10 +72040,23 @@
   },
   "5518790528837849977": {
    "contact_alerted": "5517997779270",
+   "contact_auto": [
+    "551799777209270",
+    "5517997779270",
+    "w"
+   ],
+   "contact_auto_em": "2026-11-20",
+   "contact_overrides": [
+    [
+     "551799777209270",
+     "5517997779270",
+     "w"
+    ]
+   ],
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "551799777209270",
-    "score": 0.85,
+    "score": 0.95,
     "since": "2026-11-20",
     "site": "5517997779270",
     "url": "https://www.ondasverdesfm.com.br/"
@@ -72156,7 +72190,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5525891253277270766",
    "labels": [
@@ -72274,7 +72308,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5540599483825607876",
    "labels": [
@@ -72317,7 +72351,7 @@
      "5573999376494"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "554152849484199770",
    "labels": [
@@ -72407,7 +72441,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5544834384570340687",
    "labels": [
@@ -72491,7 +72525,7 @@
      "554930309370"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5551033492653553459",
    "labels": [
@@ -72659,7 +72693,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5548991423040",
-    "score": 0.65,
+    "score": 0.75,
     "since": "2026-11-20",
     "site": "5548991950093",
     "url": "https://radioclubecriciuma.com/"
@@ -72835,6 +72869,7 @@
    "url": "https://www.radiocol.com.br/2012/08/ouvir-web-radio-consagrate-te-de.html"
   },
   "5579784663481196949": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "555532411071"
@@ -72843,7 +72878,7 @@
      "5555991957963"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "5579784663481196949",
    "labels": [
@@ -73040,6 +73075,7 @@
    "wa_post_visto": "5571999351378"
   },
   "5588580522876049219": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "555433372005"
@@ -73065,19 +73101,15 @@
    "path": "/2014/10/ouvir-radio-estacao-fm-1031-de-estacao.html",
    "popup": "https://www.radiocol.com.br/2021/05/ouvir-radio-mec-fm-871-de-brasilia-df-ao-vivo-online.html",
    "popup_read": "2026-11-20",
-   "popup_streams": [
-    "https://radiomecfm-stream.ebc.com.br/ebc/radiomecfm/playlist.m3u8"
-   ],
-   "post_candidates": [
-    "https://radiomecfm-stream.ebc.com.br/ebc/radiomecfm/playlist.m3u8"
-   ],
-   "post_stream": "https://radiomecfm-stream.ebc.com.br/ebc/radiomecfm/playlist.m3u8",
+   "popup_streams": [],
+   "post_candidates": [],
+   "post_stream": null,
    "post_updated": "2021-05-06T18:41:15.069-03:00",
-   "reason": "ok (HLS)",
+   "reason": "nenhum endereço de áudio no post",
    "sites": [],
    "source": "post",
-   "status": "ok",
-   "stream": "https://radiomecfm-stream.ebc.com.br/ebc/radiomecfm/playlist.m3u8",
+   "status": "sem_link",
+   "stream": null,
    "title": "Ouvir a Rádio Estação FM 103,1 de Estação RS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/10/ouvir-radio-estacao-fm-1031-de-estacao.html",
    "wayback_tried": "2026-11-16"
@@ -73212,7 +73244,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5593171712793178914",
    "labels": [
@@ -73293,7 +73325,7 @@
      "554535651022"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5600686508159611045",
    "labels": [
@@ -73374,7 +73406,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5605124628904738601",
    "labels": [
@@ -73452,7 +73484,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5607331311072436039",
    "labels": [
@@ -73542,7 +73574,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5610007445641372718",
    "labels": [
@@ -73626,7 +73658,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5612339206422383648",
    "labels": [
@@ -73704,7 +73736,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5618952603832812673",
    "labels": [
@@ -73786,7 +73818,7 @@
      "5522988031525"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5635752649792996588",
    "labels": [
@@ -74362,7 +74394,7 @@
      "5561996105033"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5671513423158561645",
    "labels": [
@@ -74428,7 +74460,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5676930554746164932",
    "labels": [
@@ -74510,7 +74542,7 @@
      "5567981081641"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5679643942001361428",
    "labels": [
@@ -74590,7 +74622,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5684688643048420906",
    "labels": [
@@ -74632,7 +74664,7 @@
      "5574991430783"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "568533061326998023",
    "labels": [
@@ -74716,7 +74748,7 @@
      "551634139730"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5689926321963011695",
    "labels": [
@@ -74799,7 +74831,7 @@
      "5546991180984"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5696820802981086310",
    "labels": [
@@ -74841,7 +74873,7 @@
      "5551999795374"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5704896380210946375",
    "labels": [
@@ -75102,7 +75134,7 @@
      "5511943805100"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "57183223402445824",
    "labels": [
@@ -75254,7 +75286,7 @@
      "5522996168998"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5726146460957554425",
    "labels": [
@@ -75294,7 +75326,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5730956815935181775",
    "labels": [
@@ -75447,7 +75479,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5743367928575623765",
    "labels": [
@@ -75648,7 +75680,7 @@
      "5591988258710"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "574590334308629609",
    "labels": [
@@ -75688,7 +75720,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 13,
+   "fail_count": 14,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -75822,7 +75854,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "575672135740524962",
    "labels": [
@@ -75954,7 +75986,7 @@
      "5588993814518"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5762153615082186457",
    "labels": [
@@ -75996,7 +76028,7 @@
      "5548991813800"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5762161491428760620",
    "labels": [
@@ -76113,7 +76145,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5771201079641559844",
    "labels": [
@@ -76299,7 +76331,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5777300007885652555",
    "labels": [
@@ -76340,7 +76372,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5779622259728995504",
    "labels": [
@@ -76424,7 +76456,7 @@
      "5584999735736"
     ]
    },
-   "fail_count": 0,
+   "fail_count": 1,
    "first_seen": "2026-11-16",
    "id": "5786611574622081871",
    "labels": [
@@ -76446,13 +76478,13 @@
    ],
    "post_stream": "https://radio.saopaulo01.com.br:10973/stream",
    "post_updated": "2021-01-16T20:18:30.059-03:00",
-   "reason": "servidor não responde ao robô (fora do Brasil) — HTTP 401",
-   "search_tried": "2026-11-19",
+   "reason": "HTTP 500",
+   "search_tried": "2026-11-20",
    "sites": [
     "https://cbnnatal.com.br/"
    ],
    "source": "post",
-   "status": "bloqueio",
+   "status": "off",
    "stream": "https://radio.saopaulo01.com.br:10973/stream",
    "title": "Ouvir a Rádio CBN FM 91,1 de Natal RN Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2017/09/ouvir-radio-cbn-fm-911-de-natal-rn-ao.html",
@@ -76541,7 +76573,7 @@
      "5583991530377"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5795534444326574992",
    "labels": [
@@ -76581,7 +76613,7 @@
      "558009291515"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5798387508666162541",
    "labels": [
@@ -76743,7 +76775,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5803422066409923041",
    "labels": [
@@ -76782,7 +76814,7 @@
      "554434466000"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5803687731742464502",
    "labels": [
@@ -76936,7 +76968,7 @@
      "5599988152129"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5816377144406477749",
    "labels": [
@@ -77010,7 +77042,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5819435478305789646",
    "labels": [
@@ -77417,7 +77449,7 @@
      "5564999684465"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "5854845150128693219",
    "labels": [
@@ -77617,7 +77649,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5873311743774566968",
    "labels": [
@@ -77699,7 +77731,7 @@
      "554334726283"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5876557850743223000",
    "labels": [
@@ -77781,7 +77813,7 @@
      "5542998710002"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5879036398004133096",
    "labels": [
@@ -78188,7 +78220,7 @@
      "5548988221280"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5905101793829499001",
    "labels": [
@@ -78353,7 +78385,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5916470918021770256",
    "labels": [
@@ -78390,13 +78422,14 @@
    "url": "https://www.radiocol.com.br/2012/11/ouvir-radio-paulinia-fm-102-5-de.html"
   },
   "5925054962101119030": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "556133618877"
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "5925054962101119030",
    "labels": [
@@ -78536,7 +78569,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5940286431984668177",
    "labels": [
@@ -78619,7 +78652,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -78681,7 +78714,7 @@
      "5538999876794"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5949716524140880638",
    "labels": [
@@ -78720,7 +78753,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5949905922347901601",
    "labels": [
@@ -78917,6 +78950,7 @@
    "wayback_tried": "2026-11-16"
   },
   "5963088075062658822": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "5512988706704"
@@ -78925,7 +78959,7 @@
      "5512988948561"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "5963088075062658822",
    "labels": [
@@ -79004,7 +79038,7 @@
      "556195721291"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "5972371096979711434",
    "labels": [
@@ -79251,7 +79285,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "599141427363844386",
    "labels": [
@@ -79500,7 +79534,7 @@
      "5562986015483"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6015496508017617606",
    "labels": [
@@ -79888,7 +79922,7 @@
      "5599991942192"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6037092276290974421",
    "labels": [
@@ -80001,7 +80035,7 @@
      "5551984032493"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6045798513715037644",
    "labels": [
@@ -80139,7 +80173,7 @@
      "5549991993555"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6051178194375974057",
    "labels": [
@@ -80173,13 +80207,14 @@
    "wa_post_visto": "5549991993555"
   },
   "6051350445762660363": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "5561996437954"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "6051350445762660363",
    "labels": [
@@ -80343,7 +80378,7 @@
      "554532532559"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6060948874127330932",
    "labels": [
@@ -80464,7 +80499,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "6063655318112003314",
    "labels": [
@@ -80593,7 +80628,7 @@
    ],
    "post_stream": "https://caikron.com.br:8082/mi1320/mi1320/playlist.m3u8",
    "post_updated": "2020-11-04T21:40:41.887-03:00",
-   "reason": "ok (ICY)",
+   "reason": "ok",
    "sites": [
     "https://www.miliciadaimaculada.org.br/"
    ],
@@ -81117,7 +81152,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "610697738055402922",
    "labels": [
@@ -81216,7 +81251,7 @@
      "45991484808"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6109556197324366496",
    "labels": [
@@ -81257,7 +81292,7 @@
      "5516988728870"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6111564769509727288",
    "labels": [
@@ -81408,7 +81443,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6115730656409465944",
    "labels": [
@@ -81959,7 +81994,7 @@
      "5569999426406"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6149733928164853908",
    "labels": [
@@ -81998,7 +82033,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6151454667700321994",
    "labels": [
@@ -82083,7 +82118,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6152890743524895426",
    "labels": [
@@ -82248,7 +82283,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6161287890781254790",
    "labels": [
@@ -82449,7 +82484,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6171158270677263212",
    "labels": [
@@ -82742,7 +82777,7 @@
      "5549991411019"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6209435828702616617",
    "labels": [
@@ -83011,7 +83046,7 @@
      "5516981701011"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "6226482358691957759",
    "labels": [
@@ -83049,7 +83084,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "622649409071504744",
    "labels": [
@@ -83192,6 +83227,7 @@
    "url": "https://www.radiocol.com.br/2012/10/ouvir-radio-sudoeste-fm-969-de-sao.html"
   },
   "6233947070369115182": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "551532723333"
@@ -83200,7 +83236,7 @@
      "5515996097213"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "6233947070369115182",
    "labels": [
@@ -83617,7 +83653,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -83711,6 +83747,7 @@
    "wa_post_visto": "5588997064894"
   },
   "6261789299536348093": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "558834121778"
@@ -83719,7 +83756,7 @@
      "5588996977724"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "id": "6261789299536348093",
    "labels": [
@@ -83737,23 +83774,19 @@
    "path": "/2017/07/ouvir-radio-fm-meio-norte-967-de.html",
    "popup": "https://www.radiocol.com.br/2014/12/ouvir-web-radio-migrantes-de-guapore-rs.html",
    "popup_read": "2026-11-20",
-   "popup_streams": [
-    "https://play.radio.br:8089/WebMigrantesES/WebMigrantesES/playlist.m3u8"
-   ],
-   "post_candidates": [
-    "https://play.radio.br:8089/WebMigrantesES/WebMigrantesES/playlist.m3u8"
-   ],
-   "post_stream": "https://play.radio.br:8089/WebMigrantesES/WebMigrantesES/playlist.m3u8",
+   "popup_streams": [],
+   "post_candidates": [],
+   "post_stream": null,
    "post_updated": "2020-12-10T22:16:09.572-03:00",
-   "reason": "HTTP 404",
+   "reason": "nenhum endereço de áudio no post",
    "search_tried": "2026-11-20",
    "site_tried": "2026-11-18",
    "sites": [
     "http://www.fmmeionortequixada.com.br/"
    ],
    "source": "post",
-   "status": "off",
-   "stream": "https://play.radio.br:8089/WebMigrantesES/WebMigrantesES/playlist.m3u8",
+   "status": "sem_link",
+   "stream": null,
    "title": "Ouvir a Rádio FM Meio Norte 96,7 de Quixadá CE Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2017/07/ouvir-radio-fm-meio-norte-967-de.html",
    "wa_post_visto": "5588996977724",
@@ -84079,7 +84112,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 3,
+   "fail_count": 4,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -84585,7 +84618,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6302876157956916556",
    "labels": [
@@ -85076,7 +85109,7 @@
      "5508003421050"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6325675407725433506",
    "labels": [
@@ -85330,6 +85363,7 @@
    "wa_post_visto": "5564992342002"
   },
   "6344029295454024941": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "551732722967"
@@ -85338,7 +85372,7 @@
      "5517997292967"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "6344029295454024941",
    "labels": [
@@ -85422,7 +85456,7 @@
      "5586981682875"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6346983753430742697",
    "labels": [
@@ -85654,7 +85688,7 @@
      "5551997751710"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6367965553161166560",
    "labels": [
@@ -85804,7 +85838,7 @@
    ],
    "post_stream": "https://centova.svdns.com.br:20035/stream",
    "post_updated": "2022-07-06T20:01:18.144-03:00",
-   "reason": "corrigido automaticamente",
+   "reason": "ok",
    "search_tried": "2026-11-20",
    "sites": [
     "https://cultura2fm.com.br/"
@@ -85867,7 +85901,7 @@
      "5569999068989"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6382018101960982425",
    "labels": [
@@ -85995,7 +86029,7 @@
      "5546991261001"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6391891794960458249",
    "labels": [
@@ -86269,13 +86303,14 @@
    "url": "https://www.radiocol.com.br/2015/09/ouvir-radio-imaculada-conceicao-am-580.html"
   },
   "6410262145820940604": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "555532513151"
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "6410262145820940604",
    "labels": [
@@ -86316,7 +86351,7 @@
      "5562985977042"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6411296865373904164",
    "labels": [
@@ -86756,7 +86791,7 @@
      "55482030523959"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6430859121718440364",
    "labels": [
@@ -86798,7 +86833,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6432255128344328136",
    "labels": [
@@ -86923,7 +86958,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6439097475891383750",
    "labels": [
@@ -86965,7 +87000,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6443651846174780086",
    "labels": [
@@ -87084,7 +87119,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "644666016444513706",
    "labels": [
@@ -87123,7 +87158,7 @@
      "555435521040"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6448945789017432601",
    "labels": [
@@ -87194,6 +87229,7 @@
    "url": "https://www.radiocol.com.br/2020/02/ouvir-web-radio-arizsanta-fm-stereo-de-medellin-colombia-ao-vivo.html"
   },
   "6455829345685758141": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "557332814199"
@@ -87203,7 +87239,7 @@
      "551137431313"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "6455829345685758141",
    "labels": [
@@ -87247,7 +87283,7 @@
      "5588997220440"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6458822783263675418",
    "labels": [
@@ -87280,11 +87316,12 @@
    "wa_post_visto": "5588997220440"
   },
   "6462773960869857952": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "6462773960869857952",
    "labels": [
@@ -87392,7 +87429,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6468246438429275540",
    "labels": [
@@ -87616,7 +87653,7 @@
      "5598982376789"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6479351720352379943",
    "labels": [
@@ -87654,7 +87691,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6481164704038211665",
    "labels": [
@@ -87696,7 +87733,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "648316469824240512",
    "labels": [
@@ -88282,7 +88319,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6534545400026319251",
    "labels": [
@@ -88364,7 +88401,7 @@
      "5554999755517"
     ]
    },
-   "fail_count": 13,
+   "fail_count": 14,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -88451,7 +88488,7 @@
    "post_stream": "https://c1.audiostream.com.br:20012/stream",
    "post_updated": "2021-04-04T23:06:08.497-03:00",
    "provisorio": true,
-   "reason": "corrigido automaticamente (provisório)",
+   "reason": "ok",
    "search_tried": "2026-11-20",
    "sites": [
     "https://radiocaxias.com.br/"
@@ -88509,7 +88546,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -88565,7 +88602,7 @@
      "5574999663032"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -88765,7 +88802,7 @@
      "5524999181019"
     ]
    },
-   "fail_count": 3,
+   "fail_count": 4,
    "first_seen": "2026-11-16",
    "id": "6553874944331816804",
    "labels": [
@@ -89326,7 +89363,7 @@
      "5545999632592"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6581237594743901587",
    "labels": [
@@ -89469,7 +89506,7 @@
      "558432744186"
     ]
    },
-   "fail_count": 0,
+   "fail_count": 1,
    "first_seen": "2026-11-16",
    "id": "6595275400790837453",
    "labels": [
@@ -89490,13 +89527,13 @@
    ],
    "post_stream": "https://webradios.net/api/proxy-stream.php?ip=sv11.hdradios.net&port=6948&mount=/stream",
    "post_updated": "2021-01-14T21:39:53.520-03:00",
-   "reason": "servidor não responde ao robô (fora do Brasil) — tempo esgotado",
-   "search_tried": "2026-11-19",
+   "reason": "responde página HTML, não áudio",
+   "search_tried": "2026-11-20",
    "sites": [
     "https://www.radio106fm.com.br/"
    ],
    "source": "post",
-   "status": "bloqueio",
+   "status": "off",
    "stream": "https://webradios.net/api/proxy-stream.php?ip=sv11.hdradios.net&port=6948&mount=/stream",
    "title": "Ouvir a Rádio Independência FM 106,5 de Ceará-Mirim RN Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2019/06/ouvir-radio-independencia-fm-1065-de-ceara-mirim-rn-online.html",
@@ -90069,7 +90106,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6647606692470462922",
    "labels": [
@@ -90204,7 +90241,7 @@
      "5511985823895"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6652775873221296204",
    "labels": [
@@ -90381,7 +90418,7 @@
      "5541997549873"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6657612361243925057",
    "labels": [
@@ -90864,7 +90901,7 @@
      "5575999691386"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6675766492016032398",
    "labels": [
@@ -91005,7 +91042,7 @@
      "5568984128716"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6687708846391457822",
    "labels": [
@@ -91085,7 +91122,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6692795316571825258",
    "labels": [
@@ -91127,7 +91164,7 @@
      "5522999645500"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6694982764258265159",
    "labels": [
@@ -91166,7 +91203,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6696487344188751702",
    "labels": [
@@ -91257,7 +91294,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6700078878565963015",
    "labels": [
@@ -91347,7 +91384,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6701646888877053702",
    "labels": [
@@ -91442,7 +91479,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6710146457103925265",
    "labels": [
@@ -91605,7 +91642,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6729804264355797276",
    "labels": [
@@ -91644,7 +91681,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6730668751649947923",
    "labels": [
@@ -91920,7 +91957,7 @@
      "5554999239990"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6741744288793221786",
    "labels": [
@@ -92004,7 +92041,7 @@
      "5582996398389"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6749998871393299425",
    "labels": [
@@ -92162,6 +92199,7 @@
    "url": "https://www.radiocol.com.br/2013/05/ouvir-radio-republica-am-1380-de-morro.html"
   },
   "675560485636431313": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "5511946603514"
@@ -92170,7 +92208,7 @@
      "5515997006135"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "675560485636431313",
    "labels": [
@@ -92609,6 +92647,7 @@
    "url": "https://www.radiocol.com.br/2022/09/ouvir-radio-bbn-fm-947-de-pirassununga-sp-ao-vivo-e-online.html"
   },
   "677460377049153807": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "559130840100"
@@ -92617,7 +92656,7 @@
      "5591984173066"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "677460377049153807",
    "labels": [
@@ -92846,7 +92885,7 @@
      "5571996405668"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6802718505397867645",
    "labels": [
@@ -92887,7 +92926,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 3,
+   "fail_count": 4,
    "first_seen": "2026-11-16",
    "id": "6805265627936132111",
    "labels": [
@@ -93132,7 +93171,7 @@
      "5535997339696"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6826747592105586847",
    "labels": [
@@ -93170,7 +93209,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6847439156262876747",
    "labels": [
@@ -93214,7 +93253,7 @@
      "5547992675901"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -93318,7 +93357,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6849968176446162239",
    "labels": [
@@ -93353,13 +93392,14 @@
    "url": "https://www.radiocol.com.br/2013/02/ouvir-radio-kiss-fm-901-de-santos.html"
   },
   "6850921254620969563": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "14996197985"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "6850921254620969563",
    "labels": [
@@ -93625,7 +93665,7 @@
      "555492229878"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6860471229148539914",
    "labels": [
@@ -93664,7 +93704,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "686105698226484138",
    "labels": [
@@ -93747,7 +93787,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6862396693532327278",
    "labels": [
@@ -93970,7 +94010,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6880123505991699953",
    "labels": [
@@ -94048,7 +94088,7 @@
      "5567996479009"
     ]
    },
-   "fail_count": 13,
+   "fail_count": 14,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "6893622067900738422",
@@ -94269,7 +94309,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6909126917446337227",
    "labels": [
@@ -94410,7 +94450,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6917124571626652851",
    "labels": [
@@ -94497,7 +94537,7 @@
      "5532991237602"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6921816199083980084",
    "labels": [
@@ -94590,6 +94630,7 @@
    "wa_post_visto": "5519998668930"
   },
   "6927090095096675550": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "554234632484"
@@ -94598,7 +94639,7 @@
      "5542991111028"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "6927090095096675550",
    "labels": [
@@ -94836,7 +94877,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "694082223213468333",
    "labels": [
@@ -94977,7 +95018,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6948475473305502424",
    "labels": [
@@ -95132,7 +95173,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5546999046031",
-    "score": 0.6,
+    "score": 0.7,
     "since": "2026-11-20",
     "site": "554635331575",
     "url": "http://piramidefm.com.br/"
@@ -95388,7 +95429,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6983086918164751234",
    "labels": [
@@ -95523,7 +95564,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6993349120911434331",
    "labels": [
@@ -95564,7 +95605,7 @@
      "5547991192585"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6995645505006042553",
    "labels": [
@@ -95648,7 +95689,7 @@
      "5547999723493"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6996964545962287569",
    "labels": [
@@ -95774,7 +95815,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7000111240045382795",
    "labels": [
@@ -95816,7 +95857,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7000361690383654781",
    "labels": [
@@ -95855,7 +95896,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7000996856829121524",
    "labels": [
@@ -95991,6 +96032,7 @@
    "url": "https://www.radiocol.com.br/2020/04/ouvir-web-radio-love-music-de-bom-jesus.html"
   },
   "7004035466618213291": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "554833710112"
@@ -95999,7 +96041,7 @@
      "5548984780905"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "7004035466618213291",
    "labels": [
@@ -96082,7 +96124,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7006631162578408167",
    "labels": [
@@ -96381,7 +96423,7 @@
      "5542988561820"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7016858364627807720",
    "labels": [
@@ -96472,7 +96514,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7019878817648879827",
    "labels": [
@@ -96555,7 +96597,7 @@
      "5554999934202"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7032432103870633246",
    "labels": [
@@ -96588,13 +96630,14 @@
    "wa_post_visto": "5554999934202"
   },
   "7032831018719793583": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "5551997814943"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "7032831018719793583",
    "labels": [
@@ -96638,7 +96681,7 @@
      "5564992053914"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7039760099447478493",
    "labels": [
@@ -96800,7 +96843,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "7045784683976270866",
    "labels": [
@@ -96841,7 +96884,7 @@
      "5548991550036"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7050569809334716355",
    "labels": [
@@ -96924,7 +96967,7 @@
      "5535999844062"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7054072893766433905",
    "labels": [
@@ -96964,7 +97007,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7056683142066248634",
    "labels": [
@@ -97086,7 +97129,7 @@
      "5511943805100"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7062516024737790159",
    "labels": [
@@ -97296,7 +97339,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7073713745500279665",
    "labels": [
@@ -97383,7 +97426,7 @@
      "5544998783539"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7082264238446280645",
    "labels": [
@@ -97421,7 +97464,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7084747396733744394",
    "labels": [
@@ -97600,7 +97643,7 @@
      "5544998016886"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "709608417017662131",
    "labels": [
@@ -97640,7 +97683,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7096219679003664583",
    "labels": [
@@ -97720,7 +97763,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7099033600519306187",
    "labels": [
@@ -97761,7 +97804,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "710044814354536852",
    "labels": [
@@ -97842,7 +97885,7 @@
      "5511991181479"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7103899908343051128",
    "labels": [
@@ -98000,7 +98043,7 @@
      "5581997688302"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7110094777803307616",
    "labels": [
@@ -98794,7 +98837,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7144192759700729860",
    "labels": [
@@ -98874,7 +98917,7 @@
      "5548991466143"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7150291584893422937",
    "labels": [
@@ -98917,7 +98960,7 @@
      "5542991057186"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7154042375664340107",
    "labels": [
@@ -98955,7 +98998,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7156655658372395929",
    "labels": [
@@ -99180,7 +99223,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7177020098021780389",
    "labels": [
@@ -99263,7 +99306,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7188454409847911819",
    "labels": [
@@ -99348,7 +99391,7 @@
      "5508005912663"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7197015103728045434",
    "labels": [
@@ -99538,7 +99581,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7207030543516110359",
    "labels": [
@@ -99841,7 +99884,7 @@
      "5585994222863"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7217939098290651755",
    "labels": [
@@ -99879,7 +99922,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7226970586216995123",
    "labels": [
@@ -100204,7 +100247,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7247760810950539556",
    "labels": [
@@ -100347,7 +100390,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7255417599936634075",
    "labels": [
@@ -100389,7 +100432,7 @@
      "555199767208"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7258767944302226917",
    "labels": [
@@ -100837,7 +100880,7 @@
      "5551989262337"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7281835454271549544",
    "labels": [
@@ -101049,7 +101092,7 @@
      "5582996413231"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7292042876872322025",
    "labels": [
@@ -101162,13 +101205,14 @@
    "url": "https://www.radiocol.com.br/2014/01/ouvir-radio-sentinela-do-vale-am-1460.html"
   },
   "7300886076017027219": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "555532711407"
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "7300886076017027219",
@@ -101286,7 +101330,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7313540820826084984",
    "labels": [
@@ -101326,7 +101370,7 @@
      "5511965868961"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7315816999287431781",
    "labels": [
@@ -101368,7 +101412,7 @@
      "5565999274961"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7320233049525241717",
    "labels": [
@@ -101447,7 +101491,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 5,
+   "fail_count": 6,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -101547,7 +101591,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7322999775767453659",
    "labels": [
@@ -101582,6 +101626,7 @@
    "url": "https://www.radiocol.com.br/2013/06/web-radio-awr-de-araras-ao-vivo-e-online.html"
   },
   "7324093908276811719": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "556233538088"
@@ -101590,7 +101635,7 @@
      "556284740345"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "id": "7324093908276811719",
    "labels": [
@@ -101608,23 +101653,19 @@
    "path": "/2016/01/ouvir-radio-boa-nova-fm-879-de.html",
    "popup": "https://www.radiocol.com.br/2016/04/ouvir-radio-lider-fm-879-de.html",
    "popup_read": "2026-11-20",
-   "popup_streams": [
-    "https://ssl.srvstm.com:17122/;"
-   ],
-   "post_candidates": [
-    "https://ssl.srvstm.com:17122/;"
-   ],
-   "post_stream": "https://ssl.srvstm.com:17122/;",
+   "popup_streams": [],
+   "post_candidates": [],
+   "post_stream": null,
    "post_updated": "2021-02-21T22:10:43.456-03:00",
-   "reason": "sem conexão (ConnectionRefusedError)",
+   "reason": "nenhum endereço de áudio no post",
    "search_tried": "2026-11-20",
    "site_tried": "2026-11-18",
    "sites": [
     "http://www.boanovafm.com.br/"
    ],
    "source": "post",
-   "status": "off",
-   "stream": "https://ssl.srvstm.com:17122/;",
+   "status": "sem_link",
+   "stream": null,
    "title": "Ouvir a Rádio Boa Nova FM 87,9 de Goianésia GO Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2016/01/ouvir-radio-boa-nova-fm-879-de.html",
    "wa_post_visto": "556284740345",
@@ -101636,7 +101677,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7324703087588321601",
    "labels": [
@@ -101716,7 +101757,7 @@
      "5543991413094"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "7327862209314782320",
    "labels": [
@@ -101835,7 +101876,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7333757988667546251",
    "labels": [
@@ -101876,7 +101917,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7336279460837019584",
    "labels": [
@@ -102079,7 +102120,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7348713858806560192",
    "labels": [
@@ -102122,7 +102163,7 @@
      "5588994061314"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7353544975492459596",
    "labels": [
@@ -102204,7 +102245,7 @@
      "5547999827342"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7365412929532931610",
    "labels": [
@@ -102248,7 +102289,7 @@
      "5545991019801"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7366113237959859996",
    "labels": [
@@ -102338,7 +102379,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "737327813243380133",
    "labels": [
@@ -102558,7 +102599,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7391204599418272842",
    "labels": [
@@ -102634,7 +102675,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7392900175575058422",
    "labels": [
@@ -102675,7 +102716,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "739716584028057382",
    "labels": [
@@ -102717,7 +102758,7 @@
      "5561998669945"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7398541131770338802",
    "labels": [
@@ -102795,7 +102836,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7406421579290389963",
    "labels": [
@@ -102834,7 +102875,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7407368137761753489",
    "labels": [
@@ -102873,7 +102914,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7409050004948171477",
    "labels": [
@@ -103021,7 +103062,7 @@
      "5599992094627"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7417166761972967516",
    "labels": [
@@ -103106,7 +103147,7 @@
      "5569999731125"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7420868876596883006",
    "labels": [
@@ -103471,14 +103512,14 @@
      "to": "https://playerservices.streamtheworld.com/api/livestream-redirect/BANDNEWSFM_RJAAC.aac?"
     },
     {
-     "date": "2026-11-19",
+     "date": "2026-11-20",
      "from": "https://playerservices.streamtheworld.com/api/livestream-redirect/BANDNEWSFM_RJAAC.aac?",
      "note": "Radio Browser era de outra cidade",
      "source": "post",
      "to": "https://www.uol.com.br/play/diva-de-cnpj/"
     },
     {
-     "date": "2026-11-19",
+     "date": "2026-11-20",
      "from": "https://www.uol.com.br/play/diva-de-cnpj/",
      "note": "",
      "source": "Radio Browser: Rádio BandNews RJ 90.3 FM",
@@ -103699,7 +103740,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7456924919103905328",
    "labels": [
@@ -103738,7 +103779,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7457304737397035248",
    "labels": [
@@ -103819,7 +103860,7 @@
      "5584999162438"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7458763999039152431",
    "labels": [
@@ -103858,7 +103899,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7461617087641099209",
    "labels": [
@@ -103993,7 +104034,7 @@
      "5516992618253"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "746983473769873352",
    "labels": [
@@ -104117,7 +104158,7 @@
      "556933222589"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7480913367230970489",
    "labels": [
@@ -104297,7 +104338,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7489550096487755816",
    "labels": [
@@ -104425,7 +104466,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7494282199648248346",
    "labels": [
@@ -104504,7 +104545,7 @@
      "555535511261"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -104525,7 +104566,7 @@
     "Tenente Portela"
    ],
    "last_check": "2026-11-20",
-   "last_ok": "2026-11-19",
+   "last_ok": "2026-11-20",
    "loc": [
     "Tenente Portela",
     "rs"
@@ -104537,13 +104578,13 @@
    ],
    "post_stream": "https://videodj.fm5.com.br:19360/provinciafmlive/provinciafmlive.m3u8",
    "post_updated": "2021-05-23T21:13:08.755-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok (HLS)",
    "search_tried": "2026-11-20",
    "sites": [
     "https://www.clicportela.com.br/"
    ],
    "source": "site oficial (www.clicportela.com.br)",
-   "status": "off",
+   "status": "ok",
    "stream": "https://stmv1.srvsite.com/provinciafm/provinciafm/playlist.m3u8?1794855577",
    "title": "Ouvir e Assistir a Rádio Província FM 100,7 de Tenente Portela RS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/09/ouvir-radio-provincia-fm-1007-de.html",
@@ -104594,7 +104635,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7499352550851440084",
    "labels": [
@@ -104715,7 +104756,7 @@
      "5593991994396"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7504382441200651109",
    "labels": [
@@ -104757,7 +104798,7 @@
      "5586981623523"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7505794814637921016",
    "labels": [
@@ -104916,6 +104957,7 @@
    "wayback_tried": "2026-11-16"
   },
   "7516960303196209703": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "557934311117"
@@ -104924,7 +104966,7 @@
      "5579998501117"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "7516960303196209703",
    "labels": [
@@ -105055,7 +105097,7 @@
      "5511981567494"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7522837829533746691",
    "labels": [
@@ -105195,7 +105237,7 @@
      "5565998035580"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "752474999334869050",
    "labels": [
@@ -105271,7 +105313,7 @@
      "5547988143998"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7528698241878775446",
    "labels": [
@@ -105621,13 +105663,14 @@
    "wa_post_visto": "5561986119591"
   },
   "7562089696960378355": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "5555984014472"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "7562089696960378355",
    "labels": [
@@ -105790,7 +105833,7 @@
      "5508003421050"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "757604227423496652",
    "labels": [
@@ -105834,7 +105877,7 @@
      "5548996297990"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7576491262682249281",
    "labels": [
@@ -106179,7 +106222,7 @@
      "5574988115786"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7592579481561660383",
    "labels": [
@@ -106668,6 +106711,7 @@
    "wa_post_visto": "5591984416545"
   },
   "7622908748284890301": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "559137293333"
@@ -106676,7 +106720,7 @@
      "5591984173066"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "7622908748284890301",
    "labels": [
@@ -106855,7 +106899,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7629201543042959141",
    "labels": [
@@ -107093,13 +107137,6 @@
    "history": [
     {
      "date": "2026-11-18",
-     "from": "https://01.megadinamica.com:7166/stream",
-     "note": "",
-     "source": "site oficial (radio77hfm.com.br) — tocou no navegador [navegador]",
-     "to": "https://uk14freenew.listen2myradio.com/live.mp3?typeportmount=ice_27697_stream_853630063&1794972232275"
-    },
-    {
-     "date": "2026-11-18",
      "from": "https://uk14freenew.listen2myradio.com/live.mp3?typeportmount=ice_27697_stream_853630063&1794972232275",
      "note": "",
      "source": "site oficial (radio77hfm.com.br) — tocou no navegador [navegador]",
@@ -107132,6 +107169,13 @@
      "note": "",
      "source": "site oficial (radio77hfm.com.br) — tocou no navegador [navegador]",
      "to": "https://uk14freenew.listen2myradio.com/live.mp3?typeportmount=ice_27697_stream_853630063&1795166588028"
+    },
+    {
+     "date": "2026-11-20",
+     "from": "https://uk14freenew.listen2myradio.com/live.mp3?typeportmount=ice_27697_stream_853630063&1795166588028",
+     "note": "",
+     "source": "site oficial (radio77hfm.com.br) — tocou no navegador [navegador]",
+     "to": "https://uk14freenew.listen2myradio.com/live.mp3?typeportmount=ice_27697_stream_853630063&1795168800813"
     }
    ],
    "http_only": false,
@@ -107162,7 +107206,7 @@
    ],
    "source": "site oficial (radio77hfm.com.br) — tocou no navegador [navegador]",
    "status": "ok",
-   "stream": "https://uk14freenew.listen2myradio.com/live.mp3?typeportmount=ice_27697_stream_853630063&1795166588028",
+   "stream": "https://uk14freenew.listen2myradio.com/live.mp3?typeportmount=ice_27697_stream_853630063&1795168800813",
    "title": "Ouvir a Web Rádio 77H FM de Guarujá SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/05/ouvir-web-radio-77h-fm-do-guaruja-sp-ao-vivo.html",
    "wa_post_visto": "5513981495062"
@@ -107175,7 +107219,7 @@
      "5583998920888"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7643553435947489973",
    "labels": [
@@ -107272,7 +107316,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7650575949824957560",
    "labels": [
@@ -107306,13 +107350,14 @@
    "url": "https://www.radiocol.com.br/2019/01/ouvir-radio-clube-fm-935-de-itauna-mg.html"
   },
   "7651801039609802486": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "55930840100"
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "7651801039609802486",
    "labels": [
@@ -107479,7 +107524,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7660979294461688692",
    "labels": [
@@ -107518,7 +107563,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7661202629481401114",
    "labels": [
@@ -107609,7 +107654,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7665604273951665919",
    "labels": [
@@ -107702,7 +107747,7 @@
      "5598991421577"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7667914270339886113",
    "labels": [
@@ -107901,7 +107946,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7678137154903664842",
    "labels": [
@@ -107991,7 +108036,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7679385265195782978",
    "labels": [
@@ -108030,7 +108075,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7680544473833313960",
    "labels": [
@@ -108069,7 +108114,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7686327197451730790",
    "labels": [
@@ -108197,7 +108242,7 @@
      "5569992641937"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "769494439534050745",
    "labels": [
@@ -108395,7 +108440,7 @@
      "5541996320468"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7709323863401431207",
    "labels": [
@@ -108436,7 +108481,7 @@
      "5585988031421"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7709644880262269288",
    "labels": [
@@ -108475,7 +108520,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 17,
+   "fail_count": 18,
    "first_seen": "2026-11-16",
    "id": "7710691551531820921",
    "labels": [
@@ -108594,7 +108639,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7726751805798410551",
    "labels": [
@@ -108663,7 +108708,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7731381601450573910",
    "labels": [
@@ -108702,7 +108747,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 5,
+   "fail_count": 6,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -108757,7 +108802,7 @@
      "551633037797"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "7742772902278414699",
    "labels": [
@@ -108838,7 +108883,7 @@
      "5591981757765"
     ]
    },
-   "fail_count": 3,
+   "fail_count": 4,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "7748739745046289858",
@@ -108957,7 +109002,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7753457683875592151",
    "labels": [
@@ -109184,7 +109229,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "7773960137816560348",
    "labels": [
@@ -109247,7 +109292,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7776668100503657849",
    "labels": [
@@ -109340,7 +109385,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7777491083334334806",
    "labels": [
@@ -109378,7 +109423,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7778915494284957712",
    "labels": [
@@ -109509,7 +109554,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -109756,7 +109801,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7804185222936788594",
    "labels": [
@@ -110193,7 +110238,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7849755040755636792",
    "labels": [
@@ -110599,7 +110644,7 @@
      "5541995661003"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7869820075269368333",
    "labels": [
@@ -111175,7 +111220,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7901837988878396138",
    "labels": [
@@ -111320,7 +111365,7 @@
      "5569984630055"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7915052680017673329",
    "labels": [
@@ -111403,7 +111448,7 @@
      "5534999690981"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7921077830224870997",
    "labels": [
@@ -111521,7 +111566,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7928456544531624761",
    "labels": [
@@ -111563,7 +111608,7 @@
      "5554999434292"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7929839491553705654",
    "labels": [
@@ -112017,7 +112062,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7965274610440187787",
    "labels": [
@@ -112227,6 +112272,7 @@
    "wa_post_visto": "5567998009750"
   },
   "7973968082522549641": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "555532721753"
@@ -112235,7 +112281,7 @@
      "5555984353727"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -112416,7 +112462,7 @@
    ],
    "post_stream": "https://c1.audiostream.com.br:20010/stream",
    "post_updated": "2021-08-04T20:39:32.537-03:00",
-   "reason": "corrigido automaticamente",
+   "reason": "ok",
    "search_tried": "2026-11-20",
    "sites": [
     "https://www.89fmjoinville.com/"
@@ -112555,7 +112601,7 @@
      "5583981968490"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "7984874959568422541",
    "labels": [
@@ -112803,7 +112849,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8016756824275457764",
    "labels": [
@@ -112924,7 +112970,7 @@
      "5545999179446"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8027607579380983072",
    "labels": [
@@ -113007,7 +113053,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8029114589072148517",
    "labels": [
@@ -113217,13 +113263,14 @@
    "wa_post_visto": "5564999496364"
   },
   "8039174685594714285": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "554834137971"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "8039174685594714285",
    "labels": [
@@ -113541,7 +113588,7 @@
      "5519992324170"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8064806018208660171",
    "labels": [
@@ -113666,7 +113713,7 @@
      "5548984058251"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8071182182670499130",
    "labels": [
@@ -113699,6 +113746,7 @@
    "wa_post_visto": "5548984058251"
   },
   "8075579658946376228": {
+   "alerted": "2026-11-20",
    "contact_alerted": "5585984099292",
    "contact_auto": [
     "5585981881023",
@@ -113729,7 +113777,7 @@
      "5585981881023"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -113826,7 +113874,7 @@
      "5546999722574"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8079095445038953603",
    "labels": [
@@ -113909,7 +113957,7 @@
      "5598991389084"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8081043076758467392",
    "labels": [
@@ -113994,11 +114042,12 @@
    "wa_post_visto": "5545984051667"
   },
   "8091755331903712773": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "8091755331903712773",
    "labels": [
@@ -114213,7 +114262,7 @@
      "5549991880021"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8098717563077300605",
    "labels": [
@@ -114371,7 +114420,7 @@
      "5584999119627"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8116886542282230767",
    "labels": [
@@ -114550,7 +114599,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8119190307159405148",
    "labels": [
@@ -114675,7 +114724,7 @@
      "5514991112055"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8130578841979102",
    "labels": [
@@ -114792,7 +114841,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "814869959077553190",
    "labels": [
@@ -114880,7 +114929,7 @@
      "5516996155800"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "815113087207250967",
    "labels": [
@@ -114924,7 +114973,7 @@
      "5582991783956"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8157647811592405303",
    "labels": [
@@ -114958,13 +115007,14 @@
    "wa_post_visto": "5582991783956"
   },
   "8157732901284712184": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "551236221866"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "8157732901284712184",
    "labels": [
@@ -115095,7 +115145,7 @@
      "5547999950036"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8159602540932048378",
    "labels": [
@@ -115137,7 +115187,7 @@
      "5575998297070"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8163338544909044415",
    "labels": [
@@ -115181,7 +115231,7 @@
      "5519997444875"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8165511736183225332",
    "labels": [
@@ -115461,7 +115511,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8185869829337038468",
    "labels": [
@@ -115502,7 +115552,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8187173810284008180",
    "labels": [
@@ -115702,7 +115752,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "819803380374253123",
    "labels": [
@@ -115824,7 +115874,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8202124938327436922",
    "labels": [
@@ -115976,6 +116026,15 @@
   },
   "8206142337779341162": {
    "confianca": 0.9,
+   "contact_alerted": "559935414609",
+   "contact_suggestion": {
+    "kind": "whatsapp",
+    "post": "5599988614176",
+    "score": 0.6,
+    "since": "2026-11-20",
+    "site": "559935414609",
+    "url": "http://boanoticiafm.com.br/"
+   },
    "contacts": {
     "telefone": [
      "559935412999"
@@ -116036,7 +116095,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8207524112713550617",
    "labels": [
@@ -116081,7 +116140,7 @@
      "5508003421050"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8207550725931710383",
    "labels": [
@@ -116163,7 +116222,7 @@
      "5548991843228"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "821795853591106375",
    "labels": [
@@ -116205,7 +116264,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8225415256028991948",
    "labels": [
@@ -116248,7 +116307,7 @@
      "5588994347300"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8228581418504503137",
    "labels": [
@@ -116453,7 +116512,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8248669317319628013",
    "labels": [
@@ -116945,7 +117004,7 @@
      "5598991619696"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8271077242142967330",
    "labels": [
@@ -116985,7 +117044,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8271556345906756204",
    "labels": [
@@ -117186,7 +117245,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8276662692313126652",
    "labels": [
@@ -117365,14 +117424,25 @@
    "wa_post_visto": "5541984010001"
   },
   "8283035799637234733": {
+   "confianca": 0.9,
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "5594991622480"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
+   "history": [
+    {
+     "date": "2026-11-20",
+     "from": "http://hts02.kshost.com.br:8842/live",
+     "note": "",
+     "source": "site oficial (radioclubedemaraba.com.br) — tocou no navegador [navegador]",
+     "to": "https://rr3---sn-2onx5c-5p.c.2mdn.net/videoplayback/id/49c982f37230b0df/itag/342/source/web_video_ads/xpc/EgVovf3BOg%3D%3D/ctier/L/acao/yes/ip/0.0.0.0/ipbits/0/expire/1826704910/sparams/acao,ctier,expire,id,ip,ipbits,itag,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms,source,xpc/signature/3907B23355BCF77EF80767C685E75608864ADBDF.51B98C3EA4DB9B7BB51D12A03688D6CA52A888ED/key/cms1/cms_redirect/yes/met/1795168911,/mh/lX/mip/4.242.195.47/mm/42/mn/sn-2onx5c-5p/ms/onc/mt/1795168295/mv/u/mvi/3/pl/16/rms/onc,onc/file/file.mp4"
+    }
+   ],
+   "http_only": false,
    "id": "8283035799637234733",
    "labels": [
     "Esportes",
@@ -117382,6 +117452,7 @@
     "Popular"
    ],
    "last_check": "2026-11-20",
+   "last_ok": "2026-11-20",
    "loc": [
     "Marabá",
     "pa"
@@ -117392,14 +117463,14 @@
    ],
    "post_stream": "http://hts02.kshost.com.br:8842/live",
    "post_updated": "2020-10-09T23:17:01.065-03:00",
-   "reason": "sem conexão (gaierror)",
+   "reason": "corrigido automaticamente",
    "search_tried": "2026-11-20",
    "sites": [
     "http://www.radioclubedemaraba.com.br/"
    ],
-   "source": "post",
-   "status": "off",
-   "stream": "http://hts02.kshost.com.br:8842/live",
+   "source": "site oficial (radioclubedemaraba.com.br) — tocou no navegador [navegador]",
+   "status": "ok",
+   "stream": "https://rr3---sn-2onx5c-5p.c.2mdn.net/videoplayback/id/49c982f37230b0df/itag/342/source/web_video_ads/xpc/EgVovf3BOg%3D%3D/ctier/L/acao/yes/ip/0.0.0.0/ipbits/0/expire/1826704910/sparams/acao,ctier,expire,id,ip,ipbits,itag,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms,source,xpc/signature/3907B23355BCF77EF80767C685E75608864ADBDF.51B98C3EA4DB9B7BB51D12A03688D6CA52A888ED/key/cms1/cms_redirect/yes/met/1795168911,/mh/lX/mip/4.242.195.47/mm/42/mn/sn-2onx5c-5p/ms/onc/mt/1795168295/mv/u/mvi/3/pl/16/rms/onc,onc/file/file.mp4",
    "title": "Ouvir a Rádio Clube AM 770 de Marabá PA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2016/10/ouvir-radio-clube-am-770-de-maraba-pa.html",
    "wa_post_visto": "5594991622480"
@@ -117492,7 +117563,7 @@
      "5571988688870"
     ]
    },
-   "fail_count": 5,
+   "fail_count": 6,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -117670,7 +117741,7 @@
      "5508003421050"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8303983636933981276",
    "labels": [
@@ -117855,7 +117926,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "83153710818591212",
    "labels": [
@@ -117888,13 +117959,14 @@
    "url": "https://www.radiocol.com.br/2017/08/ouvir-radio-jangadeiro-fm-975-de-crato.html"
   },
   "8317893347246439590": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "558132210270"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "8317893347246439590",
    "labels": [
@@ -117932,7 +118004,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8318485339247376951",
    "labels": [
@@ -118225,7 +118297,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8329422403438053080",
    "labels": [
@@ -118358,7 +118430,7 @@
      "5511931170620"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8334737281239666164",
    "labels": [
@@ -118424,12 +118496,11 @@
    "wayback_tried": "2026-11-16"
   },
   "8335425303126036044": {
-   "alerted": "2026-11-19",
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 4,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "id": "8335425303126036044",
    "labels": [
@@ -118451,11 +118522,11 @@
    ],
    "post_stream": "https://sc3s.cdn.upx.com:9191/;stream.mp3",
    "post_updated": "2021-03-20T21:45:56.493-03:00",
-   "reason": "HTTP 502",
+   "reason": "servidor não responde ao robô (fora do Brasil) — tempo esgotado",
    "search_tried": "2026-11-19",
    "sites": [],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://sc3s.cdn.upx.com:9191/;stream.mp3",
    "title": "Ouvir a Rádio Marinha FM 99,1 de São Pedro da Aldeia RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/10/ouvir-radio-marinha-fm-991-de-sao-pedro.html"
@@ -118466,7 +118537,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8336662242299799058",
    "labels": [
@@ -118510,7 +118581,7 @@
      "5554999775033"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8337287103281282249",
    "labels": [
@@ -118638,7 +118709,7 @@
      "5521988771323"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8344250440518901767",
    "labels": [
@@ -118718,7 +118789,7 @@
      "5575982355771"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8346601060048539024",
    "labels": [
@@ -118760,7 +118831,7 @@
      "5554996711065"
     ]
    },
-   "fail_count": 13,
+   "fail_count": 14,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -118911,7 +118982,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8358387692956688588",
    "labels": [
@@ -118944,12 +119015,11 @@
    "url": "https://www.radiocol.com.br/2022/08/ouvir-rede-aleluia-fm-969-de-sao-carlos.html"
   },
   "8362977625415361928": {
-   "alerted": "2026-11-19",
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 4,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "id": "8362977625415361928",
    "labels": [
@@ -118971,11 +119041,11 @@
    ],
    "post_stream": "https://sc3s.cdn.upx.com:9191/;stream.mp3",
    "post_updated": "2021-04-21T21:56:17.470-03:00",
-   "reason": "HTTP 502",
+   "reason": "servidor não responde ao robô (fora do Brasil) — tempo esgotado",
    "search_tried": "2026-11-19",
    "sites": [],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://sc3s.cdn.upx.com:9191/;stream.mp3",
    "title": "Ouvir a Rádio Marinha FM 102,7 de Rio Grande RS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/02/ouvir-radio-marinha-fm-1027-de-rio.html"
@@ -119147,7 +119217,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8373950294308722554",
    "labels": [
@@ -119185,7 +119255,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8382018879060855971",
    "labels": [
@@ -119260,7 +119330,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "8384802370498326632",
    "labels": [
@@ -119640,7 +119710,7 @@
      "556436511495"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8406125942048533305",
    "labels": [
@@ -119679,7 +119749,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8406264731716168496",
    "labels": [
@@ -119932,7 +120002,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8420697607791040961",
    "labels": [
@@ -120010,7 +120080,7 @@
      "67991201432"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8430842135473525822",
    "labels": [
@@ -120172,7 +120242,7 @@
      "5595991541079"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "844844706060423464",
    "labels": [
@@ -120411,7 +120481,7 @@
      "5586981386014"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8457618646326176783",
    "labels": [
@@ -120658,7 +120728,7 @@
      "5581991431338"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8472353063226572384",
    "labels": [
@@ -120775,7 +120845,7 @@
      "554335383522"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8481658269991121812",
    "labels": [
@@ -120854,7 +120924,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8484120154945716020",
    "labels": [
@@ -120894,7 +120964,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8488132638385238931",
    "labels": [
@@ -121032,7 +121102,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8496550155198279864",
    "labels": [
@@ -121104,7 +121174,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8505996101494790613",
    "labels": [
@@ -121284,7 +121354,7 @@
      "5543998027878"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8515418657147063175",
    "labels": [
@@ -121327,7 +121397,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8515649554373390718",
    "labels": [
@@ -121682,7 +121752,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8533842481871623419",
    "labels": [
@@ -121891,7 +121961,7 @@
      "5548991550036"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8544517779950140082",
    "labels": [
@@ -121932,7 +122002,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8545858340494297525",
    "labels": [
@@ -122045,7 +122115,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8551395358566963294",
    "labels": [
@@ -122416,7 +122486,7 @@
      "5554992352835"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "857045150671208554",
    "labels": [
@@ -122509,7 +122579,7 @@
      "5549984212992"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8576136459063952971",
    "labels": [
@@ -122551,7 +122621,7 @@
      "554333571029"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8577103841788866703",
    "labels": [
@@ -122590,7 +122660,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8578624486473030724",
    "labels": [
@@ -122662,7 +122732,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8579553455026201546",
    "labels": [
@@ -122802,7 +122872,7 @@
      "5547999210915"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8590589922213375419",
    "labels": [
@@ -122836,6 +122906,7 @@
    "wa_post_visto": "5547999210915"
   },
   "8595974787591774716": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "556233542190"
@@ -122844,7 +122915,7 @@
      "5562981958108"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "8595974787591774716",
    "labels": [
@@ -123103,7 +123174,7 @@
      "5538999996161"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8615544096757074309",
    "labels": [
@@ -123258,7 +123329,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8624821311639276280",
    "labels": [
@@ -123472,7 +123543,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "554991667716",
-    "score": 0.6,
+    "score": 0.7,
     "since": "2026-11-20",
     "site": "554936441042",
     "url": "http://www.radiofronteira.com.br/"
@@ -123624,7 +123695,7 @@
      "5555984060180"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "8646719996909294463",
    "labels": [
@@ -124079,6 +124150,7 @@
    "url": "https://www.radiocol.com.br/2021/11/ouvir-radio-astorga-fm-1039-de-astorga-pr-ao-vivo-e-online.html"
   },
   "8669384677790816017": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "554932249436"
@@ -124087,7 +124159,7 @@
      "5520492092099641"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "8669384677790816017",
    "labels": [
@@ -124165,7 +124237,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8674194507147326155",
    "labels": [
@@ -124368,7 +124440,7 @@
      "5555999033881"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8688936852789958560",
    "labels": [
@@ -124682,7 +124754,7 @@
      "5547999922739"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8698504899487846752",
    "labels": [
@@ -124773,7 +124845,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8702509076947426072",
    "labels": [
@@ -124856,7 +124928,7 @@
      "5555991009199"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8708377040422670958",
    "labels": [
@@ -125011,7 +125083,7 @@
      "5585981412975"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -125107,7 +125179,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8724017331897093090",
    "labels": [
@@ -125187,7 +125259,7 @@
      "558899737690"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8725297260468172279",
    "labels": [
@@ -125229,7 +125301,7 @@
      "53981251475"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8727695157587502633",
    "labels": [
@@ -125471,7 +125543,7 @@
      "5511943805100"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8735542579552446697",
    "labels": [
@@ -125510,7 +125582,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8738757525619175311",
    "labels": [
@@ -125693,7 +125765,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "556130335858",
-    "score": 0.45,
+    "score": 0.55,
     "since": "2026-11-20",
     "site": "5512991455871",
     "url": "http://radio.cancaonova.com/"
@@ -125704,7 +125776,7 @@
      "556130335858"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8747167264938107580",
    "labels": [
@@ -125904,7 +125976,7 @@
      "5544991185921"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -125986,7 +126058,7 @@
      "5594981366338"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8777321380271338025",
    "labels": [
@@ -126429,7 +126501,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8808497772980275190",
    "labels": [
@@ -126754,7 +126826,7 @@
      "5543999941110"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "883743469200482701",
    "labels": [
@@ -126876,7 +126948,7 @@
      "5537996639898"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8838815226757760118",
    "labels": [
@@ -127021,7 +127093,7 @@
      "5575981632178"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8841389101238611555",
    "labels": [
@@ -127063,7 +127135,7 @@
      "5598992229494"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8841807511972068056",
    "labels": [
@@ -127157,7 +127229,7 @@
      "5587981610056"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8863883611948285787",
    "labels": [
@@ -127334,7 +127406,7 @@
      "555599483537"
     ]
    },
-   "fail_count": 3,
+   "fail_count": 4,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "8878880208106472078",
@@ -127415,7 +127487,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8882610635558549651",
    "labels": [
@@ -127458,7 +127530,7 @@
      "5553984320230"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8884000995644154556",
    "labels": [
@@ -127496,7 +127568,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8884207466213450223",
    "labels": [
@@ -127615,7 +127687,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8886272525965604137",
    "labels": [
@@ -127656,7 +127728,7 @@
      "5562999591067"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "888811468893632667",
    "labels": [
@@ -127777,7 +127849,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5514997208586",
-    "score": 0.6,
+    "score": 0.7,
     "since": "2026-11-20",
     "site": "551437325952",
     "url": "https://unifmavare.com.br/"
@@ -127848,7 +127920,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8900771563014670639",
    "labels": [
@@ -127889,7 +127961,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8902107256518428147",
    "labels": [
@@ -127927,7 +127999,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8902559104542087528",
    "labels": [
@@ -128192,7 +128264,7 @@
      "5573999219330"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8922733568467629380",
    "labels": [
@@ -128799,7 +128871,7 @@
      "5573981855935"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8966430129350308732",
    "labels": [
@@ -129154,7 +129226,7 @@
      "5548991639490"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "8977932577833952313",
    "labels": [
@@ -129606,7 +129678,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9024004642462486712",
    "labels": [
@@ -129698,7 +129770,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9024302698897859149",
    "labels": [
@@ -129779,7 +129851,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9034103689916024658",
    "labels": [
@@ -129822,7 +129894,7 @@
      "5508003421050"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9036268941721722750",
    "labels": [
@@ -129987,7 +130059,7 @@
      "554836268000"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9050468833978423247",
    "labels": [
@@ -130434,7 +130506,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9072012629691597318",
    "labels": [
@@ -130478,7 +130550,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 6,
+   "fail_count": 7,
    "first_seen": "2026-11-16",
    "id": "9072348986717689023",
    "labels": [
@@ -130522,7 +130594,7 @@
      "5548991813800"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9073300728159786075",
    "labels": [
@@ -130741,7 +130813,7 @@
      "5508009291515"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9079819942300840232",
    "labels": [
@@ -131304,7 +131376,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9111812669657769830",
    "labels": [
@@ -131469,7 +131541,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9116149763829942728",
    "labels": [
@@ -131683,7 +131755,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9125139442921659410",
    "labels": [
@@ -131766,7 +131838,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9127014564748598042",
    "labels": [
@@ -131899,7 +131971,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9131375179532335183",
    "labels": [
@@ -131981,7 +132053,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9135200691232466344",
    "labels": [
@@ -132021,7 +132093,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9138992685187391482",
    "labels": [
@@ -132228,7 +132300,7 @@
      "5521982089214"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9147180425391434737",
    "labels": [
@@ -132309,7 +132381,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9151595478766808466",
    "labels": [
@@ -132351,7 +132423,7 @@
      "5562996144709"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9152143234142569966",
    "labels": [
@@ -132443,7 +132515,7 @@
      "555136641110"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9158023844393008276",
    "labels": [
@@ -132570,7 +132642,7 @@
      "5592984361072"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9159981203896827919",
    "labels": [
@@ -132661,7 +132733,7 @@
      "5591993882747"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9160631792833724070",
    "labels": [
@@ -132700,7 +132772,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9161201942591372419",
    "labels": [
@@ -132929,7 +133001,7 @@
      "5598988811059"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9172916192254381892",
    "labels": [
@@ -132970,7 +133042,7 @@
      "55929953473147"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9175195021172733463",
    "labels": [
@@ -133009,7 +133081,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9176602680097837962",
    "labels": [
@@ -133050,7 +133122,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9180179519282799760",
    "labels": [
@@ -133166,7 +133238,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "9194991361225545634",
    "labels": [
@@ -133296,13 +133368,14 @@
    "url": "https://www.radiocol.com.br/2016/08/ouvir-radio-cbn-fm-937-de-guajara-mirim.html"
   },
   "9204973056670462080": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [
      "551121897225"
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "9204973056670462080",
    "labels": [
@@ -133868,7 +133941,7 @@
      "5582981910365"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "931913290199983824",
    "labels": [
@@ -133949,7 +134022,7 @@
      "5549991994000"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "933393441766322123",
    "labels": [
@@ -134075,7 +134148,7 @@
      "5545999190018"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "935388844291891169",
    "labels": [
@@ -134212,13 +134285,14 @@
    "wa_post_visto": "555433586901"
   },
   "94009669388886604": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": [
      "554133321075"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "94009669388886604",
    "labels": [
@@ -134259,7 +134333,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "94018619012388938",
    "labels": [
@@ -134438,7 +134512,7 @@
      "5555999370303"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "949392825359105404",
    "labels": [
@@ -134597,7 +134671,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "957846680093511294",
    "labels": [
@@ -134640,7 +134714,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "95829221887623935",
    "labels": [
@@ -134889,11 +134963,12 @@
    "wa_post_visto": "5543999622025"
   },
   "972867658587022487": {
+   "alerted": "2026-11-20",
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "id": "972867658587022487",
    "labels": [
@@ -135029,7 +135104,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "98732883936622275",
    "labels": [
@@ -135122,7 +135197,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "998594429925458867",
    "labels": [
@@ -135198,5 +135273,5 @@
   }
  },
  "site": "https://www.radiocol.com.br",
- "updated": "2026-11-20 06:25"
+ "updated": "2026-11-20 07:03"
 }
