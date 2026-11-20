@@ -574,6 +574,22 @@ async def main():
                         rec["suggestion"] = {k: found[k] for k in ("url", "source", "score") if k in found}
                 return
             atual_ok = rec.get("status") in ("ok", "bloqueio")      # já tem endereço: só troca se for melhor
+            if rec.get("status") == "bloqueio":
+                # "não testável daqui": antes do site, testa variações do MESMO endereço (ex.: nó numerado da
+                # StreamTheWorld que morreu -> redirecionador oficial; proxy AzuraCast -> porta direta).
+                # Se uma delas toca para o robô, é o mesmo stream e deixa de ser bloqueio.
+                # endereço https não vira http (o player do site bloquearia o áudio — "conteúdo misto")
+                if (rec.get("stream") or "").startswith("https"):
+                    rec["_need_https"] = True
+                async with sem:
+                    try:
+                        found = await finder.from_variants(rec)
+                    except Exception:
+                        found = None
+                rec.pop("_need_https", None)
+                if found and found["confidence"] == "high":
+                    aplicar_achado(rec, found)
+                    return
             async with sem:
                 found = await (finder.from_official_site(rec) if atual_ok else finder.find(rec))
             if not found:

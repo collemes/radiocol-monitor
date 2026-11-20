@@ -163,6 +163,13 @@ def variants(url: str, _interno=False):
         root = base[: -len("stream")]
         out += [root + ";", root + ";stream.mp3"]
     host = (p.hostname or "").lower()
+    # StreamTheWorld: nó numerado (12345.live.streamtheworld.com) é temporário — some (sem DNS), dá 404 ou para de
+    # responder. O redirecionador oficial com o MESMO ponto de montagem manda para um nó vivo (mesma rádio/praça).
+    mt = re.match(r"^/([A-Za-z0-9_]+?)(\.(?:aac|mp3))?/?$", path)
+    if re.match(r"^\d+\.live\.streamtheworld\.com$", host) and mt and not _interno:
+        red = "https://playerservices.streamtheworld.com/api/livestream-redirect/" + mt.group(1) + (mt.group(2) or "")
+        out.append(red)
+        out += variants(red, _interno=True)
     # StreamTheWorld: o ponto de montagem mudou de nome (…AAC.aac -> …AAC_SC, sem extensão, versão MP3)
     m = re.search(r"(/api/livestream-redirect/)([A-Za-z0-9_]+?)(\.(?:aac|mp3))?$", path)
     if "streamtheworld.com" in host and m:
@@ -181,6 +188,12 @@ def variants(url: str, _interno=False):
     # AzuraCast antigo /radio/PORTA/ponto -> com extensão
     if re.match(r"^/radio/\d+/[^/.]+$", path):
         out += [base + ".mp3", base + ".aac"]
+    # AzuraCast: /radio/PORTA/ponto é o proxy do painel para a porta da própria emissora; quando o proxy dá 404,
+    # a porta direta (host:PORTA/ponto) é o MESMO stream da mesma conta
+    ma = re.match(r"^/radio/(\d{4,5})/([^/]+)$", path)
+    if ma and p.port in (None, 80, 443):
+        for esq in dict.fromkeys((p.scheme, "http")):
+            out.append(f"{esq}://{host}:{ma.group(1)}/{ma.group(2)}")
     if p.scheme == "http":
         out += ["https://" + v[len("http://"):] for v in list(out) if v.startswith("http://")]
     seen, res = set(), []

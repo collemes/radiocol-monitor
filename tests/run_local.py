@@ -55,6 +55,8 @@ POSTS = [
     entry(10, "Rádio Iframe Antiga", f'Gênero: Sertanejo<br><iframe title="Ao vivo" src="{B}/player-antigo.html"></iframe>'),
     entry(11, "Rádio Iframe Só Http", f'Gênero: Gospel<br><iframe width="300" title="AO VIVO" '
               f'src="{B}/player?url=http%3A%2F%2F127.0.0.1%3A{P}%2Fsohttp.mp3"></iframe>'),
+    # servidor recusa o robô (403 = "bloqueio"), mas uma variação do MESMO endereço toca: deixa de ser bloqueio
+    entry(12, "Rádio Bloqueio FM", f'<audio src="{B}/bloq/1234"></audio> <a href="http://localhost:{P}/x.html">Site</a>'),
 ]
 
 
@@ -73,6 +75,10 @@ async def audio(req):
         await resp.write(AUDIO)
         await asyncio.sleep(0.05)
     return resp
+
+
+async def proibido(req):
+    raise web.HTTPForbidden()
 
 
 async def html_page(req):
@@ -155,6 +161,8 @@ async def main():
     for p in ("/sohttp.mp3", "/seguro.mp3", "/ok.mp3", "/novo-site.mp3", "/pagina.mp3", "/coluna-nova.mp3", "/errada.mp3", "/xyz-sug.mp3"):
         app.router.add_get(p, audio)
     app.router.add_get("/pagina-html/stream", html_page)
+    app.router.add_get("/bloq/1234", proibido)
+    app.router.add_get("/bloq/1234/stream", audio)
     app.router.add_get("/", site)
     app.router.add_get("/player-frame", frame)
     app.router.add_get("/hls/master.m3u8", master)
@@ -247,6 +255,7 @@ exp = {
     "/2026/11/post-8.html": ("off", "/editado-morto.mp3"),   # editado à mão: o robô não troca
     "/2026/11/post-10.html": ("ok", f"https://127.0.0.1:{TLS}/seguro.mp3"),
     "/2026/11/post-11.html": ("ok", "/sohttp.mp3"),
+    "/2026/11/post-12.html": ("ok", "/bloq/1234/stream"),   # bloqueio -> variação do mesmo endereço
 }
 bad = 0
 for p, (st, frag) in exp.items():
@@ -331,6 +340,17 @@ if "https://r13.ciclano.io:15219/stream" not in v:
 if finder.variants("https://host.com/live?id=radiox") or finder.variants("https://host.com/?id=radiox") \
         or finder.variants("https://svrstream2.svreua.com/stream.php?porta=8380"):
     bad += 1; print("FALHOU: query que escolhe a rádio não pode ser removida")
+# ----- regras novas (2026-11-20)
+v = finder.variants("https://21933.live.streamtheworld.com/RT_SALAAC.aac?")
+v2 = finder.variants("http://1061.live.streamtheworld.com:3690/SP_STUDIOC_SC")
+if not v or v[0] != "https://playerservices.streamtheworld.com/api/livestream-redirect/RT_SALAAC.aac" \
+        or "https://playerservices.streamtheworld.com/api/livestream-redirect/SP_STUDIOC_SC" not in v2 \
+        or finder.variants("https://24253.live.streamtheworld.com/RADIO_ELDORADOAAC/HLS/playlist.m3u8"):
+    bad += 1; print("FALHOU StreamTheWorld nó numerado -> redirecionador com o mesmo ponto", v, v2)
+v = finder.variants("https://cast.youngtech.radio.br/radio/8850/radio?fbclid=IwAR2")
+if "https://cast.youngtech.radio.br:8850/radio" not in v or "https://cast.youngtech.radio.br:9850/radio" in v \
+        or any(":8850" in x for x in finder.variants("https://host.com:8000/radio/8850/radio")):
+    bad += 1; print("FALHOU AzuraCast /radio/PORTA/ponto -> porta direta", v)
 F = finder.Finder.__new__(finder.Finder)
 if F._conta("https://ice.fabricahost.com.br/arenafm2") is not None or \
         F._conta("https://stm01.virtualcast.com.br:8168/live") != ("stm01.virtualcast.com.br", 8168):
