@@ -306,6 +306,7 @@ class Finder:
         self._sites = {}           # cache da raspagem por site (a rede é raspada 1x por execução)
         self._listas = {}          # cache das listas de emissoras dos servidores (AzuraCast/Icecast)
         self.nav = Navegador()     # Chromium: sites com player montado por JavaScript
+        self.tudo = None           # índice do tudoradio.com (o run.py preenche)
 
     async def _get_text(self, url, limit=400_000):
         try:
@@ -314,7 +315,7 @@ class Finder:
                 if r.status >= 400:
                     return ""
                 ct = r.headers.get("Content-Type", "")
-                if not any(k in ct for k in ("html", "text", "json", "javascript", "ecmascript")):
+                if not any(k in ct for k in ("html", "text", "json", "javascript", "ecmascript", "xml")):
                     return ""
                 return (await r.content.read(limit)).decode("utf-8", "ignore")
         except Exception:
@@ -716,8 +717,31 @@ class Finder:
                 return {"url": url, "source": f"Radio Browser: {name}", "score": min(sc, 0.59), "confidence": "suggest"}
         return None
 
+    async def from_tudoradio(self, rec):
+        """tudoradio.com: página da MESMA cidade, UF e frequência do post -> endereço do player deles."""
+        if not self.tudo:
+            return None
+        from . import tudoradio
+        for pagina, r in tudoradio.candidatos(self.tudo, rec, frequency, band)[:3]:
+            origem = re.match(r"https?://[^/]+", pagina).group(0)
+            lidos = [u for u in r.get("streams") or [] if u.rstrip("/") != origem]
+            for tentativa in ("página", "navegador"):
+                if tentativa == "navegador":         # player montado por script: abre a página e dá play
+                    lidos = [u for u, _, _ in await self.nav.capturar(pagina)
+                             if "tudoradio.com" not in u and u not in lidos]
+                for u in lidos[:6]:
+                    if u == rec.get("stream") or (rec.get("_need_https") and not u.startswith("https")):
+                        continue
+                    if audio_ok(u, await self.c.check(u)):
+                        faixa = (r.get("banda") or "").upper()
+                        return {"url": u, "confidence": "high", "score": 0.95,
+                                "source": f"tudoradio: {r.get('nome')} ({r.get('cidade')}/{(r.get('uf') or '').upper()}, "
+                                          f"{r.get('freq')} {faixa}) — cidade, UF e frequência conferem",
+                                "pagina": pagina}
+        return None
+
     async def find(self, rec):
-        for step in (self.from_variants, self.from_official_site, self.from_radio_browser):
+        for step in (self.from_variants, self.from_official_site, self.from_tudoradio, self.from_radio_browser):
             try:
                 res = await step(rec)
             except Exception:

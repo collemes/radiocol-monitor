@@ -93,3 +93,8 @@ BROWSER_SITE_S = _int("BROWSER_SITE_S", 50)              # tempo máximo por sit
 BROWSER_BUDGET_S = _int("BROWSER_BUDGET_S", 2700)         # tempo total do navegador por execução (45 min)
 APLICAR_MIN_SCORE = float(os.environ.get("APLICAR_MIN_SCORE", "0.6"))   # sugestão >= isto já entra no site
 WHATS_AUTO_MIN = float(os.environ.get("WHATS_AUTO_MIN", "0.9"))   # WhatsApp do site oficial acima disto entra no post
+
+# tudoradio.com: índice por cidade/UF/frequência (data/tudoradio.json), montado aos poucos
+USE_TUDORADIO = os.environ.get("USE_TUDORADIO", "1") != "0"
+TUDORADIO_PAGINAS = _int("TUDORADIO_PAGINAS", 1200)      # páginas de rádio lidas por execução
+

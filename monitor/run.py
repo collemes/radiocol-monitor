@@ -15,6 +15,7 @@ from .checker import Checker
 from .extract import (frequency, norm, classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
                       extract_location, extract_streams, norm, stream_score)
 from .extras import check_old_urls, contact_pairs, register_old_url, scan_site_whatsapp
+from . import tudoradio
 from .finder import Finder, rb_confere, rb_mesma_praca, variants, SHOUT_HTTPS_RE, audio_ok
 from .notify import build_report, send_email, write_public
 
@@ -110,6 +111,8 @@ def tem_prova(rec, url, fonte, usos_site, usos_stream):
     cidade = (rec.get("loc") or [None])[0] or ""
     cid = _compacto(cidade)
     f = frequency(rec.get("title", ""))
+    if fonte.startswith("tudoradio"):
+        return "conferem" in fonte                   # só entra com cidade, UF e frequência iguais
     if fonte.startswith("Radio Browser"):
         # cidade, UF e frequência precisam conferir (o nome da rádio é opcional)
         nome_rb = fonte.split(":", 1)[-1].split(" — ")[0]
@@ -376,7 +379,7 @@ async def main():
             # da emissora com confiança alta. Trocas antigas vindas do Radio Browser (diretório mundial: já
             # trouxe rádio estrangeira e de outra cidade) ou provisórias voltam ao link do post e viram sugestão.
             fonte = rec.get("source") or ""
-            mesmo_servidor = fonte.startswith(("https automático", "variação", "mesmo servidor", "outro link do post",
+            mesmo_servidor = fonte.startswith(("tudoradio", "https automático", "variação", "mesmo servidor", "outro link do post",
                                                "Shoutcast", "post"))
             suspeito = fonte.startswith("Radio Browser") or (rec.get("provisorio") and not mesmo_servidor)
             if suspeito and not protegido(rec) and tem_prova(rec, rec.get("stream"), fonte, usos_site, usos_stream):
@@ -537,6 +540,11 @@ async def main():
         # 3c) posts com iframe que ainda só têm http: procura uma versão https em
         #     outras fontes (site oficial, Radio Browser) para poder trocar pelo player
         finder = Finder(session, checker)
+        if config.USE_TUDORADIO:
+            try:
+                finder.tudo = await tudoradio.atualizar(finder._get_text, today(), log)
+            except Exception as ex:
+                log(f"tudoradio indisponível: {ex}")
         # sites usados por 3+ posts são de rede: só vale o player da praça (cidade/frequência) do post
         usos = {}
         for r in posts_state.values():
@@ -645,7 +653,12 @@ async def main():
                     aplicar_achado(rec, found)
                     return
             async with sem:
-                found = await (finder.from_official_site(rec) if atual_ok else finder.find(rec))
+                if atual_ok:
+                    found = await finder.from_official_site(rec)
+                    if not found and rec.get("status") == "bloqueio":
+                        found = await finder.from_tudoradio(rec)        # outro servidor da mesma rádio
+                else:
+                    found = await finder.find(rec)
             if not found:
                 if not atual_ok:
                     rec.pop("suggestion", None)
