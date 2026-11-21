@@ -102,6 +102,36 @@ def _query_so_ruido(p):
     return True
 
 
+# Shoutcast em http://host:porta/ não toca no site (https). O mesmo servidor costuma aceitar https na mesma
+# porta: testa https://host:porta/;stream/1 e depois https://host:porta/; — só vale se vier Content-Type de áudio.
+SHOUT_HTTPS_RE = re.compile(r"^https://[^/]+:\d+/;(?:stream/1)?$", re.I)
+AUDIO_CT_SHOUT = ("audio/mpeg", "audio/aacp", "audio/aac", "audio/x-aac", "audio/mp3")
+
+
+def shoutcast_https(url: str):
+    """http://host:porta/ (ou /;, /stream, /;stream/1) -> [https://host:porta/;stream/1, https://host:porta/;]"""
+    try:
+        p = urlsplit(url)
+        porta = p.port
+    except ValueError:
+        return []
+    caminho = (p.path or "/").lower()
+    if p.scheme != "http" or porta in (None, 80, 443) or p.query or \
+            caminho not in ("", "/", "/;", "/;stream/1", "/stream", "/;stream.mp3"):
+        return []
+    raiz = f"https://{p.hostname}:{porta}"
+    return [raiz + "/;stream/1", raiz + "/;"]
+
+
+def audio_ok(url: str, res) -> bool:
+    """Para os endereços da regra Shoutcast https, exige Content-Type de áudio (audio/mpeg ou audio/aacp)."""
+    if not res.ok:
+        return False
+    if SHOUT_HTTPS_RE.match(url):
+        return (res.content_type or "").split(";")[0].strip().lower() in AUDIO_CT_SHOUT
+    return True
+
+
 def variants(url: str, _interno=False):
     out = []
     try:
@@ -138,6 +168,7 @@ def variants(url: str, _interno=False):
     if _query_so_ruido(p):
         out.append(url.split("?")[0])
     if p.scheme == "http":
+        out += shoutcast_https(url)                      # regra Shoutcast: ;stream/1 e ; em https, primeiro
         out.append("https://" + url[len("http://"):])
         if p.port == 80 or p.port is None:
             pass
@@ -282,7 +313,9 @@ class Finder:
                 continue
             seen.add(u)
             r = await self.c.check(u)
-            if r.ok:
+            if audio_ok(u, r):
+                if SHOUT_HTTPS_RE.match(u):
+                    src = "Shoutcast em https (mesmo servidor e porta)"
                 return {"url": u, "source": src, "confidence": "high", "score": 1.0}
         return await self.from_mesma_conta(rec)
 

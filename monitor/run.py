@@ -15,7 +15,7 @@ from .checker import Checker
 from .extract import (classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
                       extract_location, extract_streams, norm, stream_score)
 from .extras import check_old_urls, contact_pairs, register_old_url, scan_site_whatsapp
-from .finder import Finder, rb_mesma_praca, variants
+from .finder import Finder, rb_mesma_praca, variants, SHOUT_HTTPS_RE, audio_ok
 from .notify import build_report, send_email, write_public
 
 BRT = timezone(timedelta(hours=-3))
@@ -328,16 +328,21 @@ async def main():
             if not rec.get("stream") and new_post_stream:
                 rec["stream"], rec["source"] = new_post_stream, "post"
 
-            # endereço do Radio Browser de OUTRA cidade (ex.: Transamérica de Barreiras num post de Itirapina):
-            # era outra emissora tocando no post. Volta ao link do post e deixa só como sugestão.
-            if (rec.get("source") or "").startswith("Radio Browser") and \
-                    not rb_mesma_praca(rec, rec["source"]) and rec.get("post_stream"):
-                rec["suggestion"] = {"url": rec["stream"], "source": rec["source"] + " — outra cidade",
+            # Regra: o robô só troca o áudio por endereço do MESMO servidor (variações, https) ou achado no site
+            # da emissora com confiança alta. Trocas antigas vindas do Radio Browser (diretório mundial: já
+            # trouxe rádio estrangeira e de outra cidade) ou provisórias voltam ao link do post e viram sugestão.
+            fonte = rec.get("source") or ""
+            mesmo_servidor = fonte.startswith(("https automático", "variação", "mesmo servidor", "outro link do post",
+                                               "Shoutcast", "post"))
+            if not protegido(rec) and (fonte.startswith("Radio Browser") or (rec.get("provisorio") and not mesmo_servidor)):
+                rec["suggestion"] = {"url": rec.get("stream"), "source": fonte + " — não aplicado (só site oficial)",
                                      "score": min(rec.get("confianca") or 0, 0.59)}
-                change(rec, rec["post_stream"], "post", "Radio Browser era de outra cidade")
+                change(rec, rec.get("post_stream"), "post", "troca desfeita: não veio do site da emissora")
                 for k in ("provisorio", "confianca", "alerted"):
                     rec.pop(k, None)
                 rec["fail_count"] = 0
+                if not rec.get("stream"):
+                    rec.pop("stream", None)
 
             ov = ov_for(rec)
             pairs = contact_pairs(rec, ov)
@@ -471,11 +476,12 @@ async def main():
             log(f"{len(http_ok)} streams só em http; testando https…")
 
             async def upgrade(rec):
-                for v in [v for v in variants(rec["stream"]) if v.startswith("https")][:2]:
-                    if (await checker.check(v)).ok:
+                for v in [v for v in variants(rec["stream"]) if v.startswith("https")][:3]:
+                    if audio_ok(v, await checker.check(v)):
+                        fonte = "Shoutcast em https (mesmo servidor e porta)" if SHOUT_HTTPS_RE.match(v) else "https automático"
                         events["fixed"].append({"url": rec["url"], "title": rec["title"], "from": rec["stream"],
-                                                "to": v, "source": "https automático"})
-                        change(rec, v, "https automático")
+                                                "to": v, "source": fonte})
+                        change(rec, v, fonte)
                         rec["http_only"] = False
                         return
             await asyncio.gather(*(upgrade(r) for r in http_ok))
@@ -602,26 +608,10 @@ async def main():
                 if found["confidence"] == "high" and score > (rec.get("confianca") or 0):
                     aplicar_achado(rec, found)
                 return
-            if found["confidence"] == "high" or score >= config.APLICAR_MIN_SCORE:
+            if found["confidence"] == "high" and not found["source"].startswith("Radio Browser"):
                 aplicar_achado(rec, found)
-            else:
+            else:                                   # Radio Browser / baixa confiança: só sugestão no relatório
                 rec["suggestion"] = {k: found[k] for k in ("url", "source", "score") if k in found}
-
-        # sugestões guardadas de dias anteriores com confiança >= 0,6: testa e aplica já
-        guardadas = [r for r in posts_state.values() if r.get("status") in ("off", "sem_link")
-                     and not protegido(r) and r.get("suggestion")
-                     and (r["suggestion"].get("score") or 0) >= config.APLICAR_MIN_SCORE]
-        if guardadas:
-            testes = await asyncio.gather(*(checker.check(r["suggestion"]["url"]) for r in guardadas))
-            n = 0
-            for r, res in zip(guardadas, testes):
-                if res.ok:
-                    sug = r["suggestion"]
-                    aplicar_achado(r, {"url": sug["url"], "source": sug["source"], "score": sug["score"],
-                                       "confidence": "suggest"})
-                    n += 1
-            log(f"Sugestões guardadas aplicadas (confiança >= {config.APLICAR_MIN_SCORE}): {n} de {len(guardadas)}")
-            search = [r for r in search if r.get("status") in ("off", "sem_link", "bloqueio") or r.get("provisorio")]
 
         await asyncio.gather(*(fix(r) for r in search))
 

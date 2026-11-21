@@ -234,16 +234,33 @@ def digits(s: str) -> str:
     return re.sub(r"\D", "", s or "")
 
 
+def _num_nacional(d: str) -> str:
+    """Tira +55 e o 0 de operadora/DDD: '5538995699876' -> '38995699876'; '038 9569-9876' -> '3895699876'."""
+    d = digits(d)
+    if len(d) in (12, 13) and d.startswith("55"):
+        d = d[2:]
+    if len(d) in (11, 12) and d.startswith("0"):
+        d = d[1:]
+    return d
+
+
 def same_number(a: str, b: str) -> bool:
-    """Compara pelos 8 últimos dígitos + DDD quando houver (ignora +55 e o 9º dígito)."""
-    a, b = digits(a), digits(b)
-    if len(a) < 8 or len(b) < 8:
+    """Mesmo telefone? Ignora +55, o 0 inicial e o 9º dígito do celular: (38) 9569-9876 = (38) 99569-9876.
+    O 9 extra só é ignorado em celular (8 dígitos começando com 6-9), nunca em telefone fixo."""
+    a, b = _num_nacional(a), _num_nacional(b)
+    if len(a) < 8 or len(b) < 8 or a[-8:] != b[-8:]:
         return False
-    if a[-8:] != b[-8:]:
+    ddd = lambda n: n[:2] if len(n) in (10, 11) else ""
+    da, db = ddd(a), ddd(b)
+    if da and db and da != db:
         return False
-    ddd_a = a[-11:-9] if len(a) >= 11 else a[-10:-8] if len(a) >= 10 else ""
-    ddd_b = b[-11:-9] if len(b) >= 11 else b[-10:-8] if len(b) >= 10 else ""
-    return not ddd_a or not ddd_b or ddd_a == ddd_b
+    # 9 dígitos de um lado e 8 do outro: só vale se o de 9 for "9" + celular antigo (6-9)
+    la, lb = len(a) - len(da), len(b) - len(db)
+    if la != lb:
+        longo = a[len(da):] if la > lb else b[len(db):]
+        if not (len(longo) == 9 and longo[0] == "9" and longo[1] in "6789"):
+            return False
+    return True
 
 
 def _uniq(nums):
