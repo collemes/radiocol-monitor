@@ -46,6 +46,9 @@ RB_SERVERS = [
 RUIDO_QUERY = {"type", "nocache", "ver", "_", "id", "source", "t", "ts", "time", "cache", "rand", "r", "v"}
 RASTREIO_QUERY = {"fbclid", "gclid", "lang", "dist", "tdsdk", "pname", "pversion", "banners", "burst-time", "sbmid",
                   "rj-ttl", "rj-tok"}
+# pontos de montagem padrão dos painéis de streaming (não identificam a rádio; quem identifica é a porta)
+PONTOS_GENERICOS = {"/;", "/stream", "/live", "/;stream.mp3", "/stream.mp3", "/live.mp3", "/aovivo", "/radio",
+                    "/autodj"}
 
 
 def _origem_no_proxy(url: str, p):
@@ -154,6 +157,12 @@ def variants(url: str, _interno=False):
         out += [base[:-2] + "/stream", base + "stream.mp3"]
     elif path.endswith(";"):
         out.append(base[:-1])
+    # porta própria da rádio (Icecast/Shoutcast de painel) com ponto de montagem de nome GENÉRICO (/live, /stream…):
+    # o painel trocou o ponto padrão (/live <-> /stream <-> /;). Mesma porta = mesma conta = mesmo stream.
+    # Ponto com nome da rádio (/radiox) ou servidor sem porta própria (compartilhado) nunca entra aqui.
+    if p.port not in (None, 80, 443) and path.lower() in PONTOS_GENERICOS:
+        root = base[: -len(path)]
+        out += [root + m for m in ("/;", "/stream", "/live", "/;stream.mp3") if m != path.lower()]
     # Shoutcast atrás de proxy https dos painéis (player.xxx/proxy/PORTA, /player-ssl/PORTA, /PORTA/stream):
     # sem o ";" o Shoutcast devolve a página HTML de status em vez do áudio
     if re.search(r"/\d{3,5}/?$", path):

@@ -624,6 +624,33 @@ async def main():
             search = [r for r in search if r.get("status") in ("off", "sem_link", "bloqueio") or r.get("provisorio")]
 
         await asyncio.gather(*(fix(r) for r in search))
+
+        # 4b) variações do MESMO endereço, todo dia, para todos os fora do ar / não testáveis que ficaram fora da
+        # busca completa (que é semanal). É barato (só testes de endereço) e faz as regras novas de variants()
+        # valerem já no dia seguinte, em vez de esperar até 7 dias. Link editado à mão nunca entra aqui.
+        ids_busca = {id(r) for r in search}
+        diaria = [r for r in posts_state.values() if r.get("status") in ("off", "bloqueio") and r.get("stream")
+                  and not protegido(r) and id(r) not in ids_busca
+                  # servidor que só esgota o tempo: as variações no mesmo servidor também esgotariam (fica na semanal)
+                  and not (r.get("status") == "bloqueio" and "tempo esgotado" in (r.get("reason") or ""))]
+
+        async def so_variacoes(rec):
+            # endereço https não vira http (o player do site bloquearia o áudio — "conteúdo misto")
+            if rec.get("status") == "bloqueio" and rec["stream"].startswith("https"):
+                rec["_need_https"] = True
+            async with sem:
+                try:
+                    found = await finder.from_variants(rec)
+                except Exception:
+                    found = None
+            rec.pop("_need_https", None)
+            if found and found["confidence"] == "high":
+                aplicar_achado(rec, found)
+                return True
+            return False
+        if diaria:
+            n_var = sum(await asyncio.gather(*(so_variacoes(r) for r in diaria)))
+            log(f"Variações do próprio endereço (diário): {n_var} corrigidas de {len(diaria)} fora do ar/não testáveis")
         if finder.nav.usados:
             log(f"Navegador abriu {finder.nav.usados} sites")
         await finder.nav.fechar()

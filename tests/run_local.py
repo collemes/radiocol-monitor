@@ -11,6 +11,7 @@ TMP = tempfile.mkdtemp()
 P = 8765          # site/feed/streams
 ICY = 8766        # servidor Shoutcast v1 (ICY 200 OK)
 TLS = 8767        # servidor https (certificado de teste)
+PAINEL = 8768     # servidor de painel com porta própria da rádio (ponto /live trocado por /stream)
 CERT = os.path.join(TMP, "c.pem")
 KEY = os.path.join(TMP, "k.pem")
 os.system(f'openssl req -x509 -newkey rsa:2048 -nodes -keyout {KEY} -out {CERT} -days 2 '
@@ -57,6 +58,9 @@ POSTS = [
               f'src="{B}/player?url=http%3A%2F%2F127.0.0.1%3A{P}%2Fsohttp.mp3"></iframe>'),
     # servidor recusa o robô (403 = "bloqueio"), mas uma variação do MESMO endereço toca: deixa de ser bloqueio
     entry(12, "Rádio Bloqueio FM", f'<audio src="{B}/bloq/1234"></audio> <a href="http://localhost:{P}/x.html">Site</a>'),
+    # porta própria no painel: o ponto /live sumiu e o /stream só aparece no dia 3, quando a rádio já foi pesquisada
+    # nesta semana (fora da busca completa): a passada diária de variações tem de corrigir
+    entry(13, "Rádio Painel FM", f'<audio src="http://127.0.0.1:{PAINEL}/live"></audio>'),
 ]
 
 
@@ -75,6 +79,12 @@ async def audio(req):
         await resp.write(AUDIO)
         await asyncio.sleep(0.05)
     return resp
+
+
+async def painel_stream(req):
+    if not STATE.get("painel_stream"):
+        raise web.HTTPNotFound()
+    return await audio(req)
 
 
 async def proibido(req):
@@ -174,6 +184,11 @@ async def main():
     await runner.setup()
     await web.TCPSite(runner, "127.0.0.1", P).start()
     icy = await asyncio.start_server(icy_server, "127.0.0.1", ICY)
+    app_p = web.Application()
+    app_p.router.add_get("/stream", painel_stream)
+    runner_p = web.AppRunner(app_p)
+    await runner_p.setup()
+    await web.TCPSite(runner_p, "127.0.0.1", PAINEL).start()
     import ssl as _ssl
     sctx = _ssl.create_default_context(_ssl.Purpose.CLIENT_AUTH)
     sctx.load_cert_chain(CERT, KEY)
@@ -198,6 +213,14 @@ async def main():
         if dia == 2:   # dia 2: post 1 mudou de URL (frequência nova) e post 9 foi apagado
             POSTS[0]["link"][0]["href"] = "https://www.radiocol.com.br/2026/11/post-1-nova.html"
             del POSTS[8]
+        if dia == 3:   # dia 3: o painel passou a usar /stream (post 13 já pesquisado nesta semana)
+            STATE["painel_stream"] = True
+            st_path = f"{TMP}/data/state.json"
+            stj = json.load(open(st_path))
+            r13 = stj["posts"]["13"]
+            print("post 13 antes do dia 3:", r13.get("status"), r13.get("fail_count"), r13.get("search_tried"))
+            r13["fail_count"] = 9
+            json.dump(stj, open(st_path, "w"))
         if dia == 3:   # dia 3: você trocou à mão o link do post 8 (que o robô tinha corrigido) — mesmo fora do ar, vale o seu
             POSTS[7]["content"]["$t"] = f'<audio src="{B}/editado-morto.mp3"></audio>'
         await run.main()
@@ -226,6 +249,7 @@ async def main():
             print("recusado corretamente:", bad_req["id"])
     icy.close()
     await runner.cleanup()
+    await runner_p.cleanup()
 
 
 _real_sleep = asyncio.sleep
@@ -256,6 +280,7 @@ exp = {
     "/2026/11/post-10.html": ("ok", f"https://127.0.0.1:{TLS}/seguro.mp3"),
     "/2026/11/post-11.html": ("ok", "/sohttp.mp3"),
     "/2026/11/post-12.html": ("ok", "/bloq/1234/stream"),   # bloqueio -> variação do mesmo endereço
+    "/2026/11/post-13.html": ("ok", f"127.0.0.1:{PAINEL}/stream"),   # passada diária de variações
 }
 bad = 0
 for p, (st, frag) in exp.items():
@@ -393,6 +418,17 @@ async def _conta_testes():
     f.c = _Chk({"https://s.x.com:9000/a", "https://s.x.com:9000/b"})
     if await f.from_mesma_conta({"stream": "https://s.x.com:9000/live", "reason": "HTTP 404"}):
         bad += 1; print("FALHOU: mais de um ponto na porta deve ficar sem troca")
+
+# ----- regras novas (2026-11-21): ponto de montagem genérico trocado na porta própria da rádio
+v = finder.variants("https://stm01.virtualcast.com.br:8168/live")
+if "https://stm01.virtualcast.com.br:8168/stream" not in v or "https://stm01.virtualcast.com.br:8168/;" not in v:
+    bad += 1; print("FALHOU porta própria /live -> /stream e /;", v)
+if "http://servidor21.dnip.com.br:9940/live" not in finder.variants("http://servidor21.dnip.com.br:9940/;"):
+    bad += 1; print("FALHOU porta própria /; -> /live")
+# ponto com nome da rádio ou servidor compartilhado (sem porta própria): nunca troca o ponto
+if any(x.endswith(("/stream", "/live")) for x in finder.variants("https://stm01.virtualcast.com.br:8000/massasaopaulo")) \
+        or any(x.endswith(("/stream", "/;")) for x in finder.variants("https://ice.fabricahost.com.br/live")):
+    bad += 1; print("FALHOU: ponto com nome da rádio / servidor compartilhado não pode trocar o ponto")
 
 asyncio.run(_conta_testes())
 print("RESULTADO:", "TUDO CERTO" if not bad else f"{bad} FALHA(S)")
