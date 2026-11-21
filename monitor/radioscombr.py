@@ -14,7 +14,7 @@ from urllib.parse import urljoin, urlsplit
 
 from . import config
 from .extract import band, desescapa, extract_streams, frequency
-from .tudoradio import _dias, freq_norm
+from .tudoradio import _dias, extrai_site, freq_norm
 
 BASE = "https://www.radios.com.br"
 INICIO = BASE + "/lista/pais/brasil/33"
@@ -112,6 +112,7 @@ async def atualizar(fetch_text, hoje, log=print):
         if dados:
             r.update(dados)
             r["streams"] = [s for s in extract_streams(html) if "radios.com.br" not in s][:4]
+            r["site"] = extrai_site(html, "radios.com.br")
 
     if fila:
         await asyncio.gather(*(ler_radio(u) for u in fila))

@@ -47,6 +47,7 @@
       if (e.l) { try { ouvirTambem(e.l, pid); } catch (x) {} }
       window.RADIOCOL_STREAM = e;
       if (e.c) trocarContatos(e.c);
+      if (e.n) { try { trocarSite(e.n[0], e.n[1]); } catch (x) {} }
       if (!e.u) return;
       aplicar(e);
       if (e.v) { try { confirmarReproducao(pid, e); } catch (x) {} }
@@ -349,6 +350,21 @@
         re.lastIndex = 0;
       });
     });
+  }
+
+  // ---------- Site da emissora que mudou de endereço (ou saiu do ar e o robô achou o novo) ----------
+  function dominio(u) { var m = String(u || '').match(/^https?:\/\/(?:www\.)?([^\/:?#]+)/i); return m ? m[1].toLowerCase() : ''; }
+  function trocarSite(antigo, novo) {
+    var dAnt = dominio(antigo), raiz = document.querySelector('.post-body');
+    if (!dAnt || !novo || !raiz) return;
+    var links = raiz.querySelectorAll('a[href]');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      if (dominio(a.getAttribute('href')) !== dAnt) continue;
+      a.setAttribute('href', novo);
+      var t = (a.textContent || '').trim();
+      if (dominio(t) === dAnt || t.replace(/^www\./i, '').toLowerCase().indexOf(dAnt) === 0) a.textContent = novo;
+    }
   }
 
   function hlsProprio() {

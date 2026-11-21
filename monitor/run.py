@@ -126,6 +126,64 @@ def tem_prova(rec, url, fonte, usos_site, usos_stream):
     return False
 
 
+async def checar_site(session, url):
+    """Situação de um site: ("ok", endereço final) | ("fora", motivo). Segue redirecionamentos."""
+    try:
+        async with session.get(url, headers={"User-Agent": config.USER_AGENT}, allow_redirects=True,
+                               timeout=aiohttp.ClientTimeout(total=25)) as r:
+            if r.status >= 400:
+                return "fora", f"HTTP {r.status}"
+            return "ok", str(r.url)
+    except aiohttp.ClientConnectorError as ex:
+        return "fora", "domínio não existe mais" if "Name or service" in str(ex) or "gaierror" in repr(ex) \
+            else "sem conexão"
+    except asyncio.TimeoutError:
+        return "fora", "tempo esgotado"
+    except Exception as ex:
+        return "fora", type(ex).__name__
+
+
+def _dominio(u):
+    return (urlparse(u or "").hostname or "").replace("www.", "")
+
+
+async def verificar_sites(session, recs, hoje):
+    """Site do post das rádios fora do ar / sem link / não testáveis, 1x por semana. Redirecionou para outro
+    domínio = site novo da emissora; 404, domínio extinto ou sem conexão = site fora do ar."""
+    fila = [r for r in recs if r.get("sites") and r.get("status") in ("off", "sem_link", "bloqueio")
+            and (not r.get("site_checked") or
+                 (date.fromisoformat(hoje) - date.fromisoformat(r["site_checked"])).days >= 7)][:600]
+    sem = asyncio.Semaphore(10)
+
+    async def um(rec):
+        async with sem:
+            situacao, info = await checar_site(session, rec["sites"][0])
+        rec["site_checked"] = hoje
+        if situacao == "ok":
+            rec.pop("site_fora", None)
+            if _dominio(info) and _dominio(info) != _dominio(rec["sites"][0]):
+                rec["site_novo"] = info.split("?")[0]               # o site mudou de endereço (redirecionamento)
+        else:
+            rec["site_fora"] = info
+    await asyncio.gather(*(um(r) for r in fila))
+    return len(fila), sum(1 for r in fila if r.get("site_fora"))
+
+
+async def adotar_site(session, rec, site):
+    """Áudio veio de diretório/Radio Browser com o site da emissora: se o site do post está fora do ar (ou o
+    post não tem site), adota o site do diretório — só se ele abrir."""
+    if not site or not site.startswith("http"):
+        return
+    atual = (rec.get("sites") or [None])[0]
+    if atual and not rec.get("site_fora"):
+        return
+    if atual and _dominio(atual) == _dominio(site):
+        return
+    situacao, final = await checar_site(session, site)
+    if situacao == "ok":
+        rec["site_novo"] = final.split("?")[0]
+
+
 def formato_vizinho(url, https_por_host):
     """Outra rádio do MESMO servidor já toca em https: copia o formato dela para a porta desta.
     http://paineldj5.com.br:20033/  +  https://paineldj5.com.br:20015/stream  ->  https://paineldj5.com.br:20033/stream
@@ -628,6 +686,11 @@ async def main():
                     rec["suggestion"] = {k: found[k] for k in ("url", "source", "score") if k in found}
             await asyncio.gather(*(find_https(r) for r in need_https))
 
+        # 3d) site do post das rádios com problema (1x por semana): mudou de endereço ou saiu do ar?
+        n_sites, n_fora = await verificar_sites(session, list(posts_state.values()), today())
+        if n_sites:
+            log(f"Sites das emissoras: {n_sites} verificados, {n_fora} fora do ar")
+
         # 4) procura substitutos para os que caíram ---------------------------------
         # Fila de busca, revezada: cada post é pesquisado no máximo 1x por semana (quem acabou de cair entra
         # na hora), e a cota do dia é dividida entre "fora do ar" e "sem link" — antes os 1.000+ fora do ar
@@ -715,7 +778,13 @@ async def main():
             if not found:
                 if not atual_ok:
                     rec.pop("suggestion", None)
+                    # busca completa sem nada: site, tudoradio, radios.com.br e Radio Browser
+                    if rec.get("busca_vazia_em") != today():
+                        rec["buscas_vazias"] = rec.get("buscas_vazias", 0) + 1
+                        rec["busca_vazia_em"] = today()
                 return
+            rec.pop("buscas_vazias", None)
+            rec.pop("busca_vazia_em", None)
             score = found.get("score") or 0
             if atual_ok:
                 # provisório / não testável: troca só por achado do site da emissora com confiança maior
@@ -725,6 +794,7 @@ async def main():
             alta = found["confidence"] == "high" and not found["source"].startswith("Radio Browser")
             if alta or tem_prova(rec, found["url"], found["source"], usos_site, usos_stream):
                 aplicar_achado(rec, dict(found, confidence="high"))
+                await adotar_site(session, rec, found.get("site"))   # site informado pelo diretório
             else:                                   # Radio Browser / baixa confiança: só sugestão no relatório
                 rec["suggestion"] = {k: found[k] for k in ("url", "source", "score") if k in found}
 

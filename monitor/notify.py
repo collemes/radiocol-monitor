@@ -31,6 +31,8 @@ def public_entry(rec):
         e["v"] = 1  # o robô não consegue confirmar: o player dos visitantes avisa se tocou (Apps Script)
     if rec.get("http_only"):
         e["h"] = 1
+    if rec.get("site_novo") and rec.get("sites"):
+        e["n"] = [rec["sites"][0], rec["site_novo"]]   # o tema troca o link do site no post
     if rec.get("contact_overrides"):
         e["c"] = rec["contact_overrides"]  # [[antigo, novo, "w"|"t"], ...]
     if rec.get("iframe") or rec.get("popup"):
@@ -47,11 +49,20 @@ def _dump(path, obj):
 def write_public(posts):
     full = {}
     for pid, r in posts.items():
-        if r.get("status") == "ignorado" or not (r.get("stream") or r.get("contact_overrides")):
+        tem_site_novo = r.get("site_novo") and r.get("sites")
+        if r.get("status") == "ignorado" or not (r.get("stream") or r.get("contact_overrides") or tem_site_novo):
             continue
-        e = public_entry(r) if r.get("stream") else {"c": r["contact_overrides"]}
+        if r.get("stream"):
+            e = public_entry(r)
+        else:
+            e = {}
+            if r.get("contact_overrides"):
+                e["c"] = r["contact_overrides"]
+            if tem_site_novo:
+                e["n"] = [r["sites"][0], r["site_novo"]]
         full[pid] = e
-    _dump(os.path.join(config.PUBLIC_DIR, "radios.json"), {k: v for k, v in full.items() if "u" in v or "c" in v})
+    _dump(os.path.join(config.PUBLIC_DIR, "radios.json"),
+          {k: v for k, v in full.items() if "u" in v or "c" in v or "n" in v})
     # caminho do post -> ID (usado pela planilha de aprovação para achar o post)
     _dump(os.path.join(config.PUBLIC_DIR, "paths.json"),
           {r["path"]: pid for pid, r in posts.items() if r.get("path")})
@@ -192,6 +203,8 @@ def build_report(posts, events, today, old_urls=None):
     do_rb = [r for r in recs if (r.get("source") or "").startswith("Radio Browser") and r.get("status") != "ignorado"]
     do_tudo = [r for r in recs if (r.get("source") or "").startswith("tudoradio") and r.get("status") != "ignorado"]
     do_rcb = [r for r in recs if (r.get("source") or "").startswith("radios.com.br") and r.get("status") != "ignorado"]
+    sites_novos = [r for r in recs if r.get("site_novo") and r.get("status") != "ignorado"]
+    desativadas = [r for r in recs if r.get("status") in ("off", "sem_link") and r.get("buscas_vazias", 0) >= 2]
     http_only = [r for r in recs if r.get("status") == "ok" and r.get("http_only")]
     iframes = [r for r in recs if r.get("iframe")]
     iframe_ok = [r for r in iframes if r.get("status") == "ok" and not r.get("http_only")]
@@ -215,6 +228,8 @@ def build_report(posts, events, today, old_urls=None):
         "radio_browser": len(do_rb),
         "tudoradio": len(do_tudo),
         "radioscombr": len(do_rcb),
+        "sites_novos": len(sites_novos),
+        "possivel_desativada": len(desativadas),
         "confirmadas_brasil": sum(1 for r in recs if r.get("status") == "ok" and r.get("br_ok")),
         "so_http": len(http_only),
         "corrigidos_hoje": len(events["fixed"]),
@@ -244,7 +259,7 @@ def build_report(posts, events, today, old_urls=None):
                 f"<h2>{title}</h2>"
                 f"<p>{summary['posts']} posts · <b style=color:green>{summary['ok']} tocando</b> · "
                 f"<b style=color:#c00>{summary['fora_do_ar']} fora do ar</b> "
-                f"({summary['fora_confirmado']} confirmados) · {summary['bloqueio']} não testáveis daqui · {summary['tudoradio']} com áudio do tudoradio · {summary['radioscombr']} do radios.com.br · {summary['radio_browser']} com áudio do Radio Browser · {summary['confirmadas_brasil']} confirmadas por ouvintes no Brasil · {summary['sem_link']} sem link · "
+                f"({summary['fora_confirmado']} confirmados) · {summary['bloqueio']} não testáveis daqui · {summary['tudoradio']} com áudio do tudoradio · {summary['radioscombr']} do radios.com.br · {summary['sites_novos']} com site novo · {summary['possivel_desativada']} possíveis desativadas · {summary['radio_browser']} com áudio do Radio Browser · {summary['confirmadas_brasil']} confirmadas por ouvintes no Brasil · {summary['sem_link']} sem link · "
                 f"{summary['so_http']} só em http · {summary['corrigidos_hoje']} corrigidos hoje · "
                 f"{summary['voltaram_hoje']} voltaram sozinhos · {summary['ignorados']} ignorados "
                 f"(não são rádio, encerradas ou marcados por você) · iframes 'Ao vivo': "
@@ -283,6 +298,15 @@ def build_report(posts, events, today, old_urls=None):
         _table("🟡 Falharam hoje pela 1ª vez (aguardando confirmação)",
                [_row(r, _sugg(r)) for r in off if r not in confirmed]),
         _table("⚪ Sem endereço de áudio no post", [_row(r) for r in nolink]),
+        _table("⚫ Possível emissora desativada — não encontrada no site da emissora, no tudoradio, no radios.com.br "
+               "nem no Radio Browser em 2 buscas semanais seguidas (confira antes de despublicar o post)",
+               [_row(r, "site do post: " + html.escape(r.get("site_fora") and f"fora do ar ({r['site_fora']})"
+                                                       or ("abre" if r.get("sites") else "não cadastrado")))
+                for r in sorted(desativadas, key=lambda r: r.get("title", ""))]),
+        _table("🌐 Site novo da emissora — o site do post mudou de endereço ou saiu do ar; o site mostra o novo "
+               "(o post não é alterado)",
+               [_row(r, html.escape((r.get("sites") or ["—"])[0]) + " → " + html.escape(r["site_novo"]))
+                for r in sorted(sites_novos, key=lambda r: r.get("title", ""))]),
         _table("📻 Áudio incorporado do tudoradio.com — cidade, UF e frequência conferem com o post "
                "(confira; para fixar outro endereço use o overrides.json ou a planilha)",
                [_row(r, html.escape((r.get("source") or "").split(" — ")[0]))

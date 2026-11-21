@@ -45,6 +45,20 @@ def ler_titulo(html):
             "freq": freq_norm(c.group("freq")), "banda": c.group("banda").lower()}
 
 
+SITE_RE = re.compile(r"Site\s*:?\s*(?:</?[a-z][^>]*>\s*)*(?:<a\b[^>]*href\s*=\s*[\"']([^\"']+)[\"'][^>]*>)?\s*(https?://[^\s<\"']+)?",
+                     re.I)
+
+
+def extrai_site(html, dominio_diretorio):
+    """Site da emissora informado pelo diretório ("Site: http://…"). Ignora links do próprio diretório."""
+    for m in SITE_RE.finditer(html or ""):
+        for u in (m.group(1), m.group(2)):
+            if u and u.startswith("http") and dominio_diretorio not in u and not re.search(
+                    r"facebook|instagram|youtube|twitter|wa\.me|whatsapp|google", u, re.I):
+                return u.strip().rstrip(".,;)")
+    return None
+
+
 def _dias(d, hoje):
     try:
         return (date.fromisoformat(hoje) - date.fromisoformat(d)).days
@@ -97,6 +111,7 @@ async def atualizar(fetch_text, hoje, log=print):
         if dados:
             r.update(dados)
             r["streams"] = [s for s in extract_streams(html) if "tudoradio.com" not in s][:4]
+            r["site"] = extrai_site(html, "tudoradio.com")
         elif html:
             r["sem_dados"] = True
 

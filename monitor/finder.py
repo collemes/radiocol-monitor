@@ -713,7 +713,8 @@ class Finder:
                 st = next((x for x in stations.values() if (x.get("url_resolved") or x.get("url")) == url), {})
                 if rb_confere(rec, name, st):
                     # cidade, UF e frequência da estação conferem com o post (o nome é opcional): entra
-                    return {"url": url, "source": f"Radio Browser: {name} — cidade, UF e frequência conferem",
+                    return {"url": url, "site": st.get("homepage") or None,
+                            "source": f"Radio Browser: {name} — cidade, UF e frequência conferem",
                             "score": max(sc, 0.9), "confidence": "high", "rb_confere": True}
                 return {"url": url, "source": f"Radio Browser: {name}", "score": min(sc, 0.59), "confidence": "suggest"}
         return None
@@ -743,7 +744,7 @@ class Finder:
                             else:
                                 prova = "cidade, UF e frequência conferem"
                                 faixa = f"{r.get('freq')} {(r.get('banda') or '').upper()}"
-                            return {"url": u, "confidence": "high", "score": 0.95, "pagina": pagina,
+                            return {"url": u, "confidence": "high", "score": 0.95, "pagina": pagina, "site": r.get("site"),
                                     "source": f"{rotulo}: {r.get('nome')} ({r.get('cidade')}/"
                                               f"{(r.get('uf') or '').upper()}, {faixa}) — {prova}"}
         return None
