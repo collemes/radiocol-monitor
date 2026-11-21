@@ -33,7 +33,12 @@
   // Post de rádio sem nenhum player: coloca o player abaixo da linha "Gênero" (corrige o card repetido)
   try { prepararSemPlayer(); } catch (err) {}
   // Seção "Siga nas redes sociais" do post vira um card com botões
-  try { redesSociais(); } catch (err) {}
+  // depois que a página terminou de carregar: outros scripts do tema (ex.: as perguntas que viram itens com "+")
+  // montam a estrutura primeiro; o card só troca a lista de links, sem mover nada.
+  (function () {
+    var rodar = function () { setTimeout(function () { try { redesSociais(); } catch (err) {} }, 400); };
+    if (document.readyState === 'complete') rodar(); else window.addEventListener('load', rodar);
+  })();
 
   // A base usa o ID do post: continua valendo mesmo se a URL do post mudar
   var meta = document.querySelector('meta[itemprop="postId"]');
@@ -220,7 +225,7 @@
   function redesSociais() {
     var corpo = document.querySelector('.post-body');
     if (!corpo || corpo.querySelector('.rc-redes')) return;
-    var tits = corpo.querySelectorAll('h2,h3,h4,h5,p,div');
+    var tits = corpo.querySelectorAll('h2,h3,h4,h5,p,div,button,summary,dt,a[role="button"]');
     for (var t = 0; t < tits.length; t++) {
       var h = tits[t];
       var txt = (h.textContent || '').replace(/\s+/g, ' ').trim();
@@ -235,7 +240,15 @@
         else ul = n.querySelector && n.querySelector('ul');
         n = n.nextElementSibling; passos++;
       }
-      if (!ul) continue;
+      // título que virou item de sanfona (script do tema): a lista está no painel do mesmo item
+      if (!ul && !/^H[1-6]$/.test(h.tagName)) {
+        var item = h.parentNode;
+        for (var sobe = 0; item && item !== corpo && sobe < 3 && !ul; sobe++, item = item.parentNode) {
+          var listas = item.querySelectorAll('ul');
+          if (listas.length === 1) ul = listas[0];
+        }
+      }
+      if (!ul || ul.getAttribute('data-rc-redes')) continue;
       var itens = [];
       ul.querySelectorAll('li').forEach(function (li) {
         var a = li.querySelector('a[href]');
@@ -277,11 +290,11 @@
         a.setAttribute('aria-label', r[2] + ' ' + s.textContent + ' (abre em nova aba)');
         grade.appendChild(a);
       });
-      h.parentNode.insertBefore(box, h);
-      box.appendChild(h);                 // o título continua o mesmo (bom para SEO), só ganha o estilo do card
-      h.classList.add('rc-redes-titulo');
+      // não mexe no título nem em nada em volta: os botões entram no lugar da lista, que só fica escondida
       box.appendChild(grade);
+      ul.parentNode.insertBefore(box, ul.nextSibling);
       ul.style.display = 'none';
+      ul.setAttribute('data-rc-redes', 'lista-original');
       return;
     }
   }
@@ -290,7 +303,7 @@
     var st = document.createElement('style');
     st.id = 'rc-redes-css';
     st.textContent =
-      '.rc-redes{margin:22px 0;padding:18px;border:1px solid rgba(120,120,120,.18);border-radius:16px;background:var(--bg-cards,#fff);' +
+      '.rc-redes{margin:12px 0 22px;padding:14px;border:1px solid rgba(120,120,120,.18);border-radius:16px;background:var(--bg-cards,#fff);' +
       'box-shadow:0 6px 20px rgba(20,40,75,.06)}' +
       '.post-body .rc-redes .rc-redes-titulo{margin:0 0 14px!important;padding:0;font-size:17px;line-height:1.35;text-align:left!important}' +
       '.rc-redes-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}' +
