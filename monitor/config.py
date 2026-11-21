@@ -98,3 +98,8 @@ WHATS_AUTO_MIN = float(os.environ.get("WHATS_AUTO_MIN", "0.9"))   # WhatsApp do 
 USE_TUDORADIO = os.environ.get("USE_TUDORADIO", "1") != "0"
 TUDORADIO_PAGINAS = _int("TUDORADIO_PAGINAS", 1200)      # páginas de rádio lidas por execução
 
+# radios.com.br: listas por estado/cidade e páginas de rádio (data/radioscombr.json), aos poucos
+USE_RADIOSCOMBR = os.environ.get("USE_RADIOSCOMBR", "1") != "0"
+RADIOSCOMBR_LISTAS = _int("RADIOSCOMBR_LISTAS", 400)     # páginas de lista lidas por execução
+RADIOSCOMBR_PAGINAS = _int("RADIOSCOMBR_PAGINAS", 1200)  # páginas de rádio lidas por execução
+

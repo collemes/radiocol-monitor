@@ -108,19 +108,47 @@ async def atualizar(fetch_text, hoje, log=print):
     return indice
 
 
+_GENERICAS = set("ouvir a o radio radios web webradio fm am ao vivo e online de do da dos das em the mhz khz tv "
+                 "net digital".split())
+
+
+def palavras_nome(texto, cidade=""):
+    """Palavras que identificam a rádio (sem 'Rádio', 'FM', 'Web', cidade, UF…)."""
+    from .extract import norm
+    fora = set(norm(cidade or "").split())
+    return {w for w in re.findall(r"[a-z0-9]+", norm(texto or "")) if len(w) >= 3 and not w.isdigit()
+            and w not in _GENERICAS and w not in fora}
+
+
+def mesmo_nome(titulo_post, nome_dir, cidade):
+    """Webradio (sem frequência): o nome do diretório tem as mesmas palavras próprias do post."""
+    a = palavras_nome(re.split(r"\b(?:de|do|da)\s+" + re.escape(cidade or "@@"), titulo_post, flags=re.I)[0], cidade)
+    b = palavras_nome(nome_dir, cidade)
+    if not a or not b:
+        return False
+    return len(a & b) / len(a | b) >= 0.6
+
+
 def candidatos(indice, rec, frequency, band):
-    """Páginas do tudoradio da MESMA cidade, UF e frequência (e faixa) do post."""
+    """Páginas do diretório da MESMA cidade e UF do post e: mesma frequência e faixa (AM/FM) — ou, se o post
+    for de webradio (sem frequência), o mesmo nome. Páginas 'Arquivada' (rádio encerrada) ficam de fora."""
     loc = rec.get("loc") or [None, None]
     cidade, uf = loc[0] or "", (loc[1] if len(loc) > 1 else None) or ""
-    f, b = freq_norm(frequency(rec.get("title", ""))), band(rec.get("title", ""))
-    if not (cidade and uf and f):
+    titulo = rec.get("title", "")
+    f, b = freq_norm(frequency(titulo) or ""), band(titulo)
+    if not (cidade and uf):
         return []
     cid = _compacto(cidade)
     out = []
     for u, r in (indice or {}).get("radios", {}).items():
-        if r.get("uf") != uf or r.get("freq") != f or _compacto(r.get("cidade")) != cid:
+        if r.get("arquivada") or r.get("uf") != uf or _compacto(r.get("cidade")) != cid:
             continue
-        if b and r.get("banda") and r["banda"] != b:
-            continue
+        if f:
+            if r.get("freq") != f or (b and r.get("banda") and r["banda"] != b):
+                continue
+        else:
+            # sem frequência: só webradio (o post não fala em AM/FM e o diretório também não tem frequência)
+            if b or r.get("freq") or not mesmo_nome(titulo, r.get("nome"), cidade):
+                continue
         out.append((u, r))
     return out

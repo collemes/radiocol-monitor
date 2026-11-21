@@ -429,8 +429,9 @@
   // Sem stream https, o clique abre o popup do próprio post (se ainda existir) ou o aviso do card.
   function criarPlayerNoLugar(btn, pop) {
     var abrir = function () {
-      // (o stream em http NÃO é mais aberto em janelinha: o navegador bloqueia http no site https,
-      //  então o ouvinte vê o aviso do card e o robô continua procurando um endereço https)
+      // 1) só há áudio em http: abre numa janela pequena (último recurso)
+      if (JANELA_URL) { tocarEmJanela(JANELA_URL); return; }
+      // (stream só em http: o modoJanela() do aplicar() cuida — o play abre o áudio numa janela pequena)
       // 2) popup ainda no ar: abre como o botão fazia
       if (pop && !POPUP_DESATIVADO.test(pop)) {
         if (typeof window.abrir_player_popup === 'function') window.abrir_player_popup();
@@ -475,6 +476,7 @@
     wrap.addEventListener('click', function (ev) {
       if (!audio.hasAttribute('data-radiocol-sem-stream')) return;   // já tem stream: toca no post
       ev.preventDefault(); ev.stopPropagation();
+      ev.__rcFeito = true;
       abrir();
     }, true);
     try {
@@ -626,8 +628,69 @@
     // sem MediaElement carregado, fica o <audio controls> nativo do navegador
   }
 
+  // ---------- Último recurso: rádio que só tem áudio em http ----------
+  // A página do Radiocol é https e o navegador não toca áudio http dentro dela. Quando o robô não achou
+  // nenhum endereço https, o play abre o áudio numa janela pequena (janela própria: aí o navegador toca).
+  function tocarEmJanela(u) {
+    var w = Math.min(460, screen.width || 460), h = 200;
+    var jan = null;
+    try {
+      jan = window.open(u, 'radiocol_player',
+        'width=' + w + ',height=' + h + ',left=' + Math.max(0, (screen.width || w) - w - 20) + ',top=80,' +
+        'menubar=no,toolbar=no,location=no,status=no,resizable=yes');
+    } catch (x) {}
+    if (!jan) location.href = u;                         // popup bloqueado: abre na própria aba
+  }
+  var JANELA_URL = null;
+  function modoJanela(e) {
+    var corpo = document.querySelector('.post-body');
+    if (!corpo || document.getElementById('rc-janela')) return;
+    JANELA_URL = e.u;
+    // os players do post (MediaElement, <audio>, botão antigo): o play abre a janela
+    var alvos = corpo.querySelectorAll('.mejs-container, .media-wrapper, audio, [data-radiocol-popup]');
+    Array.prototype.forEach.call(alvos, function (el) {
+      el.addEventListener('click', function (ev) {
+        if (ev.__rcFeito) return;                          // o player do tema já tratou este clique
+        ev.__rcFeito = true;
+        var botao = ev.target.closest ? ev.target.closest('.mejs-playpause-button, .mejs-overlay-play, audio, .media-wrapper, [data-radiocol-popup]') : el;
+        if (!botao) return;
+        ev.preventDefault(); ev.stopPropagation();
+        var a = el.tagName === 'AUDIO' ? el : el.querySelector('audio');
+        try { if (a) a.pause(); } catch (x) {}
+        tocarEmJanela(e.u);
+      }, true);
+    });
+    // botão visível logo abaixo do primeiro player
+    var ancora = corpo.querySelector('.mejs-container, .media-wrapper, audio, [data-radiocol-popup]');
+    var caixa = document.createElement('div');
+    caixa.id = 'rc-janela';
+    caixa.style.cssText = 'margin:10px auto;text-align:center';
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = '\u25B6 Ouvir ao vivo';
+    b.setAttribute('aria-label', 'Ouvir ao vivo (abre em uma janela pequena)');
+    b.style.cssText = 'cursor:pointer;border:0;border-radius:999px;padding:10px 22px;font-size:15px;font-weight:600;' +
+      'background:#1e74f4;color:#fff;box-shadow:0 4px 12px rgba(30,116,244,.3)';
+    b.addEventListener('click', function () { tocarEmJanela(e.u); });
+    var nota = document.createElement('div');
+    nota.style.cssText = 'font-size:12.5px;opacity:.7;margin-top:6px';
+    nota.textContent = 'Esta emissora toca em uma janela pequena, separada do site.';
+    caixa.appendChild(b);
+    caixa.appendChild(nota);
+    if (ancora) {
+      var bloco = ancora.closest ? (ancora.closest('center') || ancora.closest('.media-wrapper') || ancora) : ancora;
+      bloco.parentNode.insertBefore(caixa, bloco.nextSibling);
+    } else {
+      corpo.insertBefore(caixa, corpo.firstChild);
+    }
+  }
+
   function aplicar(e) {
     atualizarAudios(e);
+    // só http, sem alternativa https: o play abre o áudio numa janela pequena (último recurso)
+    if (/^http:\/\//i.test(e.u || '') && location.protocol === 'https:' && e.s !== 0) {
+      try { modoJanela(e); } catch (x) {}
+    }
     if (e.f && /^https:\/\//i.test(e.u) && e.s !== 0) trocarIframe(e.u);
     if (e.o) {
       var antigo = playerAntigo(e.o);

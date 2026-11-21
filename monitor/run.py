@@ -7,7 +7,7 @@ from datetime import date, datetime, timezone, timedelta
 
 import aiohttp
 import re
-from urllib.parse import unquote, urljoin, urlparse
+from urllib.parse import unquote, urljoin, urlparse, urlsplit
 
 from . import config
 from .blogger import BODY_RE, fetch_post_body, fetch_post_body_raw, fetch_posts, load_blogger_backup
@@ -15,7 +15,7 @@ from .checker import Checker
 from .extract import (frequency, norm, classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
                       extract_location, extract_streams, norm, stream_score)
 from .extras import check_old_urls, contact_pairs, register_old_url, scan_site_whatsapp
-from . import tudoradio
+from . import radioscombr, tudoradio
 from .finder import Finder, rb_confere, rb_mesma_praca, variants, SHOUT_HTTPS_RE, audio_ok
 from .notify import build_report, send_email, write_public
 
@@ -111,8 +111,8 @@ def tem_prova(rec, url, fonte, usos_site, usos_stream):
     cidade = (rec.get("loc") or [None])[0] or ""
     cid = _compacto(cidade)
     f = frequency(rec.get("title", ""))
-    if fonte.startswith("tudoradio"):
-        return "conferem" in fonte                   # só entra com cidade, UF e frequência iguais
+    if fonte.startswith(("tudoradio", "radios.com.br")):
+        return "conferem" in fonte                   # só entra com cidade, UF e frequência (ou nome) iguais
     if fonte.startswith("Radio Browser"):
         # cidade, UF e frequência precisam conferir (o nome da rádio é opcional)
         nome_rb = fonte.split(":", 1)[-1].split(" — ")[0]
@@ -124,6 +124,38 @@ def tem_prova(rec, url, fonte, usos_site, usos_stream):
         u = _compacto(url)
         return bool((f and f.replace(".", "") in u) or (len(cid) >= 4 and cid in u))
     return False
+
+
+def formato_vizinho(url, https_por_host):
+    """Outra rádio do MESMO servidor já toca em https: copia o formato dela para a porta desta.
+    http://paineldj5.com.br:20033/  +  https://paineldj5.com.br:20015/stream  ->  https://paineldj5.com.br:20033/stream
+    Painel com a porta no caminho (/proxy/20015, /20015/stream): troca a porta no caminho."""
+    try:
+        p = urlsplit(url)
+        porta = p.port
+    except ValueError:
+        return []
+    if p.scheme != "http" or not porta or porta in (80, 443):
+        return []
+    out = []
+    for viz in https_por_host.get(p.hostname, [])[:20]:
+        try:
+            q = urlsplit(viz)
+            qp = q.port
+        except ValueError:
+            continue
+        caminho = q.path or "/"
+        if qp and qp != 443:
+            # porta própria no endereço: mesmo ponto de montagem genérico (/stream, /;, /1;, /live…)
+            if re.fullmatch(r"/(?:;|\d?;|;stream/1|;stream\.mp3|stream|live|radio|aovivo|stream/1/?)", caminho, re.I):
+                out.append(f"https://{p.hostname}:{porta}{caminho}")
+        elif str(qp or "") == "" and re.search(r"/\d{4,5}(?=/|$|;)", caminho):
+            out.append(f"https://{q.hostname}" + re.sub(r"/\d{4,5}(?=/|$|;)", f"/{porta}", caminho, count=1))
+    vistos = []
+    for u in out:
+        if u not in vistos:
+            vistos.append(u)
+    return vistos[:3]
 
 
 def protegido(rec):
@@ -379,7 +411,7 @@ async def main():
             # da emissora com confiança alta. Trocas antigas vindas do Radio Browser (diretório mundial: já
             # trouxe rádio estrangeira e de outra cidade) ou provisórias voltam ao link do post e viram sugestão.
             fonte = rec.get("source") or ""
-            mesmo_servidor = fonte.startswith(("tudoradio", "https automático", "variação", "mesmo servidor", "outro link do post",
+            mesmo_servidor = fonte.startswith(("tudoradio", "radios.com.br", "https automático", "mesmo formato https", "variação", "mesmo servidor", "outro link do post",
                                                "Shoutcast", "post"))
             suspeito = fonte.startswith("Radio Browser") or (rec.get("provisorio") and not mesmo_servidor)
             if suspeito and not protegido(rec) and tem_prova(rec, rec.get("stream"), fonte, usos_site, usos_stream):
@@ -526,10 +558,24 @@ async def main():
         if http_ok:
             log(f"{len(http_ok)} streams só em http; testando https…")
 
+            # endereços https que já tocam, por servidor: mostram o formato https que aquele servidor aceita
+            https_por_host = {}
+            for r in posts_state.values():
+                st_ = r.get("stream") or ""
+                if r.get("status") == "ok" and st_.startswith("https://"):
+                    https_por_host.setdefault(urlsplit(st_).hostname, []).append(st_)
+
             async def upgrade(rec):
-                for v in [v for v in variants(rec["stream"]) if v.startswith("https")][:3]:
-                    if audio_ok(v, await checker.check(v)):
-                        fonte = "Shoutcast em https (mesmo servidor e porta)" if SHOUT_HTTPS_RE.match(v) else "https automático"
+                cands = [(v, None) for v in variants(rec["stream"]) if v.startswith("https")][:3]
+                cands += [(v, "mesmo formato https de outra rádio do mesmo servidor")
+                          for v in formato_vizinho(rec["stream"], https_por_host) if v not in {c[0] for c in cands}]
+                for v, origem in cands:
+                    res = await checker.check(v)
+                    if origem and not (res.ok and (res.content_type or "").split(";")[0].strip().lower().startswith("audio/")):
+                        continue                     # formato copiado de outra rádio: só com Content-Type de áudio
+                    if audio_ok(v, res):
+                        fonte = origem or ("Shoutcast em https (mesmo servidor e porta)" if SHOUT_HTTPS_RE.match(v)
+                                           else "https automático")
                         events["fixed"].append({"url": rec["url"], "title": rec["title"], "from": rec["stream"],
                                                 "to": v, "source": fonte})
                         change(rec, v, fonte)
@@ -545,17 +591,24 @@ async def main():
                 finder.tudo = await tudoradio.atualizar(finder._get_text, today(), log)
             except Exception as ex:
                 log(f"tudoradio indisponível: {ex}")
+        if config.USE_RADIOSCOMBR:
+            try:
+                finder.rcb = await radioscombr.atualizar(finder._get_text, today(), log)
+            except Exception as ex:
+                log(f"radios.com.br indisponível: {ex}")
         # sites usados por 3+ posts são de rede: só vale o player da praça (cidade/frequência) do post
         usos = {}
         for r in posts_state.values():
             for d in {urlparse(x).netloc.replace("www.", "") for x in r.get("sites") or []}:
                 usos[d] = usos.get(d, 0) + 1
         finder.rede = {d for d, n in usos.items() if n >= 3}
-        need_https = [r for r in to_check if (r.get("iframe") or r.get("popup")) and r.get("status") == "ok"
-                      and r.get("http_only") and not protegido(r)
+        # todas as rádios que só tocam em http (o player do site é https e não toca http): busca completa
+        # exigindo https — site da emissora, tudoradio, radios.com.br e Radio Browser (1x por semana)
+        need_https = [r for r in to_check if r.get("status") == "ok" and r.get("http_only")
+                      and (r.get("stream") or "").startswith("http://") and not protegido(r)
                       and (r.get("https_search") or "") < week_ago]
         if need_https:
-            log(f"{len(need_https)} iframes/popups só com http; procurando versão https…")
+            log(f"{len(need_https)} rádios só com http; procurando versão https…")
             sem_h = asyncio.Semaphore(15)
 
             async def find_https(rec):

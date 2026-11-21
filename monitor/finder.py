@@ -307,6 +307,7 @@ class Finder:
         self._listas = {}          # cache das listas de emissoras dos servidores (AzuraCast/Icecast)
         self.nav = Navegador()     # Chromium: sites com player montado por JavaScript
         self.tudo = None           # índice do tudoradio.com (o run.py preenche)
+        self.rcb = None            # índice do radios.com.br (o run.py preenche)
 
     async def _get_text(self, url, limit=400_000):
         try:
@@ -718,26 +719,33 @@ class Finder:
         return None
 
     async def from_tudoradio(self, rec):
-        """tudoradio.com: página da MESMA cidade, UF e frequência do post -> endereço do player deles."""
-        if not self.tudo:
-            return None
+        """Diretórios brasileiros (tudoradio.com e radios.com.br): página da MESMA cidade e UF do post e mesma
+        frequência e faixa (webradio: mesmo nome) -> endereço do player deles."""
         from . import tudoradio
-        for pagina, r in tudoradio.candidatos(self.tudo, rec, frequency, band)[:3]:
-            origem = re.match(r"https?://[^/]+", pagina).group(0)
-            lidos = [u for u in r.get("streams") or [] if u.rstrip("/") != origem]
-            for tentativa in ("página", "navegador"):
-                if tentativa == "navegador":         # player montado por script: abre a página e dá play
-                    lidos = [u for u, _, _ in await self.nav.capturar(pagina)
-                             if "tudoradio.com" not in u and u not in lidos]
-                for u in lidos[:6]:
-                    if u == rec.get("stream") or (rec.get("_need_https") and not u.startswith("https")):
-                        continue
-                    if audio_ok(u, await self.c.check(u)):
-                        faixa = (r.get("banda") or "").upper()
-                        return {"url": u, "confidence": "high", "score": 0.95,
-                                "source": f"tudoradio: {r.get('nome')} ({r.get('cidade')}/{(r.get('uf') or '').upper()}, "
-                                          f"{r.get('freq')} {faixa}) — cidade, UF e frequência conferem",
-                                "pagina": pagina}
+        for rotulo, indice in (("tudoradio", self.tudo), ("radios.com.br", self.rcb)):
+            if not indice:
+                continue
+            for pagina, r in tudoradio.candidatos(indice, rec, frequency, band)[:3]:
+                origem = re.match(r"https?://[^/]+", pagina).group(0)
+                lidos = [u for u in r.get("streams") or [] if u.rstrip("/") != origem]
+                for tentativa in ("página", "navegador"):
+                    if tentativa == "navegador":     # player montado por script: abre a página e dá play
+                        lidos = [u for u, _, _ in await self.nav.capturar(pagina)
+                                 if urlparse(u).netloc.replace("www.", "") != urlparse(pagina).netloc.replace("www.", "")
+                                 and u not in lidos]
+                    for u in lidos[:6]:
+                        if u == rec.get("stream") or (rec.get("_need_https") and not u.startswith("https")):
+                            continue
+                        if audio_ok(u, await self.c.check(u)):
+                            if r.get("web"):
+                                prova = "webradio: cidade, UF e nome conferem"
+                                faixa = "webradio"
+                            else:
+                                prova = "cidade, UF e frequência conferem"
+                                faixa = f"{r.get('freq')} {(r.get('banda') or '').upper()}"
+                            return {"url": u, "confidence": "high", "score": 0.95, "pagina": pagina,
+                                    "source": f"{rotulo}: {r.get('nome')} ({r.get('cidade')}/"
+                                              f"{(r.get('uf') or '').upper()}, {faixa}) — {prova}"}
         return None
 
     async def find(self, rec):

@@ -191,6 +191,7 @@ def build_report(posts, events, today, old_urls=None):
     # áudio vindo do Radio Browser: só entra quando cidade, UF e frequência conferem — fica listado para conferência
     do_rb = [r for r in recs if (r.get("source") or "").startswith("Radio Browser") and r.get("status") != "ignorado"]
     do_tudo = [r for r in recs if (r.get("source") or "").startswith("tudoradio") and r.get("status") != "ignorado"]
+    do_rcb = [r for r in recs if (r.get("source") or "").startswith("radios.com.br") and r.get("status") != "ignorado"]
     http_only = [r for r in recs if r.get("status") == "ok" and r.get("http_only")]
     iframes = [r for r in recs if r.get("iframe")]
     iframe_ok = [r for r in iframes if r.get("status") == "ok" and not r.get("http_only")]
@@ -213,6 +214,7 @@ def build_report(posts, events, today, old_urls=None):
         "bloqueio": len(bloqueio),
         "radio_browser": len(do_rb),
         "tudoradio": len(do_tudo),
+        "radioscombr": len(do_rcb),
         "confirmadas_brasil": sum(1 for r in recs if r.get("status") == "ok" and r.get("br_ok")),
         "so_http": len(http_only),
         "corrigidos_hoje": len(events["fixed"]),
@@ -242,7 +244,7 @@ def build_report(posts, events, today, old_urls=None):
                 f"<h2>{title}</h2>"
                 f"<p>{summary['posts']} posts · <b style=color:green>{summary['ok']} tocando</b> · "
                 f"<b style=color:#c00>{summary['fora_do_ar']} fora do ar</b> "
-                f"({summary['fora_confirmado']} confirmados) · {summary['bloqueio']} não testáveis daqui · {summary['tudoradio']} com áudio do tudoradio · {summary['radio_browser']} com áudio do Radio Browser · {summary['confirmadas_brasil']} confirmadas por ouvintes no Brasil · {summary['sem_link']} sem link · "
+                f"({summary['fora_confirmado']} confirmados) · {summary['bloqueio']} não testáveis daqui · {summary['tudoradio']} com áudio do tudoradio · {summary['radioscombr']} do radios.com.br · {summary['radio_browser']} com áudio do Radio Browser · {summary['confirmadas_brasil']} confirmadas por ouvintes no Brasil · {summary['sem_link']} sem link · "
                 f"{summary['so_http']} só em http · {summary['corrigidos_hoje']} corrigidos hoje · "
                 f"{summary['voltaram_hoje']} voltaram sozinhos · {summary['ignorados']} ignorados "
                 f"(não são rádio, encerradas ou marcados por você) · iframes 'Ao vivo': "
@@ -285,6 +287,10 @@ def build_report(posts, events, today, old_urls=None):
                "(confira; para fixar outro endereço use o overrides.json ou a planilha)",
                [_row(r, html.escape((r.get("source") or "").split(" — ")[0]))
                 for r in sorted(do_tudo, key=lambda r: r.get("title", ""))]),
+        _table("📻 Áudio incorporado do radios.com.br — cidade, UF e frequência (webradio: nome) conferem com o post "
+               "(confira; para fixar outro endereço use o overrides.json ou a planilha)",
+               [_row(r, html.escape((r.get("source") or "").split(" — ")[0]))
+                for r in sorted(do_rcb, key=lambda r: r.get("title", ""))]),
         _table("📻 Áudio incorporado do Radio Browser — cidade, UF e frequência conferem com o post "
                "(confira; para fixar outro endereço use o overrides.json ou a planilha)",
                [_row(r, "Radio Browser: " + html.escape((r.get("source") or "").split(":", 1)[-1].split(" — ")[0].strip()))
