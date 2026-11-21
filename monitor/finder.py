@@ -265,6 +265,38 @@ def rb_mesma_praca(rec, texto):
     return bool(cidade) and cidade in norm(texto or "")
 
 
+def _uf_do_texto(texto):
+    """UFs citadas no texto ('Paracatu, MG', '(Juiz de Fora/MG)', 'Minas Gerais')."""
+    from .extract import UF_NOMES
+    t = norm(texto or "")
+    achadas = {u for u in re.findall(r"(?<![a-z])([a-z]{2})(?![a-z])", t) if u in UF_NOMES}
+    for u, nome in UF_NOMES.items():
+        if norm(nome.split(" ", 1)[1]) in t:
+            achadas.add(u)
+    return achadas
+
+
+def rb_confere(rec, nome, st=None):
+    """Estação do Radio Browser = rádio do post? Cidade E frequência E UF conferem (o nome é opcional).
+    'nome' é o nome da estação; 'st' o registro completo (estado, tags, homepage), quando houver."""
+    st = st or {}
+    loc = rec.get("loc") or [None, None]
+    cidade, uf = loc[0] or "", (loc[1] if len(loc) > 1 else None) or ""
+    texto = " ".join([nome or "", st.get("tags") or "", st.get("homepage") or ""])
+    cid = re.sub(r"[^a-z0-9]", "", norm(cidade))
+    if len(cid) < 4 or cid not in re.sub(r"[^a-z0-9]", "", norm(texto)):
+        return False                                             # cidade
+    f = frequency(rec.get("title", ""))
+    if not f or frequency(texto) != f:
+        return False                                             # frequência
+    ufs = _uf_do_texto((st.get("state") or "") + " " + (nome or ""))
+    if ufs and uf and uf not in ufs:
+        return False                                             # UF diferente
+    if not uf:
+        return False
+    return True
+
+
 class Finder:
     def __init__(self, session: aiohttp.ClientSession, checker):
         self.s = session
@@ -676,9 +708,12 @@ class Finder:
         for sc, url, name, freq_ok in scored[:5]:
             r = await self.c.check(url)
             if r.ok:
-                # só aplica sozinho se o nome bate E a frequência do post confere com a da estação
-                return {"url": url, "source": f"Radio Browser: {name}", "score": sc,
-                        "confidence": "high" if sc >= config.AUTO_APPLY_SCORE and freq_ok else "suggest"}
+                st = next((x for x in stations.values() if (x.get("url_resolved") or x.get("url")) == url), {})
+                if rb_confere(rec, name, st):
+                    # cidade, UF e frequência da estação conferem com o post (o nome é opcional): entra
+                    return {"url": url, "source": f"Radio Browser: {name} — cidade, UF e frequência conferem",
+                            "score": max(sc, 0.9), "confidence": "high", "rb_confere": True}
+                return {"url": url, "source": f"Radio Browser: {name}", "score": min(sc, 0.59), "confidence": "suggest"}
         return None
 
     async def find(self, rec):

@@ -12,10 +12,10 @@ from urllib.parse import unquote, urljoin, urlparse
 from . import config
 from .blogger import BODY_RE, fetch_post_body, fetch_post_body_raw, fetch_posts, load_blogger_backup
 from .checker import Checker
-from .extract import (classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
+from .extract import (frequency, norm, classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
                       extract_location, extract_streams, norm, stream_score)
 from .extras import check_old_urls, contact_pairs, register_old_url, scan_site_whatsapp
-from .finder import Finder, rb_mesma_praca, variants, SHOUT_HTTPS_RE, audio_ok
+from .finder import Finder, rb_confere, rb_mesma_praca, variants, SHOUT_HTTPS_RE, audio_ok
 from .notify import build_report, send_email, write_public
 
 BRT = timezone(timedelta(hours=-3))
@@ -86,6 +86,43 @@ def change(rec, new_url, source, note=""):
     rec["source"] = source
 
 
+_GENERICAS = set("ouvir a o radio radios web fm am ao vivo e online de do da dos das em the mhz khz tv".split())
+_UFS = set("ac al ap am ba ce df es go ma mt ms mg pa pb pr pe pi rj rn rs ro rr sc sp se to".split())
+
+
+def _compacto(t):
+    return re.sub(r"[^a-z0-9]", "", norm(t or ""))
+
+
+def _palavras_nome(t, cidade=""):
+    fora = set(norm(cidade or "").split())
+    return {w for w in re.findall(r"[a-z]+", norm(t or "")) if len(w) >= 3
+            and w not in _GENERICAS and w not in _UFS and w not in fora}
+
+
+def tem_prova(rec, url, fonte, usos_site, usos_stream):
+    """O endereço é da MESMA rádio do post? (sem isso o robô não troca o áudio sozinho)
+    - Radio Browser: o nome da emissora no diretório bate em 2 de 3: cidade, frequência, nome da rádio.
+    - Site oficial da própria emissora (site usado por menos de 3 posts): sim.
+    - Site de rede/grupo: o endereço traz a cidade ou a frequência do post, não aparece em outro post e não é de
+      provedor que nomeia pela marca (StreamTheWorld: 'MIXFM_JOAOPESSOA' não é a Correio AM de João Pessoa)."""
+    fonte = fonte or ""
+    cidade = (rec.get("loc") or [None])[0] or ""
+    cid = _compacto(cidade)
+    f = frequency(rec.get("title", ""))
+    if fonte.startswith("Radio Browser"):
+        # cidade, UF e frequência precisam conferir (o nome da rádio é opcional)
+        nome_rb = fonte.split(":", 1)[-1].split(" — ")[0]
+        return rb_confere(rec, nome_rb)
+    m = re.search(r"site oficial \(([^)]+)\)", fonte)
+    if m and usos_site.get(m.group(1).replace("www.", ""), 0) < 3:
+        return True
+    if url and usos_stream.get(url, 0) <= 1 and "streamtheworld" not in url:
+        u = _compacto(url)
+        return bool((f and f.replace(".", "") in u) or (len(cid) >= 4 and cid in u))
+    return False
+
+
 def protegido(rec):
     """Endereço que o robô não troca sozinho: fixado no overrides.json/planilha ou editado à mão no post."""
     return rec.get("source") == "manual" or bool(rec.get("editado_em"))
@@ -96,6 +133,13 @@ async def main():
     state_path = os.path.join(config.DATA_DIR, "state.json")
     state = load(state_path, {"posts": {}})
     posts_state = state["posts"]
+    # para tem_prova(): quantos posts usam cada site e cada endereço de áudio (dados da execução anterior)
+    usos_site, usos_stream = {}, {}
+    for _r in posts_state.values():
+        for _d in {urlparse(x).netloc.replace("www.", "") for x in _r.get("sites") or []}:
+            usos_site[_d] = usos_site.get(_d, 0) + 1
+        if _r.get("stream"):
+            usos_stream[_r["stream"]] = usos_stream.get(_r["stream"], 0) + 1
     overrides = load(os.path.join(config.DATA_DIR, "overrides.json"), {})
     # chave do overrides.json pode ser a URL completa, o caminho (/2023/05/radio.html) ou o ID do post
     overrides = {(urlparse(k).path if k.startswith("http") else k): v
@@ -334,7 +378,11 @@ async def main():
             fonte = rec.get("source") or ""
             mesmo_servidor = fonte.startswith(("https automático", "variação", "mesmo servidor", "outro link do post",
                                                "Shoutcast", "post"))
-            if not protegido(rec) and (fonte.startswith("Radio Browser") or (rec.get("provisorio") and not mesmo_servidor)):
+            suspeito = fonte.startswith("Radio Browser") or (rec.get("provisorio") and not mesmo_servidor)
+            if suspeito and not protegido(rec) and tem_prova(rec, rec.get("stream"), fonte, usos_site, usos_stream):
+                rec.pop("provisorio", None)          # tem prova de ser a mesma rádio: fica
+                suspeito = False
+            if suspeito and not protegido(rec):
                 rec["suggestion"] = {"url": rec.get("stream"), "source": fonte + " — não aplicado (só site oficial)",
                                      "score": min(rec.get("confianca") or 0, 0.59)}
                 change(rec, rec.get("post_stream"), "post", "troca desfeita: não veio do site da emissora")
@@ -608,8 +656,9 @@ async def main():
                 if found["confidence"] == "high" and score > (rec.get("confianca") or 0):
                     aplicar_achado(rec, found)
                 return
-            if found["confidence"] == "high" and not found["source"].startswith("Radio Browser"):
-                aplicar_achado(rec, found)
+            alta = found["confidence"] == "high" and not found["source"].startswith("Radio Browser")
+            if alta or tem_prova(rec, found["url"], found["source"], usos_site, usos_stream):
+                aplicar_achado(rec, dict(found, confidence="high"))
             else:                                   # Radio Browser / baixa confiança: só sugestão no relatório
                 rec["suggestion"] = {k: found[k] for k in ("url", "source", "score") if k in found}
 
