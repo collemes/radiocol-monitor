@@ -37,13 +37,8 @@
   try { prepararPopup(); } catch (err) {}
   // Post de rádio sem nenhum player: coloca o player abaixo da linha "Gênero" (corrige o card repetido)
   try { prepararSemPlayer(); } catch (err) {}
-  // Seção "Siga nas redes sociais" do post vira um card com botões
-  // depois que a página terminou de carregar: outros scripts do tema (ex.: as perguntas que viram itens com "+")
-  // montam a estrutura primeiro; o card só troca a lista de links, sem mover nada.
-  (function () {
-    var rodar = function () { setTimeout(function () { try { redesSociais(); } catch (err) {} }, 400); };
-    if (document.readyState === 'complete') rodar(); else window.addEventListener('load', rodar);
-  })();
+  // Seção "Siga nas redes sociais" do post vira um card com botões (só troca a lista de links, sem mover nada)
+  try { redesSociais(); } catch (err) {}
 
   // A base usa o ID do post: continua valendo mesmo se a URL do post mudar
   var meta = document.querySelector('meta[itemprop="postId"]');
