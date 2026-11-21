@@ -2,6 +2,8 @@
      RADIOCOL — endereço de áudio dinâmico (lido do GitHub)
      Cole este bloco no Tema > Editar HTML, logo ANTES de </body>
      (depois do script do MediaElement.js).
+     PARA ATUALIZAR: apague do início deste comentário até a linha
+     "FIM DO BLOCO RADIOCOL" (inclusive) e cole o bloco novo no lugar.
      Já configurado para o repositório github.com/collemes/radiocol-monitor.
      =================================================================== -->
 <b:if cond='data:view.isPost'>
@@ -9,6 +11,9 @@
 <script>
 //<![CDATA[
 (function () {
+  // trava: se o bloco foi colado duas vezes no tema, só a primeira cópia roda
+  if (window.__RADIOCOL_BLOCO) return;
+  window.__RADIOCOL_BLOCO = true;
   var BASE   = 'https://collemes.github.io/radiocol-monitor/r/';
   // Alternativa via jsDelivr (CDN): 'https://cdn.jsdelivr.net/gh/collemes/radiocol-monitor@main/docs/r/'
   var SHARDS = 32;                 // igual ao SHARDS do robô
@@ -760,3 +765,4 @@
 //]]>
 </script>
 </b:if>
+<!-- ======== FIM DO BLOCO RADIOCOL ======== -->
