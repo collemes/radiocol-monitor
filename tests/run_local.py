@@ -431,4 +431,45 @@ if any(x.endswith(("/stream", "/live")) for x in finder.variants("https://stm01.
     bad += 1; print("FALHOU: ponto com nome da rádio / servidor compartilhado não pode trocar o ponto")
 
 asyncio.run(_conta_testes())
+
+
+# ----- regra nova (2026-11-22): diretórios que não abrem dizem no log o MOTIVO (HTTP 403, tipo, erro)
+async def _diretorios_motivo():
+    global bad
+    import tempfile
+    from monitor import config as cfg, radioscombr, tudoradio
+
+    async def recusa(req):
+        return web.Response(status=403, text="bloqueado")
+    app = web.Application()
+    app.router.add_get("/{x:.*}", recusa)
+    rn = web.AppRunner(app)
+    await rn.setup()
+    await web.TCPSite(rn, "127.0.0.1", 8799).start()
+    async with aiohttp.ClientSession() as s:
+        f = finder.Finder(s, None)
+        u = "http://127.0.0.1:8799/player/sitemap"
+        if await f._get_text(u) != "" or f.erros_texto.get(u) != "HTTP 403":
+            bad += 1; print("FALHOU motivo da leitura vazia", f.erros_texto)
+    await rn.cleanup()
+    antigo = cfg.DATA_DIR
+    cfg.DATA_DIR = tempfile.mkdtemp()
+    linhas = []
+
+    async def vazio(url, limit=0):
+        return ""
+    try:
+        await tudoradio.atualizar(vazio, "2026-11-22", linhas.append, motivo=lambda u: "HTTP 403")
+        ind = await radioscombr.atualizar(vazio, "2026-11-22", linhas.append, motivo=lambda u: "HTTP 403")
+    finally:
+        cfg.DATA_DIR = antigo
+    print("diretórios:", linhas)
+    if not any("mapa indisponível hoje (HTTP 403)" in l for l in linhas) or \
+            not any("listas sem resposta" in l and "HTTP 403" in l for l in linhas):
+        bad += 1; print("FALHOU: log dos diretórios sem o motivo")
+    if ind["listas"][radioscombr.INICIO].get("lido"):
+        bad += 1; print("FALHOU: lista que não abriu deve ser tentada de novo na próxima execução")
+
+import aiohttp  # noqa: E402
+asyncio.run(_diretorios_motivo())
 print("RESULTADO:", "TUDO CERTO" if not bad else f"{bad} FALHA(S)")

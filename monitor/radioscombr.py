@@ -69,7 +69,7 @@ def _normaliza(base, href):
     return None, None
 
 
-async def atualizar(fetch_text, hoje, log=print):
+async def atualizar(fetch_text, hoje, log=print, motivo=None):
     indice = carregar()
     listas, radios = indice.setdefault("listas", {}), indice.setdefault("radios", {})
     listas.setdefault(INICIO, {})
@@ -83,6 +83,8 @@ async def atualizar(fetch_text, hoje, log=print):
             html = await fetch_text(u, limit=1_500_000)
             await asyncio.sleep(0.4)
         listas[u]["lido"] = hoje
+        if not html:
+            vazias.append(u)
         for href in HREF_RE.findall(html or ""):
             tipo, alvo = _normaliza(u, href)
             if tipo == "radio":
@@ -90,6 +92,7 @@ async def atualizar(fetch_text, hoje, log=print):
             elif tipo == "lista":
                 listas.setdefault(alvo, {})
 
+    vazias = []
     rodada = 0
     while fila and rodada < 4:                           # segue as listas novas que aparecem na mesma execução
         await asyncio.gather(*(ler_lista(u) for u in fila))
@@ -116,6 +119,11 @@ async def atualizar(fetch_text, hoje, log=print):
 
     if fila:
         await asyncio.gather(*(ler_radio(u) for u in fila))
+    if vazias:
+        por = (motivo(vazias[0]) if motivo else None) or "resposta vazia"
+        log(f"radios.com.br: {len(vazias)} listas sem resposta (ex.: {vazias[0]} — {por})")
+        for u in vazias:                      # lista que não abriu é tentada de novo na próxima execução
+            listas[u].pop("lido", None)
     log(f"radios.com.br: {len(listas)} listas, {len(radios)} páginas de rádio conhecidas, "
         f"{sum(1 for r in radios.values() if r.get('cidade'))} identificadas "
         f"({sum(1 for r in radios.values() if r.get('web'))} webradios)")

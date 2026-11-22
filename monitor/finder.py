@@ -308,18 +308,26 @@ class Finder:
         self.nav = Navegador()     # Chromium: sites com player montado por JavaScript
         self.tudo = None           # índice do tudoradio.com (o run.py preenche)
         self.rcb = None            # índice do radios.com.br (o run.py preenche)
+        self.erros_texto = {}      # url -> por que a leitura voltou vazia (HTTP 403, tipo…, exceção) — vai no log
 
     async def _get_text(self, url, limit=400_000):
         try:
             async with self.s.get(url, headers={"User-Agent": config.USER_AGENT, **BROWSER_HEADERS},
                                   timeout=aiohttp.ClientTimeout(total=20)) as r:
                 if r.status >= 400:
+                    self.erros_texto[url] = f"HTTP {r.status}"
                     return ""
                 ct = r.headers.get("Content-Type", "")
+                corpo = await r.content.read(limit)
+                # sem Content-Type: aceita se o começo parecer texto (HTML/XML/JSON); binário fica de fora
+                if not ct and corpo[:200].lstrip()[:1] in (b"<", b"{", b"["):
+                    return corpo.decode("utf-8", "ignore")
                 if not any(k in ct for k in ("html", "text", "json", "javascript", "ecmascript", "xml")):
+                    self.erros_texto[url] = f"tipo {ct or 'vazio'}"
                     return ""
-                return (await r.content.read(limit)).decode("utf-8", "ignore")
-        except Exception:
+                return corpo.decode("utf-8", "ignore")
+        except Exception as ex:
+            self.erros_texto[url] = type(ex).__name__
             return ""
 
     async def _first_ok(self, urls, limit=6):

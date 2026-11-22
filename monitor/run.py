@@ -646,12 +646,14 @@ async def main():
         finder = Finder(session, checker)
         if config.USE_TUDORADIO:
             try:
-                finder.tudo = await tudoradio.atualizar(finder._get_text, today(), log)
+                finder.tudo = await tudoradio.atualizar(finder._get_text, today(), log,
+                                                   motivo=finder.erros_texto.get)
             except Exception as ex:
                 log(f"tudoradio indisponível: {ex}")
         if config.USE_RADIOSCOMBR:
             try:
-                finder.rcb = await radioscombr.atualizar(finder._get_text, today(), log)
+                finder.rcb = await radioscombr.atualizar(finder._get_text, today(), log,
+                                                       motivo=finder.erros_texto.get)
             except Exception as ex:
                 log(f"radios.com.br indisponível: {ex}")
         # sites usados por 3+ posts são de rede: só vale o player da praça (cidade/frequência) do post

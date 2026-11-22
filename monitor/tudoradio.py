@@ -82,7 +82,7 @@ def salvar(indice):
         json.dump(indice, f, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
 
 
-async def atualizar(fetch_text, hoje, log=print):
+async def atualizar(fetch_text, hoje, log=print, motivo=None):
     """Atualiza o índice: mapa de páginas 1x/semana e até TUDORADIO_PAGINAS páginas por execução."""
     indice = carregar()
     radios = indice.setdefault("radios", {})
@@ -95,7 +95,8 @@ async def atualizar(fetch_text, hoje, log=print):
             indice["sitemap"] = hoje
             log(f"tudoradio: mapa com {len(achadas)} páginas de rádio")
         else:
-            log("tudoradio: mapa indisponível hoje")
+            por = (motivo(SITEMAP) if motivo else None) or ("página sem links de rádio" if txt else "resposta vazia")
+            log(f"tudoradio: mapa indisponível hoje ({por})")
     fila = [u for u, r in radios.items() if not r.get("lido") or _dias(r["lido"], hoje) >= 30]
     fila.sort(key=lambda u: radios[u].get("lido") or "")
     fila = fila[: config.TUDORADIO_PAGINAS]
