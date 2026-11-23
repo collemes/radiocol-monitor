@@ -182,7 +182,7 @@ def confianca_whatsapp(num, achados, rec, rede=False, visto_antes=False):
 
 async def scan_site_whatsapp(session, recs, overrides_for, today, fetch_text, force=False, rede=None):
     """Procura WhatsApp no site oficial. Se for diferente do post:
-    - confiança > config.WHATS_AUTO_MIN (0,9): o site passa a mostrar o número do site oficial;
+    - confiança >= config.WHATS_AUTO_MIN (0,95): o site passa a mostrar o número do site oficial;
     - senão: vira sugestão no e-mail/relatório.
     Número de WhatsApp que você trocou à mão no post nunca é substituído automaticamente."""
     sem = asyncio.Semaphore(10)
@@ -190,6 +190,13 @@ async def scan_site_whatsapp(session, recs, overrides_for, today, fetch_text, fo
 
     async def one(rec):
         post_w = (rec.get("contacts") or {}).get("whatsapp") or []
+        # todo dia (não só na leitura semanal do site): o que já está guardado continua valendo pela regra atual?
+        sug_ = rec.get("contact_suggestion") or {}
+        if sug_ and (not post_w or any(same_number(sug_.get("site") or "", p) for p in post_w)):
+            rec.pop("contact_suggestion", None)      # mesmo número (ex.: só o 9 a mais) ou post sem WhatsApp
+            rec.pop("contact_auto", None)
+        elif sug_ and rec.get("contact_auto") and (sug_.get("score") or 0) < config.WHATS_AUTO_MIN - 1e-9:
+            rec.pop("contact_auto", None)            # troca antiga abaixo do limite atual: volta a ser sugestão
         # você trocou o WhatsApp no post: vale o seu (e cancela a troca automática anterior)
         visto = rec.get("wa_post_visto")
         if post_w and visto and not same_number(post_w[0], visto):
@@ -225,7 +232,7 @@ async def scan_site_whatsapp(session, recs, overrides_for, today, fetch_text, fo
         sug = {"kind": "whatsapp", "post": post_w[0], "site": melhor, "url": rec["sites"][0], "score": melhor_sc,
                "since": anterior.get("since") if same_number(melhor, anterior.get("site") or "") else today}
         rec["contact_suggestion"] = sug
-        if melhor_sc > config.WHATS_AUTO_MIN and not rec.get("wa_editado_em"):
+        if melhor_sc >= config.WHATS_AUTO_MIN - 1e-9 and not rec.get("wa_editado_em"):   # >= 0,95
             auto = [digits(post_w[0]), digits(melhor), "w"]
             if rec.get("contact_auto") != auto:
                 rec["contact_auto"] = auto

@@ -333,7 +333,12 @@ def build_report(posts, events, today, old_urls=None):
         _table("⏸️ Ignorados (não são post de rádio, rádios encerradas ou marcados no overrides.json)",
                [_row(r) for r in sorted(recs, key=lambda r: r.get("title", "")) if r.get("status") == "ignorado"]),
         _table("↪️ URLs antigas sem redirecionamento 301", _url_rows(no_redirect), url_cols),
-        _table("📱 WhatsApp diferente no site oficial", _contact_rows(contact_sugs), ct_cols),
+        _table("✅ WhatsApp atualizado no site — o site oficial da emissora tem outro número, com confiança de 0,95 "
+               "ou mais; o Radiocol já mostra o número do site oficial (o post não é alterado)",
+               _contact_rows([r for r in contact_sugs if r.get("contact_auto")]), ct_cols),
+        _table("📱 WhatsApp diferente no site oficial — sugestão (confiança abaixo de 0,95: confira e, se estiver "
+               "certo, troque no post ou pela planilha)",
+               _contact_rows([r for r in contact_sugs if not r.get("contact_auto")]), ct_cols),
     ]
     report_html = page(full_sections, "Radiocol — situação dos streams")
     with open(os.path.join(config.PUBLIC_DIR, "relatorio.html"), "w", encoding="utf-8") as f:
