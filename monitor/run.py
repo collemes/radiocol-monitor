@@ -828,8 +828,9 @@ async def main():
                     or dias_desde(r.get("search_tried")) >= 7)]
         # "não testáveis daqui" e endereços provisórios (sugestão < alta confiança): procura no site 1x/semana
         fila_off += [r for r in posts_state.values()
-                     if (r.get("status") == "bloqueio" or (r.get("status") == "ok" and r.get("provisorio")))
-                     and r.get("sites") and not protegido(r) and r not in off and not r.get("encerrada")
+                     if (r.get("status") == "bloqueio" or (r.get("status") == "ok" and r.get("provisorio")
+                                                            and r.get("sites")))
+                     and not protegido(r) and r not in off and not r.get("encerrada")
                      and dias_desde(r.get("search_tried")) >= 7]
         fila_off.sort(key=lambda r: (r.get("fail_count", 0) > config.CONFIRM_RUNS, r.get("search_tried") or ""))
         # posts sem nenhum endereço de áudio, mas com site oficial: procura o player no site
@@ -937,14 +938,25 @@ async def main():
                     aplicar_achado(rec, found)
                     return
             async with sem:
-                if atual_ok:
+                if rec.get("status") == "bloqueio":
+                    # "não testável daqui": site da emissora -> tudoradio/radios.com.br -> Radio Browser (estado,
+                    # cidade e frequência). Só troca por endereço que TOCA para o robô; https não vira http.
+                    if (rec.get("stream") or "").startswith("https"):
+                        rec["_need_https"] = True
                     found = await finder.from_official_site(rec)
-                    if not found and rec.get("status") == "bloqueio":
+                    if found and (found["confidence"] != "high" or found.get("nao_testavel")):
+                        found = None                     # o site só tem o mesmo tipo de servidor que não responde
+                    if not found:
                         found = await finder.from_tudoradio(rec)        # outro servidor da mesma rádio
-                    if not found and rec.get("status") == "bloqueio":
-                        found = await finder.from_radio_browser(rec)    # só vale com estado, cidade e frequência
+                    if not found:
+                        found = await finder.from_radio_browser(rec)
                         if found and not found.get("rb_confere"):
                             found = None
+                    rec.pop("_need_https", None)
+                    rec["busca_dir"] = today() + (": achou " + found["source"].split(" — ")[0] if found
+                                                  else ": nada diferente no site, tudoradio, radios.com.br e Radio Browser")
+                elif atual_ok:
+                    found = await finder.from_official_site(rec)
                 else:
                     found = await finder.find(rec)
             if not found:
@@ -960,8 +972,9 @@ async def main():
             score = found.get("score") or 0
             if atual_ok:
                 # provisório / não testável: troca só por achado do site da emissora com confiança maior
-                if found["confidence"] == "high" and score > (rec.get("confianca") or 0) \
-                        and await pode_trocar(rec, found["url"]):
+                # (não testável: qualquer endereço da MESMA rádio que toque para o robô já é melhor)
+                melhor = rec.get("status") == "bloqueio" or score > (rec.get("confianca") or 0)
+                if found["confidence"] == "high" and melhor and await pode_trocar(rec, found["url"]):
                     aplicar_achado(rec, found)
                 return
             alta = found["confidence"] == "high" and not found["source"].startswith("Radio Browser")

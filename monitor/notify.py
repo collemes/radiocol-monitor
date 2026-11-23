@@ -358,7 +358,8 @@ def build_report(posts, events, today, old_urls=None):
                 for r in sorted(do_rb, key=lambda r: r.get("title", ""))]),
         _table("🌎 Não deu para testar daqui — o servidor não responde ao robô (que roda fora do Brasil). "
                "Provável bloqueio de acesso estrangeiro: confira tocando no site; o site não mostra aviso de fora do ar",
-               [_row(r) for r in sorted(bloqueio, key=lambda r: r.get("title", ""))]),
+               [_row(r, "diretórios: " + html.escape(r["busca_dir"]) if r.get("busca_dir") else "")
+                for r in sorted(bloqueio, key=lambda r: r.get("title", ""))]),
         _table("🟠 Só funcionam em http:// (o navegador pode bloquear no site https)",
                [_row(r, _sugg(r)) for r in http_only]),
         _table("🔁 Iframes 'Ao vivo' ainda sem stream https (continuam com o iframe)",
