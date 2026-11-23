@@ -11,6 +11,8 @@ from urllib.parse import quote, urlparse
 
 import aiohttp
 
+from .extract import ler_tudo
+
 from . import config
 
 
@@ -96,7 +98,7 @@ async def fetch_post_body_raw(session, url):
                                timeout=aiohttp.ClientTimeout(total=20)) as r:
             if r.status >= 400 or "html" not in r.headers.get("Content-Type", "html"):
                 return ""
-            return (await r.content.read(400_000)).decode("utf-8", "ignore")
+            return (await ler_tudo(r, 1_500_000)).decode("utf-8", "ignore")
     except Exception:
         return ""
 

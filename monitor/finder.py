@@ -18,7 +18,7 @@ from . import config
 import json
 
 from .navegador import Navegador
-from .extract import band, desescapa, extract_streams, frequency, name_tokens, norm, parece_video
+from .extract import band, desescapa, ler_tudo, extract_streams, frequency, name_tokens, norm, parece_video
 
 IFRAME_RE = re.compile(r"""<iframe\b[^>]*?\b(?:data-)?src\s*=\s*["']([^"']+)["']""", re.I)
 SCRIPT_SRC_RE = re.compile(r"""<script\b[^>]*?\bsrc\s*=\s*["']([^"']+)["']""", re.I)
@@ -323,12 +323,12 @@ class Finder:
     async def _get_text(self, url, limit=400_000):
         try:
             async with self.s.get(url, headers={"User-Agent": config.USER_AGENT, **BROWSER_HEADERS},
-                                  timeout=aiohttp.ClientTimeout(total=20)) as r:
+                                  timeout=aiohttp.ClientTimeout(total=40)) as r:
                 if r.status >= 400:
                     self.erros_texto[url] = f"HTTP {r.status}"
                     return ""
                 ct = r.headers.get("Content-Type", "")
-                corpo = await r.content.read(limit)
+                corpo = await ler_tudo(r, limit)
                 # sem Content-Type: aceita se o começo parecer texto (HTML/XML/JSON); binário fica de fora
                 if not ct and corpo[:200].lstrip()[:1] in (b"<", b"{", b"["):
                     return corpo.decode("utf-8", "ignore")

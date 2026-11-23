@@ -534,3 +534,15 @@ def nome_curto(title: str) -> str:
     t = re.sub(r"\s*[-/–(]?\s*\b([A-Z]{2})\)?\s*$",
                lambda m: "" if m.group(1).lower() in UF else m.group(0), t)
     return t.strip(" -–|") or (title or "").strip()
+
+
+async def ler_tudo(resp, limit):
+    """Lê o corpo da resposta até o fim (ou até 'limit' bytes). StreamReader.read(n) devolve só o que já chegou
+    — numa página grande isso é o primeiro pedaço, e o resto (links, players, dados) ficava de fora."""
+    buf = bytearray()
+    async for chunk in resp.content.iter_chunked(65536):
+        buf.extend(chunk)
+        if len(buf) >= limit:
+            del buf[limit:]
+            break
+    return bytes(buf)
