@@ -115,6 +115,8 @@ def tem_prova(rec, url, fonte, usos_site, usos_stream):
         return "conferem" in fonte                   # só entra com cidade, UF e frequência (ou nome) iguais
     if fonte.startswith("Radio Browser"):
         # cidade, UF e frequência precisam conferir (o nome da rádio é opcional)
+        if "conferem" in fonte:                      # conferido com o registro completo (estado, tags, site)
+            return True
         nome_rb = fonte.split(":", 1)[-1].split(" — ")[0]
         return rb_confere(rec, nome_rb)
     m = re.search(r"site oficial \(([^)]+)\)", fonte)
@@ -844,6 +846,10 @@ async def main():
                     found = await finder.from_official_site(rec)
                     if not found and rec.get("status") == "bloqueio":
                         found = await finder.from_tudoradio(rec)        # outro servidor da mesma rádio
+                    if not found and rec.get("status") == "bloqueio":
+                        found = await finder.from_radio_browser(rec)    # só vale com estado, cidade e frequência
+                        if found and not found.get("rb_confere"):
+                            found = None
                 else:
                     found = await finder.find(rec)
             if not found:

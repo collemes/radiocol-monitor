@@ -292,11 +292,11 @@ def rb_confere(rec, nome, st=None):
     f = frequency(rec.get("title", ""))
     if not f or frequency(texto) != f:
         return False                                             # frequência
-    ufs = _uf_do_texto((st.get("state") or "") + " " + (nome or ""))
-    if ufs and uf and uf not in ufs:
-        return False                                             # UF diferente
     if not uf:
         return False
+    ufs = _uf_do_texto((st.get("state") or "") + " " + (nome or "") + " " + (st.get("tags") or ""))
+    if uf.lower() not in {u.lower() for u in ufs}:
+        return False                                             # estado ausente ou diferente
     return True
 
 
@@ -701,17 +701,21 @@ class Finder:
         if len(toks) > 1:
             queries.append(max(toks, key=len))
         freq = frequency(title)
+        # o nome é opcional: procura também pela cidade e pela frequência do post
+        cidade_post = ((rec.get("loc") or [None])[0] or "").strip()
+        if cidade_post:
+            queries.append(cidade_post)
+        if freq:
+            queries += [freq, freq.replace(".", ",")] if "." in freq else [freq]
         post_band = band(title)
         labels = " ".join(norm(l) for l in rec.get("labels", []))
         stations = {}
         for q in queries:
             data = await self._rb_get(
                 f"/json/stations/search?name={quote(q)}&countrycode={config.COUNTRY_CODE}"
-                f"&hidebroken=true&order=votes&reverse=true&limit=20")
+                f"&hidebroken=true&order=votes&reverse=true&limit=60")
             for st in data or []:
                 stations.setdefault(st.get("stationuuid"), st)
-            if len(stations) >= 5:
-                break
         scored = []
         for st in stations.values():
             name = st.get("name", "")
@@ -734,20 +738,24 @@ class Finder:
             # rádio de rede (Jovem Pan, Transamérica, Nova Brasil…): só vale a estação da MESMA cidade do post
             if not rb_mesma_praca(rec, name + " " + (st.get("tags") or "") + " " + (st.get("homepage") or "")):
                 sc = min(sc, LIMITE_OUTRA_PRACA)
-            if url and sc >= config.SUGGEST_SCORE:
-                scored.append((round(min(sc, 1.0), 3), url, name, freq_ok))
-        scored.sort(key=lambda x: (-x[0], 0 if x[1].startswith("https") else 1))
-        for sc, url, name, freq_ok in scored[:5]:
-            r = await self.c.check(url)
-            if r.ok:
-                st = next((x for x in stations.values() if (x.get("url_resolved") or x.get("url")) == url), {})
-                if rb_confere(rec, name, st):
-                    # cidade, UF e frequência da estação conferem com o post (o nome é opcional): entra
+            if not url:
+                continue
+            confere = rb_confere(rec, name, st)
+            if confere or sc >= config.SUGGEST_SCORE:
+                scored.append((round(min(sc, 1.0), 3), url, name, confere, st))
+        # primeiro as estações em que estado, cidade e frequência conferem (o nome é opcional)
+        scored.sort(key=lambda x: (0 if x[3] else 1, -x[0], 0 if x[1].startswith("https") else 1))
+        sugestao = None
+        for sc, url, name, confere, st in scored[:8]:
+            if confere:
+                if (await self.c.check(url)).ok:
                     return {"url": url, "site": st.get("homepage") or None,
-                            "source": f"Radio Browser: {name} — cidade, UF e frequência conferem",
+                            "source": f"Radio Browser: {name} — estado, cidade e frequência conferem",
                             "score": max(sc, 0.9), "confidence": "high", "rb_confere": True}
-                return {"url": url, "source": f"Radio Browser: {name}", "score": min(sc, 0.59), "confidence": "suggest"}
-        return None
+            elif sugestao is None and (await self.c.check(url)).ok:
+                sugestao = {"url": url, "source": f"Radio Browser: {name} (estado, cidade ou frequência não conferem)",
+                            "score": min(sc, 0.59), "confidence": "suggest"}
+        return sugestao
 
     async def from_tudoradio(self, rec):
         """Diretórios brasileiros (tudoradio.com e radios.com.br): página da MESMA cidade e UF do post e mesma
@@ -780,11 +788,18 @@ class Finder:
         return None
 
     async def find(self, rec):
+        """Ordem: variações do mesmo endereço -> site da emissora -> tudoradio e radios.com.br -> Radio Browser.
+        Um achado incerto (sugestão) não encerra a busca: os diretórios ainda são consultados e, se um deles
+        achar a rádio com estado, cidade e frequência conferidos, esse vale. Senão fica a primeira sugestão."""
+        sugestao = None
         for step in (self.from_variants, self.from_official_site, self.from_tudoradio, self.from_radio_browser):
             try:
                 res = await step(rec)
             except Exception:
                 res = None
-            if res:
+            if not res:
+                continue
+            if res.get("confidence") == "high":
                 return res
-        return None
+            sugestao = sugestao or res
+        return sugestao
