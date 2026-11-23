@@ -579,7 +579,12 @@ class Finder:
         dominio = urlparse(site).netloc.replace("www.", "")
 
         async def funciona(u):
-            return u in tocou or (await self.c.check(u)).ok
+            r = await self.c.check(u)
+            if r.ok:
+                return True
+            # tocou no navegador do robô mas o teste daqui falhou: vale, a não ser que seja prévia/arquivo/vídeo
+            return u in tocou and not re.search(r"tamanho fechado|prévia|não é endereço de transmissão|vídeo|"
+                                                r"gravação curta", r.reason or "")
 
         if dominio in self.rede or len({p[0] for p in pares}) > 3:
             # site de rede: só serve o player da praça do post (cidade e/ou frequência no endereço ou ao lado dele)

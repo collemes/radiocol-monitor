@@ -36,6 +36,8 @@ PER_HOST = _int("PER_HOST", 6)               # conexões simultâneas por servid
 CONNECT_TIMEOUT = _int("CONNECT_TIMEOUT", 10)
 READ_TIMEOUT = _int("READ_TIMEOUT", 12)
 MIN_AUDIO_BYTES = _int("MIN_AUDIO_BYTES", 4096)
+# áudio com duração fechada até este limite (prévia do Spotify/Deezer/iTunes, vinheta): não é a rádio ao vivo
+CLIPE_MAX_S = _int("CLIPE_MAX_S", 30)
 
 # Quantas execuções diárias seguidas com falha antes de avisar por e-mail
 # (evita alarme falso por queda momentânea da emissora)

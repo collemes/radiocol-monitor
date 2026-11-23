@@ -196,6 +196,12 @@ class Checker:
         if not urls:
             return Result(False, "playlist vazia", url)
         if kind == "media":
+            if "#EXT-X-ENDLIST" in text.upper():
+                dur = 0.0
+                for m in re.finditer(r"#EXTINF:\s*([\d.]+)", text):
+                    dur += float(m.group(1))
+                if dur <= config.CLIPE_MAX_S:
+                    return Result(False, f"gravação curta ({dur:.0f} s), não é transmissão ao vivo", url)
             # HLS: basta o primeiro segmento responder
             seg = urls[-1]
             try:

@@ -24,6 +24,25 @@ except Exception:  # Playwright não instalado: o robô segue só com a leitura 
 AUDIO_URL_RE = re.compile(
     r"\.(mp3|aac|aacp|ogg|opus|m3u8|pls|m3u)(\?|$)|/(stream|listen|live|radio|;)(/|\?|$|\.)|:\d{4,5}/|"
     r"icecast|shoutcast|zeno\.fm|radio\.co|azuracast|/proxy/", re.I)
+def _arquivo_fechado(headers, ct):
+    """Resposta de áudio com tamanho total conhecido e pequeno e sem cabeçalho de rádio (icy-*):
+    é arquivo (música, prévia de 30 s do Spotify, vinheta), não transmissão ao vivo. Playlists (m3u8/pls) não."""
+    ct = (ct or "").lower()
+    if any(k in ct for k in ("mpegurl", "scpls", "pls+xml", "mp2t")):
+        return False
+    if any(k.lower().startswith("icy-") for k in headers.keys()):
+        return False
+    total = None
+    cr = headers.get("content-range") or headers.get("Content-Range") or ""
+    m = re.search(r"/(\d+)\s*$", cr)
+    if m:
+        total = int(m.group(1))
+    else:
+        cl = headers.get("content-length") or headers.get("Content-Length") or ""
+        total = int(cl) if cl.isdigit() else None
+    return bool(total) and total < 25_000_000
+
+
 AUDIO_CT_RE = re.compile(r"audio/|mpegurl|application/ogg|video/mp2t|application/octet-stream", re.I)
 IGNORAR_RE = re.compile(r"google|doubleclick|facebook|youtube|ytimg|gstatic|analytics|hotjar|clarity|"
                         r"scdn\.co|mp3-preview|dzcdn|itunes\.apple|mzstatic|sndcdn|status(-json)?\.xsl|"
@@ -158,6 +177,7 @@ class Navegador:
         ctx = await self._browser.new_context(locale="pt-BR", user_agent=config.USER_AGENT,
                                               viewport={"width": 1280, "height": 900}, ignore_https_errors=True)
         achados = {}   # url -> [contexto, tocou]
+        curtos = set() # áudio com duração fechada (prévia de música, vinheta): não é a rádio ao vivo
         marca = {"ctx": ""}
 
         def anota(url, contexto="", tocou=False):
@@ -179,6 +199,9 @@ class Navegador:
                 if ct.lower().startswith("video/") and "mp2t" not in ct.lower():
                     return                       # vídeo (vinheta/anúncio) que o navegador tocou: não é a rádio
                 if resp.request.resource_type == "media" or AUDIO_CT_RE.search(ct):
+                    if _arquivo_fechado(resp.headers, ct):
+                        curtos.add(url)          # música/prévia com tamanho fechado, não transmissão
+                        return
                     anota(url, tocou=resp.status in (200, 206))      # o navegador recebeu áudio de verdade
                 elif resp.request.resource_type in ("xhr", "fetch") and ("json" in ct or "text" in ct):
                     corpo = await resp.text()
@@ -240,10 +263,16 @@ class Navegador:
                 try:
                     fontes = await frame.evaluate(
                         """() => [...document.querySelectorAll('audio,video,source')]
-                              .map(e => [e.currentSrc || e.src || '', e.closest('[class],[id]') ?
+                              .map(e => { const m = e.tagName === 'SOURCE' ? e.parentElement : e;
+                                          const d = m && m.duration;
+                                          return [e.currentSrc || e.src || '', e.closest('[class],[id]') ?
                                          (e.closest('[class],[id]').innerText || '').slice(0, 200) : '',
-                                         !!(e.currentTime > 0 && !e.paused)])""")
-                    for src, texto, tocando in fontes:
+                                         !!(m && m.currentTime > 0 && !m.paused),
+                                         (typeof d === 'number' && isFinite(d) && d > 0) ? d : 0]; })""")
+                    for src, texto, tocando, dur in fontes:
+                        if dur and dur <= config.CLIPE_MAX_S:
+                            curtos.add(src)      # prévia de ~30 s (Spotify etc.): ignora
+                            continue
                         anota(src, norm(texto), tocando)
                     html = await frame.content()
                     for u in extract_streams(html):
@@ -258,7 +287,7 @@ class Navegador:
         if origem:
             paginas.add(origem.group(0))
         return [(u, c, t) for u, (c, t) in achados.items()
-                if not u.startswith("blob:") and u.rstrip("/") not in paginas]
+                if not u.startswith("blob:") and u.rstrip("/") not in paginas and u not in curtos]
 
 
 async def _toca_no_radiocol(self, url_post):
@@ -286,7 +315,8 @@ async def _toca_no_radiocol(self, url_post):
         for _ in range(8):                               # até ~16 s esperando o áudio andar
             await page.wait_for_timeout(2000)
             andou = await page.evaluate("""() => Array.from(document.querySelectorAll('.post-body audio, .post-body video'))
-                .some(a => !a.paused && a.currentTime > 3 && !a.hasAttribute('data-radiocol-sem-stream'))""")
+                .some(a => !a.paused && a.currentTime > 3 && !a.hasAttribute('data-radiocol-sem-stream')
+                       && !(isFinite(a.duration) && a.duration > 0 && a.duration <= %d))""" % config.CLIPE_MAX_S)
             if andou:
                 return True
         return False
