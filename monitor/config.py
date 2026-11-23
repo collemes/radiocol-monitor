@@ -42,6 +42,8 @@ CLIPE_MAX_S = _int("CLIPE_MAX_S", 30)
 # Quantas execuções diárias seguidas com falha antes de avisar por e-mail
 # (evita alarme falso por queda momentânea da emissora)
 CONFIRM_RUNS = _int("CONFIRM_RUNS", 2)
+# rádios encerradas procuradas nos diretórios por execução (cada uma 1x por semana)
+SUCESSORAS_MAX = _int("SUCESSORAS_MAX", 200)
 
 # Busca de substitutos
 MAX_SEARCH = _int("MAX_SEARCH", 600)          # máx. rádios pesquisadas por execução

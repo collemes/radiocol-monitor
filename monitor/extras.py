@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 import aiohttp
 
 from . import config
-from .extract import WA_RE, digits, same_number
+from .extract import WA_RE, digits, extract_contacts, same_number
 from .finder import similarity
 
 
@@ -93,8 +93,14 @@ def contact_pairs(rec, ov):
             olds = post.get(key) or []
             if olds:
                 pairs.append([olds[0], digits(val), kind])
-    if not ov.get("whatsapp") and rec.get("contact_auto") and not rec.get("wa_editado_em"):
+    suc = rec.get("sucessora") or {}
+    if not ov.get("whatsapp") and rec.get("contact_auto") and not rec.get("wa_editado_em") and not suc:
         pairs.append(list(rec["contact_auto"]))   # WhatsApp do site oficial (confiança > 0,9)
+    # rádio encerrada com nova emissora na mesma frequência: números antigos do post -> números da nova
+    for kind, key in (("w", "whatsapp"), ("t", "telefone")):
+        olds = post.get(key) or []
+        if suc.get(key) and olds and not ov.get(key) and not rec.get("wa_editado_em"):
+            pairs.append([olds[0], suc[key], kind])
     return [p for p in pairs if p[0] and p[1] and not same_number(p[0], p[1])]
 
 
@@ -240,3 +246,31 @@ async def scan_site_whatsapp(session, recs, overrides_for, today, fetch_text, fo
         else:
             rec.pop("contact_auto", None)
     await asyncio.gather(*(one(r) for r in recs))
+
+
+ROTULO_NUM_RE = re.compile(r"(whats\s*app|zap|telefone|fone|tel\.?|contato)\s*:?\s*"
+                           r"((?:\+?55\s*)?\(?\d{2}\)?\s*9?\s*\d{4}[\s.-]?\d{4})", re.I)
+
+
+def contatos_da_emissora(paginas, uf):
+    """WhatsApp e telefone (1º de cada) encontrados nas páginas (diretório, site novo), só com DDD do estado."""
+    ddds = set(DDD_UF.get((uf or "").lower(), "").split())
+    whats = tel = None
+    for page in paginas:
+        if not page:
+            continue
+        c = extract_contacts(page)
+        # também o número escrito no texto: "WhatsApp: (22) 99876-5432", "Telefone: (22) 2764-1234"
+        texto = re.sub(r"\s+", " ", _TAGS_RE.sub(" ", html.unescape(page)))
+        for rot, num in ROTULO_NUM_RE.findall(texto):
+            (c.setdefault("whatsapp", []) if re.match(r"whats|zap", rot, re.I) else
+             c.setdefault("telefone", [])).append(digits(num))
+        for n in c.get("whatsapp") or []:
+            v = numero_valido(n)
+            if v and v[1] and (not ddds or v[0] in ddds) and not whats:
+                whats = _nacional(n)
+        for n in c.get("telefone") or []:
+            v = numero_valido(n)
+            if v and (not ddds or v[0] in ddds) and not tel and not (whats and same_number(n, whats)):
+                tel = _nacional(n)
+    return whats, tel

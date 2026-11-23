@@ -290,8 +290,14 @@ def rb_confere(rec, nome, st=None):
     if len(cid) < 4 or cid not in re.sub(r"[^a-z0-9]", "", norm(texto)):
         return False                                             # cidade
     f = frequency(rec.get("title", ""))
-    if not f or frequency(texto) != f:
-        return False                                             # frequência
+    if f:
+        if frequency(texto) != f:
+            return False                                         # frequência
+    else:
+        # webradio (o título não tem frequência): estado, cidade e NOME
+        from .tudoradio import mesmo_nome
+        if band(rec.get("title", "")) or frequency(texto) or not mesmo_nome(rec.get("title", ""), nome, cidade):
+            return False
     if not uf:
         return False
     ufs = _uf_do_texto((st.get("state") or "") + " " + (nome or "") + " " + (st.get("tags") or ""))
@@ -754,8 +760,10 @@ class Finder:
         for sc, url, name, confere, st in scored[:8]:
             if confere:
                 if (await self.c.check(url)).ok:
-                    return {"url": url, "site": st.get("homepage") or None,
-                            "source": f"Radio Browser: {name} — estado, cidade e frequência conferem",
+                    return {"url": url, "site": st.get("homepage") or None, "nome": name,
+                            "freq": freq, "banda": post_band,
+                            "source": f"Radio Browser: {name} — estado, cidade e "
+                                      f"{'frequência' if freq else 'nome'} conferem",
                             "score": max(sc, 0.9), "confidence": "high", "rb_confere": True}
             elif sugestao is None and (await self.c.check(url)).ok:
                 sugestao = {"url": url, "source": f"Radio Browser: {name} (estado, cidade ou frequência não conferem)",
@@ -788,6 +796,8 @@ class Finder:
                                 prova = "cidade, UF e frequência conferem"
                                 faixa = f"{r.get('freq')} {(r.get('banda') or '').upper()}"
                             return {"url": u, "confidence": "high", "score": 0.95, "pagina": pagina, "site": r.get("site"),
+                                    "nome": r.get("nome"), "freq": r.get("freq"), "banda": r.get("banda"),
+                                    "web": bool(r.get("web")),
                                     "source": f"{rotulo}: {r.get('nome')} ({r.get('cidade')}/"
                                               f"{(r.get('uf') or '').upper()}, {faixa}) — {prova}"}
         return None

@@ -485,6 +485,32 @@ def cidade_chave(cidade: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", norm(cidade)).strip()
 
 
+def nome_da_radio(title: str, cidade: str = "") -> str:
+    """Só o nome da rádio, como está no título: 'Ouvir a Rádio Atlântica FM 93,7 de Rio das Ostras RJ Ao Vivo'
+    -> 'Rádio Atlântica FM 93,7'. Com frequência, corta logo depois dela; webradio, antes da cidade."""
+    t = nome_curto(title)
+    m = re.search(r"\b\d{2,3}[.,]\d\b|\b(?:am|fm)\s*\d{3,4}\b|\b\d{3,4}\s*(?:am|khz)\b", t, re.I)
+    if m:
+        return t[:m.end()].strip(" -–|")
+    if cidade:
+        t = re.split(r"\s+(?:de|do|da|em)\s+" + re.escape(cidade), t, flags=re.I)[0]
+    return t.strip(" -–|")
+
+
+def nome_exibicao(nome: str, freq=None, banda=None) -> str:
+    """Nome da emissora do diretório no formato do Radiocol: 'Rádio Mix FM' + 106.5 -> 'Rádio Mix FM 106,5'."""
+    nome = re.sub(r"\s+", " ", nome or "").strip()
+    nome = re.sub(r"\b(\d{2,3})\.(\d)\b", r"\1,\2", nome)
+    if freq:
+        fb = freq.replace(".", ",")
+        if fb not in nome and freq not in nome:
+            b = (banda or "").upper()
+            if b and not re.search(r"\b" + b + r"\b", nome, re.I):
+                nome += " " + b
+            nome += " " + fb
+    return nome
+
+
 def nome_curto(title: str) -> str:
     """'Ouvir Rádio Band FM 96,1 de São Paulo SP ao vivo' -> 'Rádio Band FM 96,1 de São Paulo'."""
     t = re.sub(r"^\s*(?:ouvir|ouça|ouca|escute)\s+(?:a\s+)?", "", title or "", flags=re.I)

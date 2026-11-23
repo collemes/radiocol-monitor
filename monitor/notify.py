@@ -31,7 +31,12 @@ def public_entry(rec):
         e["v"] = 1  # o robô não consegue confirmar: o player dos visitantes avisa se tocou (Apps Script)
     if rec.get("http_only"):
         e["h"] = 1
-    if rec.get("site_novo") and rec.get("sites"):
+    suc = rec.get("sucessora")
+    if suc:
+        # rádio encerrada: outra emissora na mesma frequência — o tema troca o nome no título e mostra o card
+        e["x"] = {k2: suc[k1] for k1, k2 in (("antigo", "a"), ("nome", "t"), ("site", "s"), ("whatsapp", "w"),
+                                              ("telefone", "f")) if suc.get(k1)}
+    elif rec.get("site_novo") and rec.get("sites"):
         e["n"] = [rec["sites"][0], rec["site_novo"]]   # o tema troca o link do site no post
     if rec.get("contact_overrides"):
         e["c"] = rec["contact_overrides"]  # [[antigo, novo, "w"|"t"], ...]
@@ -128,6 +133,30 @@ def _row(r, extra=""):
             f"<td>{reason}</td><td>{extra}</td></tr>")
 
 
+def _suc_rows(recs):
+    out = []
+    for r in recs:
+        suc = r.get("sucessora") or {}
+        e = html.escape
+        fonte = e((suc.get("fonte") or "").split(" — ")[0])
+        pag = suc.get("pagina")
+        if pag:
+            fonte = f'<a href="{e(pag)}">{fonte}</a>'
+        status = "" if r.get("status") == "ok" else f" <i>({e(r.get('status') or '')})</i>"
+        extras = []
+        if suc.get("site"):
+            extras.append(f'<a href="{e(suc["site"])}">{e(suc["site"])}</a>')
+        if suc.get("whatsapp"):
+            extras.append("WhatsApp " + e(suc["whatsapp"]))
+        if suc.get("telefone"):
+            extras.append("Tel. " + e(suc["telefone"]))
+        out.append(f'<tr><td><a href="{e(r.get("url", ""))}">{e(r.get("title") or "")}</a></td>'
+                   f'<td><b>{e(suc.get("nome") or "")}</b><br><small>{fonte} — desde {e(suc.get("em") or "")}</small></td>'
+                   f'<td style="word-break:break-all;font-size:12px">{e(r.get("stream") or "")}{status}</td>'
+                   f'<td>{"<br>".join(extras) or "—"}</td></tr>')
+    return out
+
+
 def _table(title, rows, cols=("Post", "Stream atual", "Motivo", "")):
     if not rows:
         return ""
@@ -205,6 +234,7 @@ def build_report(posts, events, today, old_urls=None):
     do_rcb = [r for r in recs if (r.get("source") or "").startswith("radios.com.br") and r.get("status") != "ignorado"]
     sites_novos = [r for r in recs if r.get("site_novo") and r.get("status") != "ignorado"]
     desativadas = [r for r in recs if r.get("status") in ("off", "sem_link") and r.get("buscas_vazias", 0) >= 2]
+    sucessoras = sorted([r for r in recs if r.get("sucessora") and r.get("encerrada")], key=lambda r: r.get("title", ""))
     http_only = [r for r in recs if r.get("status") == "ok" and r.get("http_only")]
     iframes = [r for r in recs if r.get("iframe")]
     iframe_ok = [r for r in iframes if r.get("status") == "ok" and not r.get("http_only")]
@@ -230,6 +260,7 @@ def build_report(posts, events, today, old_urls=None):
         "radioscombr": len(do_rcb),
         "sites_novos": len(sites_novos),
         "possivel_desativada": len(desativadas),
+        "sucessoras": len(sucessoras),
         "confirmadas_brasil": sum(1 for r in recs if r.get("status") == "ok" and r.get("br_ok")),
         "so_http": len(http_only),
         "corrigidos_hoje": len(events["fixed"]),
@@ -259,7 +290,7 @@ def build_report(posts, events, today, old_urls=None):
                 f"<h2>{title}</h2>"
                 f"<p>{summary['posts']} posts · <b style=color:green>{summary['ok']} tocando</b> · "
                 f"<b style=color:#c00>{summary['fora_do_ar']} fora do ar</b> "
-                f"({summary['fora_confirmado']} confirmados) · {summary['bloqueio']} não testáveis daqui · {summary['tudoradio']} com áudio do tudoradio · {summary['radioscombr']} do radios.com.br · {summary['sites_novos']} com site novo · {summary['possivel_desativada']} possíveis desativadas · {summary['radio_browser']} com áudio do Radio Browser · {summary['confirmadas_brasil']} confirmadas por ouvintes no Brasil · {summary['sem_link']} sem link · "
+                f"({summary['fora_confirmado']} confirmados) · {summary['bloqueio']} não testáveis daqui · {summary['tudoradio']} com áudio do tudoradio · {summary['radioscombr']} do radios.com.br · {summary['sites_novos']} com site novo · {summary['possivel_desativada']} possíveis desativadas · {summary['sucessoras']} encerradas com emissora nova na frequência · {summary['radio_browser']} com áudio do Radio Browser · {summary['confirmadas_brasil']} confirmadas por ouvintes no Brasil · {summary['sem_link']} sem link · "
                 f"{summary['so_http']} só em http · {summary['corrigidos_hoje']} corrigidos hoje · "
                 f"{summary['voltaram_hoje']} voltaram sozinhos · {summary['ignorados']} ignorados "
                 f"(não são rádio, encerradas ou marcados por você) · iframes 'Ao vivo': "
@@ -280,10 +311,13 @@ def build_report(posts, events, today, old_urls=None):
     ]
     if len(new_off) > cap or len(new_nolink) > cap or len(fixed_rows) > cap:
         email_sections.append(f"<p>Lista cortada em {cap} itens por seção — veja o relatório completo.</p>")
+    suc_cols = ("Post (rádio encerrada)", "Emissora encontrada", "Áudio", "Site / WhatsApp / telefone")
     url_cols = ("Post antigo", "URL antiga", "Resposta", "Redirecionar para (sugestão)")
     ct_cols = ("Post", "WhatsApp no post", "WhatsApp no site oficial", "")
     email_sections += [
         _table("↪️ URLs antigas sem redirecionamento 301 (novas)", _url_rows(new_no_redirect), url_cols),
+        _table("📻 Rádio encerrada — nova emissora encontrada na mesma frequência (novas hoje; revisar)",
+               _suc_rows([r for r in sucessoras if r["sucessora"].get("em") == today]), suc_cols),
         _table("📱 WhatsApp diferente no site oficial (novos)", _contact_rows(new_contacts), ct_cols),
     ]
     pending_old = len(need) - len(new)
@@ -303,6 +337,9 @@ def build_report(posts, events, today, old_urls=None):
                [_row(r, "site do post: " + html.escape(r.get("site_fora") and f"fora do ar ({r['site_fora']})"
                                                        or ("abre" if r.get("sites") else "não cadastrado")))
                 for r in sorted(desativadas, key=lambda r: r.get("title", ""))]),
+        _table("📻 Rádio encerrada — nova emissora encontrada nos diretórios na mesma cidade, estado e frequência "
+               "(webradio: mesmo nome). O post já toca a emissora nova e mostra o nome, o site e os contatos dela; "
+               "revise o post e faça o redirecionamento 301 quando atualizar", _suc_rows(sucessoras), suc_cols),
         _table("🌐 Site novo da emissora — o site do post mudou de endereço ou saiu do ar; o site mostra o novo "
                "(o post não é alterado)",
                [_row(r, html.escape((r.get("sites") or ["—"])[0]) + " → " + html.escape(r["site_novo"]))
@@ -361,7 +398,7 @@ def build_report(posts, events, today, old_urls=None):
         "summary": summary,
         "subject": subject,
         "email_html": page(email_sections, subject),
-        "should_send": bool(new or events["fixed"] or new_no_redirect or new_contacts) or config.EMAIL_ALWAYS,
+        "should_send": bool(new or events["fixed"] or events.get("sucessoras") or new_no_redirect or new_contacts) or config.EMAIL_ALWAYS,
     }
 
 

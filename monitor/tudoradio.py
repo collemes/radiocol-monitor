@@ -145,8 +145,11 @@ def palavras_nome(texto, cidade=""):
 
 def mesmo_nome(titulo_post, nome_dir, cidade):
     """Webradio (sem frequência): o nome do diretório tem as mesmas palavras próprias do post."""
-    a = palavras_nome(re.split(r"\b(?:de|do|da)\s+" + re.escape(cidade or "@@"), titulo_post, flags=re.I)[0], cidade)
+    parte = re.split(r"\b(?:de|do|da)\s+" + re.escape(cidade or "@@"), titulo_post, flags=re.I)[0]
+    a = palavras_nome(parte, cidade)
     b = palavras_nome(nome_dir, cidade)
+    if not a:                    # o nome da rádio é o da cidade ("Rádio Cajuru Web", de Cajuru)
+        a, b = palavras_nome(parte), palavras_nome(nome_dir)
     if not a or not b:
         return False
     return len(a & b) / len(a | b) >= 0.6

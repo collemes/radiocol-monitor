@@ -55,6 +55,7 @@
       if (e.n) { try { trocarSite(e.n[0], e.n[1]); } catch (x) {} }
       if (!e.u) return;
       aplicar(e);
+      if (e.x) { try { novaEmissora(e.x); } catch (x) {} }
       if (e.v) { try { confirmarReproducao(pid, e); } catch (x) {} }
       document.dispatchEvent(new CustomEvent('radiocol:stream', { detail: e }));
     })
@@ -363,6 +364,44 @@
         re.lastIndex = 0;
       });
     });
+  }
+
+  // ---------- Rádio encerrada: outra emissora assumiu a frequência (o robô achou nos diretórios) ----------
+  // x = { a: nome antigo, t: nome novo, s: site, w: WhatsApp, f: telefone }
+  function novaEmissora(x) {
+    if (!x || !x.t) return;
+    if (x.a && x.a.toLowerCase() !== x.t.toLowerCase()) {
+      var re = new RegExp(x.a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+'), 'gi');
+      var trocaTexto = function (raiz) {
+        if (!raiz) return;
+        var w = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT, null), n, nos = [];
+        while ((n = w.nextNode())) if (!/^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName)) nos.push(n);
+        nos.forEach(function (t) { if (re.test(t.nodeValue)) { re.lastIndex = 0; t.nodeValue = t.nodeValue.replace(re, x.t); } re.lastIndex = 0; });
+      };
+      trocaTexto(document.querySelector('.post-title, h1.entry-title, h1'));
+      trocaTexto(document.querySelector('.post-body'));
+      document.title = document.title.replace(re, x.t);
+    }
+    if (document.querySelector('.rc-nova')) return;
+    var box = document.createElement('div');
+    box.className = 'rc-nova';
+    box.setAttribute('style', 'margin:12px 0;padding:10px 14px;border-left:4px solid #e53935;background:rgba(229,57,53,.07);' +
+                     'border-radius:6px;font-size:15px;line-height:1.5');
+    var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+    var partes = ['<span aria-hidden="true">📻</span> Nesta frequência agora: <b>' + esc(x.t) + '</b>'];
+    var links = [];
+    if (/^https?:\/\//i.test(x.s || '')) links.push('<a href="' + esc(x.s) + '" target="_blank" rel="noopener">Site da rádio</a>');
+    if (x.w) links.push('<a href="https://wa.me/' + (x.w.length <= 11 ? '55' + x.w : x.w) + '" target="_blank" rel="noopener">WhatsApp ' + esc(formatar(x.w)) + '</a>');
+    if (x.f) links.push('<a href="tel:+' + (x.f.length <= 11 ? '55' + x.f : x.f) + '">Telefone ' + esc(formatar(x.f)) + '</a>');
+    if (links.length) partes.push(links.join(' · '));
+    box.innerHTML = partes.join('<br>');
+    var corpo = document.querySelector('.post-body');
+    if (!corpo) return;
+    var a = corpo.querySelector('audio');
+    var ref = a && (a.closest('.mejs-container, .mejs__container, .media-wrapper, .srd-wrap') || a);
+    while (ref && ref.parentNode && ref.parentNode !== corpo && !/^(DIV|CENTER|P)$/.test(ref.parentNode.tagName)) ref = ref.parentNode;
+    if (ref && ref.parentNode) ref.parentNode.insertBefore(box, ref.nextSibling);
+    else corpo.insertBefore(box, corpo.firstChild);
   }
 
   // ---------- Site da emissora que mudou de endereço (ou saiu do ar e o robô achou o novo) ----------

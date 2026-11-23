@@ -12,9 +12,9 @@ from urllib.parse import unquote, urljoin, urlparse, urlsplit
 from . import config
 from .blogger import BODY_RE, fetch_post_body, fetch_post_body_raw, fetch_posts, load_blogger_backup
 from .checker import Checker
-from .extract import (parece_stream, frequency, norm, classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
+from .extract import (nome_da_radio, nome_exibicao, parece_stream, frequency, norm, classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
                       extract_location, extract_streams, norm, parece_video, stream_score)
-from .extras import check_old_urls, contact_pairs, register_old_url, scan_site_whatsapp
+from .extras import check_old_urls, contact_pairs, contatos_da_emissora, register_old_url, scan_site_whatsapp
 from . import radioscombr, tudoradio
 from .finder import Finder, rb_confere, rb_mesma_praca, variants, SHOUT_HTTPS_RE, audio_ok
 from .notify import build_report, send_email, write_public
@@ -223,6 +223,82 @@ def protegido(rec):
     return rec.get("source") == "manual" or bool(rec.get("editado_em"))
 
 
+def _dias_desde(d):
+    return 999 if not d else (date.fromisoformat(today()) - date.fromisoformat(d)).days
+
+
+async def buscar_sucessoras(session, finder, posts_state, ov_for, events, log=print):
+    """Posts de rádio encerrada (título ou marcador 'desativada'): procura nos diretórios a emissora que está
+    hoje na MESMA cidade, estado e frequência (webradio: mesmo nome). Cada post 1x por semana; a emissora nova
+    também é procurada de novo se o áudio dela cair."""
+    fila = []
+    for r in posts_state.values():
+        if not r.get("encerrada") or protegido(r) or ov_for(r).get("stream"):
+            continue
+        suc = r.get("sucessora")
+        caiu = suc and r.get("status") == "off" and r.get("fail_count", 0) > config.CONFIRM_RUNS
+        if (not suc or caiu) and _dias_desde(r.get("sucessora_busca")) >= 7:
+            fila.append(r)
+    fila.sort(key=lambda r: r.get("sucessora_busca") or "")
+    fila = fila[:config.SUCESSORAS_MAX]
+    if not fila:
+        return
+    sem = asyncio.Semaphore(6)
+    achadas = 0
+
+    async def uma(rec):
+        nonlocal achadas
+        rec["sucessora_busca"] = today()
+        velha = rec.get("sucessora") or {}
+        async with sem:
+            found = None
+            try:
+                found = await finder.from_tudoradio(rec)
+            except Exception:
+                found = None
+            if not found:
+                try:
+                    rb = await finder.from_radio_browser(rec)
+                except Exception:
+                    rb = None
+                found = rb if rb and rb.get("rb_confere") else None
+            if not found or found["url"] == velha.get("url"):
+                if velha and not found:          # a emissora nova também caiu e não aparece mais: volta a ignorar
+                    rec.pop("sucessora", None)
+                    change(rec, rec.get("post_stream"), "post", "emissora nova saiu dos diretórios")
+                    rec["status"], rec["reason"] = "ignorado", "rádio encerrada/desativada, pelo título ou marcador (automático)"
+                return
+            uf = ((rec.get("loc") or [None, None]) + [None])[1] or ""
+            site = found.get("site")
+            html_site = html_dir = ""
+            if site:
+                situacao, final = await checar_site(session, site)
+                site = final.split("?")[0] if situacao == "ok" else None
+                if site:
+                    html_site = await finder._get_text(site) or ""
+            if found.get("pagina"):
+                html_dir = await finder._get_text(found["pagina"]) or ""
+            whats, tel = contatos_da_emissora([html_site, html_dir], uf)
+        cidade = (rec.get("loc") or [""])[0] or ""
+        fonte = found["source"]
+        suc = {"url": found["url"], "fonte": fonte, "pagina": found.get("pagina"),
+               "nome": nome_exibicao(found.get("nome") or "", found.get("freq"), found.get("banda")),
+               "antigo": nome_da_radio(rec.get("title", ""), cidade),
+               "site": site, "whatsapp": whats, "telefone": tel, "em": today()}
+        rec["sucessora"] = {k: v for k, v in suc.items() if v}
+        change(rec, found["url"], "sucessora: " + fonte, "rádio encerrada: emissora nova na mesma frequência")
+        rec.update(status="ok", fail_count=0, last_ok=today(), http_only=found["url"].startswith("http://"),
+                   reason="rádio encerrada — nova emissora na mesma frequência (revisar)")
+        for k in ("alerted", "suggestion", "provisorio", "confianca"):
+            rec.pop(k, None)
+        events["sucessoras"].append(rec["url"])
+        achadas += 1
+
+    await asyncio.gather(*(uma(r) for r in fila))
+    log(f"Rádios encerradas: {len(fila)} procuradas nos diretórios, {achadas} com emissora nova na mesma "
+        f"frequência (webradio: mesmo nome)")
+
+
 async def main():
     t0 = time.time()
     state_path = os.path.join(config.DATA_DIR, "state.json")
@@ -243,7 +319,7 @@ async def main():
     def ov_for(rec):
         return overrides.get(rec.get("path")) or overrides.get(rec.get("id")) or {}
 
-    events = {"fixed": [], "recovered": [], "new_posts": []}
+    events = {"fixed": [], "recovered": [], "new_posts": [], "sucessoras": []}
     connector = aiohttp.TCPConnector(limit=config.CONCURRENCY + 20, limit_per_host=config.PER_HOST * 2,
                                      ttl_dns_cache=600)
     async with aiohttp.ClientSession(connector=connector) as session:
@@ -528,6 +604,20 @@ async def main():
             if not tipo_post and any(norm(l) in ("desativada", "desativado", "encerrada", "fora do ar")
                                      for l in rec.get("labels") or []):
                 tipo_post = "encerrada"           # você marcou o post como desativado
+            if tipo_post == "encerrada":
+                rec["encerrada"] = True
+            else:
+                rec.pop("encerrada", None)
+                rec.pop("sucessora", None)
+            suc = rec.get("sucessora") if tipo_post == "encerrada" else None
+            if suc and suc.get("url") and not ov.get("stream") and not protegido(rec):
+                # rádio encerrada, mas outra emissora assumiu a frequência (ou a webradio mudou de servidor):
+                # o post toca a emissora nova até você revisar o post
+                if rec.get("stream") != suc["url"]:
+                    change(rec, suc["url"], "sucessora: " + (suc.get("fonte") or ""))
+                rec["source"] = "sucessora: " + (suc.get("fonte") or "")
+                to_check.append(rec)
+                continue
             if tipo_post and not ov.get("stream"):
                 rec["status"] = "ignorado"
                 rec["reason"] = ("não é post de rádio (automático)" if tipo_post == "nao_radio"
@@ -693,7 +783,7 @@ async def main():
         finder.rede = {d for d, n in usos.items() if n >= 3}
         # todas as rádios que só tocam em http (o player do site é https e não toca http): busca completa
         # exigindo https — site da emissora, tudoradio, radios.com.br e Radio Browser (1x por semana)
-        need_https = [r for r in to_check if r.get("status") == "ok" and r.get("http_only")
+        need_https = [r for r in to_check if r.get("status") == "ok" and r.get("http_only") and not r.get("encerrada")
                       and (r.get("stream") or "").startswith("http://") and not protegido(r)
                       and (r.get("https_search") or "") < week_ago]
         if need_https:
@@ -722,6 +812,11 @@ async def main():
         if n_sites:
             log(f"Sites das emissoras: {n_sites} verificados, {n_fora} fora do ar")
 
+        # 3e) rádios encerradas/desativadas: outra emissora assumiu a frequência? -----------
+        # tudoradio, radios.com.br e Radio Browser, na MESMA cidade, estado e frequência (webradio: mesmo nome).
+        # Achou: o post toca a emissora nova e mostra nome, site e contatos dela; o relatório pede revisão.
+        await buscar_sucessoras(session, finder, posts_state, ov_for, events, log)
+
         # 4) procura substitutos para os que caíram ---------------------------------
         # Fila de busca, revezada: cada post é pesquisado no máximo 1x por semana (quem acabou de cair entra
         # na hora), e a cota do dia é dividida entre "fora do ar" e "sem link" — antes os 1.000+ fora do ar
@@ -729,12 +824,12 @@ async def main():
         def dias_desde(d):
             return 999 if not d else (date.fromisoformat(today()) - date.fromisoformat(d)).days
 
-        fila_off = [r for r in off if r.get("fail_count", 0) <= config.CONFIRM_RUNS
-                    or dias_desde(r.get("search_tried")) >= 7]
+        fila_off = [r for r in off if not r.get("encerrada") and (r.get("fail_count", 0) <= config.CONFIRM_RUNS
+                    or dias_desde(r.get("search_tried")) >= 7)]
         # "não testáveis daqui" e endereços provisórios (sugestão < alta confiança): procura no site 1x/semana
         fila_off += [r for r in posts_state.values()
                      if (r.get("status") == "bloqueio" or (r.get("status") == "ok" and r.get("provisorio")))
-                     and r.get("sites") and not protegido(r) and r not in off
+                     and r.get("sites") and not protegido(r) and r not in off and not r.get("encerrada")
                      and dias_desde(r.get("search_tried")) >= 7]
         fila_off.sort(key=lambda r: (r.get("fail_count", 0) > config.CONFIRM_RUNS, r.get("search_tried") or ""))
         # posts sem nenhum endereço de áudio, mas com site oficial: procura o player no site
