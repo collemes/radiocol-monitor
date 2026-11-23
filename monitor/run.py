@@ -13,7 +13,7 @@ from . import config
 from .blogger import BODY_RE, fetch_post_body, fetch_post_body_raw, fetch_posts, load_blogger_backup
 from .checker import Checker
 from .extract import (frequency, norm, classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
-                      extract_location, extract_streams, norm, stream_score)
+                      extract_location, extract_streams, norm, parece_video, stream_score)
 from .extras import check_old_urls, contact_pairs, register_old_url, scan_site_whatsapp
 from . import radioscombr, tudoradio
 from .finder import Finder, rb_confere, rb_mesma_praca, variants, SHOUT_HTTPS_RE, audio_ok
@@ -464,6 +464,18 @@ async def main():
             rec["post_candidates"] = cands[:6]
             if not rec.get("stream") and new_post_stream:
                 rec["stream"], rec["source"] = new_post_stream, "post"
+
+            # Vinheta/propaganda em vídeo que o robô gravou como stream (o navegador "tocou" o vídeo do site):
+            # volta ao link do post. Link editado à mão nunca é mexido.
+            if rec.get("stream") and rec.get("source") != "post" and not protegido(rec) \
+                    and parece_video(rec["stream"]):
+                change(rec, rec.get("post_stream"), "post", "troca desfeita: era vídeo/anúncio do site, não o áudio da rádio")
+                for k in ("provisorio", "confianca", "alerted", "suggestion"):
+                    rec.pop(k, None)
+                rec["fail_count"] = 0
+                rec.pop("search_tried", None)  # procura de novo no site já nesta execução (agora sem vídeos)
+                if not rec.get("stream"):
+                    rec.pop("stream", None)
 
             # Regra: o robô só troca o áudio por endereço do MESMO servidor (variações, https) ou achado no site
             # da emissora com confiança alta. Trocas antigas vindas do Radio Browser (diretório mundial: já

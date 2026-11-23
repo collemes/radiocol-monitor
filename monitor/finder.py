@@ -18,7 +18,7 @@ from . import config
 import json
 
 from .navegador import Navegador
-from .extract import band, desescapa, extract_streams, frequency, name_tokens, norm
+from .extract import band, desescapa, extract_streams, frequency, name_tokens, norm, parece_video
 
 IFRAME_RE = re.compile(r"""<iframe\b[^>]*?\b(?:data-)?src\s*=\s*["']([^"']+)["']""", re.I)
 SCRIPT_SRC_RE = re.compile(r"""<script\b[^>]*?\bsrc\s*=\s*["']([^"']+)["']""", re.I)
@@ -121,6 +121,9 @@ def shoutcast_https(url: str):
         return []
     raiz = f"https://{p.hostname}:{porta}"
     return [raiz + "/;stream/1", raiz + "/;"]
+
+
+SSL_FALHA_RE = re.compile(r"certificado SSL|SSLError|SSLCertVerification|CertificateError", re.I)
 
 
 def audio_ok(url: str, res) -> bool:
@@ -347,6 +350,14 @@ class Finder:
                 if b != rec.get("stream"):
                     cands.append((b, "outro link do post"))
                 cands += [(v, "variação do endereço") for v in variants(b)]
+        # certificado https vencido/inválido ou porta que não fala https (SSLError): o MESMO endereço em http
+        # (mesmo servidor, porta e ponto = mesmo stream). Fica "só http" no relatório; o robô segue tentando https.
+        st = rec.get("stream") or ""
+        if st.startswith("https://") and SSL_FALHA_RE.search(rec.get("reason") or ""):
+            sem_tls = re.sub(r"^https://([^/:]+):443(?=/|$)", r"https://\1", st)     # :443 é a porta do https
+            sem_tls = "http://" + sem_tls[len("https://"):]
+            cands += [(sem_tls, "variação do endereço: o mesmo em http (certificado https com defeito)")]
+            cands += [(v, "variação do endereço") for v in variants(sem_tls) if not v.startswith("https")]
         seen = set()
         for u, src in cands:
             if u in seen or u == rec.get("stream"):
@@ -553,7 +564,8 @@ class Finder:
         recebeu como áudio de verdade (vale como teste, mesmo que o teste do robô falhe)."""
         if rec.get("_need_https"):
             pares = [p for p in pares if p[0].startswith("https")]
-        pares = [p for p in pares if p[0] != rec.get("stream")]
+        pares = [p for p in pares if p[0] != rec.get("stream") and not parece_video(p[0])]
+        tocou = frozenset(u for u in tocou if not parece_video(u))
         dominio = urlparse(site).netloc.replace("www.", "")
 
         async def funciona(u):

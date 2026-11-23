@@ -47,6 +47,25 @@ BLOCK_EXT_RE = re.compile(
     re.I,
 )
 SOCIAL_RE = re.compile(r"(facebook|instagram|twitter|youtube|tiktok|whatsapp|wa\.me|linkedin|t\.me)", re.I)
+# Arquivo de vídeo (vinheta/propaganda do site) e servidores de anúncio: nunca são a transmissão ao vivo da rádio.
+# O navegador "toca" esses vídeos ao abrir o site e o robô chegou a gravá-los como stream (propaganda no player).
+VIDEO_RE = re.compile(
+    r"\.(mp4|m4v|webm|mov|mkv|avi|flv|wmv)(?:[?#;]|$)|/videoplayback\b|"
+    r"(?:^|[/.])(?:2mdn\.net|adsrvr\.org|doubleclick\.net|googlesyndication\.com|googlevideo\.com|adnxs\.com|"
+    r"amazon-adsystem\.com|criteo\.(?:com|net)|taboola\.com|outbrain\.com|teads\.tv|smartadserver\.com|"
+    r"vid\.cdn-website\.com)(?:[:/]|$)",
+    re.I,
+)
+
+
+def parece_video(url: str) -> bool:
+    """Vídeo/anúncio, não áudio ao vivo (vinheta .mp4 do site, videoplayback de anúncio do Google…)."""
+    try:
+        p = urlparse(url or "")
+        alvo = (p.hostname or "") + (p.path or "")
+    except ValueError:
+        return False
+    return bool(VIDEO_RE.search(alvo))
 
 
 def _clean(url: str) -> str:
@@ -68,7 +87,7 @@ def _blocked(url):
 
 def stream_score(url: str) -> int:
     """Pontua a chance de a URL ser um stream de áudio (0 = não é)."""
-    if _blocked(url) or BLOCK_EXT_RE.search(url):
+    if _blocked(url) or BLOCK_EXT_RE.search(url) or parece_video(url):
         return 0
     try:
         p = urlparse(url)
@@ -115,7 +134,7 @@ def extract_streams(content: str):
         s = stream_score(u)
         if s == 0 and bonus < 5:
             return
-        if _blocked(u):
+        if _blocked(u) or parece_video(u):
             return
         s += bonus
         if u not in found or found[u][0] < s:

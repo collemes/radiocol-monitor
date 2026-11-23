@@ -14,7 +14,7 @@ import re
 import time
 
 from . import config
-from .extract import desescapa, extract_streams, norm
+from .extract import desescapa, extract_streams, norm, parece_video
 
 try:
     from playwright.async_api import async_playwright
@@ -128,7 +128,7 @@ class Navegador:
         marca = {"ctx": ""}
 
         def anota(url, contexto="", tocou=False):
-            if not url or not url.startswith("http") or IGNORAR_RE.search(url):
+            if not url or not url.startswith("http") or IGNORAR_RE.search(url) or parece_video(url):
                 return
             contexto = (marca["ctx"] + " " + contexto).strip()
             a = achados.setdefault(url, ["", False])
@@ -143,6 +143,8 @@ class Navegador:
         async def ao_responder(resp):
             try:
                 url, ct = resp.url, resp.headers.get("content-type", "")
+                if ct.lower().startswith("video/") and "mp2t" not in ct.lower():
+                    return                       # vídeo (vinheta/anúncio) que o navegador tocou: não é a rádio
                 if resp.request.resource_type == "media" or AUDIO_CT_RE.search(ct):
                     anota(url, tocou=resp.status in (200, 206))      # o navegador recebeu áudio de verdade
                 elif resp.request.resource_type in ("xhr", "fetch") and ("json" in ct or "text" in ct):

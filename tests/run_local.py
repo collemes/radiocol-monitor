@@ -221,6 +221,13 @@ async def main():
             print("post 13 antes do dia 3:", r13.get("status"), r13.get("fail_count"), r13.get("search_tried"))
             r13["fail_count"] = 9
             json.dump(stj, open(st_path, "w"))
+        if dia == 3:   # dia 3: o robô tinha gravado no post 1 o vídeo de propaganda que o navegador "tocou" no site
+            st_path = f"{TMP}/data/state.json"
+            stj = json.load(open(st_path))
+            r1 = stj["posts"]["1"]
+            r1["stream"] = "https://rr3---sn-o097znzd.c.2mdn.net/videoplayback/id/9f7b/itag/342/file/file.mp4"
+            r1["source"] = "site oficial (x.com.br) — tocou no navegador [navegador]"
+            json.dump(stj, open(st_path, "w"))
         if dia == 3:   # dia 3: você trocou à mão o link do post 8 (que o robô tinha corrigido) — mesmo fora do ar, vale o seu
             POSTS[7]["content"]["$t"] = f'<audio src="{B}/editado-morto.mp3"></audio>'
         await run.main()
@@ -289,6 +296,11 @@ for p, (st, frag) in exp.items():
     bad += not good
     print(("OK  " if good else "FALHOU ") + p)
 pub = json.load(open(f"{TMP}/docs/radios.json"))
+r1 = state["/2026/11/post-1-nova.html"]
+print("post 1 (vídeo de propaganda desfeito):", r1.get("source"), (r1.get("history") or [{}])[-1].get("note"))
+if r1.get("source") != "post" or "2mdn" in json.dumps(r1.get("stream")) or \
+        not any("vídeo/anúncio" in (h.get("note") or "") for h in r1.get("history") or []):
+    bad += 1; print("FALHOU: vídeo/anúncio gravado como stream deve voltar ao link do post")
 print("\nradios.json exemplo:", json.dumps(pub["8"], ensure_ascii=False))
 print("post 10 (iframe -> player https):", pub["10"])
 print("post 11 (iframe só http):", pub["11"])
@@ -472,4 +484,52 @@ async def _diretorios_motivo():
 
 import aiohttp  # noqa: E402
 asyncio.run(_diretorios_motivo())
+
+
+# ----- regras novas (2026-11-23): vídeo/anúncio nunca é stream; certificado https com defeito -> o mesmo em http
+async def _video_e_ssl():
+    global bad
+    from monitor.extract import parece_video, extract_streams
+    from monitor.checker import Checker
+    videos = ["https://rr1---sn-qja5m5-5o.c.2mdn.net/videoplayback/id/2dc8/file/file.mp4",
+              "https://v.adsrvr.org/dx2n68l/ntvhf5uu_1_52.mp4", "https://t6.al/1x5l.mp4",
+              "https://www.colinasfm.com.br/video/sound.mp4",
+              "https://vid.cdn-website.com/f716eb66/videos/Composicao-v.mp4"]
+    audios = ["https://stream.zeno.fm/abc12345", "https://s.x.com:8000/live.mp3", "https://h.com/radio/playlist.m3u8",
+              "http://servidor21.dnip.com.br:9940/;", "https://cast.mp4radio.com.br/stream", "https://h.com/hls/seg.ts"]
+    if not all(parece_video(u) for u in videos) or any(parece_video(u) for u in audios):
+        bad += 1; print("FALHOU parece_video", [u for u in videos if not parece_video(u)], [u for u in audios if parece_video(u)])
+    achados = extract_streams('<audio src="https://www.colinasfm.com.br/video/sound.mp4"></audio> '
+                              '<video src="https://t6.al/1x5l.mp4"></video> https://stm.radiox.com.br:8000/live')
+    if achados != ["https://stm.radiox.com.br:8000/live"]:
+        bad += 1; print("FALHOU: vídeo não pode sair como stream do HTML", achados)
+    async with aiohttp.ClientSession() as s:
+        r = await Checker(s).check("https://v.adsrvr.org/dx2n68l/ntvhf5uu_1_52.mp4")
+    if r.ok or "vídeo" not in r.reason:
+        bad += 1; print("FALHOU: checker deve recusar vídeo/anúncio", r)
+    # o navegador "tocou" a propaganda do site: não vale como prova
+    f = finder.Finder.__new__(finder.Finder)
+    f.rede = set()
+    f.c = _Chk(set())
+    ad = "https://rr3---sn-o097znzd.c.2mdn.net/videoplayback/id/9f7b/file/file.mp4"
+    if await f._escolhe({"stream": "http://morto:8000/live"}, "https://radiox.com.br/", [(ad, "")], frozenset([ad])):
+        bad += 1; print("FALHOU: vídeo que tocou no navegador não pode virar stream")
+    # certificado https inválido / porta que não fala https: testa o MESMO endereço em http
+    f.c = _Chk({"http://audio01.viaflux.com:5499/live", "http://59e4b6c1beddc.streamlock.net/c/c/playlist.m3u8"})
+    r = await f.from_variants({"stream": "https://audio01.viaflux.com:5499/live", "post_candidates": [],
+                               "reason": "sem conexão (SSLError)"})
+    r2 = await f.from_variants({"stream": "https://59e4b6c1beddc.streamlock.net:443/c/c/playlist.m3u8",
+                                "post_candidates": [], "reason": "certificado SSL inválido"})
+    print("https com defeito -> http:", r and r["url"], "|", r2 and r2["url"])
+    if not r or r["url"] != "http://audio01.viaflux.com:5499/live" or not r["source"].startswith("variação") \
+            or not r2 or r2["url"] != "http://59e4b6c1beddc.streamlock.net/c/c/playlist.m3u8":
+        bad += 1; print("FALHOU https com certificado com defeito -> mesmo endereço em http", r, r2)
+    # outro motivo (404, recusado) ou rádio que precisa de https: não desce para http
+    if await f.from_variants({"stream": "https://audio01.viaflux.com:5499/live", "post_candidates": [],
+                              "reason": "sem conexão (ConnectionRefusedError)"}) or \
+            await f.from_variants({"stream": "https://audio01.viaflux.com:5499/live", "post_candidates": [],
+                                   "reason": "certificado SSL inválido", "_need_https": True}):
+        bad += 1; print("FALHOU: http só quando o problema é o certificado e a rádio aceita http")
+
+asyncio.run(_video_e_ssl())
 print("RESULTADO:", "TUDO CERTO" if not bad else f"{bad} FALHA(S)")

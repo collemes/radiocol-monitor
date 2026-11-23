@@ -8,6 +8,7 @@ from urllib.parse import urljoin, urlparse
 import aiohttp
 
 from . import config
+from .extract import parece_video
 
 PLAYLIST_CT = ("mpegurl", "x-scpls", "pls+xml")
 AUDIO_CT = ("audio/", "application/ogg", "video/mp2t", "application/octet-stream", "video/mp4")
@@ -136,6 +137,9 @@ class Checker:
     async def _check(self, url, depth) -> Result:
         if depth > 3:
             return Result(False, "playlist em excesso de níveis", url)
+        if parece_video(url):
+            # vinheta/propaganda em vídeo do site: tem áudio dentro, mas não é a rádio ao vivo
+            return Result(False, "arquivo de vídeo/anúncio, não é a transmissão ao vivo", url)
         timeout = aiohttp.ClientTimeout(total=None, sock_connect=config.CONNECT_TIMEOUT,
                                         sock_read=config.READ_TIMEOUT)
         headers = {"User-Agent": config.USER_AGENT, "Icy-MetaData": "0", "Accept": "*/*",
