@@ -26,6 +26,7 @@ AUDIO_URL_RE = re.compile(
     r"icecast|shoutcast|zeno\.fm|radio\.co|azuracast|/proxy/", re.I)
 AUDIO_CT_RE = re.compile(r"audio/|mpegurl|application/ogg|video/mp2t|application/octet-stream", re.I)
 IGNORAR_RE = re.compile(r"google|doubleclick|facebook|youtube|ytimg|gstatic|analytics|hotjar|clarity|"
+                        r"scdn\.co|mp3-preview|dzcdn|itunes\.apple|mzstatic|sndcdn|status(-json)?\.xsl|"
                         r"\.(png|jpe?g|gif|webp|svg|css|woff2?|ttf|ico)(\?|$)", re.I)
 TROCAR_RE = re.compile(r"(trocar|mudar|escolher|selecionar|alterar|outras?)\s+(a\s+)?(pra[çc]a|cidade|emissora|regi[ãa]o|r[áa]dio)", re.I)
 PLAY_SELETORES = [
@@ -205,3 +206,75 @@ class Navegador:
             paginas.add(origem.group(0))
         return [(u, c, t) for u, (c, t) in achados.items()
                 if not u.startswith("blob:") and u.rstrip("/") not in paginas]
+
+
+async def _toca_no_radiocol(self, url_post):
+    """Abre o post no Radiocol, dá play no player do site e diz se o áudio TOCA de verdade (tempo andando).
+    True = toca; False = não tocou; None = não deu para testar (navegador indisponível/erro)."""
+    if not await self.abrir():
+        return None
+    ctx = page = None
+    try:
+        ctx = await self._browser.new_context(user_agent=config.USER_AGENT, locale="pt-BR",
+                                              timezone_id="America/Sao_Paulo", ignore_https_errors=False)
+        page = await ctx.new_page()
+        await page.goto(url_post, wait_until="domcontentloaded", timeout=30000)
+        await page.wait_for_timeout(3000)
+        for sel in (".mejs-playpause-button button", ".mejs-overlay-play", "#rc-janela button"):
+            try:
+                el = page.locator(sel).first
+                if await el.count():
+                    await el.click(timeout=2000, force=True)
+                    break
+            except Exception:
+                pass
+        await page.evaluate("""() => document.querySelectorAll('.post-body audio, .post-body video')
+                                 .forEach(a => { try { a.muted = true; a.play(); } catch (e) {} })""")
+        for _ in range(8):                               # até ~16 s esperando o áudio andar
+            await page.wait_for_timeout(2000)
+            andou = await page.evaluate("""() => Array.from(document.querySelectorAll('.post-body audio, .post-body video'))
+                .some(a => !a.paused && a.currentTime > 3 && !a.hasAttribute('data-radiocol-sem-stream'))""")
+            if andou:
+                return True
+        return False
+    except Exception:
+        return None
+    finally:
+        try:
+            if ctx:
+                await ctx.close()
+        except Exception:
+            pass
+
+
+Navegador.toca_no_radiocol = _toca_no_radiocol
+
+
+async def _html(self, url, espera=2500):
+    """Abre a página no navegador (como um visitante) e devolve o HTML já montado pelos scripts.
+    Para diretórios que recusam leitura simples (HTTP 403/404 para robôs) ou montam a lista por script."""
+    if self._html_usados >= config.DIRETORIO_NAV_MAX or not await self.abrir():
+        return ""
+    self._html_usados += 1
+    ctx = None
+    try:
+        ctx = await self._browser.new_context(user_agent=config.USER_AGENT, locale="pt-BR",
+                                              timezone_id="America/Sao_Paulo")
+        page = await ctx.new_page()
+        await page.route("**/*.{png,jpg,jpeg,gif,webp,svg,woff,woff2,mp3,aac,m3u8}", lambda r: r.abort())
+        await page.goto(url, wait_until="domcontentloaded", timeout=30000)
+        await page.wait_for_timeout(espera)
+        return await page.content()
+    except Exception:
+        return ""
+    finally:
+        try:
+            if ctx:
+                await ctx.close()
+        except Exception:
+            pass
+
+
+Navegador._html_usados = 0
+Navegador.html = _html
+

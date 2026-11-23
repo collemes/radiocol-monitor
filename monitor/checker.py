@@ -1,5 +1,6 @@
 """Testa se um endereço de streaming está realmente entregando áudio."""
 import asyncio
+import re
 import ssl
 from collections import defaultdict
 from dataclasses import dataclass
@@ -8,7 +9,7 @@ from urllib.parse import urljoin, urlparse
 import aiohttp
 
 from . import config
-from .extract import parece_video
+from .extract import parece_stream, parece_video
 
 PLAYLIST_CT = ("mpegurl", "x-scpls", "pls+xml")
 AUDIO_CT = ("audio/", "application/ogg", "video/mp2t", "application/octet-stream", "video/mp4")
@@ -137,6 +138,8 @@ class Checker:
     async def _check(self, url, depth) -> Result:
         if depth > 3:
             return Result(False, "playlist em excesso de níveis", url)
+        if not parece_stream(url):
+            return Result(False, "não é endereço de transmissão (página de status, prévia de música ou arquivo)", url)
         if parece_video(url):
             # vinheta/propaganda em vídeo do site: tem áudio dentro, mas não é a rádio ao vivo
             return Result(False, "arquivo de vídeo/anúncio, não é a transmissão ao vivo", url)
@@ -151,6 +154,14 @@ class Checker:
                 final = str(resp.url)
                 if resp.status >= 400:
                     return Result(False, f"HTTP {resp.status}", final, ct)
+                # arquivo com tamanho fechado e sem cabeçalho de rádio (icy-*): é uma música/prévia (ex.: Spotify
+                # p.scdn.co/mp3-preview, 30 s), não a transmissão ao vivo. HLS tem a sua própria verificação.
+                tamanho = resp.headers.get("Content-Length")
+                icy = any(k.lower().startswith("icy-") for k in resp.headers.keys())
+                if (tamanho and tamanho.isdigit() and int(tamanho) < 25_000_000 and not icy
+                        and ct.startswith("audio/") and not final.lower().split("?")[0].endswith((".m3u8", ".m3u", ".pls"))):
+                    return Result(False, "arquivo de áudio de tamanho fechado (música/prévia), não é transmissão ao vivo",
+                                  final, ct)
                 data = await asyncio.wait_for(_read_some(resp, 32 * 1024), config.READ_TIMEOUT)
         except aiohttp.ClientConnectorCertificateError:
             return Result(False, "certificado SSL inválido", url)

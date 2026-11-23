@@ -58,6 +58,19 @@ VIDEO_RE = re.compile(
 )
 
 
+# endereços que aparecem no site/player mas nunca são a rádio ao vivo
+NAO_STREAM_RE = re.compile(
+    r"/status(-json)?\.xsl|/status\.json|/stats(\?|$|/)|/7\.html|/index\.html?$|/admin(/|$)|/played\.html|"
+    r"/currentsong|/nowplaying|\.(xsl|json|xml|js|css|html?|png|jpe?g|gif|webp|svg|txt)(\?|$)|"
+    r"p\.scdn\.co|i\.scdn\.co|mp3-preview|dzcdn\.net|audio-ssl\.itunes\.apple\.com|mzstatic\.com|"
+    r"sndcdn\.com|preview\.(mp3|m4a)", re.I)
+
+
+def parece_stream(url: str) -> bool:
+    """False para página de status do servidor, prévia de música (Spotify/Deezer/iTunes), imagem, script…"""
+    return bool(url) and not NAO_STREAM_RE.search(url)
+
+
 def parece_video(url: str) -> bool:
     """Vídeo/anúncio, não áudio ao vivo (vinheta .mp4 do site, videoplayback de anúncio do Google…)."""
     try:

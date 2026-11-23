@@ -69,7 +69,7 @@ def _normaliza(base, href):
     return None, None
 
 
-async def atualizar(fetch_text, hoje, log=print, motivo=None):
+async def atualizar(fetch_text, hoje, log=print, motivo=None, navegador=None):
     indice = carregar()
     listas, radios = indice.setdefault("listas", {}), indice.setdefault("radios", {})
     listas.setdefault(INICIO, {})
@@ -82,6 +82,9 @@ async def atualizar(fetch_text, hoje, log=print, motivo=None):
         async with sem:
             html = await fetch_text(u, limit=1_500_000)
             await asyncio.sleep(0.4)
+            tem_links = any(_normaliza(u, h)[0] for h in HREF_RE.findall(html or ""))
+            if not tem_links and navegador:            # lista montada por script ou robô recusado
+                html = await navegador(u) or html
         listas[u]["lido"] = hoje
         if not html:
             vazias.append(u)
@@ -108,6 +111,8 @@ async def atualizar(fetch_text, hoje, log=print, motivo=None):
     async def ler_radio(u):
         async with sem:
             html = await fetch_text(u, limit=800_000)
+            if not ler_pagina(html) and navegador:
+                html = await navegador(u) or html
             await asyncio.sleep(0.3)
         r = radios[u]
         r["lido"] = hoje

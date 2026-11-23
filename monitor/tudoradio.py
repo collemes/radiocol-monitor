@@ -82,13 +82,18 @@ def salvar(indice):
         json.dump(indice, f, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
 
 
-async def atualizar(fetch_text, hoje, log=print, motivo=None):
+async def atualizar(fetch_text, hoje, log=print, motivo=None, navegador=None):
     """Atualiza o índice: mapa de páginas 1x/semana e até TUDORADIO_PAGINAS páginas por execução."""
     indice = carregar()
     radios = indice.setdefault("radios", {})
     if _dias(indice.get("sitemap") or "", hoje) >= 7:
         txt = await fetch_text(SITEMAP, limit=8_000_000)
         achadas = set(PAGINA_RE.findall(txt or ""))
+        if not achadas and navegador:                # recusou o robô: abre como visitante
+            txt = await navegador(SITEMAP)
+            achadas = set(PAGINA_RE.findall(txt or ""))
+            if achadas:
+                log("tudoradio: mapa lido pelo navegador")
         if achadas:
             for u in achadas:
                 radios.setdefault(u.replace("://www.", "://"), {})
@@ -105,6 +110,8 @@ async def atualizar(fetch_text, hoje, log=print, motivo=None):
     async def ler(u):
         async with sem:
             html = await fetch_text(u, limit=600_000)
+            if not ler_titulo(html) and navegador:
+                html = await navegador(u) or html
             await asyncio.sleep(0.3)                       # educação com o servidor deles
         r = radios[u]
         r["lido"] = hoje

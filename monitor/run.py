@@ -12,7 +12,7 @@ from urllib.parse import unquote, urljoin, urlparse, urlsplit
 from . import config
 from .blogger import BODY_RE, fetch_post_body, fetch_post_body_raw, fetch_posts, load_blogger_backup
 from .checker import Checker
-from .extract import (frequency, norm, classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
+from .extract import (parece_stream, frequency, norm, classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
                       extract_location, extract_streams, norm, parece_video, stream_score)
 from .extras import check_old_urls, contact_pairs, register_old_url, scan_site_whatsapp
 from . import radioscombr, tudoradio
@@ -481,6 +481,21 @@ async def main():
             # da emissora com confiança alta. Trocas antigas vindas do Radio Browser (diretório mundial: já
             # trouxe rádio estrangeira e de outra cidade) ou provisórias voltam ao link do post e viram sugestão.
             fonte = rec.get("source") or ""
+            if not protegido(rec) and rec.get("stream") and fonte not in ("post", "") and not parece_stream(rec["stream"]):
+                rec["suggestion"] = None
+                change(rec, rec.get("post_stream"), "post", "troca desfeita: o endereço não era transmissão ao vivo")
+                rec["fail_count"] = 0
+                if not rec.get("stream"):
+                    rec.pop("stream", None)
+                rec.pop("suggestion", None)
+            fonte = rec.get("source") or ""
+            # troca que desceu de https (post) para http: volta ao link do post; na próxima busca a troca só
+            # acontece se o endereço do post não tocar no Radiocol (pode_trocar)
+            if (not protegido(rec) and fonte not in ("post", "") and (rec.get("stream") or "").startswith("http://")
+                    and (rec.get("post_stream") or "").startswith("https://") and not rec.get("conferido_radiocol")):
+                change(rec, rec.get("post_stream"), "post", "troca desfeita: tinha trocado https por http")
+                rec["fail_count"] = 0
+            fonte = rec.get("source") or ""
             mesmo_servidor = fonte.startswith(("tudoradio", "radios.com.br", "https automático", "mesmo formato https", "variação", "mesmo servidor", "outro link do post",
                                                "Shoutcast", "post"))
             suspeito = fonte.startswith("Radio Browser") or (rec.get("provisorio") and not mesmo_servidor)
@@ -659,13 +674,13 @@ async def main():
         if config.USE_TUDORADIO:
             try:
                 finder.tudo = await tudoradio.atualizar(finder._get_text, today(), log,
-                                                   motivo=finder.erros_texto.get)
+                                                   motivo=finder.erros_texto.get, navegador=finder.nav.html)
             except Exception as ex:
                 log(f"tudoradio indisponível: {ex}")
         if config.USE_RADIOSCOMBR:
             try:
                 finder.rcb = await radioscombr.atualizar(finder._get_text, today(), log,
-                                                       motivo=finder.erros_texto.get)
+                                                       motivo=finder.erros_texto.get, navegador=finder.nav.html)
             except Exception as ex:
                 log(f"radios.com.br indisponível: {ex}")
         # sites usados por 3+ posts são de rede: só vale o player da praça (cidade/frequência) do post
@@ -733,6 +748,48 @@ async def main():
         log(f"{len(off)} fora do ar, {len(fila_off)} na fila (fora do ar, não testáveis e provisórios) e "
             f"{len(sem_link)} sem link com site; procurando para {len(search)} ({len(search) - n_sl} da fila + {n_sl} sem link)…")
         sem = asyncio.Semaphore(15)
+
+        conferidos_radiocol = {}
+
+        def mesma_base(a, b):
+            """Mesmo servidor, porta e caminho — muda só o código no fim (?…): é o mesmo endereço."""
+            try:
+                pa, pb = urlsplit(a or ""), urlsplit(b or "")
+                return (pa.hostname, pa.port, pa.path.rstrip("/")) == (pb.hostname, pb.port, pb.path.rstrip("/"))
+            except ValueError:
+                return False
+
+        async def pode_trocar(rec, novo):
+            """Antes de trocar um endereço que já existe: se ele TOCA no Radiocol, não troca.
+            1) ouvintes no Brasil avisaram que tocou (últimos 14 dias); 2) o navegador do robô abre o post no
+            Radiocol, dá play e o áudio anda. Também não troca pelo mesmo endereço com outro código no fim."""
+            atual = rec.get("stream")
+            if not atual:
+                return True
+            if mesma_base(atual, novo):
+                return False
+            aviso = tocou.get(rec.get("id") or "") if tocou else None
+            if aviso and aviso.get("u") == atual:
+                hoje_ = date.fromisoformat(today())
+                if any((hoje_ - date.fromisoformat(d)).days <= 14 for d in (aviso.get("ok") or {})):
+                    rec.update(status="ok", fail_count=0, reason="tocou para ouvintes no Brasil (não trocado)")
+                    return False
+            if not finder.nav.disponivel:
+                return True                      # sem navegador: vale só o aviso dos ouvintes no Brasil (acima)
+            if rec["url"] not in conferidos_radiocol:
+                if len(conferidos_radiocol) >= config.CONFERIR_RADIOCOL_MAX:
+                    return False                 # cota do dia acabou: não arrisca trocar um áudio que pode tocar
+                conferidos_radiocol[rec["url"]] = await finder.nav.toca_no_radiocol(rec["url"])
+            toca = conferidos_radiocol[rec["url"]]
+            if toca:
+                rec.update(status="ok", fail_count=0,
+                           reason="toca no Radiocol (conferido no navegador do robô antes de trocar)")
+                rec.pop("alerted", None)
+                return False
+            if toca is None:
+                return False                     # navegador indisponível: na dúvida, não troca
+            rec["conferido_radiocol"] = today()  # o endereço atual não tocou no Radiocol: troca autorizada
+            return True
 
         def aplicar_achado(rec, found):
             alta = found["confidence"] == "high"
@@ -802,11 +859,13 @@ async def main():
             score = found.get("score") or 0
             if atual_ok:
                 # provisório / não testável: troca só por achado do site da emissora com confiança maior
-                if found["confidence"] == "high" and score > (rec.get("confianca") or 0):
+                if found["confidence"] == "high" and score > (rec.get("confianca") or 0) \
+                        and await pode_trocar(rec, found["url"]):
                     aplicar_achado(rec, found)
                 return
             alta = found["confidence"] == "high" and not found["source"].startswith("Radio Browser")
-            if alta or tem_prova(rec, found["url"], found["source"], usos_site, usos_stream):
+            if (alta or tem_prova(rec, found["url"], found["source"], usos_site, usos_stream)) \
+                    and await pode_trocar(rec, found["url"]):
                 aplicar_achado(rec, dict(found, confidence="high"))
                 await adotar_site(session, rec, found.get("site"))   # site informado pelo diretório
             else:                                   # Radio Browser / baixa confiança: só sugestão no relatório
@@ -833,15 +892,17 @@ async def main():
                 except Exception:
                     found = None
             rec.pop("_need_https", None)
-            if found and found["confidence"] == "high":
+            if found and found["confidence"] == "high" and await pode_trocar(rec, found["url"]):
                 aplicar_achado(rec, found)
                 return True
             return False
         if diaria:
             n_var = sum(await asyncio.gather(*(so_variacoes(r) for r in diaria)))
             log(f"Variações do próprio endereço (diário): {n_var} corrigidas de {len(diaria)} fora do ar/não testáveis")
-        if finder.nav.usados:
-            log(f"Navegador abriu {finder.nav.usados} sites")
+        if finder.nav.usados or finder.nav._html_usados or conferidos_radiocol:
+            log(f"Navegador abriu {finder.nav.usados} sites, {finder.nav._html_usados} páginas de diretório e "
+                f"conferiu {len(conferidos_radiocol)} posts no Radiocol "
+                f"({sum(1 for v in conferidos_radiocol.values() if v)} tocavam e não foram trocados)")
         await finder.nav.fechar()
 
         # 5) URLs antigas: confere o redirecionamento 301 ---------------------------

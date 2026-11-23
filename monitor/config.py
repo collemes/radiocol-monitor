@@ -103,3 +103,8 @@ USE_RADIOSCOMBR = os.environ.get("USE_RADIOSCOMBR", "1") != "0"
 RADIOSCOMBR_LISTAS = _int("RADIOSCOMBR_LISTAS", 400)     # páginas de lista lidas por execução
 RADIOSCOMBR_PAGINAS = _int("RADIOSCOMBR_PAGINAS", 1200)  # páginas de rádio lidas por execução
 
+# antes de trocar um endereço existente, o robô abre o post no Radiocol e confere se toca (máximo por execução)
+CONFERIR_RADIOCOL_MAX = _int("CONFERIR_RADIOCOL_MAX", 80)
+# diretórios que recusam leitura simples: páginas abertas pelo navegador por execução
+DIRETORIO_NAV_MAX = _int("DIRETORIO_NAV_MAX", 300)
+
