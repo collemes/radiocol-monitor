@@ -98,6 +98,11 @@ def _blocked(url):
     return not h or any(h == b or h.endswith("." + b) for b in BLOCK_HOSTS)
 
 
+HLS_SEM_EXT_RE = re.compile(
+    r"(streamlock\.net|/_definst_/|\.stream/|/hls/|/live/|mystream|/smil:)[^\s\"'<>]*/"
+    r"(playlist|chunklist[\w-]*|manifest|index)(?:[?#]|$)", re.I)
+
+
 def stream_score(url: str) -> int:
     """Pontua a chance de a URL ser um stream de áudio (0 = não é)."""
     if _blocked(url) or BLOCK_EXT_RE.search(url) or parece_video(url):
@@ -113,6 +118,8 @@ def stream_score(url: str) -> int:
         score += 6
     if STREAM_PATH_RE.search(path) or path.endswith(";"):
         score += 4
+    elif HLS_SEM_EXT_RE.search(url):
+        score += 4                       # HLS sem ".m3u8" (Wowza/streamlock, .../myStream/playlist)
     if port and port not in (80, 443):
         score += 3
     h = (p.hostname or "").lower()

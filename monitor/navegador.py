@@ -28,6 +28,9 @@ AUDIO_CT_RE = re.compile(r"audio/|mpegurl|application/ogg|video/mp2t|application
 IGNORAR_RE = re.compile(r"google|doubleclick|facebook|youtube|ytimg|gstatic|analytics|hotjar|clarity|"
                         r"scdn\.co|mp3-preview|dzcdn|itunes\.apple|mzstatic|sndcdn|status(-json)?\.xsl|"
                         r"\.(png|jpe?g|gif|webp|svg|css|woff2?|ttf|ico)(\?|$)", re.I)
+ABRE_PLAYER_RE = re.compile(r"ou[çc]a|ouvir|escute|ao\s*vivo|player|tocar|r[áa]dio\s*online|clique\s*(aqui\s*)?para\s*ouvir|"
+                            r"listen|play\b|\u25b6|►", re.I)
+ABRE_PLAYER_HREF_RE = re.compile(r"player|aovivo|ao-vivo|ouvir|ouca|popup|listen|radio\.php|tocador", re.I)
 TROCAR_RE = re.compile(r"(trocar|mudar|escolher|selecionar|alterar|outras?)\s+(a\s+)?(pra[çc]a|cidade|emissora|regi[ãa]o|r[áa]dio)", re.I)
 PLAY_SELETORES = [
     "[aria-label*='play' i]", "[aria-label*='ouvir' i]", "[aria-label*='tocar' i]", "[title*='play' i]",
@@ -122,6 +125,35 @@ class Navegador:
                 pass
         return False
 
+    async def _abrir_player(self, page):
+        """Clica em até 3 botões/links que levam ao player ("Ouça ao vivo", "Ouvir agora", "Player", "Rádio
+        online", "Clique para ouvir"…), inclusive os que abrem popup ou outra aba (outro site)."""
+        clicados = 0
+        try:
+            candidatos = page.locator("a, button, [onclick], [role=button]")
+            n = min(await candidatos.count(), 150)
+        except Exception:
+            return
+        for i in range(n):
+            if clicados >= 3:
+                break
+            try:
+                el = candidatos.nth(i)
+                texto = ((await el.inner_text(timeout=300)) or "") + " " + ((await el.get_attribute("title")) or "") + \
+                    " " + ((await el.get_attribute("aria-label")) or "")
+                href = (await el.get_attribute("href")) or ""
+                if not ABRE_PLAYER_RE.search(texto) and not ABRE_PLAYER_HREF_RE.search(href):
+                    continue
+                if IGNORAR_RE.search(href) or re.search(r"whatsapp|wa\.me|instagram|facebook|youtube|mailto:|tel:", href, re.I):
+                    continue
+                if not await el.is_visible(timeout=300):
+                    continue
+                await el.click(timeout=2000, force=True, modifiers=[])
+                clicados += 1
+                await page.wait_for_timeout(4000)
+            except Exception:
+                continue
+
     async def _capturar(self, site, cidade=None):
         ctx = await self._browser.new_context(locale="pt-BR", user_agent=config.USER_AGENT,
                                               viewport={"width": 1280, "height": 900}, ignore_https_errors=True)
@@ -159,9 +191,10 @@ class Navegador:
                 pass
 
         page = None
+        # escuta o CONTEXTO inteiro: pedidos de popups e novas abas abertos pelo botão do player também contam
+        ctx.on("request", lambda r: asyncio.ensure_future(ao_pedir(r)))
+        ctx.on("response", lambda r: asyncio.ensure_future(ao_responder(r)))
         page = await ctx.new_page()
-        page.on("request", lambda r: asyncio.ensure_future(ao_pedir(r)))
-        page.on("response", lambda r: asyncio.ensure_future(ao_responder(r)))
         try:
             try:
                 await page.goto(site, wait_until="domcontentloaded", timeout=30000)
@@ -182,8 +215,28 @@ class Navegador:
                             await page.wait_for_timeout(3500)
                     except Exception:
                         continue
-            # o que os players da página (e dos iframes) têm como fonte
-            for frame in page.frames[:8]:
+            # botão/link do tipo "Ouça ao vivo", "Ouvir", "Player": muitos abrem o player num popup ou em outra aba
+            if not any(a[1] for a in achados.values()):
+                await self._abrir_player(page)
+                for nova in [p for p in ctx.pages if p is not page][:3]:
+                    try:
+                        await nova.wait_for_load_state("domcontentloaded", timeout=15000)
+                    except Exception:
+                        pass
+                    await nova.wait_for_timeout(2500)
+                    for frame in nova.frames[:6]:
+                        for sel in PLAY_SELETORES:
+                            if any(a[1] for a in achados.values()):
+                                break
+                            try:
+                                el = frame.locator(sel).first
+                                if await el.count() and await el.is_visible(timeout=500):
+                                    await el.click(timeout=2000, force=True)
+                                    await nova.wait_for_timeout(3500)
+                            except Exception:
+                                continue
+            # o que os players de todas as janelas (e dos iframes) têm como fonte
+            for frame in [f for pg in ctx.pages[:4] for f in pg.frames[:8]]:
                 try:
                     fontes = await frame.evaluate(
                         """() => [...document.querySelectorAll('audio,video,source')]

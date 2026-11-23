@@ -518,17 +518,27 @@ class Finder:
                 api_url = urljoin(url, api)
                 if urlparse(api_url).netloc.replace("www.", "") == host:
                     extras.append((api_url, 2_000_000))
-            internas = 0
+            internas = externas = 0
             for href, txt in LINK_RE.findall(page):                       # página "Ao vivo", "Ouça", "Player"
                 u = urljoin(url, href.strip())
-                if internas >= 3 or not u.startswith("http") or urlparse(u).netloc.replace("www.", "") != host:
+                if not u.startswith("http"):
                     continue
-                if PLAYER_HINT_RE.search(urlparse(u).path) or PLAYER_HINT_RE.search(re.sub(r"<[^>]+>", " ", txt)):
+                dica = PLAYER_HINT_RE.search(urlparse(u).path) or PLAYER_HINT_RE.search(re.sub(r"<[^>]+>", " ", txt))
+                if not dica:
+                    continue
+                if urlparse(u).netloc.replace("www.", "") == host:
+                    if internas < 3:
+                        extras.append((u, 400_000))
+                        internas += 1
+                elif externas < 2 and not SKIP_HOST_RE.search(urlparse(u).netloc):
+                    # player hospedado em outro site (provedor de streaming), aberto em popup ou nova aba
                     extras.append((u, 400_000))
-                    internas += 1
+                    externas += 1
             scripts = 0
             for u, lim in extras:
-                if SKIP_HOST_RE.search(urlparse(u).netloc) or u in [c[0] for c in cands]:
+                # (abre mesmo se o endereço já estiver entre os candidatos: página de player com porta/"/player/"
+                #  parece stream, mas é uma página — o que importa é o áudio dentro dela)
+                if SKIP_HOST_RE.search(urlparse(u).netloc):
                     continue
                 if lim > 400_000:
                     scripts += 1

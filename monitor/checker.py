@@ -158,7 +158,8 @@ class Checker:
                 # p.scdn.co/mp3-preview, 30 s), não a transmissão ao vivo. HLS tem a sua própria verificação.
                 tamanho = resp.headers.get("Content-Length")
                 icy = any(k.lower().startswith("icy-") for k in resp.headers.keys())
-                if (tamanho and tamanho.isdigit() and int(tamanho) < 25_000_000 and not icy
+                lista_ct = any(k in ct.lower() for k in ("mpegurl", "scpls", "pls+xml"))   # playlist (m3u8, pls)
+                if (tamanho and tamanho.isdigit() and int(tamanho) < 25_000_000 and not icy and not lista_ct
                         and ct.startswith("audio/") and not final.lower().split("?")[0].endswith((".m3u8", ".m3u", ".pls"))):
                     return Result(False, "arquivo de áudio de tamanho fechado (música/prévia), não é transmissão ao vivo",
                                   final, ct)
