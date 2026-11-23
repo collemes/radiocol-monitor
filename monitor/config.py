@@ -94,7 +94,7 @@ BROWSER_PATH = os.environ.get("BROWSER_PATH", "")          # vazio = Chromium in
 MAX_BROWSER = _int("MAX_BROWSER", 250)                    # máx. sites abertos no navegador por execução
 BROWSER_CONCURRENCY = _int("BROWSER_CONCURRENCY", 3)
 BROWSER_SITE_S = _int("BROWSER_SITE_S", 50)              # tempo máximo por site
-BROWSER_BUDGET_S = _int("BROWSER_BUDGET_S", 2700)         # tempo total do navegador por execução (45 min)
+BROWSER_BUDGET_S = _int("BROWSER_BUDGET_S", 4800)         # tempo total do navegador por execução (80 min)
 APLICAR_MIN_SCORE = float(os.environ.get("APLICAR_MIN_SCORE", "0.6"))   # sugestão >= isto já entra no site
 WHATS_AUTO_MIN = float(os.environ.get("WHATS_AUTO_MIN", "0.95"))   # WhatsApp do site oficial acima disto entra no post
 
@@ -111,4 +111,9 @@ RADIOSCOMBR_PAGINAS = _int("RADIOSCOMBR_PAGINAS", 1200)  # páginas de rádio li
 CONFERIR_RADIOCOL_MAX = _int("CONFERIR_RADIOCOL_MAX", 80)
 # diretórios que recusam leitura simples: páginas abertas pelo navegador por execução
 DIRETORIO_NAV_MAX = _int("DIRETORIO_NAV_MAX", 300)
+DIRETORIO_DIAS = _int("DIRETORIO_DIAS", 30)               # cada cidade é relida nos diretórios a cada N dias
+DIRETORIO_RCB_PAGINAS = _int("DIRETORIO_RCB_PAGINAS", 40)  # páginas da lista de uma cidade no radios.com.br
 
+
+# muda esta data para zerar as filas de busca de novo (todos os posts sem áudio são procurados outra vez)
+MUTIRAO = os.environ.get("MUTIRAO", "2026-11-23")

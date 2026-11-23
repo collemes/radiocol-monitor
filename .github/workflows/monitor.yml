@@ -3,6 +3,7 @@ name: Monitor de streams Radiocol
 on:
   schedule:
     - cron: "17 8 * * *"      # todo dia às 05:17 (horário de Brasília)
+    - cron: "17 17 * * *"     # e às 14:17 (mutirão: dá conta da fila de busca mais rápido)
   workflow_dispatch:           # botão "Run workflow" para rodar na hora
     inputs:
       limit_posts:

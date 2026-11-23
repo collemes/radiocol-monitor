@@ -497,9 +497,24 @@ def nome_da_radio(title: str, cidade: str = "") -> str:
     return t.strip(" -–|")
 
 
-def nome_exibicao(nome: str, freq=None, banda=None) -> str:
+def nome_exibicao(nome: str, freq=None, banda=None, cidade=None) -> str:
     """Nome da emissora do diretório no formato do Radiocol: 'Rádio Mix FM' + 106.5 -> 'Rádio Mix FM 106,5'."""
     nome = re.sub(r"\s+", " ", nome or "").strip()
+    # "Rádio Alô FM 96,7 MHz (Juiz de Fora - MG)", "Rádio Cidade - Rio de Janeiro - 102,9 FM - ZYD462"
+    nome = re.sub(r"\([^)]*\)", " ", nome)
+    nome = re.sub(r"\bZ[A-Z]{2}\s?-?\d{3}\b|\bMHz\b|\bkHz\b", " ", nome, flags=re.I)
+    partes = [p.strip(" ,-") for p in re.split(r"\s+[-–|/]\s+|,\s+(?=[^\d\s])", nome) if p.strip(" ,-")]
+    if len(partes) > 1:
+        principal = partes[0]
+        resto = [p for p in partes[1:] if re.fullmatch(r"[\d.,]+\s*(FM|AM)?|(FM|AM)\s*[\d.,]+", p, re.I)]
+        nome = " ".join([principal] + resto)
+    if cidade and norm(nome) != norm(cidade):
+        sem = re.sub(r"\s+(?:de\s+|do\s+|da\s+)?" + re.escape(cidade) + r"\b", " ", nome, flags=re.I)
+        resto = set(re.findall(r"[a-z]{3,}", norm(sem))) - {"radio", "web", "webradio", "fm", "am", "the"}
+        if resto:                      # 'Rádio Cajuru Web' (de Cajuru): o nome É a cidade, fica
+            nome = sem
+    nome = re.sub(r"\s+[A-Z]{2}$", lambda m: "" if m.group(0).strip().lower() in UF_NOMES else m.group(0), nome.strip())
+    nome = re.sub(r"\s+", " ", nome).strip(" -,")
     nome = re.sub(r"\b(\d{2,3})\.(\d)\b", r"\1,\2", nome)
     if freq:
         fb = freq.replace(".", ",")

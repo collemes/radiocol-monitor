@@ -317,6 +317,7 @@ class Finder:
         self.nav = Navegador()     # Chromium: sites com player montado por JavaScript
         self.tudo = None           # índice do tudoradio.com (o run.py preenche)
         self.rcb = None            # índice do radios.com.br (o run.py preenche)
+        self.dirs = None           # diretorios.Diretorios: tudoradio e radios.com.br pela cidade do post
         self.erros_texto = {}      # url -> por que a leitura voltou vazia (HTTP 403, tipo…, exceção) — vai no log
 
     async def _get_text(self, url, limit=400_000):
@@ -774,7 +775,10 @@ class Finder:
         """Diretórios brasileiros (tudoradio.com e radios.com.br): página da MESMA cidade e UF do post e mesma
         frequência e faixa (webradio: mesmo nome) -> endereço do player deles."""
         from . import tudoradio
-        for rotulo, indice in (("tudoradio", self.tudo), ("radios.com.br", self.rcb)):
+        tudo, rcb = self.tudo, self.rcb
+        if self.dirs:                       # consulta sob demanda: só a cidade do post
+            tudo, rcb = await self.dirs.para(rec)
+        for rotulo, indice in (("tudoradio", tudo), ("radios.com.br", rcb)):
             if not indice:
                 continue
             for pagina, r in tudoradio.candidatos(indice, rec, frequency, band)[:3]:
@@ -796,6 +800,7 @@ class Finder:
                                 prova = "cidade, UF e frequência conferem"
                                 faixa = f"{r.get('freq')} {(r.get('banda') or '').upper()}"
                             return {"url": u, "confidence": "high", "score": 0.95, "pagina": pagina, "site": r.get("site"),
+                                    "whatsapp": r.get("whatsapp"),
                                     "nome": r.get("nome"), "freq": r.get("freq"), "banda": r.get("banda"),
                                     "web": bool(r.get("web")),
                                     "source": f"{rotulo}: {r.get('nome')} ({r.get('cidade')}/"

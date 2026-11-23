@@ -227,6 +227,47 @@ def _dias_desde(d):
     return 999 if not d else (date.fromisoformat(today()) - date.fromisoformat(d)).days
 
 
+async def montar_sucessora(session, finder, rec, found, motivo):
+    """Outra emissora está hoje na frequência do post (cidade, estado e frequência conferem, nome diferente):
+    o post toca a emissora nova e mostra nome, site e contatos dela; o relatório pede revisão manual."""
+    uf = ((rec.get("loc") or [None, None]) + [None])[1] or ""
+    site = found.get("site")
+    html_site = html_dir = ""
+    if site:
+        situacao, final = await checar_site(session, site)
+        site = final.split("?")[0] if situacao == "ok" else None
+        if site:
+            html_site = await finder._get_text(site) or ""
+    if found.get("pagina"):
+        html_dir = await finder._get_text(found["pagina"]) or ""
+    whats, tel = contatos_da_emissora([html_site, html_dir, ("https://wa.me/" + found["whatsapp"])
+                                       if found.get("whatsapp") else ""], uf)
+    cidade = (rec.get("loc") or [""])[0] or ""
+    fonte = found["source"]
+    suc = {"url": found["url"], "fonte": fonte, "pagina": found.get("pagina"),
+           "nome": nome_exibicao(found.get("nome") or "", found.get("freq"), found.get("banda"), cidade),
+           "antigo": nome_da_radio(rec.get("title", ""), cidade),
+           "site": site, "whatsapp": whats, "telefone": tel, "em": today(), "motivo": motivo}
+    rec["sucessora"] = {k: v for k, v in suc.items() if v}
+    change(rec, found["url"], "sucessora: " + fonte, motivo + ": emissora nova na mesma frequência")
+    rec.update(status="ok", fail_count=0, last_ok=today(), http_only=found["url"].startswith("http://"),
+               reason=motivo + " — nova emissora na mesma frequência (revisar)")
+    for k in ("alerted", "suggestion", "provisorio", "confianca", "buscas_vazias", "busca_vazia_em"):
+        rec.pop(k, None)
+
+
+def outra_emissora(rec, found):
+    """O achado do diretório/Radio Browser é OUTRA emissora (mesma cidade e frequência, outro nome)?"""
+    from .tudoradio import mesmo_nome
+    nome = found.get("nome")
+    if not nome or found.get("web") or not frequency(rec.get("title", "")):
+        return False
+    if not (found.get("source") or "").startswith(("tudoradio", "radios.com.br", "Radio Browser")):
+        return False
+    cidade = (rec.get("loc") or [""])[0] or ""
+    return not mesmo_nome(nome_da_radio(rec.get("title", ""), cidade), nome, cidade)
+
+
 async def buscar_sucessoras(session, finder, posts_state, ov_for, events, log=print):
     """Posts de rádio encerrada (título ou marcador 'desativada'): procura nos diretórios a emissora que está
     hoje na MESMA cidade, estado e frequência (webradio: mesmo nome). Cada post 1x por semana; a emissora nova
@@ -268,31 +309,10 @@ async def buscar_sucessoras(session, finder, posts_state, ov_for, events, log=pr
                     change(rec, rec.get("post_stream"), "post", "emissora nova saiu dos diretórios")
                     rec["status"], rec["reason"] = "ignorado", "rádio encerrada/desativada, pelo título ou marcador (automático)"
                 return
-            uf = ((rec.get("loc") or [None, None]) + [None])[1] or ""
-            site = found.get("site")
-            html_site = html_dir = ""
-            if site:
-                situacao, final = await checar_site(session, site)
-                site = final.split("?")[0] if situacao == "ok" else None
-                if site:
-                    html_site = await finder._get_text(site) or ""
-            if found.get("pagina"):
-                html_dir = await finder._get_text(found["pagina"]) or ""
-            whats, tel = contatos_da_emissora([html_site, html_dir], uf)
-        cidade = (rec.get("loc") or [""])[0] or ""
-        fonte = found["source"]
-        suc = {"url": found["url"], "fonte": fonte, "pagina": found.get("pagina"),
-               "nome": nome_exibicao(found.get("nome") or "", found.get("freq"), found.get("banda")),
-               "antigo": nome_da_radio(rec.get("title", ""), cidade),
-               "site": site, "whatsapp": whats, "telefone": tel, "em": today()}
-        rec["sucessora"] = {k: v for k, v in suc.items() if v}
-        change(rec, found["url"], "sucessora: " + fonte, "rádio encerrada: emissora nova na mesma frequência")
-        rec.update(status="ok", fail_count=0, last_ok=today(), http_only=found["url"].startswith("http://"),
-                   reason="rádio encerrada — nova emissora na mesma frequência (revisar)")
-        for k in ("alerted", "suggestion", "provisorio", "confianca"):
-            rec.pop(k, None)
-        events["sucessoras"].append(rec["url"])
-        achadas += 1
+            await montar_sucessora(session, finder, rec, found, "rádio encerrada")
+        if rec.get("sucessora", {}).get("url") == found["url"]:
+            events["sucessoras"].append(rec["url"])
+            achadas += 1
 
     await asyncio.gather(*(uma(r) for r in fila))
     log(f"Rádios encerradas: {len(fila)} procuradas nos diretórios, {achadas} com emissora nova na mesma "
@@ -304,6 +324,22 @@ async def main():
     state_path = os.path.join(config.DATA_DIR, "state.json")
     state = load(state_path, {"posts": {}})
     posts_state = state["posts"]
+    # Mutirão (1x): com os diretórios lidos do jeito certo, todos os posts sem áudio voltam para a fila de busca
+    if state.get("mutirao") != config.MUTIRAO:
+        n_m = 0
+        for _r in posts_state.values():
+            if protegido(_r):
+                continue
+            for _k in ("search_tried", "site_tried", "sucessora_busca", "busca_dir", "https_search"):
+                if _r.pop(_k, None):
+                    n_m += 1
+            _s = _r.get("sucessora")
+            if _s and _s.get("nome"):       # nomes vindos do Radio Browser: formato do Radiocol
+                _s["nome"] = nome_exibicao(_s["nome"], frequency(_r.get("title", "")), None,
+                                           (_r.get("loc") or [""])[0])
+        state["mutirao"] = config.MUTIRAO
+        log(f"Mutirão {config.MUTIRAO}: filas de busca zeradas ({n_m} marcações) — todos os posts sem áudio "
+            "serão procurados de novo nas próximas execuções")
     # para tem_prova(): quantos posts usam cada site e cada endereço de áudio (dados da execução anterior)
     usos_site, usos_stream = {}, {}
     for _r in posts_state.values():
@@ -608,7 +644,8 @@ async def main():
                 rec["encerrada"] = True
             else:
                 rec.pop("encerrada", None)
-                rec.pop("sucessora", None)
+                if protegido(rec) or ov.get("stream"):
+                    rec.pop("sucessora", None)      # você editou o post: vale o post
             suc = rec.get("sucessora") if tipo_post == "encerrada" else None
             if suc and suc.get("url") and not ov.get("stream") and not protegido(rec):
                 # rádio encerrada, mas outra emissora assumiu a frequência (ou a webradio mudou de servidor):
@@ -763,18 +800,13 @@ async def main():
         # 3c) posts com iframe que ainda só têm http: procura uma versão https em
         #     outras fontes (site oficial, Radio Browser) para poder trocar pelo player
         finder = Finder(session, checker)
-        if config.USE_TUDORADIO:
+        if config.USE_TUDORADIO or config.USE_RADIOSCOMBR:
+            from .diretorios import Diretorios
+            finder.dirs = Diretorios(finder._get_text, log)
             try:
-                finder.tudo = await tudoradio.atualizar(finder._get_text, today(), log,
-                                                   motivo=finder.erros_texto.get, navegador=finder.nav.html)
+                await finder.dirs.preparar()
             except Exception as ex:
-                log(f"tudoradio indisponível: {ex}")
-        if config.USE_RADIOSCOMBR:
-            try:
-                finder.rcb = await radioscombr.atualizar(finder._get_text, today(), log,
-                                                       motivo=finder.erros_texto.get, navegador=finder.nav.html)
-            except Exception as ex:
-                log(f"radios.com.br indisponível: {ex}")
+                log(f"diretórios indisponíveis: {ex}")
         # sites usados por 3+ posts são de rede: só vale o player da praça (cidade/frequência) do post
         usos = {}
         for r in posts_state.values():
@@ -835,7 +867,7 @@ async def main():
         fila_off.sort(key=lambda r: (r.get("fail_count", 0) > config.CONFIRM_RUNS, r.get("search_tried") or ""))
         # posts sem nenhum endereço de áudio, mas com site oficial: procura o player no site
         sem_link = [r for r in posts_state.values()
-                    if r.get("status") == "sem_link" and r.get("sites") and not protegido(r)
+                    if r.get("status") == "sem_link" and not protegido(r)          # sem site: os diretórios ainda servem
                     and dias_desde(r.get("site_tried")) >= 7]
         sem_link.sort(key=lambda r: r.get("site_tried") or "")
         cota_sem_link = min(len(sem_link), max(config.MAX_SEARCH * 2 // 5, config.MAX_SEARCH - len(fila_off)))
@@ -978,8 +1010,13 @@ async def main():
                     aplicar_achado(rec, found)
                 return
             alta = found["confidence"] == "high" and not found["source"].startswith("Radio Browser")
-            if (alta or tem_prova(rec, found["url"], found["source"], usos_site, usos_stream)) \
-                    and await pode_trocar(rec, found["url"]):
+            prova = alta or tem_prova(rec, found["url"], found["source"], usos_site, usos_stream)
+            if prova and outra_emissora(rec, found) and await pode_trocar(rec, found["url"]):
+                # a frequência do post é hoje de OUTRA emissora: toca a nova, com nome e contatos dela, e avisa
+                await montar_sucessora(session, finder, rec, found, "rádio fora do ar")
+                events["sucessoras"].append(rec["url"])
+                return
+            if prova and await pode_trocar(rec, found["url"]):
                 aplicar_achado(rec, dict(found, confidence="high"))
                 await adotar_site(session, rec, found.get("site"))   # site informado pelo diretório
             else:                                   # Radio Browser / baixa confiança: só sugestão no relatório
@@ -1018,6 +1055,9 @@ async def main():
                 f"conferiu {len(conferidos_radiocol)} posts no Radiocol "
                 f"({sum(1 for v in conferidos_radiocol.values() if v)} tocavam e não foram trocados)")
         await finder.nav.fechar()
+        if finder.dirs:
+            log(finder.dirs.resumo())
+            finder.dirs.salvar()
 
         # 5) URLs antigas: confere o redirecionamento 301 ---------------------------
         if state.get("old_urls"):
