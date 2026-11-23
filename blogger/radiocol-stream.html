@@ -385,8 +385,11 @@
     if (document.querySelector('.rc-nova')) return;
     var box = document.createElement('div');
     box.className = 'rc-nova';
-    box.setAttribute('style', 'margin:12px 0;padding:10px 14px;border-left:4px solid #e53935;background:rgba(229,57,53,.07);' +
-                     'border-radius:6px;font-size:15px;line-height:1.5');
+    // ocupa a largura toda, mesmo quando o player está dentro de um bloco flex/grid (senão fica espremido)
+    box.setAttribute('style', 'display:block;box-sizing:border-box;width:100%;max-width:100%;min-width:0;' +
+                     'flex:0 0 100%;align-self:stretch;grid-column:1/-1;clear:both;float:none;' +
+                     'margin:12px 0;padding:10px 14px;border-left:4px solid #e53935;background:rgba(229,57,53,.07);' +
+                     'border-radius:6px;font-size:15px;line-height:1.5;text-align:left;word-break:normal;overflow-wrap:break-word');
     var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
     var partes = ['<span aria-hidden="true">📻</span> Nesta frequência agora: <b>' + esc(x.t) + '</b>'];
     var links = [];
@@ -400,6 +403,9 @@
     var a = corpo.querySelector('audio');
     var ref = a && (a.closest('.mejs-container, .mejs__container, .media-wrapper, .srd-wrap') || a);
     while (ref && ref.parentNode && ref.parentNode !== corpo && !/^(DIV|CENTER|P)$/.test(ref.parentNode.tagName)) ref = ref.parentNode;
+    // pai em linha (flex/grid/inline): o card vai para depois desse bloco, em linha própria
+    var disp = function (el) { try { return getComputedStyle(el).display || ''; } catch (e) { return ''; } };
+    while (ref && ref.parentNode && ref.parentNode !== corpo && /flex|grid|inline|table-cell/.test(disp(ref.parentNode))) ref = ref.parentNode;
     if (ref && ref.parentNode) ref.parentNode.insertBefore(box, ref.nextSibling);
     else corpo.insertBefore(box, corpo.firstChild);
   }
