@@ -1,0 +1,20 @@
+name: Diagnóstico dos diretórios
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install aiohttp playwright && python -m playwright install --with-deps chromium
+      - run: python tools/diag_dir.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: diag
+          path: diag/
