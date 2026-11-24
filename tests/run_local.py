@@ -27,6 +27,16 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from aiohttp import web  # noqa: E402
 
 from monitor import finder, run  # noqa: E402
+from monitor import navegador  # noqa: E402
+
+
+async def _toca_no_radiocol_teste(self, url_post):
+    """Os posts do teste não existem no Radiocol de verdade: o player do site "não toca" (troca autorizada).
+    Sem isto o teste dependia de o navegador alcançar radiocol.com.br (fora da rede, dava None = não troca)."""
+    return False
+
+
+navegador.Navegador.toca_no_radiocol = _toca_no_radiocol_teste
 
 AUDIO = b"ID3\x03\x00\x00\x00\x00\x00\x00" + (b"\xff\xfb\x90\x64" + b"\x00" * 413) * 60
 B = f"http://127.0.0.1:{P}"
@@ -227,6 +237,11 @@ async def main():
             r1 = stj["posts"]["1"]
             r1["stream"] = "https://rr3---sn-o097znzd.c.2mdn.net/videoplayback/id/9f7b/itag/342/file/file.mp4"
             r1["source"] = "site oficial (x.com.br) — tocou no navegador [navegador]"
+            json.dump(stj, open(st_path, "w"))
+        if dia == 2:   # migração única pendente com o mutirão já feito (24/11: o robô caiu com UnboundLocalError)
+            st_path = f"{TMP}/data/state.json"
+            stj = json.load(open(st_path))
+            stj.pop("migr_outra_emissora", None)
             json.dump(stj, open(st_path, "w"))
         if dia == 3:   # dia 3: você trocou à mão o link do post 8 (que o robô tinha corrigido) — mesmo fora do ar, vale o seu
             POSTS[7]["content"]["$t"] = f'<audio src="{B}/editado-morto.mp3"></audio>'

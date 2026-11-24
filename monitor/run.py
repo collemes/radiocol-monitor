@@ -355,6 +355,8 @@ async def main():
                 _s["nome"] = nome_exibicao(_s["nome"], frequency(_r.get("title", "")), None,
                                            (_r.get("loc") or [""])[0])
         state["mutirao"] = config.MUTIRAO
+        log(f"Mutirão {config.MUTIRAO}: filas de busca zeradas ({n_m} marcações) — todos os posts sem áudio "
+            "serão procurados de novo nas próximas execuções")
     if not state.get("migr_outra_emissora"):
         # trocas antigas que puseram OUTRA emissora no post sem o cartão: refazer pelo caminho de "emissora nova"
         n_c = 0
@@ -369,8 +371,6 @@ async def main():
                 n_c += 1
         state["migr_outra_emissora"] = today()
         log(f"{n_c} posts com outra emissora na frequência e sem o cartão: serão refeitos hoje")
-        log(f"Mutirão {config.MUTIRAO}: filas de busca zeradas ({n_m} marcações) — todos os posts sem áudio "
-            "serão procurados de novo nas próximas execuções")
     # para tem_prova(): quantos posts usam cada site e cada endereço de áudio (dados da execução anterior)
     usos_site, usos_stream = {}, {}
     for _r in posts_state.values():
