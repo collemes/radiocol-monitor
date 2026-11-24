@@ -115,7 +115,7 @@ def tem_prova(rec, url, fonte, usos_site, usos_stream):
         return "conferem" in fonte                   # só entra com cidade, UF e frequência (ou nome) iguais
     if fonte.startswith("Radio Browser"):
         # cidade, UF e frequência precisam conferir (o nome da rádio é opcional)
-        if "conferem" in fonte:                      # conferido com o registro completo (estado, tags, site)
+        if "conferem" in fonte and "não conferem" not in fonte:   # conferido com o registro completo
             return True
         nome_rb = fonte.split(":", 1)[-1].split(" — ")[0]
         return rb_confere(rec, nome_rb)
@@ -265,6 +265,12 @@ def outra_emissora(rec, found):
     if not (found.get("source") or "").startswith(("tudoradio", "radios.com.br", "Radio Browser")):
         return False
     cidade = (rec.get("loc") or [""])[0] or ""
+    nome = nome_exibicao(nome, None, None, cidade)          # tira "MHz", prefixo ZYC813, "(cidade - UF)", "link 2"
+    nome = re.sub(r"\b(?:link|stream)\s*\d*\b", " ", nome, flags=re.I)
+    from .tudoradio import palavras_nome
+    a = palavras_nome(nome_da_radio(rec.get("title", ""), cidade), cidade)
+    if not a or not palavras_nome(nome, cidade):
+        return False                         # nome curto/genérico ("BH FM", "104"): não dá para afirmar que é outra
     return not mesmo_nome(nome_da_radio(rec.get("title", ""), cidade), nome, cidade)
 
 
@@ -280,6 +286,9 @@ async def buscar_sucessoras(session, finder, posts_state, ov_for, events, log=pr
         caiu = suc and r.get("status") == "off" and r.get("fail_count", 0) > config.CONFIRM_RUNS
         if (not suc or caiu) and _dias_desde(r.get("sucessora_busca")) >= 7:
             fila.append(r)
+    for r in posts_state.values():
+        if r.get("converter_sucessora") and not r.get("encerrada"):
+            fila.append(r)
     fila.sort(key=lambda r: r.get("sucessora_busca") or "")
     fila = fila[:config.SUCESSORAS_MAX]
     if not fila:
@@ -291,18 +300,26 @@ async def buscar_sucessoras(session, finder, posts_state, ov_for, events, log=pr
         nonlocal achadas
         rec["sucessora_busca"] = today()
         velha = rec.get("sucessora") or {}
+        # conversão: o post já toca a emissora nova; o endereço atual também vale como achado
+        alvo = dict(rec, stream=None) if rec.get("converter_sucessora") else rec
         async with sem:
             found = None
             try:
-                found = await finder.from_tudoradio(rec)
+                found = await finder.from_tudoradio(alvo)
             except Exception:
                 found = None
             if not found:
                 try:
-                    rb = await finder.from_radio_browser(rec)
+                    rb = await finder.from_radio_browser(alvo)
                 except Exception:
                     rb = None
                 found = rb if rb and rb.get("rb_confere") else None
+            if rec.pop("converter_sucessora", None):
+                if found and outra_emissora(rec, found):
+                    await montar_sucessora(session, finder, rec, found, "rádio com outro nome")
+                    events["sucessoras"].append(rec["url"])
+                    achadas += 1
+                return
             if not found or found["url"] == velha.get("url"):
                 if velha and not found:          # a emissora nova também caiu e não aparece mais: volta a ignorar
                     rec.pop("sucessora", None)
@@ -338,6 +355,20 @@ async def main():
                 _s["nome"] = nome_exibicao(_s["nome"], frequency(_r.get("title", "")), None,
                                            (_r.get("loc") or [""])[0])
         state["mutirao"] = config.MUTIRAO
+    if not state.get("migr_outra_emissora"):
+        # trocas antigas que puseram OUTRA emissora no post sem o cartão: refazer pelo caminho de "emissora nova"
+        n_c = 0
+        for _r in posts_state.values():
+            _f = _r.get("source") or ""
+            if _r.get("sucessora") or protegido(_r) or "não conferem" in _f \
+                    or not _f.startswith(("tudoradio", "radios.com.br", "Radio Browser")):
+                continue
+            _m = re.match(r"[^:]+:\s*(.+?)(?:\s+\(|\s+—|$)", _f)
+            if _m and outra_emissora(_r, {"nome": _m.group(1), "source": _f}):
+                _r["converter_sucessora"] = True
+                n_c += 1
+        state["migr_outra_emissora"] = today()
+        log(f"{n_c} posts com outra emissora na frequência e sem o cartão: serão refeitos hoje")
         log(f"Mutirão {config.MUTIRAO}: filas de busca zeradas ({n_m} marcações) — todos os posts sem áudio "
             "serão procurados de novo nas próximas execuções")
     # para tem_prova(): quantos posts usam cada site e cada endereço de áudio (dados da execução anterior)
@@ -921,7 +952,14 @@ async def main():
             rec["conferido_radiocol"] = today()  # o endereço atual não tocou no Radiocol: troca autorizada
             return True
 
-        def aplicar_achado(rec, found):
+        async def aplicar_achado(rec, found):
+            if outra_emissora(rec, found):
+                # a frequência é hoje de OUTRA emissora (nome diferente): toca a nova com nome, site e contatos
+                # dela e pede revisão — vale para qualquer caminho (fora do ar, só http, não testável, provisório)
+                await montar_sucessora(session, finder, rec, found, "rádio fora do ar" if rec.get("status") == "off"
+                                       else "rádio com outro nome")
+                events["sucessoras"].append(rec["url"])
+                return
             alta = found["confidence"] == "high"
             score = found.get("score") or 0
             events["fixed"].append({"url": rec["url"], "title": rec["title"], "from": rec.get("stream"),
@@ -967,7 +1005,7 @@ async def main():
                         found = None
                 rec.pop("_need_https", None)
                 if found and found["confidence"] == "high":
-                    aplicar_achado(rec, found)
+                    await aplicar_achado(rec, found)
                     return
             async with sem:
                 if rec.get("status") == "bloqueio":
@@ -1007,7 +1045,7 @@ async def main():
                 # (não testável: qualquer endereço da MESMA rádio que toque para o robô já é melhor)
                 melhor = rec.get("status") == "bloqueio" or score > (rec.get("confianca") or 0)
                 if found["confidence"] == "high" and melhor and await pode_trocar(rec, found["url"]):
-                    aplicar_achado(rec, found)
+                    await aplicar_achado(rec, found)
                 return
             alta = found["confidence"] == "high" and not found["source"].startswith("Radio Browser")
             prova = alta or tem_prova(rec, found["url"], found["source"], usos_site, usos_stream)
@@ -1017,7 +1055,7 @@ async def main():
                 events["sucessoras"].append(rec["url"])
                 return
             if prova and await pode_trocar(rec, found["url"]):
-                aplicar_achado(rec, dict(found, confidence="high"))
+                await aplicar_achado(rec, dict(found, confidence="high"))
                 await adotar_site(session, rec, found.get("site"))   # site informado pelo diretório
             else:                                   # Radio Browser / baixa confiança: só sugestão no relatório
                 rec["suggestion"] = {k: found[k] for k in ("url", "source", "score") if k in found}
@@ -1044,7 +1082,7 @@ async def main():
                     found = None
             rec.pop("_need_https", None)
             if found and found["confidence"] == "high" and await pode_trocar(rec, found["url"]):
-                aplicar_achado(rec, found)
+                await aplicar_achado(rec, found)
                 return True
             return False
         if diaria:

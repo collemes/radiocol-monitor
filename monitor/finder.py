@@ -782,9 +782,23 @@ class Finder:
             if not indice:
                 continue
             for pagina, r in tudoradio.candidatos(indice, rec, frequency, band)[:3]:
+                if r.get("web"):
+                    prova, faixa = "webradio: cidade, UF e nome conferem", "webradio"
+                else:
+                    prova = "cidade, UF e frequência conferem"
+                    faixa = f"{r.get('freq')} {(r.get('banda') or '').upper()}"
+                achado = {"confidence": "high", "score": 0.95, "pagina": pagina, "site": r.get("site"),
+                          "whatsapp": r.get("whatsapp"),
+                          "nome": r.get("nome"), "freq": r.get("freq"), "banda": r.get("banda"),
+                          "web": bool(r.get("web")),
+                          "source": f"{rotulo}: {r.get('nome')} ({r.get('cidade')}/"
+                                    f"{(r.get('uf') or '').upper()}, {faixa}) — {prova}"}
+                do_dir = None
                 origem = re.match(r"https?://[^/]+", pagina).group(0)
                 lidos = [u for u in r.get("streams") or [] if u.rstrip("/") != origem]
                 for tentativa in ("página", "navegador"):
+                    if do_dir:
+                        break
                     if tentativa == "navegador":     # player montado por script: abre a página e dá play
                         lidos = [u for u, _, _ in await self.nav.capturar(pagina)
                                  if urlparse(u).netloc.replace("www.", "") != urlparse(pagina).netloc.replace("www.", "")
@@ -793,18 +807,31 @@ class Finder:
                         if u == rec.get("stream") or (rec.get("_need_https") and not u.startswith("https")):
                             continue
                         if audio_ok(u, await self.c.check(u)):
-                            if r.get("web"):
-                                prova = "webradio: cidade, UF e nome conferem"
-                                faixa = "webradio"
-                            else:
-                                prova = "cidade, UF e frequência conferem"
-                                faixa = f"{r.get('freq')} {(r.get('banda') or '').upper()}"
-                            return {"url": u, "confidence": "high", "score": 0.95, "pagina": pagina, "site": r.get("site"),
-                                    "whatsapp": r.get("whatsapp"),
-                                    "nome": r.get("nome"), "freq": r.get("freq"), "banda": r.get("banda"),
-                                    "web": bool(r.get("web")),
-                                    "source": f"{rotulo}: {r.get('nome')} ({r.get('cidade')}/"
-                                              f"{(r.get('uf') or '').upper()}, {faixa}) — {prova}"}
+                            do_dir = u
+                            break
+                # o diretório provou QUAL emissora é; o áudio vem de preferência do site dela (o do diretório
+                # costuma ser antigo ou de um servidor que a emissora só liga em alguns horários)
+                oficial = None
+                if r.get("site") and not rec.get("_dir_site"):
+                    sub = {"title": f"{r.get('nome')} {faixa if not r.get('web') else ''} de {r.get('cidade')}",
+                           "sites": [r["site"]], "loc": rec.get("loc"), "url": rec.get("url", ""),
+                           "_dir_site": True, "_need_https": rec.get("_need_https")}
+                    try:
+                        oficial = await self.from_official_site(sub)
+                    except Exception:
+                        oficial = None
+                    if oficial and (oficial.get("confidence") != "high" or oficial.get("nao_testavel")
+                                    or oficial["url"] == rec.get("stream")):
+                        oficial = None
+                if oficial:
+                    achado["url"] = oficial["url"]
+                    achado["source"] += " — áudio do site da emissora"
+                    if do_dir and do_dir != oficial["url"]:
+                        achado["reserva"] = do_dir
+                    return achado
+                if do_dir:
+                    achado["url"] = do_dir
+                    return achado
         return None
 
     async def find(self, rec):

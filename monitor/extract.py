@@ -489,7 +489,8 @@ def nome_da_radio(title: str, cidade: str = "") -> str:
     """Só o nome da rádio, como está no título: 'Ouvir a Rádio Atlântica FM 93,7 de Rio das Ostras RJ Ao Vivo'
     -> 'Rádio Atlântica FM 93,7'. Com frequência, corta logo depois dela; webradio, antes da cidade."""
     t = nome_curto(title)
-    m = re.search(r"\b\d{2,3}[.,]\d\b|\b(?:am|fm)\s*\d{3,4}\b|\b\d{3,4}\s*(?:am|khz)\b", t, re.I)
+    m = (re.search(r"\b\d{2,3}[.,]\d\b", t) or
+         re.search(r"\b(?:am|fm)\s*\d{3,4}\b|\b\d{3,4}\s*(?:am|khz)\b", t, re.I))
     if m:
         return t[:m.end()].strip(" -–|")
     if cidade:
