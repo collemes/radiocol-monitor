@@ -547,4 +547,64 @@ async def _video_e_ssl():
         bad += 1; print("FALHOU: http só quando o problema é o certificado e a rádio aceita http")
 
 asyncio.run(_video_e_ssl())
+
+# ----- regra nova (2026-11-25): "radio.co" (provedor) não casa com o site "…radio.com.br" da emissora
+from monitor.extract import extract_sites as _es, extract_streams as _xs, stream_score as _ss
+_post = ('<a href="https://www.tuaradio.com.br/Sarandi/">site</a> <a href="https://cacapavaradio.com.br/">site</a> '
+         'https://play.radio.br:8089/sarandi/sarandi/playlist.m3u8')
+if _es(_post) != ["https://www.tuaradio.com.br/", "https://cacapavaradio.com.br/"] or \
+        _xs(_post) != ["https://play.radio.br:8089/sarandi/sarandi/playlist.m3u8"]:
+    bad += 1; print("FALHOU: site '…radio.com.br' tem de ser site, não stream", _es(_post), _xs(_post))
+for _u in ("https://minharadio.radio.co/live", "https://streaming.radio.co/s1234/listen",
+           "https://shout25.crossradio.com.br:18202/1", "https://stream.zeno.fm/abc12345"):
+    if not _ss(_u):
+        bad += 1; print("FALHOU: stream de provedor conhecido deixou de valer", _u)
+
+# ----- regra nova (2026-11-25): AzuraCast anuncia a porta direta (host:8040/fm) e o post usa o proxy /radio/8040/am
+async def _azuracast_porta():
+    global bad
+    f = finder.Finder.__new__(finder.Finder)
+    f._listas = {"https://cast.y.radio.br": [("https://cast.y.radio.br:8040/fm", "a"), ("https://cast.y.radio.br:8020/radio", "b")]}
+    f.c = _Chk({"https://cast.y.radio.br/radio/8040/fm"})
+    r = await f.from_mesma_conta({"stream": "https://cast.y.radio.br/radio/8040/am", "reason": "HTTP 404"})
+    if not r or r["url"] != "https://cast.y.radio.br/radio/8040/fm":
+        bad += 1; print("FALHOU AzuraCast: ponto novo na mesma porta", r)
+    # porta que não está na lista (emissora removida do servidor): nada
+    if await f.from_mesma_conta({"stream": "https://cast.y.radio.br/radio/8035/radio", "reason": "HTTP 404"}):
+        bad += 1; print("FALHOU AzuraCast: porta de outra emissora não pode ser usada")
+
+asyncio.run(_azuracast_porta())
+# ----- regra nova (2026-11-25): play.radio.br migrou para painel.sintonizar.tv.br com o mesmo nome de ponto
+if "https://painel.sintonizar.tv.br/stream/cacique" not in finder.variants("https://play.radio.br:8089/cacique/cacique/playlist.m3u8") \
+        or "https://painel.sintonizar.tv.br/stream/Solaris97" not in finder.variants("https://stream1.play.radio.br:8089/Solaris97/Solaris97/icecast.audio"):
+    bad += 1; print("FALHOU play.radio.br -> sintonizar")
+if any("sintonizar" in x for x in finder.variants("https://play.radio.br:8089/Redesul/RSCultura/playlist.m3u8")
+       + finder.variants("https://play.radio.br:8089/live/live/playlist.m3u8")
+       + finder.variants("https://outro.com.br:8089/cacique/cacique/playlist.m3u8")):
+    bad += 1; print("FALHOU: sintonizar só com nome próprio igual nos dois pedaços e só para play.radio.br")
+# ----- regra nova (2026-11-25): link para OUTRO post do Radiocol nunca é o player desta rádio
+from monitor.extract import extract_player_links as _epl
+from monitor import run as _run
+_base = "https://www.radiocol.com.br/2015/01/ouvir-radio-sucesso-fm-899-de-sao-luis.html"
+_html = ('<a href="https://www.radiocol.com.br/2020/02/ouvir-super-radio-boa-vontade-am-1210-brasilia-df-ao-vivo.html">'
+         'Ouvir a Super Rádio Boa Vontade</a> <a href="/2014/05/ouvir-radio-pelotense-am-620-de-pelotas.html">Ouça</a> '
+         '<a href="https://radiosaovivo.radiocol.com.br/2019/01/sucesso.html">Clique aqui para ouvir</a>')
+if _epl(_html, _base) != ["https://radiosaovivo.radiocol.com.br/2019/01/sucesso.html"]:
+    bad += 1; print("FALHOU: post vizinho do blog virou player", _epl(_html, _base))
+_r = {"url": _base, "popup": "https://www.radiocol.com.br/2020/02/x.html", "popup_streams": ["https://8802.b.com.br/stream"],
+      "post_stream": "https://8802.b.com.br/stream", "stream": "https://8802.b.com.br/stream", "source": "post",
+      "editado_em": "2026-11-20"}
+_run.corrigir_popup_de_outro_post(_r, None)
+if _r.get("stream") or _r.get("post_stream") or _r.get("popup") or _run.protegido(_r):
+    bad += 1; print("FALHOU: áudio vindo do post vizinho tem de sair", _r)
+_r = {"url": _base, "popup": "https://www.radiocol.com.br/2020/02/x.html", "post_stream": "https://8802.b.com.br/stream",
+      "stream": "https://s03.t.com:7582/stream", "source": "tudoradio: Rádio X (Cidade/UF, 89.9 FM) — conferem"}
+_run.corrigir_popup_de_outro_post(_r, None)
+if _r.get("stream") != "https://s03.t.com:7582/stream" or _r.get("post_stream"):
+    bad += 1; print("FALHOU: áudio com prova própria (diretório) fica", _r)
+_r = {"url": _base, "popup": "https://www.radiocol.com.br/2020/02/x.html", "post_stream": "https://8802.b.com.br/stream",
+      "stream": "https://8802.b.com.br/stream", "source": "post"}
+_run.corrigir_popup_de_outro_post(_r, "https://novo.link.com.br:8000/live")
+if _r.get("post_stream") != "https://8802.b.com.br/stream" or _r.get("popup"):
+    bad += 1; print("FALHOU: com link próprio no post, o fluxo normal (edição do dono) decide", _r)
 print("RESULTADO:", "TUDO CERTO" if not bad else f"{bad} FALHA(S)")

@@ -12,7 +12,7 @@ from urllib.parse import unquote, urljoin, urlparse, urlsplit
 from . import config
 from .blogger import BODY_RE, fetch_post_body, fetch_post_body_raw, fetch_posts, load_blogger_backup
 from .checker import Checker
-from .extract import (nome_da_radio, nome_exibicao, parece_stream, frequency, norm, classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
+from .extract import (mesmo_blog, nome_da_radio, nome_exibicao, parece_stream, frequency, norm, classify_post, extract_contacts, extract_live_iframe, extract_player_links, extract_sites,
                       extract_location, extract_streams, norm, parece_video, stream_score)
 from .extras import check_old_urls, contact_pairs, contatos_da_emissora, register_old_url, scan_site_whatsapp
 from . import radioscombr, tudoradio
@@ -216,6 +216,32 @@ def formato_vizinho(url, https_por_host):
         if u not in vistos:
             vistos.append(u)
     return vistos[:3]
+
+
+# fontes que só derivam do link do post (o próprio endereço, variações e https dele): sem prova própria
+_FONTES_DO_POST = ("post", "https automático", "mesmo formato https", "variação", "outro link do post", "Shoutcast",
+                   "mesmo servidor")
+
+
+def corrigir_popup_de_outro_post(rec, novo_link):
+    """O 'popup' do post era OUTRO post do Radiocol (link "ouvir-radio-…" no texto): o áudio que veio de lá é de
+    outra rádio. Não é edição do dono: o link do post passa a ser o que o post tem de verdade (ou nenhum), o
+    áudio derivado dele sai, e só fica áudio achado com prova própria (site oficial, diretório com cidade/UF/
+    frequência conferidos). A marca de 'editado à mão' que veio desse link falso também sai."""
+    for k in ("popup", "popup_streams", "popup_read", "popup_source"):
+        rec.pop(k, None)
+    if novo_link or rec.get("source") == "manual" or not rec.get("post_stream"):
+        return          # o post tem link próprio: o fluxo normal decide (link novo no post = edição do dono)
+    fonte = rec.get("source") or ""
+    if rec.get("stream") and (fonte.startswith(_FONTES_DO_POST) or rec.get("stream") == rec.get("post_stream")):
+        change(rec, novo_link, "post", "troca desfeita: o link vinha do post de OUTRA rádio do Radiocol")
+        rec["fail_count"] = 0
+        for k in ("suggestion", "alerted", "provisorio", "confianca", "conferido_radiocol"):
+            rec.pop(k, None)
+        if not rec.get("stream"):
+            rec.pop("stream", None)
+    rec.pop("editado_em", None)
+    rec["post_stream"] = None
 
 
 def protegido(rec):
@@ -589,6 +615,8 @@ async def main():
                 for k in ("iframe", "iframe_streams", "iframe_read"):
                     rec.pop(k, None)
             new_post_stream = cands[0] if cands else None
+            if rec.get("popup") and mesmo_blog(rec["popup"], rec.get("url") or config.SITE_URL):
+                corrigir_popup_de_outro_post(rec, new_post_stream)
             if new_post_stream != rec.get("post_stream"):
                 # Você editou o post (ou é post novo): o link do post volta a valer
                 editado = rec.get("post_stream") is not None

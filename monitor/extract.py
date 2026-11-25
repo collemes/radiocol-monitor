@@ -30,8 +30,20 @@ STRONG_HOSTS = (
     "radio.co", "cdnstream", "stmxp", "streaming.com.br", "sonicpanel", "radiojar.com",
     "mixlr.com", "listen2myradio", "caster.fm", "fastcast4u", "ipstm", "stream.laut.fm",
     "ice.infomaniak", "audio-stream", "hdstreaming", "conectastm", "virtualcast", "suaradionanet",
-    "voxhd", "svr.br", "1stream", "streamguys",
+    "voxhd", "svr.br", "1stream", "streamguys", "crossradio.com.br",
 )
+
+
+def _host_tem(h: str, chave: str) -> bool:
+    """Chave com ponto ("radio.co", "zeno.fm", "ice.infomaniak") casa só com rótulos INTEIROS do host.
+    Antes era "contém", e "radio.co" casava com qualquer "…radio.com.br": o site da emissora virava 'stream'
+    e saía da lista de sites do post — o robô nunca procurava o áudio lá. Chave sem ponto ("shoutcast",
+    "sonicpanel"): continua valendo como pedaço do nome."""
+    if "." not in chave:
+        return chave in h
+    return re.search(r"(^|\.)" + re.escape(chave) + r"(\.|$)", h) is not None
+
+
 # domínios que nunca são streams
 BLOCK_HOSTS = (
     "blogger.com", "blogspot.com", "googleusercontent.com", "google.com", "gstatic.com",
@@ -93,6 +105,16 @@ def _host(url):
         return ""
 
 
+def _sem_www(h):
+    return h[4:] if h.startswith("www.") else h
+
+
+def mesmo_blog(url: str, base: str) -> bool:
+    """O endereço é uma página do próprio blog (mesmo host do post, com ou sem www)."""
+    h = _sem_www(_host(url))
+    return bool(h) and h == _sem_www(_host(base))
+
+
 def _blocked(url):
     h = _host(url)
     return not h or any(h == b or h.endswith("." + b) for b in BLOCK_HOSTS)
@@ -123,7 +145,7 @@ def stream_score(url: str) -> int:
     if port and port not in (80, 443):
         score += 3
     h = (p.hostname or "").lower()
-    if any(k in h for k in STRONG_HOSTS):
+    if any(_host_tem(h, k) for k in STRONG_HOSTS):
         score += 4
     elif any(k in h for k in STREAM_HOST_HINTS):
         score += 1
@@ -342,6 +364,11 @@ def extract_player_links(content: str, base: str, limit=3):
         if not u.lower().startswith("http") or BLOCK_EXT_RE.search(u) or SOCIAL_RE.search(u):
             return
         if "/search/label/" in u or u.split("#")[0] == base.split("#")[0]:
+            return
+        # link para OUTRO post do próprio blog ("ouvir-radio-x…" casa com "ouvir"): é outra rádio, nunca o player
+        # desta (o robô chegou a dar a 400+ posts o áudio da rádio do post vizinho). Subdomínio de player
+        # (radiosaovivo.radiocol.com.br) continua valendo.
+        if _sem_www(_host(u)) and _sem_www(_host(u)) == _sem_www(_host(base)):
             return
         if u not in out:
             out.append(u)

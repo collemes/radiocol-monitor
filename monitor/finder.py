@@ -49,6 +49,7 @@ RASTREIO_QUERY = {"fbclid", "gclid", "lang", "dist", "tdsdk", "pname", "pversion
 # pontos de montagem padrão dos painéis de streaming (não identificam a rádio; quem identifica é a porta)
 PONTOS_GENERICOS = {"/;", "/stream", "/live", "/;stream.mp3", "/stream.mp3", "/live.mp3", "/aovivo", "/radio",
                     "/autodj"}
+PONTOS_GENERICOS_NOMES = {x.strip("/;").split(".")[0] for x in PONTOS_GENERICOS} | {"radio", "live", "stream", "aovivo", "fm", "am"}
 
 
 def _origem_no_proxy(url: str, p):
@@ -228,6 +229,12 @@ def variants(url: str, _interno=False):
             out.append(base[: -len("playlist.m3u8")] + "icecast.audio")
         elif path.endswith("/icecast.audio"):
             out.append(base[: -len("icecast.audio")] + "playlist.m3u8")
+        # o provedor migrou as rádios para o painel sintonizar.tv.br com o MESMO nome de ponto
+        # (play.radio.br:8089/cacique/cacique/… -> painel.sintonizar.tv.br/stream/cacique; o site da Tua Rádio
+        # já toca de lá). Só quando aplicativo e ponto têm o mesmo nome (nome próprio da rádio, não genérico).
+        mp = re.match(r"^/([A-Za-z0-9_-]{4,})/([A-Za-z0-9_-]{4,})/(?:playlist\.m3u8|icecast\.audio)$", path)
+        if mp and mp.group(1).lower() == mp.group(2).lower() and mp.group(2).lower() not in PONTOS_GENERICOS_NOMES:
+            out.append(f"https://painel.sintonizar.tv.br/stream/{mp.group(2)}")
     # AzuraCast antigo /radio/PORTA/ponto -> com extensão
     if re.match(r"^/radio/\d+/[^/.]+$", path):
         out += [base + ".mp3", base + ".aac"]
@@ -410,15 +417,21 @@ class Finder:
         for u, _ in await self._lista_servidor(url):
             try:
                 pv = urlparse(u)
+                porta_v = pv.port
                 if conta[1] == "radio":
                     ok = re.match(rf"/radio/{conta[2]}(/|$)", pv.path or "")
                 else:
                     ok = pv.port == conta[1]   # Icecast pode anunciar outro nome de host: vale a porta
             except ValueError:
                 continue
+            caminho = pv.path
+            if not ok and conta[1] == "radio" and porta_v == int(conta[2]) and caminho not in ("", "/"):
+                # AzuraCast anuncia a porta direta da emissora (host:8040/fm); o post usa o proxy do painel
+                # (/radio/8040/am). Mesma porta = mesma emissora: o ponto novo vai pelo proxy, como no post.
+                ok, caminho = True, f"/radio/{conta[2]}{caminho}"
             if ok:
                 # usa o host e o esquema do endereço do post (o nome anunciado pode não ter certificado)
-                achados.append(f"{pu.scheme}://{pu.netloc}{pv.path}" + (f"?{pv.query}" if pv.query else ""))
+                achados.append(f"{pu.scheme}://{pu.netloc}{caminho}" + (f"?{pv.query}" if pv.query else ""))
         achados = [a for a in dict.fromkeys(achados) if a != url]
         if rec.get("_need_https"):
             achados = [a for a in achados if a.startswith("https")]
