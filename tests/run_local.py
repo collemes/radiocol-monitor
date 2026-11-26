@@ -362,7 +362,7 @@ if "https://stream02.ouveai.com.br/8010/;" not in v:
 v = finder.variants("https://player.srvstm.com/proxy/6798%20/;")
 if "https://player.srvstm.com/proxy/6798/;" not in v:
     bad += 1; print("FALHOU espaço no endereço", v)
-if finder.variants("https://ice.fabricahost.com.br/arenafm2") != []:
+if finder.variants("https://ice.fabricahost.com.br/arenafm2") != ["https://play.wisestream.io/arenafm2"]:  # só a migração do provedor
     bad += 1; print("FALHOU: Icecast compartilhado sem porta não deve gerar variações de Shoutcast")
 # ----- regras novas (2026-11-19)
 v = finder.variants("http://servidor21.dnip.com.br:9940/;")
@@ -607,4 +607,35 @@ _r = {"url": _base, "popup": "https://www.radiocol.com.br/2020/02/x.html", "post
 _run.corrigir_popup_de_outro_post(_r, "https://novo.link.com.br:8000/live")
 if _r.get("post_stream") != "https://8802.b.com.br/stream" or _r.get("popup"):
     bad += 1; print("FALHOU: com link próprio no post, o fluxo normal (edição do dono) decide", _r)
+# ----- regra nova (2026-11-26): KSHost -> Brascast (mesmo servidor htsNN, mesma porta) e Fábrica Host -> Wisestream
+_v = finder.variants("http://hts02.kshost.com.br:8842/live")
+if "https://hts02.brascast.com:8842/live" not in _v or \
+        "https://hts06.brascast.com:10482/live" not in finder.variants("https://app.kshost.com.br/player-ssl/hts06/10482"):
+    bad += 1; print("FALHOU htsNN.kshost -> htsNN.brascast", _v)
+if any("brascast" in x for x in finder.variants("https://ice01.kshost.com.br:8000/live")
+       + finder.variants("https://hts02.kshost.com.br/live") + finder.variants("https://hts02.outro.com.br:8842/live")):
+    bad += 1; print("FALHOU: brascast só para htsNN.kshost com porta própria")
+if "https://play.wisestream.io/maximafmpr" not in finder.variants("https://ice.fabricahost.com.br/maximafmpr"):
+    bad += 1; print("FALHOU ice.fabricahost -> play.wisestream.io")
+if any("wisestream" in x for x in finder.variants("https://ice.fabricahost.com.br/live")
+       + finder.variants("https://ice.fabricahost.com.br/radio/abc") + finder.variants("https://outro.com.br/maximafmpr")):
+    bad += 1; print("FALHOU: wisestream só com nome próprio no ice.fabricahost")
+
+
+async def _kshost_porta():
+    global bad
+    f = finder.Finder.__new__(finder.Finder)
+    f.c = _Chk({"https://hts07.brascast.com:13492/live"})
+    r = await f.from_kshost_porta({"stream": "https://player-ssl.kshost.com.br:13492/live.aac"})
+    if not r or r["url"] != "https://hts07.brascast.com:13492/live":
+        bad += 1; print("FALHOU player-ssl.kshost -> servidor brascast com a mesma porta", r)
+    # dois servidores tocando na mesma porta: dúvida, não troca
+    f.c = _Chk({"https://hts07.brascast.com:13492/live", "https://hts03.brascast.com:13492/stream"})
+    if await f.from_kshost_porta({"stream": "https://player-ssl.kshost.com.br:13492/live"}):
+        bad += 1; print("FALHOU: dois servidores na mesma porta não pode trocar")
+    f.c = _Chk({"https://hts07.brascast.com:13492/live"})
+    if await f.from_kshost_porta({"stream": "https://player-br.outro.com.br:13492/live"}):
+        bad += 1; print("FALHOU: só o proxy player-ssl.kshost")
+
+asyncio.run(_kshost_porta())
 print("RESULTADO:", "TUDO CERTO" if not bad else f"{bad} FALHA(S)")

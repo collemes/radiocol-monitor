@@ -136,6 +136,19 @@ def audio_ok(url: str, res) -> bool:
     return True
 
 
+# servidores do KSHost que passaram para o domínio brascast.com (mesma numeração htsNN, mesmas portas)
+KSHOST_PROXY = ("player-ssl.kshost.com.br",)
+BRASCAST_SERVIDORES = [f"hts{n:02d}" for n in range(1, 13)]
+
+
+def pontos_kshost(path: str):
+    """Pontos a testar no servidor novo: o do post (sem .aac/.mp3) e os padrões do painel (/live, /stream)."""
+    ponto = re.sub(r"\.(aac|mp3)$", "", (path or "").rstrip(";")) or "/live"
+    if ponto.lower() not in PONTOS_GENERICOS:
+        ponto = "/live"
+    return list(dict.fromkeys([ponto, "/live", "/stream"]))
+
+
 def variants(url: str, _interno=False):
     out = []
     try:
@@ -235,6 +248,20 @@ def variants(url: str, _interno=False):
         mp = re.match(r"^/([A-Za-z0-9_-]{4,})/([A-Za-z0-9_-]{4,})/(?:playlist\.m3u8|icecast\.audio)$", path)
         if mp and mp.group(1).lower() == mp.group(2).lower() and mp.group(2).lower() not in PONTOS_GENERICOS_NOMES:
             out.append(f"https://painel.sintonizar.tv.br/stream/{mp.group(2)}")
+    # KSHost virou Brascast: htsNN.kshost.com.br não tem mais DNS; o MESMO servidor (htsNN) e a MESMA porta própria da
+    # rádio respondem em htsNN.brascast.com (o dono já trocou assim vários posts; tudoradio confirma). Mesma porta
+    # no mesmo servidor = mesma conta. O player do painel (app.kshost.com.br/player-ssl/htsNN/PORTA) também.
+    mk = re.match(r"^(hts\d{1,2})\.kshost\.com\.br$", host)
+    mp_ks = re.match(r"^/player-ssl/(hts\d{1,2})/(\d{4,5})/?$", path) if host == "app.kshost.com.br" else None
+    if (mk and p.port not in (None, 80, 443)) or mp_ks:
+        srv, porta = (mk.group(1), p.port) if mk else (mp_ks.group(1), int(mp_ks.group(2)))
+        for ponto in pontos_kshost(path if mk else "/live"):
+            out.append(f"https://{srv}.brascast.com:{porta}{ponto}")
+    # Fábrica Host: Icecast compartilhado ice.fabricahost.com.br/NOME (404) -> play.wisestream.io/NOME. O provedor
+    # migrou as rádios com o MESMO nome de ponto (o dono já trocou assim Magia FM e Rádio Poema). Só nome próprio.
+    mw = re.match(r"^/([A-Za-z0-9_-]{4,})/?$", path)
+    if host == "ice.fabricahost.com.br" and mw and mw.group(1).lower() not in PONTOS_GENERICOS_NOMES:
+        out.append(f"https://play.wisestream.io/{mw.group(1)}")
     # AzuraCast antigo /radio/PORTA/ponto -> com extensão
     if re.match(r"^/radio/\d+/[^/.]+$", path):
         out += [base + ".mp3", base + ".aac"]
@@ -384,7 +411,37 @@ class Finder:
                 if SHOUT_HTTPS_RE.match(u):
                     src = "Shoutcast em https (mesmo servidor e porta)"
                 return {"url": u, "source": src, "confidence": "high", "score": 1.0}
+        achado = await self.from_kshost_porta(rec)
+        if achado:
+            return achado
         return await self.from_mesma_conta(rec)
+
+    async def from_kshost_porta(self, rec):
+        """player-ssl.kshost.com.br:PORTA (proxy sem DNS) -> htsNN.brascast.com:PORTA. O proxy escolhia o servidor
+        só pela porta, então a porta é única no grupo; o servidor htsNN não aparece no endereço. Testa htsNN de
+        01 a 12 na MESMA porta e só aplica se UM só tocar (dois tocando = dúvida, não troca)."""
+        url = rec.get("stream") or ""
+        try:
+            p = urlsplit(url)
+            porta = p.port
+        except ValueError:
+            return None
+        if (p.hostname or "").lower() not in KSHOST_PROXY or porta in (None, 80, 443):
+            return None
+        pontos = pontos_kshost(p.path)
+
+        async def testa(srv):
+            for ponto in pontos:
+                u = f"https://{srv}.brascast.com:{porta}{ponto}"
+                if (await self.c.check(u)).ok:
+                    return u
+            return None
+
+        tocaram = [u for u in await asyncio.gather(*(testa(s) for s in BRASCAST_SERVIDORES)) if u]
+        if len(tocaram) != 1:
+            return None
+        return {"url": tocaram[0], "source": "mesma porta da rádio no servidor novo do provedor (KSHost -> Brascast)",
+                "confidence": "high", "score": 0.95}
 
     @staticmethod
     def _conta(url):
