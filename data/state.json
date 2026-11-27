@@ -201,7 +201,7 @@
   },
   "/2012/02/ouvir-radio-gospel-fm-901-de-jundiai-sp.html": {
    "alerted": "2026-11-26",
-   "http": 302,
+   "http": 301,
    "labels": [
     "Evangelica",
     "Jundiaí",
@@ -213,8 +213,8 @@
    "new_path": null,
    "post_id": "7760586047292254143",
    "since": "2026-11-26",
-   "status": "temporario",
-   "target": "/sorry/index",
+   "status": "ok",
+   "target": "/2022/06/ouvir-radio-sara-brasil-fm-1013-de-sao-paulo-sp-ao-vivo-e-online.html",
    "title": "Ouvir a Rádio Gospel FM 90,1 de Jundiaí - São Paulo SP Ao Vivo e Online"
   },
   "/2012/02/ouvir-radio-guaruja-am-1420-de.html": {
@@ -3093,7 +3093,7 @@
   },
   "/2018/03/ouvir-radio-difusora-am-960-de-maceio.html": {
    "alerted": "2026-11-26",
-   "http": 302,
+   "http": 301,
    "labels": [
     "AL",
     "Maceió",
@@ -3104,8 +3104,8 @@
    "new_path": null,
    "post_id": "5476775074738856898",
    "since": "2026-11-26",
-   "status": "temporario",
-   "target": "/sorry/index",
+   "status": "ok",
+   "target": "/2018/03/ouvir-radio-frances-fm-991-de-maceio-al.html",
    "title": "Ouvir a Rádio Difusora AM 960 de Maceió AL Ao Vivo e Online"
   },
   "/2018/03/ouvir-radio-maceio-am-1020-de-maceio-al.html": {
@@ -3581,7 +3581,7 @@
   },
   "/2020/02/ouvir-web-radio-cantoria-olinda-pe-ao-vivo.html": {
    "alerted": "2026-11-26",
-   "http": 302,
+   "http": 301,
    "labels": [
     "Mobile",
     "Olinda",
@@ -3593,8 +3593,8 @@
    "new_path": null,
    "post_id": "4625486107809469204",
    "since": "2026-11-26",
-   "status": "temporario",
-   "target": "/sorry/index",
+   "status": "ok",
+   "target": "/2021/01/ouvir-radio-olinda-fm-1053-de-olinda-pe-ao-vivo-online.html",
    "title": "Ouvir a Web Rádio Cantoria de Olinda PE Ao Vivo e Online"
   },
   "/2020/03/ouvir-web-radio-presbiteriana-de-olinda-pe-ao-vivo.html": {
@@ -5140,7 +5140,7 @@
      "5514998989657"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1037486508880675489",
    "labels": [
@@ -5418,7 +5418,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1051032745987845217",
    "labels": [
@@ -5689,7 +5689,7 @@
      "5508003421050"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1074050158008421346",
    "labels": [
@@ -5775,7 +5775,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1077283390568134517",
    "labels": [
@@ -5884,7 +5884,7 @@
      "5554999909869"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1089094651023198351",
    "labels": [
@@ -6043,7 +6043,7 @@
     "whatsapp": []
    },
    "editado_em": "2026-11-25",
-   "fail_count": 7,
+   "fail_count": 8,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -6088,6 +6088,7 @@
    "url": "https://www.radiocol.com.br/2012/09/ouvir-nossa-radio-fm-965-de.html"
   },
   "1099879465289736713": {
+   "alerted": "2026-11-27",
    "busca_vazia_em": "2026-11-24",
    "buscas_vazias": 1,
    "contacts": {
@@ -6099,7 +6100,7 @@
     ]
    },
    "editado_em": "2026-11-26",
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -6156,7 +6157,7 @@
     ]
    },
    "editado_em": "2026-11-26",
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -6175,7 +6176,7 @@
     "Santarém"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Santarém",
     "pa"
@@ -6186,7 +6187,7 @@
    ],
    "post_stream": "https://princesa2.brasilstream.com.br/hls/princesa2/index.m3u8",
    "post_updated": "2026-11-26T16:42:17.047-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok (HLS)",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-22",
    "site_fora": "domínio não existe mais",
@@ -6194,13 +6195,8 @@
     "https://princesa93fm.com/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://princesa2.brasilstream.com.br/hls/princesa2/index.m3u8",
-   "suggestion": {
-    "score": 0.95,
-    "source": "radios.com.br: Rádio Princesa 93.1 FM (Santarém/PA, 93.1 FM) — cidade, UF e frequência conferem — áudio do site da emissora",
-    "url": "https://princesadotapajos.com.br/media/audio/video/6.mp3?v=dc4eb98eb6bc"
-   },
    "title": "Ouvir a Rádio Princesa FM 93,1 de Santarém PA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2016/11/ouvir-radio-princesa-fm-931-de-santarem.html",
    "wa_post_visto": "5593992347573"
@@ -6748,7 +6744,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1121769600024158336",
    "labels": [
@@ -6981,7 +6977,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5551995719050",
-    "score": 0.95,
+    "score": 1.0,
     "since": "2026-11-27",
     "site": "5551995702200",
     "url": "https://www.arautofm.com.br/"
@@ -7050,7 +7046,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1141549102880689781",
    "labels": [
@@ -7267,7 +7263,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1144811066595194301",
    "labels": [
@@ -7731,7 +7727,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "1179449102547877887",
    "labels": [
@@ -7888,7 +7884,7 @@
      "5555996660113"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "118633070479197453",
    "labels": [
@@ -8597,7 +8593,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1243011352824011987",
    "labels": [
@@ -8697,7 +8693,7 @@
      "551935734510"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1249547321916030475",
    "labels": [
@@ -8927,7 +8923,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "1271371950907593054",
@@ -8938,7 +8934,7 @@
     "Popular"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "João Pessoa",
     "pb"
@@ -8949,14 +8945,14 @@
    ],
    "post_stream": "https://5a2b083e9f360.streamlock.net/sanhauahd/sanhauahd.stream/playlist.m3u8",
    "post_updated": "2020-12-31T22:47:44.486-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok (HLS)",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-22",
    "sites": [
     "https://portals1.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://5a2b083e9f360.streamlock.net/sanhauahd/sanhauahd.stream/playlist.m3u8",
    "title": "Ouvir a Rádio Sanhauá AM 1280 de João Pessoa PB Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2017/11/ouvir-radio-sanhaua-am-1280-de-joao.html"
@@ -8971,7 +8967,7 @@
      "556195721291"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1272086458459511390",
    "labels": [
@@ -9631,7 +9627,7 @@
      "5511951609229"
     ]
    },
-   "fail_count": 24,
+   "fail_count": 25,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -9903,7 +9899,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1338395425468792991",
    "labels": [
@@ -10056,7 +10052,7 @@
      "5575998616587"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1339422402715768429",
    "labels": [
@@ -10097,7 +10093,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1344909627981416123",
    "labels": [
@@ -10147,7 +10143,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "id": "1348725664145010591",
    "labels": [
@@ -10424,7 +10420,7 @@
      "5519996439110"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1358208389058956997",
    "labels": [
@@ -10623,7 +10619,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -10692,7 +10688,7 @@
      "5568999968088"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1366238025509769699",
    "labels": [
@@ -10737,7 +10733,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1366632549155875567",
    "labels": [
@@ -11574,7 +11570,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1394477161401799969",
    "labels": [
@@ -12133,7 +12129,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1440155752679057068",
    "labels": [
@@ -12410,7 +12406,7 @@
      "5538992548989"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1450353810065615909",
    "labels": [
@@ -12655,7 +12651,7 @@
      "551633037791"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -12776,7 +12772,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 13,
+   "fail_count": 14,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -13144,7 +13140,7 @@
      "5549984034327"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1496471532393865739",
    "labels": [
@@ -13188,7 +13184,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5516993909191",
-    "score": 0.7,
+    "score": 0.8,
     "since": "2026-11-27",
     "site": "551621013591",
     "url": "http://www.91sertaneja.com.br/"
@@ -13242,7 +13238,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1503651630126663999",
    "labels": [
@@ -13337,7 +13333,7 @@
      "5541997960477"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "150614336580327872",
    "labels": [
@@ -14078,7 +14074,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1543443930978017885",
    "labels": [
@@ -14170,7 +14166,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1557984140072869384",
    "labels": [
@@ -15119,7 +15115,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1608215663379112420",
    "labels": [
@@ -15166,7 +15162,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1609801796231112213",
    "labels": [
@@ -15439,7 +15435,7 @@
      "556496956061"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1629082778640064166",
    "labels": [
@@ -16033,7 +16029,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1655157230671680861",
    "labels": [
@@ -16560,7 +16556,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1671572677826399415",
    "labels": [
@@ -16823,7 +16819,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1686348101875376549",
    "labels": [
@@ -16906,7 +16902,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1690800970586855938",
    "labels": [
@@ -17622,7 +17618,7 @@
      "5508003421050"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1726621209514859987",
    "labels": [
@@ -17678,7 +17674,7 @@
     "Rede_Massa_FM"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Nova Mutum",
     "mt"
@@ -17689,7 +17685,7 @@
    ],
    "post_stream": "https://radio.saopaulo01.com.br:10854/stream",
    "post_updated": "2022-05-19T20:39:15.811-03:00",
-   "reason": "servidor não responde ao robô (fora do Brasil) — HTTP 401",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-27",
    "site_novo": "https://massa.com.br/fm",
@@ -17697,7 +17693,7 @@
     "https://www.massafm.com.br/"
    ],
    "source": "post",
-   "status": "bloqueio",
+   "status": "ok",
    "stream": "https://radio.saopaulo01.com.br:10854/stream",
    "title": "Ouvir a Rádio Massa FM 103,1 de Nova Mutum MT Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2022/05/ouvir-radio-massa-fm-1031-de-nova-mutum-mt-ao-vivo-e-online.html",
@@ -17804,7 +17800,7 @@
      "5567993044187"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1734892218605618680",
    "labels": [
@@ -17857,7 +17853,7 @@
      "5549991881714"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1737845957907996017",
    "labels": [
@@ -17965,7 +17961,7 @@
      "5521980135915"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1745259686898149507",
    "labels": [
@@ -18885,7 +18881,7 @@
      "5575982259270"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1810134091299040960",
    "labels": [
@@ -19140,7 +19136,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -19443,7 +19439,7 @@
      "5521999191029"
     ]
    },
-   "fail_count": 10,
+   "fail_count": 11,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -19621,7 +19617,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1846902255968918132",
    "labels": [
@@ -19714,7 +19710,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1853014323530425057",
    "labels": [
@@ -19948,7 +19944,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1868453910007703792",
    "labels": [
@@ -20093,7 +20089,7 @@
      "5511931170620"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1882850817303168828",
    "labels": [
@@ -20428,6 +20424,9 @@
    "wa_post_visto": "551236535888"
   },
   "1906204183177882609": {
+   "busca_dir": "2026-11-27: achou site oficial (orquideafm.com.br)",
+   "conferido_radiocol": "2026-11-27",
+   "confianca": 0.9,
    "contacts": {
     "telefone": [
      "556434051105"
@@ -20438,6 +20437,15 @@
    },
    "fail_count": 0,
    "first_seen": "2026-11-16",
+   "history": [
+    {
+     "date": "2026-11-27",
+     "from": "https://stm1.srvif.com:7742/stream",
+     "note": "",
+     "source": "site oficial (orquideafm.com.br)",
+     "to": "https://stm3.srvif.com:7920/stream"
+    }
+   ],
    "http_only": false,
    "id": "1906204183177882609",
    "labels": [
@@ -20459,13 +20467,15 @@
    ],
    "post_stream": "https://stm1.srvif.com:7742/stream",
    "post_updated": "2022-08-02T21:13:15.612-03:00",
-   "reason": "ok",
+   "reason": "corrigido automaticamente",
+   "search_tried": "2026-11-27",
+   "site_checked": "2026-11-27",
    "sites": [
     "http://orquideafm.com.br/"
    ],
-   "source": "post",
+   "source": "site oficial (orquideafm.com.br)",
    "status": "ok",
-   "stream": "https://stm1.srvif.com:7742/stream",
+   "stream": "https://stm3.srvif.com:7920/stream",
    "title": "Ouvir a Rádio Orquídea FM 98,7 de Piracanjuba GO Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2017/11/ouvir-radio-orquidea-fm-987-de.html",
    "wa_post_visto": "5564992580099"
@@ -21154,7 +21164,7 @@
      "5511969888396"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "1937865025528255723",
    "labels": [
@@ -21340,7 +21350,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1943947584104621114",
    "labels": [
@@ -21633,7 +21643,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "195829871838554676",
    "labels": [
@@ -21907,7 +21917,7 @@
      "5554997007725"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1975662893248973669",
    "labels": [
@@ -22096,7 +22106,7 @@
      "5549991752973"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "1988916535033800651",
    "labels": [
@@ -22138,7 +22148,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "199381511768289553",
    "labels": [
@@ -22433,7 +22443,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2013310571200068012",
    "labels": [
@@ -22618,7 +22628,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2020808768622400777",
    "labels": [
@@ -24106,7 +24116,7 @@
      "5581986565510"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2112715415090931085",
    "labels": [
@@ -24682,7 +24692,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2155422429805274865",
    "labels": [
@@ -24704,7 +24714,7 @@
    ],
    "post_stream": "https://s20.maxcast.com.br:8036/live",
    "post_updated": "2020-08-13T11:12:22.241-03:00",
-   "reason": "sem conexão (ConnectionRefusedError)",
+   "reason": "tempo esgotado",
    "search_tried": "2026-11-24",
    "site_checked": "2026-11-22",
    "site_fora": "domínio não existe mais",
@@ -25034,7 +25044,6 @@
    "wa_post_visto": "55206220920855120"
   },
   "2167576772590960905": {
-   "alerted": "2026-11-27",
    "busca_vazia_em": "2026-11-27",
    "buscas_vazias": 2,
    "contacts": {
@@ -25043,7 +25052,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 2,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "2167576772590960905",
@@ -25054,7 +25063,7 @@
     "Popular"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Ipubi",
     "pe"
@@ -25065,14 +25074,14 @@
    ],
    "post_stream": "https://casthttps.suaradionanet.net/10818/stream",
    "post_updated": "2021-01-04T21:58:56.450-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-26",
    "sites": [
     "https://radioliberalfm99.com/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://casthttps.suaradionanet.net/10818/stream",
    "title": "Ouvir a Rádio Liberal FM 99,5 de Ipubi PE Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/08/ouvir-radio-liberal-fm-995-de-ipubi-ao.html"
@@ -25632,7 +25641,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2195167073118534949",
    "labels": [
@@ -26099,7 +26108,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2221401855584312203",
    "labels": [
@@ -26317,7 +26326,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "223561721839185001",
    "labels": [
@@ -26533,7 +26542,7 @@
     "RS"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Rolante",
     "rs"
@@ -26544,7 +26553,7 @@
    ],
    "post_stream": "https://cdn.jmvstream.com/w/LVW-8468/LVW8468_4Egv9wP65h/playlist.m3u8",
    "post_updated": "2021-05-03T22:25:52.108-03:00",
-   "reason": "tocou para ouvintes no Brasil (não trocado)",
+   "reason": "ok (HLS)",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-23",
    "sites": [
@@ -26553,11 +26562,6 @@
    "source": "post",
    "status": "ok",
    "stream": "https://cdn.jmvstream.com/w/LVW-8468/LVW8468_4Egv9wP65h/playlist.m3u8",
-   "suggestion": {
-    "score": 0.8,
-    "source": "player do site sol.fm.br (não testável daqui) [navegador]",
-    "url": "http://www.sol.fm.br/radio"
-   },
    "title": "Ouvir e Assistir a Rádio Sol FM 107,3 de Rolante RS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/10/ouvir-radio-sol-fm-1073-de-rolante-rs.html",
    "wa_post_visto": "5551995127310"
@@ -26615,7 +26619,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2256266737266209175",
    "labels": [
@@ -26662,7 +26666,7 @@
      "5554996441185"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "225692760305256064",
    "labels": [
@@ -27136,7 +27140,7 @@
      "5554996310104"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2291916676869414527",
    "labels": [
@@ -27270,6 +27274,15 @@
    "wa_post_visto": "5551997572500"
   },
   "2319379000732731894": {
+   "contact_alerted": "5544998105336",
+   "contact_suggestion": {
+    "kind": "whatsapp",
+    "post": "5544999799197",
+    "score": 0.85,
+    "since": "2026-11-27",
+    "site": "5544998105336",
+    "url": "https://www.terranativafm.com.br/"
+   },
    "contacts": {
     "telefone": [
      "554435691040"
@@ -27519,7 +27532,7 @@
      "5541998874103"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2330056595971349283",
    "labels": [
@@ -27608,7 +27621,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "233439650616290079",
    "labels": [
@@ -27891,7 +27904,7 @@
      "5575999767840"
     ]
    },
-   "fail_count": 18,
+   "fail_count": 19,
    "first_seen": "2026-11-16",
    "id": "235744936046593908",
    "labels": [
@@ -27938,7 +27951,7 @@
      "5561981009090"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2365324136157439011",
    "labels": [
@@ -28269,7 +28282,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2386268505164808435",
    "labels": [
@@ -28362,7 +28375,7 @@
      "5511931170620"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2393738178602826497",
    "labels": [
@@ -28534,6 +28547,8 @@
    "url": "https://www.radiocol.com.br/2013/06/ouvir-rede-salvacao-893-de-taquaritinga.html"
   },
   "2406799905214792353": {
+   "busca_vazia_em": "2026-11-27",
+   "buscas_vazias": 1,
    "contacts": {
     "telefone": [
      "555136711366"
@@ -28542,7 +28557,7 @@
      "5551995870240"
     ]
    },
-   "fail_count": 0,
+   "fail_count": 1,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "2406799905214792353",
@@ -28565,12 +28580,15 @@
    ],
    "post_stream": "https://casthttps1.suaradionanet.net/10046/stream",
    "post_updated": "2021-04-06T21:33:25.451-03:00",
-   "reason": "ok",
+   "reason": "HTTP 404",
+   "search_tried": "2026-11-27",
+   "site_checked": "2026-11-27",
+   "site_fora": "domínio não existe mais",
    "sites": [
     "http://www.redemeridional.com/"
    ],
    "source": "post",
-   "status": "ok",
+   "status": "off",
    "stream": "https://casthttps1.suaradionanet.net/10046/stream",
    "title": "Ouvir a Rádio Camaquense AM 1060 de Camaquã RS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/06/ouvir-radio-camaquense-am-1060-de-camaqua-rs-ao-vivo.html",
@@ -28782,7 +28800,7 @@
      "5598992092383"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2437993068508397587",
    "labels": [
@@ -29034,7 +29052,7 @@
      "551156413030"
     ]
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "id": "2454636444268128967",
    "labels": [
@@ -29157,7 +29175,7 @@
      "5571999925485"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2464624596025779807",
    "labels": [
@@ -29245,7 +29263,7 @@
      "5541998821370"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2469347715876277625",
    "labels": [
@@ -29444,7 +29462,7 @@
      "5555991802660"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2478334143017876305",
    "labels": [
@@ -29544,7 +29562,7 @@
      "5585991186467"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2480548176312339120",
    "labels": [
@@ -29878,7 +29896,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2492465575050387311",
    "labels": [
@@ -30780,7 +30798,7 @@
      "5565999665991"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -30807,7 +30825,7 @@
     "Popular"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Cáceres",
     "mt"
@@ -30820,7 +30838,7 @@
    ],
    "post_stream": "https://difusoracaceres.com.br:20443/listen/nova_difusora/radio.mp3",
    "post_updated": "2026-11-26T17:01:32.482-03:00",
-   "reason": "certificado SSL inválido",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-22",
    "site_tried": "2026-11-23",
@@ -30828,7 +30846,7 @@
     "http://www.difusoracaceres.com.br/"
    ],
    "source": "site oficial (difusoracaceres.com.br) — tocou no navegador [navegador]",
-   "status": "off",
+   "status": "ok",
    "stream": "https://difusoracaceres.com.br:20443/listen/difusora_fm/radio.mp3",
    "sucessora": {
     "antigo": "Rádio Nova Difusora FM 97,3",
@@ -30854,7 +30872,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2542671485349238548",
    "labels": [
@@ -31212,7 +31230,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2559474206797853547",
    "labels": [
@@ -31533,7 +31551,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2577574928214797766",
    "labels": [
@@ -32242,7 +32260,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -32270,7 +32288,7 @@
     "RO"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Ariquemes",
     "ro"
@@ -32281,20 +32299,15 @@
    ],
    "post_stream": "https://ice.fabricahost.com.br/rondonia1030",
    "post_updated": "2020-10-19T22:16:17.464-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-22",
    "sites": [
     "https://portalradiorondonia.com/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://ice.fabricahost.com.br/rondonia1030",
-   "suggestion": {
-    "score": 0.65,
-    "source": "site da rede (portalradiorondonia.com, praça do post) [navegador]",
-    "url": "https://ice.fabricahost.com.br/rondonia933"
-   },
    "title": "Ouvir a Rádio Rondônia AM 1030 de Ariquemes RO Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/12/ouvir-radio-rondonia-am-1030-de.html"
   },
@@ -32389,7 +32402,7 @@
      "5511964240304"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -32453,7 +32466,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "2641710923626054129",
    "labels": [
@@ -32497,7 +32510,7 @@
     ]
    },
    "editado_em": "2026-11-20",
-   "fail_count": 0,
+   "fail_count": 1,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -32529,12 +32542,14 @@
    ],
    "post_stream": "https://cast.radiu.live:9300/stream",
    "post_updated": "2026-11-19T23:27:34.203-03:00",
-   "reason": "ok",
+   "reason": "tempo esgotado",
+   "search_tried": "2026-11-27",
+   "site_checked": "2026-11-27",
    "sites": [
     "http://www.itapoanfm.com.br/"
    ],
    "source": "post",
-   "status": "ok",
+   "status": "off",
    "stream": "https://cast.radiu.live:9300/stream",
    "title": "Ouvir a Rádio Itapoan FM 97,5 de Salvador BA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2012/01/ouvir-radio-itapoan-fm-975-de-salvador.html",
@@ -32769,7 +32784,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2669031461857391594",
    "labels": [
@@ -32872,7 +32887,7 @@
      "5544988235931"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2679727268587977090",
    "labels": [
@@ -33132,9 +33147,7 @@
    "wa_post_visto": "5519997699707"
   },
   "2688966070022133509": {
-   "alerted": "2026-11-27",
    "conferido_radiocol": "2026-11-25",
-   "confianca": 1.0,
    "contacts": {
     "telefone": [],
     "whatsapp": [
@@ -33142,7 +33155,8 @@
      "5554992352835"
     ]
    },
-   "fail_count": 2,
+   "editado_em": "2026-11-27",
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -33170,38 +33184,31 @@
    "http_only": false,
    "id": "2688966070022133509",
    "labels": [
-    "Mobile",
-    "Popular",
     "Rede_MaisNova",
     "RS",
     "Sarandi"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Sarandi",
     "rs"
    ],
    "path": "/2014/05/ouvir-radio-maisnova-fm-907-de-sarandi.html",
    "post_candidates": [
-    "https://play.radio.br:8089/mnsarandi/mnsarandi/playlist.m3u8"
+    "https://painel.sintonizar.tv.br/stream/mnsarandi"
    ],
-   "post_stream": "https://play.radio.br:8089/mnsarandi/mnsarandi/playlist.m3u8",
-   "post_updated": "2021-06-04T22:16:34.350-03:00",
-   "reason": "HTTP 404",
+   "post_stream": "https://painel.sintonizar.tv.br/stream/mnsarandi",
+   "post_updated": "2026-11-27T08:37:20.312-03:00",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-22",
    "sites": [
     "https://www.maisnova.com.br/"
    ],
-   "source": "variação do endereço",
-   "status": "off",
+   "source": "post",
+   "status": "ok",
    "stream": "https://painel.sintonizar.tv.br/stream/mnsarandi",
-   "suggestion": {
-    "score": 0.65,
-    "source": "site da rede (maisnova.com.br, praça do post) [navegador]",
-    "url": "https://painel.sintonizar.tv.br/stream/mnpelotas"
-   },
    "title": "Ouvir a Rádio Maisnova FM 90,7 de Sarandi RS Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/05/ouvir-radio-maisnova-fm-907-de-sarandi.html",
    "wa_post_visto": "5554996514539"
@@ -33254,7 +33261,7 @@
      "5531991921386"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2697077501760799240",
    "labels": [
@@ -33931,7 +33938,7 @@
      "5551997488759"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -34122,6 +34129,7 @@
    "url": "https://www.radiocol.com.br/2020/02/ouvir-web-radio-nova-vida-fm-campinas-sp-ao-vivo.html"
   },
   "2745365773610015653": {
+   "alerted": "2026-11-27",
    "br_ok": "2026-11-23",
    "busca_vazia_em": "2026-11-27",
    "buscas_vazias": 2,
@@ -34135,7 +34143,7 @@
      "5546991191017"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 2,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -34302,7 +34310,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2763809061623342850",
    "labels": [
@@ -34347,7 +34355,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2766913526687014325",
    "labels": [
@@ -34661,7 +34669,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2792231485715552807",
    "labels": [
@@ -34993,7 +35001,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2812217245140731886",
    "labels": [
@@ -35125,7 +35133,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "id": "2818501532370900879",
    "labels": [
@@ -35163,7 +35171,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2820112602416860217",
    "labels": [
@@ -35614,7 +35622,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2845982161795083279",
    "labels": [
@@ -35710,7 +35718,7 @@
      "5591984416545"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2846931973510890756",
    "labels": [
@@ -35935,7 +35943,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2877663385235617823",
    "labels": [
@@ -36490,7 +36498,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5514981290142",
-    "score": 0.7,
+    "score": 0.8,
     "since": "2026-11-27",
     "site": "551432649090",
     "url": "https://www.venturafm.com.br/"
@@ -36703,7 +36711,7 @@
      "5555991315487"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2905546733755084673",
    "labels": [
@@ -36754,7 +36762,7 @@
     ]
    },
    "editado_em": "2026-11-25",
-   "fail_count": 8,
+   "fail_count": 9,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -36853,7 +36861,7 @@
      "5547988016197"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2914624382995113971",
    "labels": [
@@ -36994,7 +37002,7 @@
      "5549991920893"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "2928687423881812904",
@@ -37005,7 +37013,7 @@
     "SC"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Campos Novos",
     "sc"
@@ -37016,14 +37024,14 @@
    ],
    "post_stream": "https://cast2.youngtech.radio.br/radio/8140/radio",
    "post_updated": "2021-07-14T22:11:22.159-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-27",
    "sites": [
     "http://www.simpatiafm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://cast2.youngtech.radio.br/radio/8140/radio",
    "title": "Ouvir a Rádio Simpatia FM 105,5 de Campos Novos SC Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/05/ouvir-radio-simpatia-fm-893-de-campos.html",
@@ -37077,7 +37085,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2947543641620261761",
    "labels": [
@@ -37301,7 +37309,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -37641,7 +37649,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -37704,7 +37712,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2975529325976136905",
    "labels": [
@@ -37823,7 +37831,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -37843,7 +37851,7 @@
     "Popular"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Itacoatiara",
     "am"
@@ -37856,7 +37864,7 @@
    ],
    "post_stream": "https://8005.brasilstream.com.br/stream",
    "post_updated": "2026-11-26T15:52:07.396-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-22",
    "site_tried": "2026-11-23",
@@ -37864,7 +37872,7 @@
     "http://www.difusora94.com.br/"
    ],
    "source": "site oficial (difusora94.com.br) — tocou no navegador [navegador]",
-   "status": "off",
+   "status": "ok",
    "stream": "https://8005.brasilstream.com.br/stream?rand=z7inl",
    "title": "Ouvir a Rádio Difusora FM 94,5 de Itacoatiara AM Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/09/ouvir-radio-difusora-fm-945-de-itacoatiara-am-ao-vivo.html"
@@ -38090,7 +38098,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "2999578138131339998",
    "labels": [
@@ -38296,7 +38304,7 @@
      "5516997663401"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3012520352217858060",
    "labels": [
@@ -38342,7 +38350,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "3013438124662030013",
@@ -38354,7 +38362,7 @@
     "Rede-Verde-Oliva-FM"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Brasília",
     "df"
@@ -38366,17 +38374,12 @@
    ],
    "post_stream": "https://ice.fabricahost.com.br/verdeolivabsb",
    "post_updated": "2021-01-28T20:55:34.568-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "sites": [],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://ice.fabricahost.com.br/verdeolivabsb",
-   "suggestion": {
-    "score": 0.59,
-    "source": "Radio Browser: Rádio Verde Oliva - Brasília (98.7 FM) (estado, cidade ou frequência não conferem)",
-    "url": "https://f108.fabricahost.com.br/verdeolivabsb?f=1795733749N01M8D14ZNPN2DCZZA3WA1VERW4&tid=01M8D14ZNPRB291YQMSSSXB5A4"
-   },
    "title": "Ouvir a Rádio Verde Oliva FM 98,7 de Brasília DF Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/02/ouvir-radio-verde-oliva-fm-987-de-brasilia-df-ao-vivo.html"
   },
@@ -38437,7 +38440,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -38496,7 +38499,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3017955230482155941",
    "labels": [
@@ -38903,7 +38906,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3043397871411880625",
    "labels": [
@@ -39461,7 +39464,7 @@
     ]
    },
    "editado_em": "2026-11-25",
-   "fail_count": 8,
+   "fail_count": 9,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -39637,7 +39640,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3091647471919138186",
    "labels": [
@@ -40213,7 +40216,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 7,
+   "fail_count": 8,
    "first_seen": "2026-11-16",
    "id": "312349162306685804",
    "labels": [
@@ -40593,7 +40596,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "id": "3157476439438160253",
    "labels": [
@@ -40914,7 +40917,6 @@
    "url": "https://www.radiocol.com.br/2013/07/ouvir-rede-aleluia-fm-993-de.html"
   },
   "3182391557500128648": {
-   "alerted": "2026-11-27",
    "busca_vazia_em": "2026-11-27",
    "buscas_vazias": 4,
    "contact_alerted": "5562981210228",
@@ -40947,7 +40949,7 @@
      "5562982544825"
     ]
    },
-   "fail_count": 2,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "3182391557500128648",
@@ -40960,7 +40962,7 @@
     "Rede_Canadá"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Britânia",
     "go"
@@ -40971,14 +40973,14 @@
    ],
    "post_stream": "https://player.painelvox.com/player-ssl/8342/;",
    "post_updated": "2021-02-24T22:14:14.265-03:00",
-   "reason": "tempo esgotado",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-23",
    "sites": [
     "https://www.radiocanadafm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://player.painelvox.com/player-ssl/8342/;",
    "title": "Ouvir a Rádio Canadá FM 88,5 de Britânia GO Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/03/ouvir-radio-canada-fm-885-de-britania.html",
@@ -41072,7 +41074,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3185201748469040915",
    "labels": [
@@ -41333,7 +41335,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3192285451714778130",
    "labels": [
@@ -42020,7 +42022,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3226531711396830497",
    "labels": [
@@ -43078,7 +43080,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3287330399639124242",
    "labels": [
@@ -43277,7 +43279,6 @@
    "url": "https://www.radiocol.com.br/2013/03/ouvir-radio-band-fm-953-de-barretos-ao.html"
   },
   "3296487596782551893": {
-   "alerted": "2026-11-26",
    "busca_vazia_em": "2026-11-26",
    "buscas_vazias": 1,
    "contacts": {
@@ -43286,7 +43287,7 @@
      "5588988689363"
     ]
    },
-   "fail_count": 3,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -43309,7 +43310,7 @@
     "Webradio"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Mombaça",
     "ce"
@@ -43320,7 +43321,7 @@
    ],
    "post_stream": "http://stm38.sejaguia.com.br:28686/stream",
    "post_updated": "2020-08-04T00:15:09.481-03:00",
-   "reason": "sem conexão (ConnectionRefusedError)",
+   "reason": "ok",
    "search_tried": "2026-11-26",
    "site_checked": "2026-11-26",
    "site_fora": "domínio não existe mais",
@@ -43328,7 +43329,7 @@
     "https://esperanca.net/"
    ],
    "source": "radios.com.br: Radio Esperança de Mombaça (Mombaça/CE, webradio) — webradio: cidade, UF e nome conferem",
-   "status": "off",
+   "status": "ok",
    "stream": "https://server02.srvsh.com.br:28686/stream",
    "title": "Ouvir a Web Rádio Esperança de Mombaça CE Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/07/ouvir-web-radio-esperanca-de-mombaca-ce-ao-vivo.html",
@@ -43340,7 +43341,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3296945742837945588",
    "labels": [
@@ -43714,7 +43715,7 @@
      "558588572644"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3315415063322597095",
    "labels": [
@@ -43759,7 +43760,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 15,
+   "fail_count": 16,
    "first_seen": "2026-11-16",
    "id": "3319254321622157001",
    "labels": [
@@ -44134,7 +44135,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -44390,7 +44391,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3364164021727277787",
    "labels": [
@@ -44501,7 +44502,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3370760179825453700",
    "labels": [
@@ -44605,7 +44606,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3373959055340800280",
    "labels": [
@@ -44691,7 +44692,7 @@
      "5571996269130"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3377999041935774836",
    "labels": [
@@ -44781,7 +44782,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3380867246063036082",
    "labels": [
@@ -44920,7 +44921,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3392945837844036054",
    "labels": [
@@ -45114,7 +45115,7 @@
      "5541991220590"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3402103826697339304",
    "labels": [
@@ -45713,7 +45714,7 @@
      "558934218044"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3436090776226451039",
    "labels": [
@@ -46081,7 +46082,7 @@
      "5583982040098"
     ]
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -46142,7 +46143,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 34,
+   "fail_count": 35,
    "first_seen": "2026-11-16",
    "id": "3459922295763193710",
    "labels": [
@@ -46227,7 +46228,7 @@
     ]
    },
    "editado_em": "2026-11-19",
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -46247,7 +46248,7 @@
     "SC"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Jaraguá do Sul",
     "sc"
@@ -46258,7 +46259,7 @@
    ],
    "post_stream": "https://stm10.virtualcast.com.br:8464/rbnjaraguasul",
    "post_updated": "2026-11-18T14:34:01.802-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-27",
    "site_novo": "https://portal.rbnfm.com.br/",
@@ -46266,7 +46267,7 @@
     "https://rbnfm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://stm10.virtualcast.com.br:8464/rbnjaraguasul",
    "title": "Ouvir a Rádio RBN FM 94,3 (Rádio Brasil Novo) de Jaraguá do Sul SC Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/01/ouvir-radio-rbn-fm-943-de-jaragua-do.html",
@@ -46322,7 +46323,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3475346762867022895",
    "labels": [
@@ -46359,7 +46360,6 @@
    "url": "https://www.radiocol.com.br/2019/04/ouvir-radio-positiva-fm-1053-de-guariba-e-jaboticabal-sp-online.html"
   },
   "347653484359708454": {
-   "alerted": "2026-11-27",
    "busca_vazia_em": "2026-11-27",
    "buscas_vazias": 2,
    "contacts": {
@@ -46370,7 +46370,7 @@
      "5583998933798"
     ]
    },
-   "fail_count": 2,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "347653484359708454",
@@ -46381,7 +46381,7 @@
     "Popular"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Monteiro",
     "pb"
@@ -46392,14 +46392,14 @@
    ],
    "post_stream": "https://s45.maxcast.com.br:8064/live",
    "post_updated": "2020-12-27T22:25:00.422-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-26",
    "sites": [
     "http://www.monteirofm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://s45.maxcast.com.br:8064/live",
    "title": "Ouvir a Rádio Monteiro FM 97,5 de Monteiro PB Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2019/05/radio-monteiro-fm-975-de-monteiro-pb-online.html",
@@ -46413,7 +46413,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3477557598414519386",
    "labels": [
@@ -46455,7 +46455,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 36,
+   "fail_count": 37,
    "first_seen": "2026-11-16",
    "id": "3479100631050199770",
    "labels": [
@@ -47019,7 +47019,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3513671778466417800",
    "labels": [
@@ -47210,7 +47210,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "554236233479",
-    "score": 0.8,
+    "score": 0.9,
     "since": "2026-11-27",
     "site": "5542998209292",
     "url": "http://www.radio92fm.com.br/"
@@ -47687,7 +47687,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -47716,7 +47716,7 @@
     "Tefé"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Tefé",
     "am"
@@ -47727,14 +47727,14 @@
    ],
    "post_stream": "https://stream.jmhost.com.br/radio/8340/;stream/1",
    "post_updated": "2020-09-27T22:31:31.974-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-22",
    "sites": [
     "https://www.radioruraltefe.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://stream.jmhost.com.br/radio/8340/;stream/1",
    "title": "Ouvir a Rádio Rural FM 93,9 de Tefé AM Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2016/09/ouvir-radio-educacao-rural-am-1270-de.html"
@@ -47962,7 +47962,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3572204773203126168",
    "labels": [
@@ -48042,7 +48042,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -48155,7 +48155,7 @@
      "5551981059938"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3576491389723959614",
    "labels": [
@@ -48310,7 +48310,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3599184500220840775",
    "labels": [
@@ -48357,7 +48357,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3599923722059164235",
    "labels": [
@@ -48555,7 +48555,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3609824724082802078",
    "labels": [
@@ -48699,7 +48699,7 @@
      "5581999375776"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3614213161171043453",
    "labels": [
@@ -48782,7 +48782,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -49270,7 +49270,7 @@
      "558588572644"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3646394688650878636",
    "labels": [
@@ -49853,7 +49853,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5519991431946",
-    "score": 0.7,
+    "score": 0.8,
     "since": "2026-11-27",
     "site": "551932762000",
     "url": "http://laser933.com.br/"
@@ -49964,7 +49964,7 @@
      "5547984825000"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3669377562476980429",
    "labels": [
@@ -50052,7 +50052,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3672764471940005039",
    "labels": [
@@ -50097,7 +50097,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3679017029416770345",
    "labels": [
@@ -50402,7 +50402,7 @@
      "5554999460458"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3701692579144222652",
    "labels": [
@@ -50452,7 +50452,7 @@
      "5581997491414"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -50574,7 +50574,7 @@
      "5547996892019"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3708744890497148823",
    "labels": [
@@ -50983,7 +50983,7 @@
      "5547988143998"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3722907280082360057",
    "labels": [
@@ -51152,7 +51152,7 @@
      "5562995155770"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3731703453056300240",
    "labels": [
@@ -51800,7 +51800,7 @@
      "5551982116538"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3768198595780566619",
    "labels": [
@@ -51949,7 +51949,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "554530270941",
-    "score": 0.6,
+    "score": 0.7,
     "since": "2026-11-27",
     "site": "554530171005",
     "url": "http://www.bandfmfoz.com.br/"
@@ -52016,7 +52016,7 @@
      "5593991369840"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3778370535412754271",
    "labels": [
@@ -52409,7 +52409,7 @@
      "5517991212020"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3817002168558081254",
    "labels": [
@@ -52456,7 +52456,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3820518266287317910",
    "labels": [
@@ -52477,7 +52477,7 @@
    ],
    "post_stream": "https://s20.maxcast.com.br:8032/live",
    "post_updated": "2021-02-03T21:51:30.306-03:00",
-   "reason": "sem conexão (ConnectionRefusedError)",
+   "reason": "tempo esgotado",
    "search_tried": "2026-11-24",
    "site_checked": "2026-11-22",
    "site_fora": "domínio não existe mais",
@@ -52633,7 +52633,7 @@
      "5551980111288"
     ]
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "id": "3825627038176267620",
    "labels": [
@@ -53121,7 +53121,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3848629938921169165",
    "labels": [
@@ -53577,7 +53577,7 @@
      "5584998510566"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3861242961530716875",
    "labels": [
@@ -53686,7 +53686,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3862689801643914231",
    "labels": [
@@ -53742,7 +53742,7 @@
     ]
    },
    "editado_em": "2026-11-26",
-   "fail_count": 4,
+   "fail_count": 5,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -54217,6 +54217,14 @@
   },
   "3886377180722099711": {
    "contact_alerted": "557734441043",
+   "contact_suggestion": {
+    "kind": "whatsapp",
+    "post": "5577999581576",
+    "score": 0.6,
+    "since": "2026-11-27",
+    "site": "557734441043",
+    "url": "https://www.radioportalsudoeste.com.br/"
+   },
    "contacts": {
     "telefone": [
      "557734441043"
@@ -54323,7 +54331,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3887726526873753599",
    "labels": [
@@ -54411,7 +54419,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3895379799285557550",
    "labels": [
@@ -55025,7 +55033,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3957189597212392033",
    "labels": [
@@ -55353,7 +55361,7 @@
      "5591991921009"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "3970518548280431769",
    "labels": [
@@ -55932,7 +55940,7 @@
     ]
    },
    "editado_em": "2026-11-21",
-   "fail_count": 18,
+   "fail_count": 19,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -56400,7 +56408,7 @@
      "5575999955978"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4012490872252646857",
    "labels": [
@@ -56502,7 +56510,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4015546138793541911",
    "labels": [
@@ -56632,7 +56640,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4027710929135361977",
    "labels": [
@@ -56682,7 +56690,7 @@
      "5541988087508"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4028208941790474498",
    "labels": [
@@ -56965,7 +56973,7 @@
      "5544997052605"
     ]
    },
-   "fail_count": 13,
+   "fail_count": 14,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -57546,7 +57554,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 5,
+   "fail_count": 6,
    "first_seen": "2026-11-16",
    "id": "4063254559349546123",
    "labels": [
@@ -57644,7 +57652,7 @@
      "5575998299696"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4066849119361215259",
    "labels": [
@@ -57736,7 +57744,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4071151943951963768",
    "labels": [
@@ -57931,7 +57939,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4086671571335420581",
    "labels": [
@@ -58438,7 +58446,7 @@
     "whatsapp": []
    },
    "editado_em": "2026-11-26",
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -58460,7 +58468,7 @@
     "Rádio ao Vivo"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Paraty",
     "rj"
@@ -58471,14 +58479,14 @@
    ],
    "post_stream": "https://stream.zeno.fm/cic1u0lbdo2uv",
    "post_updated": "2026-11-26T16:14:12.746-03:00",
-   "reason": "HTTP 503",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-22",
    "sites": [
     "http://www.radiomania.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://stream.zeno.fm/cic1u0lbdo2uv",
    "title": "Ouvir a Rádio Mania FM 88,9 de Paraty RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2013/06/ouvir-radio-mania-fm-889-de-paraty-ao.html"
@@ -59010,7 +59018,7 @@
      "5545999632592"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "413766949367776397",
    "labels": [
@@ -59056,7 +59064,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4138958585331311406",
    "labels": [
@@ -59673,7 +59681,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4168439011035648611",
    "labels": [
@@ -60211,7 +60219,7 @@
      "5516992664665"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4204269463979526199",
    "labels": [
@@ -60245,8 +60253,8 @@
    "wa_post_visto": "5516992664665"
   },
   "4204638401800228217": {
-   "busca_vazia_em": "2026-11-23",
-   "buscas_vazias": 1,
+   "conferido_radiocol": "2026-11-27",
+   "confianca": 0.95,
    "contacts": {
     "telefone": [],
     "whatsapp": [
@@ -60255,6 +60263,15 @@
    },
    "fail_count": 0,
    "first_seen": "2026-11-16",
+   "history": [
+    {
+     "date": "2026-11-27",
+     "from": "https://5a2b083e9f360.streamlock.net/sc_itapi/sc_itapi.stream/playlist.m3u8",
+     "note": "",
+     "source": "radios.com.br: Radio Clube FM 96.7 (Itapicuru/BA, 96.7 FM) — cidade, UF e frequência conferem",
+     "to": "https://1.stmip.net:2060/stream"
+    }
+   ],
    "http_only": false,
    "id": "4204638401800228217",
    "labels": [
@@ -60276,14 +60293,15 @@
    ],
    "post_stream": "https://5a2b083e9f360.streamlock.net/sc_itapi/sc_itapi.stream/playlist.m3u8",
    "post_updated": "2020-11-13T22:46:04.808-03:00",
-   "reason": "ok (HLS)",
+   "reason": "corrigido automaticamente",
+   "search_tried": "2026-11-27",
    "site_checked": "2026-11-23",
    "sites": [
     "https://www.clube96.com.br/"
    ],
-   "source": "post",
+   "source": "radios.com.br: Radio Clube FM 96.7 (Itapicuru/BA, 96.7 FM) — cidade, UF e frequência conferem",
    "status": "ok",
-   "stream": "https://5a2b083e9f360.streamlock.net/sc_itapi/sc_itapi.stream/playlist.m3u8",
+   "stream": "https://1.stmip.net:2060/stream",
    "title": "Ouvir a Rádio Clube FM 96,7 de Itapicuru BA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2019/05/ouvir-radio-clube-fm-967-de-itapicuru-ba-online.html",
    "wa_post_visto": "557935411067"
@@ -60542,7 +60560,7 @@
      "5554991749640"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4217342003092327209",
    "labels": [
@@ -60890,7 +60908,7 @@
      "5514991639290"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "4233178558260619037",
@@ -60901,7 +60919,7 @@
     "SP"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Lins",
     "sp"
@@ -60912,14 +60930,14 @@
    ],
    "post_stream": "https://5a2b083e9f360.streamlock.net/regenciafmhd/regenciafmhd.stream/playlist.m3u8",
    "post_updated": "2022-07-11T21:30:29.993-03:00",
-   "reason": "HTTP 404",
+   "reason": "ok (HLS)",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-27",
    "sites": [
     "https://www.regenciafm.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://5a2b083e9f360.streamlock.net/regenciafmhd/regenciafmhd.stream/playlist.m3u8",
    "title": "Ouvir a Rádio Regência FM 107,1 de Lins SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/05/ouvir-radio-regencia-fm-1071-de-lins-sp-ao-vivo.html",
@@ -60975,7 +60993,7 @@
      "5551989262338"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4235136788407895209",
    "labels": [
@@ -61019,7 +61037,7 @@
      "556195721291"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4235228525325509579",
    "labels": [
@@ -61230,7 +61248,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4243258190189784188",
    "labels": [
@@ -61501,7 +61519,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4272661564860756261",
    "labels": [
@@ -62096,7 +62114,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "431470528203258209",
    "labels": [
@@ -62321,7 +62339,7 @@
      "5566999716827"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4325939954761581751",
    "labels": [
@@ -62577,7 +62595,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4333273195096514813",
    "labels": [
@@ -62924,7 +62942,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4351170061192239688",
    "labels": [
@@ -63069,7 +63087,7 @@
      "5544997017088"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "4355674068913258422",
    "labels": [
@@ -63154,7 +63172,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4359855150978568936",
    "labels": [
@@ -63314,7 +63332,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 19,
+   "fail_count": 20,
    "first_seen": "2026-11-16",
    "id": "4369980324103934527",
    "labels": [
@@ -64252,7 +64270,7 @@
      "5522992279062"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4425875270212105947",
    "labels": [
@@ -64378,7 +64396,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4438670050877636520",
    "labels": [
@@ -64876,7 +64894,7 @@
      "556185065374"
     ]
    },
-   "fail_count": 10,
+   "fail_count": 11,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -64958,7 +64976,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 9,
+   "fail_count": 10,
    "first_seen": "2026-11-16",
    "id": "4463841243320304146",
    "labels": [],
@@ -65072,7 +65090,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4490936071051936530",
    "labels": [
@@ -65522,7 +65540,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 13,
+   "fail_count": 14,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -65634,7 +65652,7 @@
      "5545988308278"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4518733110947704408",
    "labels": [
@@ -65850,7 +65868,7 @@
      "5561996668790"
     ]
    },
-   "fail_count": 18,
+   "fail_count": 19,
    "first_seen": "2026-11-16",
    "id": "4533429536811870920",
    "labels": [
@@ -66662,7 +66680,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4591377701717621783",
    "labels": [
@@ -66704,7 +66722,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4599528845486878935",
    "labels": [
@@ -67071,7 +67089,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4611561691078465201",
    "labels": [
@@ -67228,7 +67246,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "462483277062274722",
    "labels": [
@@ -67566,7 +67584,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5567996461029",
-    "score": 0.35,
+    "score": 0.45,
     "since": "2026-11-27",
     "site": "5517992458013",
     "url": "https://lr1.com.br/"
@@ -67734,7 +67752,7 @@
      "5521991907486"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4656761357018479507",
    "labels": [
@@ -67779,7 +67797,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4657213624796202719",
    "labels": [
@@ -67822,7 +67840,7 @@
     "whatsapp": []
    },
    "editado_em": "2026-11-25",
-   "fail_count": 7,
+   "fail_count": 8,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -67996,7 +68014,7 @@
      "5551992238585"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4682842756677640276",
    "labels": [
@@ -68276,7 +68294,7 @@
      "5541988911060"
     ]
    },
-   "fail_count": 13,
+   "fail_count": 14,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -68754,7 +68772,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4730535667482235586",
    "labels": [
@@ -69058,7 +69076,7 @@
      "554699377999"
     ]
    },
-   "fail_count": 10,
+   "fail_count": 11,
    "first_seen": "2026-11-16",
    "id": "4742515991447461274",
    "labels": [
@@ -69399,7 +69417,7 @@
      "5561982080978"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4762953094359947382",
    "labels": [
@@ -69710,7 +69728,7 @@
      "5547999421206"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4774505465099940480",
    "labels": [
@@ -70066,7 +70084,7 @@
      "556635663317"
     ]
    },
-   "fail_count": 22,
+   "fail_count": 23,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "4796439628070868858",
@@ -70108,7 +70126,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4798136490653549819",
    "labels": [
@@ -70197,7 +70215,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4805319318566347404",
    "labels": [
@@ -70361,7 +70379,7 @@
      "553788536566"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "4808453791230041661",
    "labels": [
@@ -70844,7 +70862,7 @@
      "5585992280992"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4828451075539320254",
    "labels": [
@@ -71139,7 +71157,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -71198,7 +71216,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "485470891488057989",
    "labels": [
@@ -71487,7 +71505,7 @@
      "5511991299111"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -71597,14 +71615,13 @@
    "wa_post_visto": "5555991197474"
   },
   "4870565931378375233": {
-   "alerted": "2026-11-16",
    "busca_vazia_em": "2026-11-24",
    "buscas_vazias": 1,
    "contacts": {
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "id": "4870565931378375233",
    "labels": [
@@ -71628,7 +71645,7 @@
    ],
    "post_stream": "https://s27.hstbr.net:8052/live",
    "post_updated": "2020-08-26T21:31:39.214-03:00",
-   "reason": "sem conexão (ConnectionRefusedError)",
+   "reason": "servidor não responde ao robô (fora do Brasil) — tempo esgotado",
    "search_tried": "2026-11-24",
    "site_checked": "2026-11-23",
    "site_fora": "domínio não existe mais",
@@ -71636,7 +71653,7 @@
     "http://santuariodofunk.com/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "bloqueio",
    "stream": "https://s27.hstbr.net:8052/live",
    "title": "Ouvir a Web Rádio Santuário do Funk de João Monlevade MG Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/03/ouvir-web-radio-santuario-do-funk-de.html"
@@ -71748,7 +71765,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4887885228534094957",
    "labels": [
@@ -71801,7 +71818,7 @@
      "5575999989850"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4889324070308714127",
    "labels": [
@@ -71845,7 +71862,7 @@
      "556134841585"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4891000821218716113",
    "labels": [
@@ -71993,7 +72010,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4902828266272716650",
    "labels": [
@@ -72094,7 +72111,7 @@
      "5577988754266"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -72235,7 +72252,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4909661446784130844",
    "labels": [
@@ -72836,7 +72853,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4937239537377797435",
    "labels": [
@@ -73382,7 +73399,7 @@
      "5549991711049"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "4950338227641546876",
    "labels": [
@@ -74409,7 +74426,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5008309922915848080",
    "labels": [
@@ -74590,7 +74607,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5018607866806758266",
    "labels": [
@@ -75532,7 +75549,7 @@
      "5543991011021"
     ]
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "id": "5066908206010424188",
    "labels": [
@@ -75651,7 +75668,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5070178015556911894",
    "labels": [
@@ -76306,7 +76323,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5104428378915788835",
    "labels": [
@@ -76651,7 +76668,7 @@
      "5586988159696"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5121976156561554372",
    "labels": [
@@ -76929,7 +76946,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5150142923479182974",
    "labels": [
@@ -77217,7 +77234,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5161564343055040735",
    "labels": [
@@ -77265,7 +77282,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5161802277329395661",
    "labels": [
@@ -77835,7 +77852,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5177567383332145994",
    "labels": [
@@ -77969,7 +77986,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5180726567407308826",
    "labels": [
@@ -78011,6 +78028,15 @@
    "url": "https://www.radiocol.com.br/2013/03/ouvir-radio-jovem-pan-fm-1037-de.html"
   },
   "518098253267361430": {
+   "contact_alerted": "5551997234368",
+   "contact_suggestion": {
+    "kind": "whatsapp",
+    "post": "5547999280334",
+    "score": 0.2,
+    "since": "2026-11-27",
+    "site": "5551997234368",
+    "url": "https://www.uniao96blumenau.com.br/"
+   },
    "contacts": {
     "telefone": [
      "554733266033"
@@ -78123,7 +78149,7 @@
      "5504130581120"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5184227684278559334",
    "labels": [
@@ -78456,7 +78482,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5209906628051947810",
    "labels": [
@@ -78503,7 +78529,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5210643545988661613",
    "labels": [
@@ -78550,7 +78576,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -78763,7 +78789,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -78869,7 +78895,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5220594374332857617",
    "labels": [
@@ -78915,7 +78941,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5228532694843405921",
    "labels": [
@@ -79202,7 +79228,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5252213587693766114",
    "labels": [
@@ -79622,7 +79648,7 @@
     "whatsapp": []
    },
    "editado_em": "2026-11-25",
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -79641,7 +79667,7 @@
     "MS"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Campo Grande",
     "ms"
@@ -79652,7 +79678,7 @@
    ],
    "post_stream": "https://mc01.streammaximum.com:7005/stream",
    "post_updated": "2026-11-24T19:35:34.582-03:00",
-   "reason": "HTTP 503",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-23",
    "site_tried": "2026-11-23",
@@ -79660,7 +79686,7 @@
     "https://flashbackmix.com/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://mc01.streammaximum.com:7005/stream",
    "title": "Ouvir a Webradio Flash Back Mix de Campo Grande MS",
    "url": "https://www.radiocol.com.br/2018/09/ouvir-webradio-flash-back-mix-de-campo.html",
@@ -79725,7 +79751,7 @@
      "5511931170620"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5279420614268893316",
    "labels": [
@@ -79776,7 +79802,7 @@
      "5522981714311"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5280436202319758126",
    "labels": [
@@ -79810,8 +79836,8 @@
    "wa_post_visto": "5522981714311"
   },
   "5287993818106147329": {
-   "busca_vazia_em": "2026-11-23",
-   "buscas_vazias": 1,
+   "conferido_radiocol": "2026-11-27",
+   "confianca": 0.85,
    "contacts": {
     "telefone": [
      "558738752362"
@@ -79822,6 +79848,15 @@
    },
    "fail_count": 0,
    "first_seen": "2026-11-16",
+   "history": [
+    {
+     "date": "2026-11-27",
+     "from": "https://streaming.livespanel.com:21003/granderiocabrobro",
+     "note": "",
+     "source": "site da rede (granderiofm.com.br, praça do post) [navegador]",
+     "to": "https://streaming.livespanel.com:21007/granderiofm"
+    }
+   ],
    "http_only": false,
    "id": "5287993818106147329",
    "labels": [
@@ -79843,15 +79878,16 @@
    ],
    "post_stream": "https://streaming.livespanel.com:21003/granderiocabrobro",
    "post_updated": "2026-11-24T19:27:31.418-03:00",
-   "reason": "ok",
+   "reason": "corrigido automaticamente",
+   "search_tried": "2026-11-27",
    "site_checked": "2026-11-23",
    "site_tried": "2026-11-23",
    "sites": [
     "https://granderiofm.com.br/"
    ],
-   "source": "post",
+   "source": "site da rede (granderiofm.com.br, praça do post) [navegador]",
    "status": "ok",
-   "stream": "https://streaming.livespanel.com:21003/granderiocabrobro",
+   "stream": "https://streaming.livespanel.com:21007/granderiofm",
    "title": "Ouvir a Rádio Grande Rio FM 100,3 de Cabrobó PE",
    "url": "https://www.radiocol.com.br/2013/09/ouvir-radio-grande-rio-fm-1003-de.html",
    "wa_post_visto": "5587988094276",
@@ -80428,7 +80464,7 @@
      "5554999871463"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5317916317055680554",
    "labels": [
@@ -80574,7 +80610,7 @@
      "5512996118989"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5332485063161045080",
    "labels": [
@@ -80800,7 +80836,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5583991367768",
-    "score": 0.35,
+    "score": 0.45,
     "since": "2026-11-27",
     "site": "5511983408000",
     "url": "https://radiomixfm.com.br/"
@@ -81175,7 +81211,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5363846998549509743",
    "labels": [
@@ -81515,7 +81551,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "5383701359822114560",
    "labels": [
@@ -81649,7 +81685,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5394213077125249969",
    "labels": [
@@ -81693,7 +81729,7 @@
      "5511994694112"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5397634632413953447",
    "labels": [
@@ -81939,7 +81975,7 @@
      "5579999909300"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5429778076109428967",
    "labels": [
@@ -82111,7 +82147,7 @@
      "5547988254631"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5437242318568185167",
    "labels": [
@@ -82360,7 +82396,7 @@
     "Terra Nova"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Terra Nova",
     "mt"
@@ -82371,14 +82407,14 @@
    ],
    "post_stream": "https://radio.saopaulo01.com.br:10942/stream",
    "post_updated": "2022-02-11T09:11:35.134-03:00",
-   "reason": "servidor não responde ao robô (fora do Brasil) — HTTP 401",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-27",
    "sites": [
     "https://www.radioconti.com.br/"
    ],
    "source": "post",
-   "status": "bloqueio",
+   "status": "ok",
    "stream": "https://radio.saopaulo01.com.br:10942/stream",
    "title": "Ouvir a Rádio Conti FM 97,1 de Terra Nova MT Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2022/02/ouvir-radio-conti-fm-971-de-terra-nova-mt-ao-vivo-e-online.html"
@@ -82560,7 +82596,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -82849,7 +82885,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5469498151233055017",
    "labels": [
@@ -82998,7 +83034,7 @@
      "5554992352835"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5479910434392481747",
    "labels": [
@@ -83885,7 +83921,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5525891253277270766",
    "labels": [
@@ -83961,8 +83997,8 @@
    "url": "https://www.radiocol.com.br/2018/06/ouvir-radio-fandango-fm-1025-de.html"
   },
   "553351995696111485": {
-   "busca_vazia_em": "2026-11-27",
-   "buscas_vazias": 1,
+   "conferido_radiocol": "2026-11-27",
+   "confianca": 0.95,
    "contacts": {
     "telefone": [
      "556635661237"
@@ -83972,8 +84008,17 @@
      "5592995347314"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
+   "history": [
+    {
+     "date": "2026-11-27",
+     "from": "https://wms5.webradios.com.br:19046/9046",
+     "note": "",
+     "source": "radios.com.br: Rádio Massa FM 98.7 (Castanheira/MT, 98.7 FM) — cidade, UF e frequência conferem",
+     "to": "https://play.wisestream.io/massafmcastanheiras"
+    }
+   ],
    "http_only": false,
    "id": "553351995696111485",
    "labels": [
@@ -83983,7 +84028,7 @@
     "Rede_Massa_FM"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Castanheira",
     "mt"
@@ -83994,16 +84039,16 @@
    ],
    "post_stream": "https://wms5.webradios.com.br:19046/9046",
    "post_updated": "2021-03-04T22:04:14.401-03:00",
-   "reason": "HTTP 404",
+   "reason": "corrigido automaticamente",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-27",
    "site_novo": "https://massa.com.br/fm",
    "sites": [
     "https://www.massafm.com.br/"
    ],
-   "source": "post",
-   "status": "off",
-   "stream": "https://wms5.webradios.com.br:19046/9046",
+   "source": "radios.com.br: Rádio Massa FM 98.7 (Castanheira/MT, 98.7 FM) — cidade, UF e frequência conferem",
+   "status": "ok",
+   "stream": "https://play.wisestream.io/massafmcastanheiras",
    "title": "Ouvir a Rádio Massa FM 98,7 de Castanheira MT Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/01/ouvir-radio-massa-fm-987-de-castanheira-mt-ao-vivo.html",
    "wa_post_visto": "5566999755390"
@@ -84014,7 +84059,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5540599483825607876",
    "labels": [
@@ -84066,7 +84111,7 @@
      "5573999376494"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "554152849484199770",
    "labels": [
@@ -84618,7 +84663,7 @@
      "5555991957963"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "5579784663481196949",
    "labels": [
@@ -84710,7 +84755,7 @@
      "5575999767840"
     ]
    },
-   "fail_count": 18,
+   "fail_count": 19,
    "first_seen": "2026-11-16",
    "id": "5582036116000092428",
    "labels": [
@@ -84781,7 +84826,7 @@
    ],
    "post_stream": "https://radio.saopaulo01.com.br:10945/stream/;stream/1",
    "post_updated": "2026-11-26T16:09:54.801-03:00",
-   "reason": "ok (ICY)",
+   "reason": "ok",
    "sites": [
     "https://ruraldemossoro.com.br/"
    ],
@@ -85236,7 +85281,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5607331311072436039",
    "labels": [
@@ -85351,7 +85396,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5610007445641372718",
    "labels": [
@@ -85640,7 +85685,7 @@
      "5522988031525"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5635752649792996588",
    "labels": [
@@ -86284,7 +86329,7 @@
      "5561996105033"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5671513423158561645",
    "labels": [
@@ -86371,7 +86416,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5676930554746164932",
    "labels": [
@@ -86472,7 +86517,7 @@
      "5567981081641"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5679643942001361428",
    "labels": [
@@ -86563,7 +86608,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5684688643048420906",
    "labels": [
@@ -86609,7 +86654,7 @@
      "5574991430783"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "568533061326998023",
    "labels": [
@@ -86820,7 +86865,7 @@
     ]
    },
    "editado_em": "2026-11-25",
-   "fail_count": 7,
+   "fail_count": 8,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -87125,7 +87170,7 @@
      "5554996640955"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -87192,7 +87237,7 @@
      "5522996168998"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5726146460957554425",
    "labels": [
@@ -87241,7 +87286,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5730956815935181775",
    "labels": [
@@ -87551,7 +87596,7 @@
      "5513981773368"
     ]
    },
-   "fail_count": 8,
+   "fail_count": 9,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -87690,7 +87735,7 @@
      "5591988258710"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "574590334308629609",
    "labels": [
@@ -87816,6 +87861,8 @@
    "url": "https://www.radiocol.com.br/2014/12/ouvir-radio-colinas-fm-919-de-ibaiti-pr.html"
   },
   "5751268269231485688": {
+   "conferido_radiocol": "2026-11-27",
+   "confianca": 0.9,
    "contacts": {
     "telefone": [],
     "whatsapp": [
@@ -87824,6 +87871,15 @@
    },
    "fail_count": 0,
    "first_seen": "2026-11-16",
+   "history": [
+    {
+     "date": "2026-11-27",
+     "from": "https://01.megadinamica.com:7038/stream",
+     "note": "",
+     "source": "site oficial (radioestacaoporciuncula.com.br) — tocou no navegador [navegador]",
+     "to": "https://stm1.streamproarte.com.br:7490/stream"
+    }
+   ],
    "http_only": false,
    "id": "5751268269231485688",
    "labels": [
@@ -87845,13 +87901,15 @@
    ],
    "post_stream": "https://01.megadinamica.com:7038/stream",
    "post_updated": "2023-12-14T21:25:37.132-03:00",
-   "reason": "ok",
+   "reason": "corrigido automaticamente",
+   "search_tried": "2026-11-27",
+   "site_checked": "2026-11-27",
    "sites": [
     "https://radioestacaoporciuncula.com.br/"
    ],
-   "source": "post",
+   "source": "site oficial (radioestacaoporciuncula.com.br) — tocou no navegador [navegador]",
    "status": "ok",
-   "stream": "https://01.megadinamica.com:7038/stream",
+   "stream": "https://stm1.streamproarte.com.br:7490/stream",
    "title": "Ouvir a Web Rádio Estação Porciúncula de Porciúncula RJ Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2020/07/ouvir-web-radio-estacao-metro-porciuncula-rj-ao-vivo.html",
    "wa_post_visto": "5522999125793"
@@ -88121,7 +88179,7 @@
      "5548991813800"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5762161491428760620",
    "labels": [
@@ -88267,7 +88325,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5771201079641559844",
    "labels": [
@@ -88411,7 +88469,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5777300007885652555",
    "labels": [
@@ -88456,7 +88514,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5779622259728995504",
    "labels": [
@@ -88986,7 +89044,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5803422066409923041",
    "labels": [
@@ -89031,7 +89089,7 @@
      "554434466000"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5803687731742464502",
    "labels": [
@@ -89195,7 +89253,7 @@
      "5599988152129"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5816377144406477749",
    "labels": [
@@ -89928,7 +89986,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5873311743774566968",
    "labels": [
@@ -90116,7 +90174,7 @@
      "5542998710002"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5879036398004133096",
    "labels": [
@@ -90594,7 +90652,7 @@
      "5548988221280"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5905101793829499001",
    "labels": [
@@ -90694,7 +90752,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5916470918021770256",
    "labels": [
@@ -90742,7 +90800,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "5925054962101119030",
    "labels": [
@@ -90981,7 +91039,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -91100,7 +91158,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "5949905922347901601",
    "labels": [
@@ -91355,7 +91413,7 @@
      "5512988948561"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "5963088075062658822",
    "labels": [
@@ -91735,7 +91793,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "599141427363844386",
    "labels": [
@@ -91955,7 +92013,7 @@
      "5562986015483"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6015496508017617606",
    "labels": [
@@ -92276,7 +92334,7 @@
    ],
    "post_stream": "https://centova2.euroti.com.br:20065/stream?",
    "post_updated": "2022-07-01T22:26:41.244-03:00",
-   "reason": "corrigido automaticamente",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-27",
    "sites": [
@@ -92298,7 +92356,7 @@
      "5599991942192"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6037092276290974421",
    "labels": [
@@ -92579,7 +92637,7 @@
      "5549991993555"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6051178194375974057",
    "labels": [
@@ -92623,7 +92681,7 @@
      "5561996437954"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "6051350445762660363",
    "labels": [
@@ -92701,6 +92759,8 @@
    "wa_post_visto": "5511966146757"
   },
   "6052485978480167197": {
+   "busca_vazia_em": "2026-11-27",
+   "buscas_vazias": 1,
    "conferido_radiocol": "2026-11-27",
    "confianca": 0.9,
    "contacts": {
@@ -92711,7 +92771,7 @@
      "5564992104410"
     ]
    },
-   "fail_count": 0,
+   "fail_count": 1,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -92764,7 +92824,7 @@
    ],
    "post_stream": "https://corumbafm.com.br:8066/stream",
    "post_updated": "2026-11-26T16:41:06.457-03:00",
-   "reason": "corrigido automaticamente",
+   "reason": "certificado SSL inválido",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-23",
    "site_tried": "2026-11-23",
@@ -92772,7 +92832,7 @@
     "https://corumbafm.com.br/"
    ],
    "source": "site oficial (corumbafm.com.br) — tocou no navegador [navegador]",
-   "status": "ok",
+   "status": "off",
    "stream": "https://corumba.apps.radio.br:50110/;",
    "title": "Ouvir a Rádio Corumbá FM 103,1 de Pires do Rio GO Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2011/10/radio-corumba-fm-1031-de-pires-do-rio.html",
@@ -93022,7 +93082,7 @@
      "5583993128020"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -93703,7 +93763,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "610697738055402922",
    "labels": [
@@ -93809,7 +93869,7 @@
      "45991484808"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6109556197324366496",
    "labels": [
@@ -93859,7 +93919,7 @@
      "5516988728870"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6111564769509727288",
    "labels": [
@@ -94526,7 +94586,7 @@
      "5569999426406"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6149733928164853908",
    "labels": [
@@ -94680,7 +94740,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6152890743524895426",
    "labels": [
@@ -95362,7 +95422,7 @@
      "5549991411019"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6209435828702616617",
    "labels": [
@@ -95706,7 +95766,7 @@
      "5516981701011"
     ]
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "id": "6226482358691957759",
    "labels": [
@@ -96356,7 +96416,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -96416,10 +96476,23 @@
   },
   "6258840184869556020": {
    "contact_alerted": "5588988458499",
+   "contact_auto": [
+    "5588997064894",
+    "5588988458499",
+    "w"
+   ],
+   "contact_auto_em": "2026-11-27",
+   "contact_overrides": [
+    [
+     "5588997064894",
+     "5588988458499",
+     "w"
+    ]
+   ],
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5588997064894",
-    "score": 0.85,
+    "score": 0.95,
     "since": "2026-11-27",
     "site": "5588988458499",
     "url": "https://www.radioasabranca.com.br/"
@@ -96720,7 +96793,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -96828,7 +96901,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 22,
+   "fail_count": 23,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -97455,7 +97528,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6302876157956916556",
    "labels": [
@@ -97576,7 +97649,7 @@
      "553732268898"
     ]
    },
-   "fail_count": 5,
+   "fail_count": 6,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "6303111012071118987",
@@ -98179,7 +98252,7 @@
     "Popular"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Castanhal",
     "pa"
@@ -98190,14 +98263,14 @@
    ],
    "post_stream": "https://stm01.virtualcast.com.br:8614/live",
    "post_updated": "2020-10-04T22:35:41.096-03:00",
-   "reason": "servidor não responde ao robô (fora do Brasil) — HTTP 403",
+   "reason": "ok",
    "search_tried": "2026-11-24",
    "site_checked": "2026-11-23",
    "sites": [
     "https://www.radioparaense.com.br/"
    ],
    "source": "post",
-   "status": "bloqueio",
+   "status": "ok",
    "stream": "https://stm01.virtualcast.com.br:8614/live",
    "title": "Ouvir a Rádio Paraense FM 102,1 de Castanhal PA Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2018/02/ouvir-radio-paraense-fm-1021-de.html",
@@ -98612,7 +98685,7 @@
      "5551997751710"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6367965553161166560",
    "labels": [
@@ -99014,7 +99087,7 @@
      "5546991261001"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6391891794960458249",
    "labels": [
@@ -99103,7 +99176,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -99365,7 +99438,7 @@
      "5562985977042"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6411296865373904164",
    "labels": [
@@ -100017,7 +100090,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6439097475891383750",
    "labels": [
@@ -100063,7 +100136,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6443651846174780086",
    "labels": [
@@ -100429,7 +100502,7 @@
      "5588997220440"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6458822783263675418",
    "labels": [
@@ -100471,7 +100544,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "6462773960869857952",
    "labels": [
@@ -100599,7 +100672,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6468246438429275540",
    "labels": [
@@ -100889,7 +100962,7 @@
      "5598982376789"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6479351720352379943",
    "labels": [
@@ -100931,7 +101004,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6481164704038211665",
    "labels": [
@@ -101487,7 +101560,7 @@
      "5542999508892"
     ]
    },
-   "fail_count": 10,
+   "fail_count": 11,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -101589,7 +101662,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6534545400026319251",
    "labels": [
@@ -101699,7 +101772,7 @@
      "5554999755517"
     ]
    },
-   "fail_count": 32,
+   "fail_count": 33,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -101866,7 +101939,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -102269,7 +102342,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 13,
+   "fail_count": 14,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -102322,7 +102395,6 @@
    "url": "https://www.radiocol.com.br/2017/02/ouvir-radio-sintonia-do-vale-fm-993-de.html"
   },
   "6562714091667177269": {
-   "alerted": "2026-11-27",
    "busca_vazia_em": "2026-11-27",
    "buscas_vazias": 2,
    "contacts": {
@@ -102333,7 +102405,7 @@
      "5565999665991"
     ]
    },
-   "fail_count": 2,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -102353,7 +102425,7 @@
     "Popular"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Cáceres",
     "mt"
@@ -102366,7 +102438,7 @@
    ],
    "post_stream": "https://difusoracaceres.com.br:20443/listen/difusora_fm/radio.mp3",
    "post_updated": "2026-11-26T15:17:38.613-03:00",
-   "reason": "certificado SSL inválido",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-23",
    "site_tried": "2026-11-23",
@@ -102374,7 +102446,7 @@
     "http://www.difusoracaceres.com.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://difusoracaceres.com.br:20443/listen/difusora_fm/radio.mp3",
    "title": "Ouvir a Rádio Difusora FM 102,3 de Cáceres MT Ao vivo e Online",
    "url": "https://www.radiocol.com.br/2012/05/ouvir-radio-difusora-fm-1023-de-caceres.html",
@@ -102522,6 +102594,7 @@
    "url": "https://www.radiocol.com.br/2013/06/ouvir-radio-antena-1-fm-921-de.html"
   },
   "6571066430904064522": {
+   "busca_dir": "2026-11-27: nada diferente no site, tudoradio, radios.com.br e Radio Browser",
    "contacts": {
     "telefone": [
      "551126004812"
@@ -102554,12 +102627,14 @@
    ],
    "post_stream": "https://cloud1.cdnseguro.com:2772/stream/;",
    "post_updated": "2022-03-15T21:04:42.532-03:00",
-   "reason": "ok",
+   "reason": "servidor não responde ao robô (fora do Brasil) — HTTP 401",
+   "search_tried": "2026-11-27",
+   "site_checked": "2026-11-27",
    "sites": [
     "https://grufm.com.br/"
    ],
    "source": "post",
-   "status": "ok",
+   "status": "bloqueio",
    "stream": "https://cloud1.cdnseguro.com:2772/stream/;",
    "title": "Ouvir a Rádio GRU FM 84,7 de Guarulhos - São Paulo Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2022/03/ouvir-radio-gru-fm-847-de-guarulhos-sp-ao-vivo-e-online.html",
@@ -102764,7 +102839,7 @@
      "5545999632592"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6581237594743901587",
    "labels": [
@@ -102806,10 +102881,23 @@
   "6593707030677568788": {
    "confianca": 0.9,
    "contact_alerted": "5548996927949",
+   "contact_auto": [
+    "554835330178",
+    "5548996927949",
+    "w"
+   ],
+   "contact_auto_em": "2026-11-27",
+   "contact_overrides": [
+    [
+     "554835330178",
+     "5548996927949",
+     "w"
+    ]
+   ],
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "554835330178",
-    "score": 0.85,
+    "score": 0.95,
     "since": "2026-11-27",
     "site": "5548996927949",
     "url": "https://portalamorim.com.br/"
@@ -102939,7 +103027,7 @@
      "558432744186"
     ]
    },
-   "fail_count": 19,
+   "fail_count": 20,
    "first_seen": "2026-11-16",
    "id": "6595275400790837453",
    "labels": [
@@ -103632,7 +103720,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6647606692470462922",
    "labels": [
@@ -103722,6 +103810,7 @@
    "wa_post_visto": "554331320810"
   },
   "6651169600720752945": {
+   "busca_dir": "2026-11-27: nada diferente no site, tudoradio, radios.com.br e Radio Browser",
    "confianca": 0.9,
    "contacts": {
     "telefone": [
@@ -103763,12 +103852,14 @@
    ],
    "post_stream": "https://stm1.srvif.com:8116/live",
    "post_updated": "2022-07-13T20:35:36.394-03:00",
-   "reason": "ok",
+   "reason": "servidor não responde ao robô (fora do Brasil) — HTTP 401",
+   "search_tried": "2026-11-27",
+   "site_checked": "2026-11-27",
    "sites": [
     "https://www.novaonda.fm.br/"
    ],
    "source": "site oficial (novaonda.fm.br) — tocou no navegador [navegador]",
-   "status": "ok",
+   "status": "bloqueio",
    "stream": "https://stm1.streamproarte.com.br:7292/stream",
    "title": "Ouvir a Rádio Nova Onda FM 87,9 de Iporá GO Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2016/02/ouvir-radio-nova-onda-fm-879-de-ipora.html",
@@ -103784,7 +103875,7 @@
      "5511985823895"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6652775873221296204",
    "labels": [
@@ -103891,7 +103982,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5544984565935",
-    "score": 0.4,
+    "score": 0.5,
     "since": "2026-11-27",
     "site": "554535652867",
     "url": "https://www.costaoestefm.com/"
@@ -104000,7 +104091,7 @@
      "5541997549873"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6657612361243925057",
    "labels": [
@@ -104046,7 +104137,7 @@
      "5584991123395"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -104521,7 +104612,7 @@
      "5575999691386"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6675766492016032398",
    "labels": [
@@ -104782,7 +104873,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6692795316571825258",
    "labels": [
@@ -104828,7 +104919,7 @@
      "5522999645500"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6694982764258265159",
    "labels": [
@@ -105032,7 +105123,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6701646888877053702",
    "labels": [
@@ -105132,7 +105223,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6710146457103925265",
    "labels": [
@@ -105323,7 +105414,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6729804264355797276",
    "labels": [
@@ -105559,7 +105650,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5551985136251",
-    "score": 0.6,
+    "score": 0.7,
     "since": "2026-11-27",
     "site": "555136382030",
     "url": "https://www.tamaran.com.br/"
@@ -105783,7 +105874,7 @@
      "5582996398389"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6749998871393299425",
    "labels": [
@@ -106476,7 +106567,7 @@
      "5591984173066"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "677460377049153807",
    "labels": [
@@ -106659,7 +106750,7 @@
      "5571996405668"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6802718505397867645",
    "labels": [
@@ -106701,7 +106792,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "id": "6805265627936132111",
    "labels": [
@@ -107035,7 +107126,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6847439156262876747",
    "labels": [
@@ -107211,7 +107302,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6849968176446162239",
    "labels": [
@@ -107356,7 +107447,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 18,
+   "fail_count": 19,
    "first_seen": "2026-11-16",
    "id": "6853500700906409272",
    "labels": [
@@ -107474,7 +107565,7 @@
      "5596991381183"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -107698,7 +107789,7 @@
      "5594984189093"
     ]
    },
-   "fail_count": 10,
+   "fail_count": 11,
    "first_seen": "2026-11-16",
    "id": "6862174117543639299",
    "labels": [
@@ -107737,7 +107828,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6862396693532327278",
    "labels": [
@@ -107995,7 +108086,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6880123505991699953",
    "labels": [
@@ -108296,7 +108387,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6909126917446337227",
    "labels": [
@@ -108436,7 +108527,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6917124571626652851",
    "labels": [
@@ -109076,7 +109167,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6948475473305502424",
    "labels": [
@@ -109174,7 +109265,7 @@
      "5546999046031"
     ]
    },
-   "fail_count": 5,
+   "fail_count": 6,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -109438,7 +109529,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6983086918164751234",
    "labels": [
@@ -109639,7 +109730,7 @@
      "5547991192585"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "6995645505006042553",
    "labels": [
@@ -109831,7 +109922,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7000111240045382795",
    "labels": [
@@ -109931,7 +110022,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7000996856829121524",
    "labels": [
@@ -110179,7 +110270,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7006631162578408167",
    "labels": [
@@ -110609,7 +110700,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7019878817648879827",
    "labels": [
@@ -110753,7 +110844,7 @@
      "5551997814943"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "7032831018719793583",
    "labels": [
@@ -110801,7 +110892,7 @@
      "5564992053914"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7039760099447478493",
    "labels": [
@@ -110960,7 +111051,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "id": "7045784683976270866",
    "labels": [
@@ -111162,7 +111253,7 @@
      "5535999844062"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7054072893766433905",
    "labels": [
@@ -111532,7 +111623,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7073713745500279665",
    "labels": [
@@ -111702,7 +111793,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7084747396733744394",
    "labels": [
@@ -111894,7 +111985,7 @@
      "5544998016886"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "709608417017662131",
    "labels": [
@@ -112050,7 +112141,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7099033600519306187",
    "labels": [
@@ -112093,7 +112184,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "710044814354536852",
    "labels": [
@@ -112183,7 +112274,7 @@
      "5511991181479"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7103899908343051128",
    "labels": [
@@ -112381,7 +112472,7 @@
      "5581997688302"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7110094777803307616",
    "labels": [
@@ -113286,7 +113377,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7144192759700729860",
    "labels": [
@@ -113718,7 +113809,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7177020098021780389",
    "labels": [
@@ -113810,7 +113901,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7188454409847911819",
    "labels": [
@@ -114050,7 +114141,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7207030543516110359",
    "labels": [
@@ -114091,10 +114182,23 @@
   },
   "7207154816765055797": {
    "contact_alerted": "5521967449679",
+   "contact_auto": [
+    "5521987068151",
+    "5521967449679",
+    "w"
+   ],
+   "contact_auto_em": "2026-11-27",
+   "contact_overrides": [
+    [
+     "5521987068151",
+     "5521967449679",
+     "w"
+    ]
+   ],
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5521987068151",
-    "score": 0.85,
+    "score": 0.95,
     "since": "2026-11-27",
     "site": "5521967449679",
     "url": "https://www.radioriachodoce.com.br/"
@@ -114282,7 +114386,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5551995451029",
-    "score": 0.5,
+    "score": 0.6,
     "since": "2026-11-27",
     "site": "5551991849080",
     "url": "https://grupoahora.net.br/"
@@ -114385,7 +114489,7 @@
      "5585994222863"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7217939098290651755",
    "labels": [
@@ -114712,7 +114816,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7247760810950539556",
    "labels": [
@@ -114753,7 +114857,8 @@
    "url": "https://www.radiocol.com.br/2013/01/ouvir-radio-harmonia-fm-921-de.html"
   },
   "7250273373334583709": {
-   "confianca": 0.9,
+   "conferido_radiocol": "2026-11-27",
+   "confianca": 0.8,
    "contacts": {
     "telefone": [],
     "whatsapp": []
@@ -114767,6 +114872,13 @@
      "note": "",
      "source": "site oficial (radiocostaverdefm.com.br) — tocou no navegador [navegador]",
      "to": "https://stm21.xcast.com.br:7440/live"
+    },
+    {
+     "date": "2026-11-27",
+     "from": "https://stm21.xcast.com.br:7440/live",
+     "note": "",
+     "source": "player do site radiocostaverdefm.com.br (não testável daqui) [navegador]",
+     "to": "https://stm21.xcast.com.br:7440"
     }
    ],
    "http_only": false,
@@ -114791,13 +114903,15 @@
    ],
    "post_stream": "http://184.107.229.42:9996/;",
    "post_updated": "2020-08-22T21:12:03.408-03:00",
-   "reason": "ok",
+   "reason": "endereço do player do site da emissora; o servidor não responde ao robô (fora do Brasil)",
+   "search_tried": "2026-11-27",
+   "site_checked": "2026-11-27",
    "sites": [
     "http://www.radiocostaverdefm.com.br/"
    ],
-   "source": "site oficial (radiocostaverdefm.com.br) — tocou no navegador [navegador]",
-   "status": "ok",
-   "stream": "https://stm21.xcast.com.br:7440/live",
+   "source": "player do site radiocostaverdefm.com.br (não testável daqui) [navegador]",
+   "status": "bloqueio",
+   "stream": "https://stm21.xcast.com.br:7440",
    "title": "Ouvir a Rádio Costa Verde FM 91,7 de Itaguaí RJ Ao vivo e Online",
    "url": "https://www.radiocol.com.br/2012/09/ouvir-radio-costa-verde-fm-917-de.html"
   },
@@ -115368,7 +115482,7 @@
      "5551989262337"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7281835454271549544",
    "labels": [
@@ -115895,7 +116009,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7313540820826084984",
    "labels": [
@@ -115944,7 +116058,7 @@
      "5511965868961"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7315816999287431781",
    "labels": [
@@ -116095,7 +116209,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 14,
+   "fail_count": 15,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -116213,7 +116327,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7322999775767453659",
    "labels": [
@@ -116255,7 +116369,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7324703087588321601",
    "labels": [
@@ -116304,7 +116418,7 @@
      "556499033845"
     ]
    },
-   "fail_count": 10,
+   "fail_count": 11,
    "first_seen": "2026-11-16",
    "id": "7325887922810819350",
    "labels": [
@@ -116346,7 +116460,7 @@
      "5543991413094"
     ]
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "id": "7327862209314782320",
    "labels": [
@@ -116474,7 +116588,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7333757988667546251",
    "labels": [
@@ -116701,7 +116815,7 @@
    ],
    "post_stream": "https://whd1.webradios.com.br:18546/8546",
    "post_updated": "2020-10-13T22:50:27.956-03:00",
-   "reason": "corrigido automaticamente",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-27",
    "sites": [
@@ -116765,7 +116879,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7348713858806560192",
    "labels": [
@@ -117284,7 +117398,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7391204599418272842",
    "labels": [
@@ -117419,7 +117533,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "739716584028057382",
    "labels": [
@@ -117469,7 +117583,7 @@
      "5561998669945"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7398541131770338802",
    "labels": [
@@ -117551,7 +117665,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7406421579290389963",
    "labels": [
@@ -117594,7 +117708,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7407368137761753489",
    "labels": [
@@ -117634,7 +117748,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7409050004948171477",
    "labels": [
@@ -117805,7 +117919,7 @@
      "5599992094627"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7417166761972967516",
    "labels": [
@@ -117907,7 +118021,7 @@
      "5569999731125"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7420868876596883006",
    "labels": [
@@ -118263,7 +118377,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -118507,7 +118621,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7456924919103905328",
    "labels": [
@@ -118547,7 +118661,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7457304737397035248",
    "labels": [
@@ -118635,7 +118749,7 @@
      "5584999162438"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7458763999039152431",
    "labels": [
@@ -118676,7 +118790,7 @@
     "whatsapp": []
    },
    "editado_em": "2026-11-26",
-   "fail_count": 0,
+   "fail_count": 1,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -118708,15 +118822,20 @@
    ],
    "post_stream": "https://streaming.ei3.com.br/radio/8010/stream",
    "post_updated": "2026-11-26T16:00:39.400-03:00",
-   "reason": "ok",
-   "search_tried": "2026-11-24",
+   "reason": "HTTP 404",
+   "search_tried": "2026-11-27",
    "site_checked": "2026-11-23",
    "sites": [
     "http://www.radionovacultura.com/"
    ],
    "source": "post",
-   "status": "ok",
+   "status": "off",
    "stream": "https://streaming.ei3.com.br/radio/8010/stream",
+   "suggestion": {
+    "score": 0.9,
+    "source": "site oficial (radionovacultura.com) — tocou no navegador [navegador]",
+    "url": "https://server03.srvsh.com.br:30496/stream"
+   },
    "title": "Ouvir a Rádio Nova Cultura FM 93,1 de Botucatu SP Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2019/01/ouvir-radio-nova-cultura-fm-931-de-botucatu-sp.html"
   },
@@ -118831,7 +118950,7 @@
      "5516992618253"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "746983473769873352",
    "labels": [
@@ -119167,7 +119286,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7489550096487755816",
    "labels": [
@@ -119506,7 +119625,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7499352550851440084",
    "labels": [
@@ -120051,7 +120170,7 @@
      "5511981567494"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7522837829533746691",
    "labels": [
@@ -120323,7 +120442,7 @@
      "5547988143998"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7528698241878775446",
    "labels": [
@@ -120414,7 +120533,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "7537644398856333989",
@@ -120425,7 +120544,7 @@
     "Popular"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Arcos",
     "mg"
@@ -120436,14 +120555,14 @@
    ],
    "post_stream": "https://5a57bda70564a.streamlock.net/cidadearcos/cidadearcos.stream/playlist.m3u8",
    "post_updated": "2021-03-05T13:58:13.682-03:00",
-   "reason": "playlist sem item válido (HTTP 404)",
+   "reason": "ok (HLS)",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-27",
    "sites": [
     "http://radio.radiosnaweb.com/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://5a57bda70564a.streamlock.net/cidadearcos/cidadearcos.stream/playlist.m3u8",
    "title": "Ouvir a Rádio Cidade FM 94,3 de Arcos MG Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2019/01/ouvir-radio-cidade-fm-943-de-arcos-mg.html"
@@ -120751,7 +120870,7 @@
      "5555984014472"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "7562089696960378355",
    "labels": [
@@ -121412,7 +121531,7 @@
      "5574988115786"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7592579481561660383",
    "labels": [
@@ -122097,7 +122216,7 @@
      "5591984173066"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "7622908748284890301",
    "labels": [
@@ -122137,7 +122256,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -122302,7 +122421,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7629201543042959141",
    "labels": [
@@ -122620,7 +122739,7 @@
      "5583998920888"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7643553435947489973",
    "labels": [
@@ -123055,7 +123174,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7661202629481401114",
    "labels": [
@@ -123542,7 +123661,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7678137154903664842",
    "labels": [
@@ -123640,7 +123759,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7679385265195782978",
    "labels": [
@@ -123683,7 +123802,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7680544473833313960",
    "labels": [
@@ -123726,7 +123845,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7686327197451730790",
    "labels": [
@@ -124069,7 +124188,7 @@
      "5585988031421"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7709644880262269288",
    "labels": [
@@ -124202,7 +124321,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7726751805798410551",
    "labels": [
@@ -124288,7 +124407,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7731381601450573910",
    "labels": [
@@ -124331,7 +124450,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 14,
+   "fail_count": 15,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -124400,7 +124519,7 @@
      "551633037797"
     ]
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "id": "7742772902278414699",
    "labels": [
@@ -124815,7 +124934,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "id": "7773960137816560348",
    "labels": [
@@ -124861,7 +124980,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7776668100503657849",
    "labels": [
@@ -124982,7 +125101,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7777491083334334806",
    "labels": [
@@ -125023,7 +125142,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7778915494284957712",
    "labels": [
@@ -125165,7 +125284,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -126804,7 +126923,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7901837988878396138",
    "labels": [
@@ -127277,7 +127396,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7928456544531624761",
    "labels": [
@@ -127325,7 +127444,7 @@
      "5554999434292"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7929839491553705654",
    "labels": [
@@ -128072,7 +128191,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "47992518106",
-    "score": 0.6,
+    "score": 0.7,
     "since": "2026-11-27",
     "site": "554733221660",
     "url": "https://www.radioitabera.com/"
@@ -128365,7 +128484,7 @@
      "5583981968490"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "7984874959568422541",
    "labels": [
@@ -128872,7 +128991,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8029114589072148517",
    "labels": [
@@ -129186,7 +129305,7 @@
      "554834137971"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "8039174685594714285",
    "labels": [
@@ -129564,7 +129683,7 @@
      "5519992324170"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8064806018208660171",
    "labels": [
@@ -129692,7 +129811,7 @@
      "5548984058251"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8071182182670499130",
    "labels": [
@@ -129885,7 +130004,7 @@
      "5546999851146"
     ]
    },
-   "fail_count": 1,
+   "fail_count": 0,
    "first_seen": "2026-11-16",
    "http_only": false,
    "id": "8081010652018761322",
@@ -129897,7 +130016,7 @@
     "Rede_Vale_Comunicação"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Pranchita",
     "pr"
@@ -129908,14 +130027,14 @@
    ],
    "post_stream": "https://radio.saopaulo01.com.br/9942/stream",
    "post_updated": "2021-12-29T22:09:48.554-03:00",
-   "reason": "responde página HTML, não áudio",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-27",
    "sites": [
     "http://meninafm.radio.br/"
    ],
    "source": "post",
-   "status": "off",
+   "status": "ok",
    "stream": "https://radio.saopaulo01.com.br/9942/stream",
    "title": "Ouvir a Rádio Menina FM 106,9 de Pranchita PR Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2014/04/ouvir-radio-menina-fm-1069-de-pranchita.html",
@@ -129931,7 +130050,7 @@
      "5598991389084"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8081043076758467392",
    "labels": [
@@ -130026,7 +130145,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "8091755331903712773",
    "labels": [
@@ -130461,7 +130580,7 @@
      "5584999119627"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8116886542282230767",
    "labels": [
@@ -131002,7 +131121,7 @@
      "5516996155800"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "815113087207250967",
    "labels": [
@@ -131109,7 +131228,7 @@
      "551236221866"
     ]
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "8157732901284712184",
    "labels": [
@@ -131152,7 +131271,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 13,
+   "fail_count": 14,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -131398,7 +131517,7 @@
     ]
    },
    "editado_em": "2026-11-25",
-   "fail_count": 7,
+   "fail_count": 8,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -131867,7 +131986,7 @@
     ]
    },
    "editado_em": "2026-11-21",
-   "fail_count": 8,
+   "fail_count": 9,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -131994,7 +132113,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "819803380374253123",
    "labels": [
@@ -132500,7 +132619,7 @@
      "5548991843228"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "821795853591106375",
    "labels": [
@@ -132546,7 +132665,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8225415256028991948",
    "labels": [
@@ -132866,7 +132985,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8248669317319628013",
    "labels": [
@@ -133112,7 +133231,7 @@
      "5511975912012"
     ]
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -133326,7 +133445,7 @@
      "5598991619696"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8271077242142967330",
    "labels": [
@@ -133374,7 +133493,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8271556345906756204",
    "labels": [
@@ -134321,7 +134440,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "83153710818591212",
    "labels": [
@@ -134761,7 +134880,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8329422403438053080",
    "labels": [
@@ -134903,7 +135022,7 @@
      "5511931170620"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8334737281239666164",
    "labels": [
@@ -135001,7 +135120,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8336662242299799058",
    "labels": [
@@ -135194,7 +135313,7 @@
      "5521988771323"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8344250440518901767",
    "labels": [
@@ -135559,7 +135678,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8358387692956688588",
    "labels": [
@@ -135838,7 +135957,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8373950294308722554",
    "labels": [
@@ -135878,7 +135997,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 3,
+   "fail_count": 4,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -136511,7 +136630,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8406264731716168496",
    "labels": [
@@ -136917,7 +137036,7 @@
      "67991201432"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8430842135473525822",
    "labels": [
@@ -137349,7 +137468,7 @@
      "5586981386014"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8457618646326176783",
    "labels": [
@@ -137827,7 +137946,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8488132638385238931",
    "labels": [
@@ -137970,7 +138089,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8505996101494790613",
    "labels": [
@@ -138159,7 +138278,7 @@
      "5543998027878"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8515418657147063175",
    "labels": [
@@ -138209,7 +138328,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8515649554373390718",
    "labels": [
@@ -138537,7 +138656,7 @@
     ]
    },
    "editado_em": "2026-11-25",
-   "fail_count": 8,
+   "fail_count": 9,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -138649,7 +138768,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8533842481871623419",
    "labels": [
@@ -138867,7 +138986,7 @@
      "5548991550036"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8544517779950140082",
    "labels": [
@@ -139619,7 +139738,7 @@
      "5549984212992"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8576136459063952971",
    "labels": [
@@ -139662,7 +139781,7 @@
      "554333571029"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8577103841788866703",
    "labels": [
@@ -140057,7 +140176,7 @@
      "5562981958108"
     ]
    },
-   "fail_count": 12,
+   "fail_count": 13,
    "first_seen": "2026-11-16",
    "id": "8595974787591774716",
    "labels": [
@@ -141539,7 +141658,7 @@
      "5555999033881"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8688936852789958560",
    "labels": [
@@ -141774,7 +141893,6 @@
    "url": "https://www.radiocol.com.br/2017/04/ouvir-radio-cidade-modelo-fm-953-de.html"
   },
   "8698140504608896695": {
-   "br_ok": "2026-11-24",
    "busca_vazia_em": "2026-11-24",
    "buscas_vazias": 3,
    "contacts": {
@@ -141815,7 +141933,7 @@
     "São José do Calçado"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "São José do Calçado",
     "es"
@@ -141826,7 +141944,7 @@
    ],
    "post_stream": "https://stream-290.surfernetwork.com/cic1u0lbdo2uv",
    "post_updated": "2026-11-25T10:10:34.833-03:00",
-   "reason": "tocou para ouvintes no Brasil em 24/11 (o robô, fora do Brasil, recebe: HTTP 503)",
+   "reason": "ok",
    "search_tried": "2026-11-24",
    "site_checked": "2026-11-23",
    "sites": [
@@ -141991,7 +142109,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8702509076947426072",
    "labels": [
@@ -142042,7 +142160,7 @@
      "5555996303230"
     ]
    },
-   "fail_count": 9,
+   "fail_count": 10,
    "first_seen": "2026-11-16",
    "id": "8707311205535134503",
    "labels": [
@@ -142087,7 +142205,7 @@
      "5555991009199"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8708377040422670958",
    "labels": [
@@ -142378,7 +142496,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8724017331897093090",
    "labels": [
@@ -142467,7 +142585,7 @@
      "558899737690"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8725297260468172279",
    "labels": [
@@ -142513,7 +142631,7 @@
      "53981251475"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8727695157587502633",
    "labels": [
@@ -143323,7 +143441,7 @@
      "5544991185921"
     ]
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -144329,7 +144447,7 @@
      "5543999941110"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "883743469200482701",
    "labels": [
@@ -144492,7 +144610,7 @@
      "5537996639898"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8838815226757760118",
    "labels": [
@@ -144658,7 +144776,7 @@
      "5575981632178"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8841389101238611555",
    "labels": [
@@ -145102,7 +145220,7 @@
      "5553984320230"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8884000995644154556",
    "labels": [
@@ -145389,7 +145507,7 @@
      "555537981535"
     ],
     "whatsapp": [
-     "555584221515"
+     "5555984221515"
     ]
    },
    "fail_count": 0,
@@ -145397,7 +145515,6 @@
    "http_only": false,
    "id": "8890526163277140126",
    "labels": [
-    "Mobile",
     "Popular",
     "Rodeio Bonito",
     "RS"
@@ -145413,7 +145530,7 @@
     "https://streaming.speedrs.com.br/radio/8020/universal"
    ],
    "post_stream": "https://streaming.speedrs.com.br/radio/8020/universal",
-   "post_updated": "2021-06-06T21:56:32.849-03:00",
+   "post_updated": "2026-11-27T08:41:10.371-03:00",
    "reason": "ok",
    "sites": [
     "https://universalfm.com.br/"
@@ -145421,9 +145538,9 @@
    "source": "post",
    "status": "ok",
    "stream": "https://streaming.speedrs.com.br/radio/8020/universal",
-   "title": "Ouvir a Rádio Universal FM 102,9 de Rodeio Bonito RS Ao Vivo e Online",
+   "title": "Ouvir a Rádio Universal FM 102,9 de Rodeio Bonito RS",
    "url": "https://www.radiocol.com.br/2014/05/ouvir-radio-universal-fm-1029-de-rodeio.html",
-   "wa_post_visto": "555584221515"
+   "wa_post_visto": "5555984221515"
   },
   "8892787679220316691": {
    "contacts": {
@@ -145543,7 +145660,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8900771563014670639",
    "labels": [
@@ -145587,7 +145704,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8902107256518428147",
    "labels": [
@@ -145629,7 +145746,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8902559104542087528",
    "labels": [
@@ -146308,7 +146425,7 @@
    ],
    "post_stream": "https://centova2.euroti.com.br:20050/;",
    "post_updated": "2022-07-01T22:06:53.381-03:00",
-   "reason": "corrigido automaticamente",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-27",
    "sites": [
@@ -146541,7 +146658,7 @@
      "5573981855935"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "8966430129350308732",
    "labels": [
@@ -147270,7 +147387,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9024004642462486712",
    "labels": [
@@ -147382,7 +147499,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9024302698897859149",
    "labels": [
@@ -147470,7 +147587,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9034103689916024658",
    "labels": [
@@ -147815,7 +147932,7 @@
     "Rede_Conti"
    ],
    "last_check": "2026-11-27",
-   "last_ok": "2026-11-26",
+   "last_ok": "2026-11-27",
    "loc": [
     "Peixoto de Azevedo",
     "mt"
@@ -147826,14 +147943,14 @@
    ],
    "post_stream": "https://radio.saopaulo01.com.br:10907/stream",
    "post_updated": "2022-02-11T09:19:56.823-03:00",
-   "reason": "servidor não responde ao robô (fora do Brasil) — HTTP 401",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-27",
    "sites": [
     "https://www.radioconti.com.br/"
    ],
    "source": "post",
-   "status": "bloqueio",
+   "status": "ok",
    "stream": "https://radio.saopaulo01.com.br:10907/stream",
    "title": "Ouvir a Rádio Conti FM 94,9 de Peixoto de Azevedo MT Ao Vivo e Online",
    "url": "https://www.radiocol.com.br/2022/02/ouvir-radio-conti-fm-949-de-peixoto-de-azevedo-mt-ao-vivo-e-online.html",
@@ -148180,7 +148297,7 @@
      "5592995347314"
     ]
    },
-   "fail_count": 25,
+   "fail_count": 26,
    "first_seen": "2026-11-16",
    "id": "9072348986717689023",
    "labels": [
@@ -149478,7 +149595,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -149543,7 +149660,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9125139442921659410",
    "labels": [
@@ -149637,7 +149754,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 10,
+   "fail_count": 11,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -149818,7 +149935,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9131375179532335183",
    "labels": [
@@ -150087,7 +150204,7 @@
    ],
    "post_stream": "https://cast.youngtech.radio.br/radio/8390/radio",
    "post_updated": "2021-11-04T22:30:36.986-03:00",
-   "reason": "corrigido automaticamente",
+   "reason": "ok",
    "search_tried": "2026-11-27",
    "site_checked": "2026-11-23",
    "sites": [
@@ -150247,7 +150364,7 @@
      "5521982089214"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9147180425391434737",
    "labels": [
@@ -150334,7 +150451,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9151595478766808466",
    "labels": [
@@ -150385,7 +150502,7 @@
      "5562996144709"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9152143234142569966",
    "labels": [
@@ -150631,7 +150748,7 @@
      "5592984361072"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9159981203896827919",
    "labels": [
@@ -150730,7 +150847,7 @@
      "5591993882747"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9160631792833724070",
    "labels": [
@@ -150773,7 +150890,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9161201942591372419",
    "labels": [
@@ -150814,7 +150931,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 16,
+   "fail_count": 17,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -151138,7 +151255,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9176602680097837962",
    "labels": [
@@ -151181,7 +151298,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9180179519282799760",
    "labels": [
@@ -151322,7 +151439,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "9194991361225545634",
    "labels": [
@@ -151448,7 +151565,7 @@
     "whatsapp": []
    },
    "editado_em": "2026-11-26",
-   "fail_count": 0,
+   "fail_count": 1,
    "first_seen": "2026-11-16",
    "history": [
     {
@@ -151479,16 +151596,21 @@
    ],
    "post_stream": "https://hts05.brascast.com:10912/stream",
    "post_updated": "2026-11-26T16:27:54.257-03:00",
-   "reason": "ok",
-   "search_tried": "2026-11-26",
+   "reason": "HTTP 404",
+   "search_tried": "2026-11-27",
    "site_checked": "2026-11-23",
    "site_fora": "HTTP 403",
    "sites": [
     "https://sarabrasilfm.com.br/"
    ],
    "source": "post",
-   "status": "ok",
+   "status": "off",
    "stream": "https://hts05.brascast.com:10912/stream",
+   "suggestion": {
+    "score": 0.59,
+    "source": "Radio Browser: Nova Brasil Fm São Paulo (estado, cidade ou frequência não conferem)",
+    "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/NOVABRASIL_SPAAC.aac"
+   },
    "title": "Ouvir a Rádio Sara Brasil FM 101,3 de São Paulo SP Ao vivo e Online",
    "url": "https://www.radiocol.com.br/2022/06/ouvir-radio-sara-brasil-fm-1013-de-sao-paulo-sp-ao-vivo-e-online.html"
   },
@@ -151714,7 +151836,7 @@
    "contact_suggestion": {
     "kind": "whatsapp",
     "post": "5511999948117",
-    "score": 0.95,
+    "score": 1.0,
     "since": "2026-11-27",
     "site": "5511910668117",
     "url": "http://www.superradio1150.com.br/"
@@ -152653,7 +152775,7 @@
     ],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "94018619012388938",
    "labels": [
@@ -152834,7 +152956,7 @@
      "5555999370303"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "949392825359105404",
    "labels": [
@@ -153013,7 +153135,7 @@
      "5541984010001"
     ]
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "95829221887623935",
    "labels": [
@@ -153324,7 +153446,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 20,
+   "fail_count": 21,
    "first_seen": "2026-11-16",
    "id": "972867658587022487",
    "labels": [
@@ -153469,7 +153591,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "98732883936622275",
    "labels": [
@@ -153565,7 +153687,7 @@
     "telefone": [],
     "whatsapp": []
    },
-   "fail_count": 35,
+   "fail_count": 36,
    "first_seen": "2026-11-16",
    "id": "998594429925458867",
    "labels": [
@@ -153642,5 +153764,5 @@
   }
  },
  "site": "https://www.radiocol.com.br",
- "updated": "2026-11-27 06:34"
+ "updated": "2026-11-27 15:15"
 }
