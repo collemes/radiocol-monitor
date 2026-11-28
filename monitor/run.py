@@ -249,6 +249,26 @@ def protegido(rec):
     return rec.get("source") == "manual" or bool(rec.get("editado_em"))
 
 
+def pendente_conferir(rec):
+    """Achado de confiança alta que não foi aplicado só porque não deu para conferir no Radiocol nesta execução
+    (cota diária acabou ou o navegador falhou). Volta à frente da fila de busca na próxima execução."""
+    return bool((rec.get("suggestion") or {}).get("pendente"))
+
+
+def marcar_pendente_antiga(rec):
+    """Migração (1x): sugestão antiga de confiança alta (cidade, UF e frequência conferem / site da emissora)
+    num post fora do ar que o robô pode trocar -> pendente. Radio Browser sem conferência e trocas desfeitas não."""
+    sg = rec.get("suggestion") or {}
+    fonte = sg.get("source") or ""
+    if rec.get("status") != "off" or protegido(rec) or rec.get("encerrada") or not sg.get("url") \
+            or (sg.get("score") or 0) < 0.85 or "não conferem" in fonte or "não aplicado" in fonte \
+            or not (fonte.startswith(("site oficial", "site da rede", "tudoradio", "radios.com.br"))
+                    or (fonte.startswith("Radio Browser") and "conferem" in fonte)):
+        return False
+    sg["pendente"] = today()
+    return True
+
+
 def _dias_desde(d):
     return 999 if not d else (date.fromisoformat(today()) - date.fromisoformat(d)).days
 
@@ -397,6 +417,14 @@ async def main():
                 n_c += 1
         state["migr_outra_emissora"] = today()
         log(f"{n_c} posts com outra emissora na frequência e sem o cartão: serão refeitos hoje")
+    if not state.get("migr_pendentes_conferir"):
+        # Em 24/11 a busca achou endereço com confiança alta para ~170 rádios fora do ar, mas a cota diária de
+        # "conferir no Radiocol antes de trocar" acabou e elas ficaram só como sugestão, esperando 7 dias.
+        # Marca essas sugestões como pendentes: voltam para a frente da fila de busca já na próxima execução.
+        n_p = sum(marcar_pendente_antiga(_r) for _r in posts_state.values())
+        state["migr_pendentes_conferir"] = today()
+        log(f"{n_p} rádios fora do ar com achado de confiança alta não aplicado (cota de conferência): "
+            "voltam para a fila de busca hoje")
     # para tem_prova(): quantos posts usam cada site e cada endereço de áudio (dados da execução anterior)
     usos_site, usos_stream = {}, {}
     for _r in posts_state.values():
@@ -915,15 +943,17 @@ async def main():
         def dias_desde(d):
             return 999 if not d else (date.fromisoformat(today()) - date.fromisoformat(d)).days
 
+        # achado de confiança alta que ficou pendente (não deu para conferir no Radiocol): volta já, na frente
         fila_off = [r for r in off if not r.get("encerrada") and (r.get("fail_count", 0) <= config.CONFIRM_RUNS
-                    or dias_desde(r.get("search_tried")) >= 7)]
+                    or dias_desde(r.get("search_tried")) >= 7 or pendente_conferir(r))]
         # "não testáveis daqui" e endereços provisórios (sugestão < alta confiança): procura no site 1x/semana
         fila_off += [r for r in posts_state.values()
                      if (r.get("status") == "bloqueio" or (r.get("status") == "ok" and r.get("provisorio")
                                                             and r.get("sites")))
                      and not protegido(r) and r not in off and not r.get("encerrada")
                      and dias_desde(r.get("search_tried")) >= 7]
-        fila_off.sort(key=lambda r: (r.get("fail_count", 0) > config.CONFIRM_RUNS, r.get("search_tried") or ""))
+        fila_off.sort(key=lambda r: (not pendente_conferir(r), r.get("fail_count", 0) > config.CONFIRM_RUNS,
+                                     r.get("search_tried") or ""))
         # posts sem nenhum endereço de áudio, mas com site oficial: procura o player no site
         sem_link = [r for r in posts_state.values()
                     if r.get("status") == "sem_link" and not protegido(r)          # sem site: os diretórios ainda servem
@@ -967,6 +997,7 @@ async def main():
                 return True                      # sem navegador: vale só o aviso dos ouvintes no Brasil (acima)
             if rec["url"] not in conferidos_radiocol:
                 if len(conferidos_radiocol) >= config.CONFERIR_RADIOCOL_MAX:
+                    rec["_conferir_depois"] = True   # tenta de novo amanhã, na frente da fila (não espera 7 dias)
                     return False                 # cota do dia acabou: não arrisca trocar um áudio que pode tocar
                 conferidos_radiocol[rec["url"]] = await finder.nav.toca_no_radiocol(rec["url"])
             toca = conferidos_radiocol[rec["url"]]
@@ -976,6 +1007,7 @@ async def main():
                 rec.pop("alerted", None)
                 return False
             if toca is None:
+                rec["_conferir_depois"] = True
                 return False                     # navegador indisponível: na dúvida, não troca
             rec["conferido_radiocol"] = today()  # o endereço atual não tocou no Radiocol: troca autorizada
             return True
@@ -1087,8 +1119,12 @@ async def main():
                 await adotar_site(session, rec, found.get("site"))   # site informado pelo diretório
             else:                                   # Radio Browser / baixa confiança: só sugestão no relatório
                 rec["suggestion"] = {k: found[k] for k in ("url", "source", "score") if k in found}
+                if prova and rec.get("_conferir_depois"):
+                    rec["suggestion"]["pendente"] = today()   # só faltou conferir no Radiocol: amanhã de novo
 
         await asyncio.gather(*(fix(r) for r in search))
+        for r in search:
+            r.pop("_conferir_depois", None)
 
         # 4b) variações do MESMO endereço, todo dia, para todos os fora do ar / não testáveis que ficaram fora da
         # busca completa (que é semanal). É barato (só testes de endereço) e faz as regras novas de variants()
@@ -1115,6 +1151,8 @@ async def main():
             return False
         if diaria:
             n_var = sum(await asyncio.gather(*(so_variacoes(r) for r in diaria)))
+            for r in diaria:
+                r.pop("_conferir_depois", None)
             log(f"Variações do próprio endereço (diário): {n_var} corrigidas de {len(diaria)} fora do ar/não testáveis")
         if finder.nav.usados or finder.nav._html_usados or conferidos_radiocol:
             log(f"Navegador abriu {finder.nav.usados} sites, {finder.nav._html_usados} páginas de diretório e "

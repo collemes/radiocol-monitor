@@ -638,4 +638,25 @@ async def _kshost_porta():
         bad += 1; print("FALHOU: só o proxy player-ssl.kshost")
 
 asyncio.run(_kshost_porta())
+
+# ----- regra nova (2026-11-28): achado de confiança alta que só não foi aplicado porque a cota de "conferir no
+# Radiocol" acabou fica PENDENTE e volta na frente da fila no dia seguinte (antes esperava 7 dias como sugestão)
+_sg = lambda fonte, score=0.95, url="https://novo.com.br:8000/live": {"url": url, "source": fonte, "score": score}
+_casos = [
+    ({"status": "off", "suggestion": _sg("tudoradio: Rádio X (Cidade/UF, 89.9 FM) — cidade, UF e frequência conferem")}, True),
+    ({"status": "off", "suggestion": _sg("site oficial (radiox.com.br)", 0.9)}, True),
+    ({"status": "off", "suggestion": _sg("Radio Browser: X FM — estado, cidade e frequência conferem", 0.9)}, True),
+    ({"status": "off", "suggestion": _sg("Radio Browser: X FM (estado, cidade ou frequência não conferem)", 0.59)}, False),
+    ({"status": "off", "suggestion": _sg("site oficial (radiox.com.br)", 0.65)}, False),           # incerto
+    ({"status": "off", "editado_em": "2026-11-20", "suggestion": _sg("site oficial (radiox.com.br)", 0.9)}, False),
+    ({"status": "off", "source": "manual", "suggestion": _sg("site oficial (radiox.com.br)", 0.9)}, False),
+    ({"status": "ok", "suggestion": _sg("site oficial (radiox.com.br)", 0.9)}, False),
+    ({"status": "off", "encerrada": True, "suggestion": _sg("site oficial (radiox.com.br)", 0.9)}, False),
+    ({"status": "off", "suggestion": _sg("site oficial (radiox.com.br) — não aplicado (só site oficial)", 0.9)}, False),
+]
+for _rec, _esperado in _casos:
+    if _run.marcar_pendente_antiga(_rec) != _esperado or _run.pendente_conferir(_rec) != _esperado:
+        bad += 1; print("FALHOU pendente de conferência (migração)", _esperado, _rec)
+if _run.pendente_conferir({"status": "off"}) or _run.pendente_conferir({"suggestion": None}):
+    bad += 1; print("FALHOU: sem sugestão não é pendente")
 print("RESULTADO:", "TUDO CERTO" if not bad else f"{bad} FALHA(S)")
