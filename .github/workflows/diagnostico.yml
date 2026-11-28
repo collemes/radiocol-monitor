@@ -6,7 +6,7 @@ permissions:
 jobs:
   diag:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -15,5 +15,5 @@ jobs:
       - run: pip install -r requirements.txt && python -m playwright install --with-deps chromium
       - run: python tools/diag_dir.py
         env:
-          USE_BROWSER: "0"
+          USE_BROWSER: "1"
         continue-on-error: true

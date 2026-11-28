@@ -1,42 +1,62 @@
-"""Diagnóstico: servidores com mais rádios fora do ar (kshost, play.radio.br, azioncdn, fabricahost, maxcast)."""
-import asyncio, os, re, socket, sys
+"""Diagnóstico: por que o robô não acha endereço novo para as rádios fora do ar nos servidores com mais casos
+(ciclano, fabricahost, azioncdn/Rede Aleluia, paineldj, brlogic, streamlock). Roda o próprio Finder em cada uma e
+mostra o que o site da emissora entrega e as listas dos servidores."""
+import asyncio, json, os, sys
 sys.path.insert(0, os.getcwd())
 import aiohttp
-UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+from monitor import config
+from monitor.checker import Checker
+from monitor.finder import Finder, variants
 
-DNS = ["play.radio.br", "painel.sintonizar.tv.br", "stream1.play.radio.br", "sintonizar.tv.br", "s20.maxcast.com.br",
-       "14398c.ha.azioncdn.net"]
+ALVOS = ("ciclano.io", "ice.fabricahost.com.br", "azioncdn.net", "paineldj.com.br", "brlogic.com",
+         "5a2b083e9f360.streamlock.net", "brasilstream.com.br", "srvstm.com", "painelvox.com")
 
-NOMES = ["saofrancisco", "sarandi", "cacique", "Solaris97", "mncaxias", "RSCultura", "globofeira", "aurora", "rosario"]
-URLS = [f"https://painel.sintonizar.tv.br/stream/{n}" for n in NOMES] + [
-    "https://painel.sintonizar.tv.br/", "https://painel.sintonizar.tv.br/api/stations",
-    "https://www.tuaradio.com.br/", "https://play.radio.br:8089/",
-    "https://www.redealeluia.com.br/radios", "https://redealeluia.com.br/aovivo", "https://www.novotempo.com/radio/",
-    "https://s20.maxcast.com.br/", "https://www.maxcast.com.br/",
-    "https://www.radiosolaris.com.br/", "https://www.maisnova.com.br/",
-]
-ST_RE = re.compile(r"https?://[^\"'\s<>\\]*(?:stream|:\d{4}|\.m3u8|\.mp3|\.aac|/live|listen|kshost|maxcast|azion|play\.radio\.br|fabricahost|sonic|zeno)[^\"'\s<>\\]*", re.I)
+LISTAS = ["https://station.azrmcsoftbroadcast.com.br/api/stations",
+          "https://ice.fabricahost.com.br/status-json.xsl", "https://play.wisestream.io/status-json.xsl",
+          "https://r13.ciclano.io/", "https://r13.ciclano.io/api/stations", "https://r13.ciclano.io/status-json.xsl",
+          "https://r10.ciclano.io/proxy/rdocolinafm/stream", "https://live.paineldj.com.br/",
+          "https://live.paineldj.com.br/status-json.xsl", "https://servidor32.brlogic.com:8184/status-json.xsl",
+          "https://servidor32.brlogic.com:8184/7.html"]
 
 
 async def main():
-    for h in DNS:
-        try:
-            print("DNS", h, sorted({a[4][0] for a in socket.getaddrinfo(h, 443)})[:3])
-        except Exception as e:
-            print("DNS", h, "ERRO", e)
-    async with aiohttp.ClientSession() as s:
-        for u in URLS:
-            try:
-                async with s.get(u, headers={"User-Agent": UA}, timeout=aiohttp.ClientTimeout(total=15), ssl=False) as r:
-                    ct = r.headers.get("content-type", "")
-                    if "html" in ct or "json" in ct or "text" in ct or "mpegurl" in ct:
-                        b = (await r.content.read(600_000)).decode("utf-8", "replace")
-                        print("GET", u, r.status, ct, str(r.url)[:120], "|", b[:700].replace("\n", " ") if "mpegurl" in ct or "json" in ct else "")
-                        print("    streams:", sorted(set(ST_RE.findall(b)))[:60])
+    s = json.load(open("data/state.json"))["posts"]
+    recs = [r for r in s.values() if r.get("status") == "off" and any(a in (r.get("stream") or "") for a in ALVOS)]
+    connector = aiohttp.TCPConnector(limit=60, ssl=False)
+    async with aiohttp.ClientSession(connector=connector) as session:
+        checker = Checker(session)
+        f = Finder(session, checker)
+        for u in LISTAS:
+            txt = await f._get_text(u, limit=3_000_000)
+            print("LISTA", u, len(txt), f.erros_texto.get(u, ""))
+            if txt:
+                try:
+                    j = json.loads(txt)
+                    if isinstance(j, list):
+                        for st in j:
+                            print("   st", st.get("shortcode"), "|", st.get("name"), "|", st.get("listen_url"))
                     else:
-                        b = await r.content.read(3000)
-                        print("GET", u, r.status, ct, len(b), b[:20])
-            except Exception as e:
-                print("GET", u, "ERRO", repr(e)[:200])
+                        src = (j.get("icestats") or {}).get("source") or []
+                        for so in ([src] if isinstance(src, dict) else src):
+                            print("   mt", so.get("listenurl"), "|", so.get("server_name"))
+                except Exception:
+                    print("   ", txt[:600].replace("\n", " "))
+        for r in recs[:45]:
+            print("\n==", r["title"][:70], "|", r.get("stream"), "|", r.get("reason"), "| sites", r.get("sites"))
+            for v in variants(r["stream"])[:6]:
+                res = await checker.check(v)
+                print("   var", v, res.ok, res.reason)
+            for site in (r.get("sites") or [])[:1]:
+                cands = await f._site_candidates(site)
+                print("   site", site, len(cands), "candidatos", f.erros_texto.get(site, ""))
+                for u, ctx in cands[:12]:
+                    res = await checker.check(u)
+                    print("     cand", u, res.ok, res.reason, "|", ctx[:80])
+            try:
+                achado = await asyncio.wait_for(f.find(dict(r)), 240)
+            except Exception as ex:
+                achado = repr(ex)
+            print("   FIND ->", achado)
+        await f.nav.fechar()
 
 asyncio.run(main())
